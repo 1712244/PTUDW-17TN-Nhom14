@@ -1,0 +1,75 @@
+* {
+  font-size: 100%;
+  font-family: Roboto;
+ }
+
+ body {
+  background-color: #ecf0f1;
+}
+
+.no-padding-top-bot{
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.no-padding{
+  padding: 0;
+}
+.active-nav {
+  margin: 0;
+  background-color: #3498db;
+}
+.logo {
+  width: 200px;
+  padding: 5px;
+}
+.nav-item-padding{
+  padding: 5px;
+}
+
+.header-nav{
+  background-color: white;
+}
+
+.icon-footer{
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.title-footer{
+  color: #3498db;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.picture-search{
+  background-image: url("/images/background-truong.png");
+  height: 500px;
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
+
+#searchbar-in-picture{
+  opacity: 0.6;
+}
+
+#searchbar-in-picture:hover{
+  opacity: 1.0;
+}
+
+.content-section{
+  margin: 20px 0px;
+}
+
+.title-section{
+  padding: 25px;
+  color: #3498db;
+  font-weight: bold;
+  font-size: 40px;
+}
+.active-modified-list-cs{
+  background-color: #ECF0F1;
+  color: #3498DB;
+}
+

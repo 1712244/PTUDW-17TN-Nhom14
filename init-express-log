@@ -1,0 +1,8 @@
+   change directory:
+     > cd .\ThuVienKhoa\
+
+   install dependencies:
+     > npm install
+
+   run the app:
+     > SET DEBUG=thuvienkhoa:* & npm start
