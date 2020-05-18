@@ -14,6 +14,7 @@ var loginRouter = require('./routes/login');
 var signUpRouter = require('./routes/sign-up');
 
 var forgetpassRouter = require('./routes/forget-pass')
+var categoriesRouter = require('./routes/categories');
 const livereload = require("livereload");
 
 var liveReloadServer = livereload.createServer();
@@ -44,6 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
+app.use('/categories', categoriesRouter);
 
 app.use('/sign-up', signUpRouter);
 
