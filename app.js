@@ -16,6 +16,8 @@ var signUpRouter = require('./routes/sign-up');
 var forgetpassRouter = require('./routes/forget-pass')
 var categoriesRouter = require('./routes/categories');
 var storageRouter = require('./routes/storage');
+var aboutRouter = require('./routes/about')
+
 const livereload = require("livereload");
 
 var liveReloadServer = livereload.createServer();
@@ -51,6 +53,7 @@ app.use('/storage', storageRouter);
 
 app.use('/sign-up', signUpRouter);
 
+app.use('/about', aboutRouter);
 // catch 404 and forward to error handler
 app.use('/forget-pass', forgetpassRouter)
     // catch 404 and forward to error handler
