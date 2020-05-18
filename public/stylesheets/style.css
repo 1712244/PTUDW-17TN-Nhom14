@@ -54,7 +54,7 @@
   opacity: 0.6;
 }
 
-#searchbar-in-picture:hover{
+#searchbar-in-picture:hover, #searchbar-in-picture:focus-within{
   opacity: 1.0;
 }
 
