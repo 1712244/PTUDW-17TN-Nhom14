@@ -1,0 +1,146 @@
+<div class="container-fluid" style="padding:0; width:95%">
+    <div class="content-section picture-search d-flex justify-content-center bg-white no-padding align-items-center">
+        <div id="searchbar-in-picture" class="input-group col-8">
+
+            <input type="text" class="form-control" placeholder="Tìm kiếm sách, tin tức, ..." aria-label="Username"
+                aria-describedby="basic-addon1">
+            <div class="input-group-append">
+                <a class="input-group-text" href="#"><img src="/images/search-icon.svg" alt="" style="width: 20px;"></a>
+            </div>
+        </div>
+    </div>
+    {{!Sự kiện}}
+    <div class="content-section bg-white no-padding">
+        <div class="title-section text-center">{{sectionSuKien.title}}</div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col">
+                <div class="d-flex justify-content-center">
+                    {{#each sectionSuKien.articles}}
+                    {{#if @first}}
+                    <a href="">
+                        <div class="card" style="width: 220px; border:none;">
+
+                            <div class="card-body" style="padding:5px">
+                                <p class="card-text" style="margin: 0; font-size:22px; color:black;">
+                                    {{this.title}}
+                                </p>
+                                <p class="card-text" style="color:grey;">
+                                    {{this.date}}
+                                </p>
+                            </div>
+                            <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap"
+                                style="padding-bottom: 20px;">
+
+                        </div>
+                    </a>
+
+                    {{/if}}
+                    {{/each}}
+                </div>
+
+
+            </div>
+            <div class="col">
+                <div class="d-flex justify-content-center">
+                    <div>
+                        <div style="color: #3498DB; font-size:25px; font-weight:bold;">{{sectionSuKien.other_news}}
+                        </div>
+                        {{#each sectionSuKien.articles}}
+                        {{#if @first}}
+                        {{else}}
+                        <a href="#">
+                            <div style="color: black;">{{this.title}}</div>
+                            <div style="color: grey;">{{this.date}}</div>
+                        </a>
+                        <a href="#">
+                            <div style="color: black;">{{this.title}}</div>
+                            <div style="color: grey;">{{this.date}}</div>
+                        </a>
+                        <a href="#">
+                            <div style="color: black;">{{this.title}}</div>
+                            <div style="color: grey;">{{this.date}}</div>
+                        </a>
+                        {{/if}}
+                        {{/each}}
+                        <a href="#">
+                            <div class="text-right" style="color: #3498DB; font-weight:bold;">
+                                {{sectionSuKien.more_news}}</div>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+    {{!Thông báo}}
+    <div class="content-section bg-white no-padding">
+        <div class="title-section text-center">{{sectionThongBao.title}}</div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col">
+                <div class="d-flex justify-content-center">
+                    {{#each sectionThongBao.articles}}
+                    {{#if @first}}
+                    <a href="">
+                        <div class="card" style="width: 220px; border:none;">
+
+                            <div class="card-body" style="padding:5px">
+                                <p class="card-text" style="margin: 0; font-size:22px; color:black;">
+                                    {{this.title}}
+                                </p>
+                                <p class="card-text" style="color:grey;">
+                                    {{this.date}}
+                                </p>
+                            </div>
+                            <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap"
+                                style="padding-bottom: 20px;">
+
+                        </div>
+                    </a>
+
+                    {{/if}}
+                    {{/each}}
+                </div>
+
+
+            </div>
+            <div class="col">
+                <div class="d-flex justify-content-center">
+                    <div>
+                        <div style="color: #3498DB; font-size:25px; font-weight:bold;">{{sectionThongBao.other_news}}
+                        </div>
+                        {{#each sectionThongBao.articles}}
+                        {{#if @first}}
+                        {{else}}
+                        <a href="#">
+                            <div style="color: black;">{{this.title}}</div>
+                            <div style="color: grey;">{{this.date}}</div>
+                        </a>
+                        <a href="#">
+                            <div style="color: black;">{{this.title}}</div>
+                            <div style="color: grey;">{{this.date}}</div>
+                        </a>
+                        <a href="#">
+                            <div style="color: black;">{{this.title}}</div>
+                            <div style="color: grey;">{{this.date}}</div>
+                        </a>
+                        {{/if}}
+                        {{/each}}
+                        <a href="#">
+                            <div class="text-right" style="color: #3498DB; font-weight:bold;">
+                                {{sectionThongBao.more_news}}</div>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+</div>
