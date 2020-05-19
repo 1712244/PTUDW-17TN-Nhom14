@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var signUpRouter = require('./routes/sign-up');
 
+var forgetpassRouter = require('./routes/forget-pass')
 const livereload = require("livereload");
 
 var liveReloadServer = livereload.createServer();
@@ -38,6 +39,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/sign-up', signUpRouter);
 // catch 404 and forward to error handler
+app.use('/forget-pass', forgetpassRouter)
+    // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));
 });
