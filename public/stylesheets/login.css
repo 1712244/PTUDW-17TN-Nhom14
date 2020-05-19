@@ -1,4 +1,4 @@
-.sign-up-area {
+.login-area {
     width: 100%;
     height: 100%;
     background-color: white;
@@ -13,7 +13,7 @@
     grid-template-columns: 65% auto;
 }
 
-.sign-up {
+.login {
     width: auto;
     padding-left: 20%;
 }
@@ -27,7 +27,7 @@
     padding-top: 4%;
 }
 
-.sign-up-but {
+.login-forget-pass {
     padding-top: 2%
 }
 
@@ -67,7 +67,7 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 0px;
+    margin: 4px 2px;
     border-radius: 50px;
 }
 

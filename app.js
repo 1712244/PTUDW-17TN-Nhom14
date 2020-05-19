@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var signUpRouter = require('./routes/sign-up');
+var loginRouter = require('./routes/login');
 
 var forgetpassRouter = require('./routes/forget-pass')
 const livereload = require("livereload");
@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/sign-up', signUpRouter);
+app.use('/login', loginRouter);
 // catch 404 and forward to error handler
 app.use('/forget-pass', forgetpassRouter)
     // catch 404 and forward to error handler
