@@ -40,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
 app.use('/sign-up', signUpRouter);
 // catch 404 and forward to error handler
 app.use('/forget-pass', forgetpassRouter)
