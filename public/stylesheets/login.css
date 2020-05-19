@@ -23,9 +23,12 @@
 }
 
 .username,
-.password,
-.login-forget-pass {
+.password {
     padding-top: 4%;
+}
+
+.login-forget-pass {
+    padding-top: 2%
 }
 
 .user-input {
@@ -69,7 +72,8 @@
 }
 
 .forget-pass {
-    padding-left: 4.5em;
+    padding-left: 3.5em;
+    font-size: medium;
 }
 
 .rectangle-ECF0F1 {
@@ -88,4 +92,8 @@
 
 .margin-top-3-per {
     margin-top: 3%;
+}
+
+.grey {
+    color: grey;
 }
