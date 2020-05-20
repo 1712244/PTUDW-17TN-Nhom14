@@ -41,6 +41,7 @@ liveReloadServer.watch(path.join(__dirname, 'public'));
 var connectLivereload = require("connect-livereload");
 
 var app = express();
+app.set('view options', { layout: false });
 
 app.use(connectLivereload());
 liveReloadServer.server.once("connection", () => {

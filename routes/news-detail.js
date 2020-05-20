@@ -10,7 +10,7 @@ const sectionArticles = {
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.render('news-detail', { sectionArticles });
+    res.render('news-detail', {layout:"layout", sectionArticles });
 });
 
 module.exports = router;
