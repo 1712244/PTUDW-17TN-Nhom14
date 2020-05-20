@@ -18,6 +18,7 @@ var categoriesRouter = require('./routes/categories');
 var storageRouter = require('./routes/storage');
 var aboutRouter = require('./routes/about')
 
+var newsRouter = require('./routes/news');
 const livereload = require("livereload");
 
 var liveReloadServer = livereload.createServer();
@@ -55,6 +56,10 @@ app.use('/sign-up', signUpRouter);
 
 app.use('/about', aboutRouter);
 // catch 404 and forward to error handler
+
+// set path news
+app.use('/news', newsRouter);
+
 app.use('/forget-pass', forgetpassRouter)
     // catch 404 and forward to error handler
 app.use(function(req, res, next) {
