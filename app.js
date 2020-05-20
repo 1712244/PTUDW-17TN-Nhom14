@@ -21,7 +21,7 @@ var aboutRouter = require('./routes/about')
 var newsRouter = require('./routes/news');
 
 var newsDetailRouter = require('./routes/news-detail');
-
+var bookDetailRouter = require('./routes/book-detail');
 
 const livereload = require("livereload");
 
@@ -65,7 +65,7 @@ app.use('/about', aboutRouter);
 app.use('/news', newsRouter);
 app.use('/news-detail', newsDetailRouter);
 
-
+app.use('/book-detail', bookDetailRouter);
 
 app.use('/forget-pass', forgetpassRouter)
     // catch 404 and forward to error handler
