@@ -73,3 +73,14 @@
   color: #3498DB;
 }
 
+.categories-item{
+  color: black;
+  border-radius: none;
+  padding: 0px 20px;
+  margin: 0px 10px 10px 10px; 
+
+}
+
+.first-section{
+  margin-top: 60px;
+}

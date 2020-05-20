@@ -1,0 +1,30 @@
+<div class="container-fluid" style="padding:0; width:95%">
+    <div class="content-section first-section bg-white no-padding">
+        <div class="title-section text-center">{{title}}</div>
+        <ul class="nav nav-pills nav-fill align-items-center" style="padding:5px">
+            {{#each list_categories}}
+            <li class="nav-item">
+                <a class="nav-link border border-dark categories-item" href="#">
+                    {{this}}
+                </a>
+            </li>
+            {{/each}}
+        </ul>
+        <div class="d-flex justify-content-center" style="padding:30px">
+            <div class="input-group col-10 ">
+
+                {{!-- Khi phát triển js thì tìm từ khóa search tags --}}
+                <input type="text" class="form-control" placeholder="Chọn thể loại phía trên để tìm kiếm" aria-label="Username"
+                    aria-describedby="basic-addon1">
+                <div class="input-group-append">
+                    <a class="input-group-text" href="#"><img src="/images/search-icon.svg" alt=""
+                            style="width: 20px;"></a>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
