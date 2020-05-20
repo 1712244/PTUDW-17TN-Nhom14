@@ -6,6 +6,11 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var loginRouter = require('./routes/login');
+
+
+
+
 var signUpRouter = require('./routes/sign-up');
 
 var forgetpassRouter = require('./routes/forget-pass')
@@ -35,9 +40,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/login', loginRouter);
+
 app.use('/sign-up', signUpRouter);
+
 // catch 404 and forward to error handler
 app.use('/forget-pass', forgetpassRouter)
     // catch 404 and forward to error handler
