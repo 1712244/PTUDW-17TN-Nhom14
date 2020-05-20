@@ -15,6 +15,7 @@ var signUpRouter = require('./routes/sign-up');
 
 var forgetpassRouter = require('./routes/forget-pass')
 var categoriesRouter = require('./routes/categories');
+var storageRouter = require('./routes/storage');
 const livereload = require("livereload");
 
 var liveReloadServer = livereload.createServer();
@@ -46,6 +47,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/categories', categoriesRouter);
+app.use('/storage', storageRouter);
 
 app.use('/sign-up', signUpRouter);
 

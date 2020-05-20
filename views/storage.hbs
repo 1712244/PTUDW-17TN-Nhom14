@@ -1,0 +1,157 @@
+<div class="container-fluid" style="padding:0; width:95%">
+    <div class="content-section picture-search d-flex justify-content-center bg-white no-padding align-items-center">
+        <div id="searchbar-in-picture" class="input-group col-8">
+
+            <input type="text" class="form-control" placeholder="Tìm kiếm sách, tin tức, ..." aria-label="Username"
+                aria-describedby="basic-addon1">
+            <div class="input-group-append">
+                <a class="input-group-text" href="#"><img src="/images/search-icon.svg" alt="" style="width: 20px;"></a>
+            </div>
+        </div>
+    </div>
+    {{!section sách hot}}
+    <div class="content-section bg-white no-padding">
+        <div class="title-section text-center">{{sectionSachHot.title}}</div>
+        <div class="row justify-content-around">
+            {{#each sectionSachHot.books}}
+            <div class="card" style="width: 200px; border:none;">
+                <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                <div class="card-body" style="padding:10px">
+
+                    <p class="card-text" style="margin: 0;">
+                        {{this.name}}
+                    </p>
+                    <p class="card-text" style="margin: 0;">
+                        {{this.author}}
+                    </p>
+                    <p class="card-text align-items-center d-flex" style="margin: 0;">
+                        {{this.views}} lượt xem
+                    </p>
+                </div>
+            </div>
+            <div class="card" style="width: 200px; border:none;">
+                <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                <div class="card-body" style="padding:10px">
+
+                    <p class="card-text" style="margin: 0;">
+                        {{this.name}}
+                    </p>
+                    <p class="card-text" style="margin: 0;">
+                        {{this.author}}
+                    </p>
+                    <p class="card-text align-items-center d-flex" style="margin: 0;">
+                        {{this.views}} lượt xem
+                    </p>
+                </div>
+            </div>
+            <div class="card" style="width: 200px; border:none;">
+                <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                <div class="card-body" style="padding:10px">
+
+                    <p class="card-text" style="margin: 0;">
+                        {{this.name}}
+                    </p>
+                    <p class="card-text" style="margin: 0;">
+                        {{this.author}}
+                    </p>
+                    <p class="card-text align-items-center d-flex" style="margin: 0;">
+                        {{this.views}} lượt xem
+                    </p>
+                </div>
+            </div>
+            <div class="card" style="width: 200px; border:none;">
+                <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                <div class="card-body" style="padding:10px">
+
+                    <p class="card-text" style="margin: 0;">
+                        {{this.name}}
+                    </p>
+                    <p class="card-text" style="margin: 0;">
+                        {{this.author}}
+                    </p>
+                    <p class="card-text align-items-center d-flex" style="margin: 0;">
+                        {{this.views}} lượt xem
+                    </p>
+                </div>
+            </div>
+            {{/each}}
+
+        </div>
+    </div>
+
+    {{!section sách chuyên ngành}}
+    <div class="content-section bg-white no-padding">
+        <div class="title-section text-center">{{sectionSach.title}}</div>
+        <ul class="nav nav-pills nav-fill align-items-center" style="padding:5px">
+            {{#each sectionSach.list_categories}}
+            {{#if @first}}
+            <li class="nav-item">
+                <a class="nav-link active-modified-list-cs" href="#">
+                    {{this}}
+                </a>
+            </li>
+            {{else}}
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="#">
+                    {{this}}
+                </a>
+            </li>
+            {{/if}}
+            {{/each}}
+            <li class="nav-item text-right">
+                <img src="/images/icon-more-list-field.png" alt="" style="height: 20px;">
+            </li>
+        </ul>
+        <div class="row justify-content-around">
+            {{#each sectionSach.books}}
+            <div class="card" style="width: 200px; border:none;">
+                <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                <div class="card-body" style="padding:10px">
+                    <p class="card-text" style="margin: 0;">
+                        {{this.name}}
+                    </p>
+                    <p class="card-text">
+                        {{this.author}}
+                    </p>
+                </div>
+            </div>
+            <div class="card" style="width: 200px; border:none;">
+                <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                <div class="card-body" style="padding:10px">
+                    <p class="card-text" style="margin: 0;">
+                        {{this.name}}
+                    </p>
+                    <p class="card-text">
+                        {{this.author}}
+                    </p>
+                </div>
+            </div>
+            <div class="card" style="width: 200px; border:none;">
+                <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                <div class="card-body" style="padding:10px">
+                    <p class="card-text" style="margin: 0;">
+                        {{this.name}}
+                    </p>
+                    <p class="card-text">
+                        {{this.author}}
+                    </p>
+                </div>
+            </div>
+            <div class="card" style="width: 200px; border:none;">
+                <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                <div class="card-body" style="padding:10px">
+                    <p class="card-text" style="margin: 0;">
+                        {{this.name}}
+                    </p>
+                    <p class="card-text">
+                        {{this.author}}
+                    </p>
+                </div>
+            </div>
+            {{/each}}
+
+        </div>
+    </div>
+
+
+</div>
