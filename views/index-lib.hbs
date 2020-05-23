@@ -1,0 +1,144 @@
+<link rel="stylesheet" href="/stylesheets/index-lib.css">
+<div id="statistic" class="container-fluid block">
+    <div id="stat-header" class="container-fluid block-header">
+        <h1>
+            <span>Tổng kết</span>&nbsp;
+            <span id="report-period">tháng</span>
+        </h1>
+    </div>
+    <div id="stat-subheader" class="container-fluid block-subheader">
+        <span>
+            Từ ngày xyz tới ngày xyz
+        </span>
+    </div>
+    <div id="stat-body" class = "block-body container-fluid">
+        <div class="row justify-content-center">
+            <div id="stat-summary" class="lib-card stat-card fluid-container">
+                <div class="summary-row row align-items-center text-center">
+                    <div class="col">
+                        <span id="book-count">820</span><br>
+                        <span>Quyển sách</span>
+                    </div>
+                    <div class="col"><span>Mượn bởi</span></div>
+                    <div class="col">
+                        <span id="student-count">23</span>&nbsp;<span>sinh viên</span><br>
+                        <span id="teacher-count">12</span>&nbsp;<span>giáo viên</span>
+                    </div>
+                </div>
+                <div class="summary-row row align-items-end text-center">
+                    <div class="col">
+                        <span id="borrow-count">820</span><br>
+                        <span>Lượt mượn sách</span>
+                    </div>
+                    <div class="col">
+                        <span id="visit-count">9.2K</span><br>
+                        <span>Lượt truy cập</span>
+                    </div>
+                    <div class="col">
+                        <span id="return-count">720</span><br>
+                        <span>Lượt trả sách</span>
+                    </div>
+                </div>
+            </div>
+            <div class="lib-card stat-card">
+                <div class="lib-card-header">
+                    <span>
+                        Số lượt mượn trả theo ngày
+                    </span>
+                </div>
+            </div>
+            <div class="lib-card stat-card">
+                <div class="lib-card-header">
+                    <span>
+                        Sách có số lượt mượn nhiều nhất
+                    </span>
+                </div>
+            </div>
+
+            <div class="lib-card stat-card">
+                <div class="lib-card-header">
+                    <span>
+                        Đọc giả mượn nhiều sách nhất
+                    </span>
+                </div>
+            </div>
+
+            <div class="lib-card stat-card">
+                <div class="lib-card-header">
+                    <span>
+                        Các thể loại sách phổ biến
+                    </span>
+                </div>
+            </div>
+
+            <div class="lib-card stat-card">
+                <div class="lib-card-header">
+                    <span>
+                        Tình trạng mượn trả sách
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div id="agenda" class="container-fluid block">
+    <div id="agenda-header" class="container-fluid block-header">
+        <h1>Lịch làm việc</h1>
+    </div>
+    <div id="section-body" class = "block-body container-fluid">
+        <div class="row justify-content-center">
+            <div id="borrow-summary" class="lib-card agenda-card fluid-container">        
+                <div class="lib-card-header">
+                    <span>
+                        Lịch mượn sách
+                    </span>
+                </div>
+                <div class="lib-card-body">
+                    <div class="time-title">
+                       7:00
+                    </div>
+                    {{> borrow_card}}
+                    {{> borrow_card}}
+                    <div class="time-title">
+                       8:00
+                    </div>
+                    {{> borrow_card}}
+                </div>
+            </div>
+
+            <div id="borrow-group">
+                <div id="borrow-summary" class="lib-card half-card agenda-card fluid-container">        
+                    <div class="lib-card-header">
+                        <span>
+                            Sách tới hẹn trả
+                        </span>
+                    </div>
+                    <div class="lib-card-body">
+                        <div class="time-title">
+                        7:00
+                        </div>
+                        {{> borrow_card}}
+                        {{> borrow_card}}
+                        <div class="time-title">
+                        8:00
+                        </div>
+                        {{> borrow_card}}
+                    </div>
+                </div>
+
+                <div id="borrow-latelate-summary" class="lib-card half-card agenda-card fluid-container">        
+                    <div class="lib-card-header">
+                        <span>
+                            Sách trễ hẹn trả
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            
+
+        </div>
+    </div>
+    
+</div>

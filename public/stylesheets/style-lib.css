@@ -1,0 +1,94 @@
+/* The sidebar menu */
+#side-bar {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 210px; /* Set the width of the sidebar */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Stay on top */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding: 0px;
+
+    background: #ECECEC;
+    box-shadow: 3px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+#top-bar {
+    height: 60px; /* Full-height: remove this if you want "auto" height */
+    width: calc(100% - 210px); /* Set the width of the sidebar */
+    z-index: 1; /* Stay on top */
+    top:0px;
+    left:210px;
+    margin: 0px;
+    
+    position: fixed;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow-x: hidden; /* Disable horizontal scroll */
+}
+
+#username {
+    margin-right: 5px;
+    color: #656565;
+}
+
+#main {
+    margin-left: 210px; /* Same as the width of the sidebar */
+    margin-top: 60px;
+    height: calc(100vh - 94px);
+}
+
+#content {
+    min-height:100%;
+}
+
+#side-bar .nav-link {
+    padding: 12px 30px;
+}
+
+#logo {
+    width:200px;
+    margin: 20px 0px;
+}
+
+.nav-current {
+    background-color: #DCDCDC;
+}
+
+footer {
+    background-color: #C4C4C4;
+    text-align: center;
+    padding: 5px;
+}
+
+#btn-qr:hover {
+    background-color: #DCDCDC;
+    color: #2980B9;
+}
+
+#function {
+    padding: 0px;
+    color: #656565
+}
+
+#btn-qr > i{
+    margin-right: 10px;
+}
+
+#btn-qr {
+    display: inline-flex;
+    align-items: center;
+    width: auto;
+    height: 60px;
+    margin: 0px;
+    padding: 0px 20px;
+}
+
+.nav-link {
+    color: #656565
+}
+
+.nav-current > .nav-link {
+    color: #2980B9;
+    font-weight: bold;
+}

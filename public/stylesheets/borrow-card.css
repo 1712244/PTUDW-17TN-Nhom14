@@ -1,0 +1,39 @@
+
+.borrow-card {
+    margin: 5px;
+    background-color: #EFEFEF;
+    border-radius: 15px;
+}
+
+.borrow-card-header {
+    background-color: #62A1FF;
+    border-radius: 15px 15px 0px 0px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 15px;
+}
+
+.book-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px 10px;
+}
+
+.book-item {
+    margin: 5px;
+    display: flex;
+    flex:1;
+    flex-grow: 2;
+}
+
+.book-id {
+    min-width: 100px;
+    text-align: left;
+    font-weight: bold;
+    color: #656565;
+}
+
+.book-name {
+    color: #727272;
+}

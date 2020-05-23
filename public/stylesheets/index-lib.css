@@ -1,0 +1,111 @@
+.block-header {
+    text-align: center;
+    font-size: xx-large;
+    color: #424242;
+}
+
+#report-period {
+    color: #1E3896;
+}
+
+.block-subheader {
+    text-align: center;
+    font-size: small;
+    color:#656565;
+}
+
+.block {
+    margin: 10px 0px;
+}
+
+.lib-card {
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    margin:5px;
+}
+
+.stat-card{
+    height:300px;
+}
+
+#stat-summary {
+    background-color: #3498DB;
+    padding: 10px 10px 40px 10px;
+    color: white;
+
+}
+
+.summary-row {
+    height:50%;
+}
+
+
+#student-count, #teacher-count {
+    font-size: x-large;
+}
+
+#book-count, #visit-count {
+    font-size: xxx-large;
+}
+
+#borrow-count, #return-count {
+    font-size: xx-large;
+}
+
+.lib-card-header {
+    text-align: center;
+    color:white;
+    background-color: #3498DB;
+    padding: 5px 0px;
+}
+
+.lib-card-body {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.agenda-card{
+    height:500px;
+}
+
+.half-card {
+    width: 220px;
+    /* flex: 1; */
+    flex-grow: 2;
+}
+
+#borrow-group {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.time-title {
+    overflow: hidden;
+    text-align: center;
+    color: #656565;
+    width: 95%;
+    margin: 0px auto;
+}
+
+.time-title:before, .time-title:after {
+    content: "";
+    display: inline-block;
+    width: 50%;
+    margin: 0 .5em 0 -55%;
+    vertical-align: middle;
+    border-bottom: 1px solid;
+    border-color: #ACACAC;
+  }
+
+.time-title:after {
+    margin: 0 -55% 0 .5em;
+}
+
+@media  only screen and (min-width: 1641px) {
+    .half-card {
+        width: 450px;
+    }
+}
