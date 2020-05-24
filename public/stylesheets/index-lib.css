@@ -23,7 +23,7 @@
     flex-direction: column;
     width: 450px;
     background: #FFFFFF;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5);
     margin:5px;
 }
 
@@ -64,22 +64,25 @@
 
 .lib-card-body {
     height: 100%;
-    overflow-y: auto;
+    overflow: visible;
 }
 
 .agenda-card{
     height:500px;
 }
 
-.half-card {
-    width: 220px;
-    /* flex: 1; */
-    flex-grow: 2;
+.agenda-card .lib-card-body {
+    overflow-y: auto;
 }
 
 #borrow-group {
     display:flex;
     flex-wrap: wrap;
+    width: 450px;
+}
+
+.half-card {
+    height:245px;
 }
 
 .time-title {
@@ -106,6 +109,10 @@
 
 @media  only screen and (min-width: 1641px) {
     .half-card {
-        width: 450px;
+        height: 500px;
+    }
+
+    #borrow-group {
+        width: 920px !important;
     }
 }

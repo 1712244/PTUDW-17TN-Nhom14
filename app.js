@@ -28,6 +28,8 @@ var buyBookRouter = require('./routes/buy-book')
 var returnBookListRouter = require('./routes/return-book-list');
 var rentBookListRouter = require('./routes/rent-book-list');
 var indexLibRouter = require('./routes/index-lib');
+var borrowRouter = require('./routes/borrow');
+
 
 var buybookManager = require('./routes/buy-book-manager')
 
@@ -73,6 +75,7 @@ app.use('/sign-up', signUpRouter);
 
 app.use('/about', aboutRouter);
 app.use('/librarian', indexLibRouter);
+app.use('/librarian/borrow', borrowRouter);
 
 // set path news
 app.use('/news', newsRouter);

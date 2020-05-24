@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/stylesheets/index-lib.css">
+
 <div id="statistic" class="container-fluid block">
     <div id="stat-header" class="container-fluid block-header">
         <h1>
@@ -46,12 +47,18 @@
                         Số lượt mượn trả theo ngày
                     </span>
                 </div>
+                <div id="borrow-return-chart" class="lib-card-body">
+
+                </div>
             </div>
             <div class="lib-card stat-card">
                 <div class="lib-card-header">
                     <span>
                         Sách có số lượt mượn nhiều nhất
                     </span>
+                </div>
+                <div id="most-borrowed-book-chart" class="lib-card-body chart">
+
                 </div>
             </div>
 
@@ -61,6 +68,9 @@
                         Đọc giả mượn nhiều sách nhất
                     </span>
                 </div>
+                <div class="lib-card-body" id="most-borrowing-reader-chart">
+
+                </div>
             </div>
 
             <div class="lib-card stat-card">
@@ -69,6 +79,9 @@
                         Các thể loại sách phổ biến
                     </span>
                 </div>
+                <div class="lib-card-body" id="most-borrowed-genre-chart">
+                    
+                </div>
             </div>
 
             <div class="lib-card stat-card">
@@ -76,6 +89,9 @@
                     <span>
                         Tình trạng mượn trả sách
                     </span>
+                </div>
+                <div class="lib-card-body" id="status-chart">
+
                 </div>
             </div>
         </div>
@@ -135,10 +151,38 @@
                     </div>
                 </div>
             </div>
-
-            
-
         </div>
     </div>
-    
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.7.0/echarts-en.min.js"></script>
+<script>
+    bookBorrowData = {
+        ids: ["MSD-XAY", "IDS-XZY", "AGF-EXF"],
+        books: ["Nhập môn Lập trình\nhướng đối tượng", "Trí tuệ nhân tạo", "Toán gì gì đó"],
+        counts: [87,74,23],
+    };
+    
+    borrowReturnData = {
+        time: ['2019-10-10','2019-10-11','2019-10-12','2019-10-13','2019-10-14','2019-10-15','2019-10-16','2019-10-17','2019-10-18'],
+        borrowCounts: [200,400,650,500,250,300,450,300,100],
+        returnCounts: [500,200,550,800,350,200,150,600,400]
+    };
+
+    readerBorrowData = {
+        ids: ["157373", "4534534", "32432"],
+        usernames: ["Vuowng Hy", "Adele", "Billie Ellish"],
+        counts: [87,74,23],
+    };
+
+    genreBorrowData = {
+        genre: ["Lập trình", "Toán", "Trí tuệ nhân tạo", "Web", "Khác"],
+        counts: [424,234,151,78,209],
+    };
+
+    statusData = {
+        state: ["Đang mượn", "Trả đúng hẹn", "Bị trễ hẹn", "Mất"],
+        counts: [420,234,151,3],
+    };
+</script>
+<script src="/function/index-lib.js"></script>
