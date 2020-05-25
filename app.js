@@ -9,7 +9,7 @@ var hbs = require('hbs');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
-
+var searchRouter = require('./routes/search');
 
 
 
@@ -18,7 +18,7 @@ var signUpRouter = require('./routes/sign-up');
 var forgetpassRouter = require('./routes/forget-pass')
 var categoriesRouter = require('./routes/categories');
 var storageRouter = require('./routes/storage');
-var aboutRouter = require('./routes/about')
+var aboutRouter = require('./routes/about');
 
 var newsRouter = require('./routes/news');
 
@@ -58,7 +58,7 @@ app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/categories', categoriesRouter);
 app.use('/storage', storageRouter);
-
+app.use('/search', searchRouter);
 app.use('/sign-up', signUpRouter);
 
 app.use('/about', aboutRouter);

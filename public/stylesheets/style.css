@@ -177,6 +177,18 @@ body {
     height: 6em;
 }
 
+.title-search{
+    font-size: 20px;
+    font-weight: bold;
+    color: #3498DB;
+}
+.author-search{
+    color: #3498DB;
+}
+.date-search{
+    color: grey;
+}
+
 img {
     max-width:100%;
     max-height:100%;
