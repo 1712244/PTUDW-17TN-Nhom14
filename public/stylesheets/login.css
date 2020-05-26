@@ -40,7 +40,8 @@
 }
 
 * {
-    font-family: 'Roboto', sans-serif;
+    font-size: 100%;
+    font-family: Roboto;
 }
 
 .font-size-xx-large {

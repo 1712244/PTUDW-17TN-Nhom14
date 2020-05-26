@@ -1,12 +1,11 @@
 //Chuyển định dạng ô của trang hiện tại
 function ChangeClassNavItem(innerText) {
-    var aTags = document.getElementsByClassName("nav-item");
+    var aTags = document.getElementById("navbarNav").getElementsByClassName("nav-item");
     var searchText = innerText;
     var found;
-
     for (var i = 0; i < aTags.length; i++) {
-        console.log(aTags[i].innerText);
-        if (aTags[i].innerText == searchText) {
+        // Khi chuyển về dropdown thì string sẽ có nhiều kí tự padding, nên check includes là ổn
+        if (aTags[i].innerText.includes(searchText)) {
             found = aTags[i];
             break;
         }
@@ -23,5 +22,5 @@ function ChangeClassNavItem(innerText) {
 }
 
 
-
-ChangeClassNavItem("Đăng nhập")
+var current_page = document.currentScript.getAttribute("current_page");
+ChangeClassNavItem(current_page)
