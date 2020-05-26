@@ -1,0 +1,73 @@
+<div class="container-fluid" style="padding:0; width:95%">
+    <div class="content-section first-section bg-white no-padding">
+        <div class="title-section text-center">Thông tin chi tiết đơn</div>
+        {{!Hiện thêm cái này nhìn xấu}}
+        {{!-- <div class=" text-md-left text-center" style="padding: 0 50px"> <a href="#">← Quay lại trang giỏ sách</a> </div> --}}
+        {{!content}}
+        <div class="row" style="padding-top: 50px;">
+
+            <div class="col-md-2"></div>
+            {{!avatar area}}
+            <div class="col-md-3">
+                <div class="row justify-content-center">
+                    <div class="row justify-content-center align-items-center">
+                        <div style="width: 300px;">
+                            <img src={{cart_detail.thumbnail}} alt="" class="img-thumbnail">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            {{!info area}}
+            <div class="col-md-7" style="padding: 0 30px; margin:0;">
+                <div class="row justify-content-md-start justify-content-center">
+                    <div>
+                        <div style="font-size: 25px; font-weight:bold; color:#3498db"> {{cart_detail.name}} </div>
+                        <div style="font-size: 15px;"> Tác giả <a href="#">{{cart_detail.author}}</a> </div>
+
+                    </div>
+                </div>
+                <hr>
+                <form>
+                    <div class="form-group row">
+                        <label for="rent_time" class="col-sm-2 col-form-label"
+                            style="padding-left: 0; padding-right:0;">Thời gian nhận:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="rent_time" value={{cart_detail.rent_time}}>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="rent_date" class="col-sm-2 col-form-label"
+                            style="padding-left: 0; padding-right:0;">Ngày nhận:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="rent_date" value={{cart_detail.rent_date}}>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="return_date" class="col-sm-2 col-form-label"
+                            style="padding-left: 0; padding-right:0;">Ngày trả:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="return_date" value={{cart_detail.return_date}}>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="location" class="col-sm-2 col-form-label"
+                            style="padding-left: 0; padding-right:0;">Địa điểm:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="location" value="{{cart_detail.location}}">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+        <div class="text-center " style="padding: 0 50px;">
+            <button class="customized-btn blue-bg-white-text" style="border:none; background-color: #3498db;">Xác
+                nhận</button>
+            <button class="customized-btn white-bg-black-text" style="padding: 5px 13px;">
+                <div style="width:8ch">Hủy</div>
+            </button>
+        </div>
+    </div>
+</div>

@@ -26,7 +26,7 @@ var newsDetailRouter = require('./routes/news-detail');
 var bookDetailRouter = require('./routes/book-detail');
 var profileRouter = require('./routes/profile');
 var cartsRouter = require('./routes/carts');
-
+var cartDetailRouter =require('./routes/cart-detail');
 var buyBookRouter = require('./routes/buy-book')
     // Setup livereload
 const livereload = require("livereload");
@@ -74,7 +74,7 @@ app.use('/book-detail', bookDetailRouter);
 app.use('/forget-pass', forgetpassRouter)
 app.use('/profile', profileRouter);
 app.use('/carts', cartsRouter);
-
+app.use('/cart-detail', cartDetailRouter);
 app.use('/buy-book', buyBookRouter)
     // catch 404 and forward to error handler
 app.use(function(req, res, next) {
