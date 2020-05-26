@@ -5,78 +5,83 @@
             <input type="text" class="form-control" placeholder="Tìm kiếm sách, tin tức, ..." aria-label="Username"
                 aria-describedby="basic-addon1">
             <div class="input-group-append">
-                <a class="input-group-text" href="#"><img src="/images/search-icon.svg" alt="" style="width: 20px;"></a>
+                <a class="input-group-text" href="/search"><img src="/images/search-icon.svg" alt=""
+                        style="width: 20px;"></a>
             </div>
         </div>
     </div>
     {{!section sách hot}}
     <div class="content-section bg-white no-padding">
         <div class="title-section text-center">{{sectionSachHot.title}}</div>
-        <div class="row justify-content-around">
-            {{#each sectionSachHot.books}}
-            <div class="card" style="width: 200px; border:none;">
-                <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
-                <div class="card-body" style="padding:10px">
 
-                    <p class="card-text" style="margin: 0;">
-                        {{this.name}}
-                    </p>
-                    <p class="card-text" style="margin: 0;">
-                        {{this.author}}
-                    </p>
-                    <p class="card-text align-items-center d-flex" style="margin: 0;">
-                        {{this.views}} lượt xem
-                    </p>
+        <a href="/book-detail" style="color:inherit">
+            <div class="row justify-content-around">
+                {{#each sectionSachHot.books}}
+                <div class="card" style="width: 200px; border:none;">
+                    <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                    <div class="card-body" style="padding:10px">
+
+                        <p class="card-text" style="margin: 0;">
+                            {{this.name}}
+                        </p>
+                        <p class="card-text" style="margin: 0;">
+                            {{this.author}}
+                        </p>
+                        <p class="card-text align-items-center d-flex" style="margin: 0;">
+                            {{this.views}} lượt xem
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="card" style="width: 200px; border:none;">
-                <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
-                <div class="card-body" style="padding:10px">
+                <div class="card" style="width: 200px; border:none;">
+                    <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                    <div class="card-body" style="padding:10px">
 
-                    <p class="card-text" style="margin: 0;">
-                        {{this.name}}
-                    </p>
-                    <p class="card-text" style="margin: 0;">
-                        {{this.author}}
-                    </p>
-                    <p class="card-text align-items-center d-flex" style="margin: 0;">
-                        {{this.views}} lượt xem
-                    </p>
+                        <p class="card-text" style="margin: 0;">
+                            {{this.name}}
+                        </p>
+                        <p class="card-text" style="margin: 0;">
+                            {{this.author}}
+                        </p>
+                        <p class="card-text align-items-center d-flex" style="margin: 0;">
+                            {{this.views}} lượt xem
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="card" style="width: 200px; border:none;">
-                <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
-                <div class="card-body" style="padding:10px">
+                <div class="card" style="width: 200px; border:none;">
+                    <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                    <div class="card-body" style="padding:10px">
 
-                    <p class="card-text" style="margin: 0;">
-                        {{this.name}}
-                    </p>
-                    <p class="card-text" style="margin: 0;">
-                        {{this.author}}
-                    </p>
-                    <p class="card-text align-items-center d-flex" style="margin: 0;">
-                        {{this.views}} lượt xem
-                    </p>
+                        <p class="card-text" style="margin: 0;">
+                            {{this.name}}
+                        </p>
+                        <p class="card-text" style="margin: 0;">
+                            {{this.author}}
+                        </p>
+                        <p class="card-text align-items-center d-flex" style="margin: 0;">
+                            {{this.views}} lượt xem
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="card" style="width: 200px; border:none;">
-                <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
-                <div class="card-body" style="padding:10px">
+                <div class="card" style="width: 200px; border:none;">
+                    <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                    <div class="card-body" style="padding:10px">
 
-                    <p class="card-text" style="margin: 0;">
-                        {{this.name}}
-                    </p>
-                    <p class="card-text" style="margin: 0;">
-                        {{this.author}}
-                    </p>
-                    <p class="card-text align-items-center d-flex" style="margin: 0;">
-                        {{this.views}} lượt xem
-                    </p>
+                        <p class="card-text" style="margin: 0;">
+                            {{this.name}}
+                        </p>
+                        <p class="card-text" style="margin: 0;">
+                            {{this.author}}
+                        </p>
+                        <p class="card-text align-items-center d-flex" style="margin: 0;">
+                            {{this.views}} lượt xem
+                        </p>
+                    </div>
                 </div>
-            </div>
-            {{/each}}
+                {{/each}}
 
-        </div>
+            </div>
+        </a>
+
     </div>
 
     {{!section sách chuyên ngành}}
@@ -102,56 +107,60 @@
                 <img src="/images/icon-more-list-field.png" alt="" style="height: 20px;">
             </li>
         </ul>
-        <div class="row justify-content-around">
-            {{#each sectionSach.books}}
-            <div class="card" style="width: 200px; border:none;">
-                <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
-                <div class="card-body" style="padding:10px">
-                    <p class="card-text" style="margin: 0;">
-                        {{this.name}}
-                    </p>
-                    <p class="card-text">
-                        {{this.author}}
-                    </p>
+        <a href="/book-detail" style="color:inherit;">
+            <div class="row justify-content-around">
+                {{#each sectionSach.books}}
+                <div class="card" style="width: 200px; border:none;">
+                    <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                    <div class="card-body" style="padding:10px">
+                        <p class="card-text" style="margin: 0;">
+                            {{this.name}}
+                        </p>
+                        <p class="card-text">
+                            {{this.author}}
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="card" style="width: 200px; border:none;">
-                <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
-                <div class="card-body" style="padding:10px">
-                    <p class="card-text" style="margin: 0;">
-                        {{this.name}}
-                    </p>
-                    <p class="card-text">
-                        {{this.author}}
-                    </p>
+                <div class="card" style="width: 200px; border:none;">
+                    <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                    <div class="card-body" style="padding:10px">
+                        <p class="card-text" style="margin: 0;">
+                            {{this.name}}
+                        </p>
+                        <p class="card-text">
+                            {{this.author}}
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="card" style="width: 200px; border:none;">
-                <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
-                <div class="card-body" style="padding:10px">
-                    <p class="card-text" style="margin: 0;">
-                        {{this.name}}
-                    </p>
-                    <p class="card-text">
-                        {{this.author}}
-                    </p>
+                <div class="card" style="width: 200px; border:none;">
+                    <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                    <div class="card-body" style="padding:10px">
+                        <p class="card-text" style="margin: 0;">
+                            {{this.name}}
+                        </p>
+                        <p class="card-text">
+                            {{this.author}}
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="card" style="width: 200px; border:none;">
-                <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
-                <div class="card-body" style="padding:10px">
-                    <p class="card-text" style="margin: 0;">
-                        {{this.name}}
-                    </p>
-                    <p class="card-text">
-                        {{this.author}}
-                    </p>
+                <div class="card" style="width: 200px; border:none;">
+                    <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                    <div class="card-body" style="padding:10px">
+                        <p class="card-text" style="margin: 0;">
+                            {{this.name}}
+                        </p>
+                        <p class="card-text">
+                            {{this.author}}
+                        </p>
+                    </div>
                 </div>
-            </div>
-            {{/each}}
+                {{/each}}
 
-        </div>
+            </div>
+        </a>
+
     </div>
 
 
 </div>
+<script src="/function/change-nav.js" current_page="Kho sách"></script>
