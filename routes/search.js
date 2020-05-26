@@ -9,6 +9,8 @@ var book_result = [
 var news_result = [
 {title: "Thông báo mở đăng ký mua sách", date:"20/01/2020", thumbnail:"/images/news-thumbnail.png",description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et sem nibh. Suspendisse ornare accumsan metus eget maximus. Sed suscipit molestie pellentesque. Morbi varius fermentum urna, bibendum dapibus odio fermentum at."},
 ];
+
+
 /* GET users listing. */
 router.get('/', function (req, res, next) {
     res.render('search',{book_result:book_result,news_result:news_result});
