@@ -198,3 +198,27 @@ img {
     max-width: 100%;
     max-height: 100%;
 }
+
+.customized-btn{
+    
+    padding: 7px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 0px;
+    border-radius: 50px;
+}
+
+.blue-bg-white-text{
+    background-color: #3498DB;
+    color: white;
+}
+.white-bg-black-text{
+    background-color: white;
+    color: black;
+}
+
+a {
+    text-decoration: none !important;
+}

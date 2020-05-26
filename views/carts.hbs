@@ -1,0 +1,57 @@
+<div class="container-fluid" style="padding:0; width:95%">
+    <div class="content-section first-section bg-white no-padding ">
+        <div class="title-section text-center">Các sách trong giỏ</div>
+        <hr>
+        {{#each carts}}
+        <div class="row" style="padding: 0 100px">
+            <div class="col-md">
+                <div class="row justify-content-start">
+                    <div style="height: 150px;">
+                        <img src={{this.thumbnail}} alt="">
+                    </div>
+                    <div style="padding-left: 10px">
+                        <div style="font-size: 23px; font-weight:bold; color:#3498db">{{this.name}} </div>
+                        <div>{{this.author}} </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md">
+                <div>
+                    <div class=" text-md-right text-center" style="font-size: 20px;">Ngày nhận: {{this.rent_date}}
+                    </div>
+                    <div class=" text-md-right text-center" style="font-size: 20px;">Ngày trả: {{this.return_date}}
+                    </div>
+                    <a href="#">
+                        <div class=" text-md-right text-center" style="font-size: 20px; color:grey;">
+                            <img src="/images/icon-edit.svg" alt="">
+                            Sửa
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+        <hr>
+        {{/each}}
+        <div class="row align-content-center" style="padding: 0 100px">
+            <div class="col-md">
+                <div class="text-center text-md-left">
+                    <a href="#">← Quay lại trang trước</a>
+                </div>
+
+
+            </div>
+            <div class="col-md" style="padding-bottom: 20px;">
+                <div class="text-center text-md-right ">
+                    <button class="customized-btn blue-bg-white-text"
+                        style="border:none; background-color: #3498db;">Xác nhận</button>
+                    <button class="customized-btn white-bg-black-text" style="padding: 5px 13px;">
+                        <div style="width:8ch">Hủy</div>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
