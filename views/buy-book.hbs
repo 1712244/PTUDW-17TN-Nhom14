@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/stylesheets/buy-book.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="container-fluid  first-section bg-white padding-left-3em">
-    <div style="width: 100%; text-align: center; padding: 2em 0;" class=" font-size-xx text-color-408CFF">Đăng ký mua
+    <div style="width: 100%; text-align: center; padding: 2em 0;" class=" title-section font-size-xx text-color-408CFF">Đăng ký mua
         sách</div>
     <div class="container display-flex" style="padding-left: 10em;">
         <div class="upload-img">
@@ -10,29 +10,29 @@
         </div>
         <div class="book-info" style="padding: 0 0 5em 5em;">
             <div>
-                <div>tên sách</div>
+                <div>Tên sách</div>
                 <input type="text" name="book-name" id="book-name" class="text-box-size-100-per"
                     placeholder="Kỹ nghệ phần mềm">
             </div>
 
             <div class="padding-top-1em">
-                <div>tác giả</div>
+                <div>Tác giả</div>
                 <input type="text" name="book-author" id="book-author" class="text-box-size-100-per"
                     placeholder="Lê Văn Phùng">
             </div>
 
             <div class="padding-top-1em">
-                <div>tải bản lần thứ</div>
+                <div>Tải bản lần thứ</div>
                 <input type="text" name="book-renumber" id="book-renumber" class="text-box-size-100-per" placeholder="3">
             </div>
 
             <div class="padding-top-1em">
-                <div>nhà xuất bản</div>
+                <div>Nhà xuất bản</div>
                 <input type="text" name="book-producer" id="book-producer" class="text-box-size-100-per" placeholder="NXB trẻ">
             </div>
 
             <div class="padding-top-1em">
-                <div>link tham khảo</div>
+                <div>Link tham khảo</div>
                 <input type="text" name="link-prove" id="link-prove" class="text-box-size-100-per"
                     placeholder="https://amazon.com/ky-nghe-phan-mem">
             </div>
@@ -42,8 +42,11 @@
                 <input type="text" name="ISBN" id="ISBN" class="text-box-size-100-per" placeholder="0123456789">
             </div>
             <div class="button-area display-flex padding-top-1em" style="padding-left: 10em;">
-                <button class="confirm-button">Xác nhận</button>
-                <button class="cancel-button" style="margin-left: 10px;">Hủy bỏ</button>
+                    <button class="customized-btn blue-bg-white-text"
+                        style="border:none; background-color: #3498db;">Xác nhận</button>
+                    <button class="customized-btn white-bg-black-text" style="padding: 5px 13px; margin-left:5px">
+                        <div style="width:8ch">Hủy</div>
+                    </button>
             </div>
         </div>
     </div>
