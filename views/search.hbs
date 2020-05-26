@@ -1,0 +1,132 @@
+<div class="container-fluid" style="padding:0; width:95%">
+    <div class="content-section first-section bg-white no-padding">
+        <div class="row justify-content-center" style="padding-top:50px">
+            <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle" type="button" id="dropdown_searchtype"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sách
+                </button>
+                <div id="dropdown_searchtype_content" class="dropdown-menu" aria-labelledby="dropdown_searchtype">
+                    <a class="dropdown-item" href="#">Sách</a>
+                    <a class="dropdown-item" href="#">Tin tức</a>
+                </div>
+            </div>
+            <form id="searchbar-in-picture" class="input-group col-8">
+
+                <input type="text" class="form-control" placeholder="Tìm kiếm sách, tin tức, ..." aria-label="Username"
+                    aria-describedby="basic-addon1">
+                <div class="input-group-append">
+                    <a class="input-group-text" href="#"><img src="/images/search-icon.svg" alt=""
+                            style="width: 20px;"></a>
+                </div>
+            </form>
+
+        </div>
+        <div id="book_result_section">
+        <div class="row justify-content-center align-items-center" style="padding-top:10px">
+            <div class="col-1"></div>
+            <div class="col row justify-content-center">Có {{book_result.length}} kết quả</div>
+            <div class="row align-items-center justify-content-center col-6">
+                <div>Sắp xếp theo </div>
+
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdown_filtertype"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Độ phổ biến
+                    </button>
+                    <div id="dropdown_filtertype_content" class="dropdown-menu" aria-labelledby="dropdown_filtertype">
+                        <a class="dropdown-item" href="#">Độ phổ biến</a>
+                        <a class="dropdown-item" href="#">Gần nhất</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col row justify-content-center">+ Thêm bộ lọc</div>
+            <div class="col-1"></div>
+        </div>
+
+        {{#each book_result}}
+        <a href="#">
+            <div class="row justify-content-center" style="padding: 10px;">
+                <div class="col-2">
+                    <div class="d-flex justify-content-end">
+                        <img src={{this.thumbnail}} alt="" style="height: 150px;">
+
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class=" title-search">{{this.name}}</div>
+                    <div class="author-search">{{this.author}}</div>
+                    <div style="overflow:hidden; text-overflow: ellipsis; color:black;">{{this.description}}</div>
+                </div>
+            </div>
+        </a>
+
+        {{/each}}
+    </div>
+    <div id="news_result_section" style="display: none;">
+        <div class="row justify-content-center align-items-center" style="padding-top:10px">
+            <div class="col-1"></div>
+            <div class="col row justify-content-center">Có {{news_result.length}} kết quả</div>
+            <div class="row align-items-center justify-content-center col-6">
+                <div>Sắp xếp theo </div>
+
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdown_filtertype"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Độ phổ biến
+                    </button>
+                    <div id="dropdown_filtertype_content" class="dropdown-menu" aria-labelledby="dropdown_filtertype">
+                        <a class="dropdown-item" href="#">Độ phổ biến</a>
+                        <a class="dropdown-item" href="#">Gần nhất</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col row justify-content-center">+ Thêm bộ lọc</div>
+            <div class="col-1"></div>
+        </div>
+        {{#each news_result}}
+        <a href="#">
+            <div class="row justify-content-center" style="padding: 10px;">
+                <div class="col-2">
+                    <div class="d-flex justify-content-end">
+                        <img src={{this.thumbnail}} alt="">
+
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class=" title-search">{{this.title}}</div>
+                    <div class="author-search">{{this.date}}</div>
+                    <div style="overflow:hidden; text-overflow: ellipsis; color:black;">{{this.description}}</div>
+                </div>
+            </div>
+        </a>
+
+        {{/each}}
+    </div>
+
+    <nav>
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="/function/dropdown-search.js"></script>

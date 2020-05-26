@@ -177,7 +177,24 @@ body {
     height: 6em;
 }
 
+.title-search{
+    font-size: 20px;
+    font-weight: bold;
+    color: #3498DB;
+}
+.author-search{
+    color: #3498DB;
+}
+.date-search{
+    color: grey;
+}
+
+/* Tắt gạch chân khó chịu */
+a {
+    text-decoration: none !important;
+}
+
 img {
-    max-width:100%;
-    max-height:100%;
+    max-width: 100%;
+    max-height: 100%;
 }
