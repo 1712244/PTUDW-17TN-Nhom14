@@ -25,7 +25,7 @@ var newsRouter = require('./routes/news');
 var newsDetailRouter = require('./routes/news-detail');
 var bookDetailRouter = require('./routes/book-detail');
 var profileRouter = require('./routes/profile');
-
+var cartsRouter = require('./routes/carts');
 // Setup livereload
 const livereload = require("livereload");
 
@@ -71,14 +71,14 @@ app.use('/book-detail', bookDetailRouter);
 
 app.use('/forget-pass', forgetpassRouter)
 app.use('/profile', profileRouter);
-
-    // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use('/carts', cartsRouter);
+// catch 404 and forward to error handler
+app.use(function (req, res, next) {
     next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -89,8 +89,8 @@ app.use(function(err, req, res, next) {
 });
 
 // Helper zone
-hbs.registerHelper('if_eq', function(a, b, opts) {
-    if(a == b) // Or === depending on your needs
+hbs.registerHelper('if_eq', function (a, b, opts) {
+    if (a == b) // Or === depending on your needs
         return opts.fn(this);
     else
         return opts.inverse(this);
