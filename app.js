@@ -29,6 +29,8 @@ var cartsRouter = require('./routes/carts');
 var cartDetailRouter =require('./routes/cart-detail');
 var buyBookRouter = require('./routes/buy-book')
 var returnBookListRouter = require('./routes/return-book-list');
+var rentBookListRouter = require('./routes/rent-book-list');
+
     // Setup livereload
 const livereload = require("livereload");
 
@@ -78,6 +80,8 @@ app.use('/carts', cartsRouter);
 app.use('/cart-detail', cartDetailRouter);
 app.use('/buy-book', buyBookRouter)
 app.use('/return-book-list', returnBookListRouter);
+app.use('/rent-book-list', rentBookListRouter);
+
     // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));

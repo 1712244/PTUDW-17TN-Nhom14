@@ -1,0 +1,57 @@
+<div class="container-fluid" style="padding:0; width:95%">
+    <div class="content-section first-section bg-white no-padding ">
+        <div class="title-section text-center">Các sách hẹn mượn</div>
+        <hr>
+        {{#each rent_book_list}}
+        <div class="row" style="padding: 0 100px">
+            <div class="col-md">
+                <div class="row justify-content-start">
+                    <div style="height: 150px;">
+                        <img src={{this.thumbnail}} alt="">
+                    </div>
+                    <div style="padding-left: 10px">
+                        <div style="font-size: 23px; font-weight:bold; color:#3498db">{{this.name}} </div>
+                        <div>{{this.author}} </div>
+                        <div style="font-size: 20px;">Ngày nhận: {{this.rent_date}} </div>
+                        <div style="font-size: 20px;">Ngày trả: {{this.return_date}} </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <hr>
+        {{/each}}
+        <div class="row align-content-center" style="padding: 0 100px">
+            <div class="col-md">
+                <div class="text-center text-md-left">
+                    Các sách đã mượn và trả
+                </div>
+            </div>
+            <div class="col-md" >
+                <div class="text-center text-md-right " style="font-weight: bold;">
+                    <a href="#">Xem các sách cần trả</a>
+                </div>
+            </div>
+        </div>
+        <hr style="margin-top: 0;">
+        <div class="row" style="padding-left: 100px; padding-bottom: 20px;" >
+            {{#each history_books}}
+            <a href="#">
+                <div class="card" style="width: 100px; border:none;">
+                    <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                    <div class="card-body" style="padding:10px">
+                        <p class="card-text" style="margin: 0;">
+                            {{this.name}}
+                        </p>
+                        <p class="card-text" style="font-size: 14px; color:grey;">
+                            {{this.author}}
+                        </p>
+                    </div>
+                </div>
+            </a>
+
+
+            {{/each}}
+        </div>
+    </div>
+</div>
