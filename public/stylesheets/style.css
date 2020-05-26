@@ -153,7 +153,9 @@ body {
     text-align: center;
 }
 
-.borrow-button {
+.borrow-button,
+.confirm-button,
+.cancel-button {
     background-color: #3498DB;
     border: none;
     color: white;
@@ -177,19 +179,23 @@ body {
     height: 6em;
 }
 
-.title-search{
+.title-search {
     font-size: 20px;
     font-weight: bold;
     color: #3498DB;
 }
-.author-search{
+
+.author-search {
     color: #3498DB;
 }
-.date-search{
+
+.date-search {
     color: grey;
 }
 
+
 /* Tắt gạch chân khó chịu */
+
 a {
     text-decoration: none !important;
 }
@@ -199,8 +205,7 @@ img {
     max-height: 100%;
 }
 
-.customized-btn{
-    
+.customized-btn {
     padding: 7px 15px;
     text-align: center;
     text-decoration: none;
@@ -210,11 +215,12 @@ img {
     border-radius: 50px;
 }
 
-.blue-bg-white-text{
+.blue-bg-white-text {
     background-color: #3498DB;
     color: white;
 }
-.white-bg-black-text{
+
+.white-bg-black-text {
     background-color: white;
     color: black;
 }
