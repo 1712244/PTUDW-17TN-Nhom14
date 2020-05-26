@@ -1,0 +1,48 @@
+<div class="container-fluid" style="padding:0; width:95%">
+    <div class="content-section first-section bg-white no-padding">
+        <div class="title-section text-center">Thông tin cá nhân</div>
+        {{!content}}
+        <div class="row" style="padding-top: 50px;">
+
+            <div class="col-md-2"></div>
+            {{!avatar area}}
+            <div class="col-md-3">
+                <div class="row justify-content-center">
+                    {{#if_eq profile.avatar null}}
+                    <div class="row justify-content-center align-items-center"
+                        style="width: 300px; height:360px; background-color:grey;">
+                        <div>
+                            <img src="/images/blank-avatar.svg" alt="" style="width: 80px; height:75px">
+                            <div class="text-center" style="color:white;">+ Tải ảnh</div>
+                        </div>
+                    </div>
+                    {{else}}
+                    <div class="row justify-content-center align-items-center">
+                        <div style="width: 300px; height:360px">
+                            <img src={{profile.avatar}} alt="">
+                        </div>
+                    </div>
+                    {{/if_eq}}
+                </div>
+
+            </div>
+            {{!info area}}
+            <div class="col-md-7">
+                <div class="row justify-content-center">
+                    <div>
+                        <div style="font-size: 25px;">Họ tên: {{profile.name}}</div>
+                        <div style="font-size: 25px;">Username: {{profile.username}}</div>
+                        <div style="font-size: 25px;">Mã tài khoản: {{profile.usercode}} </div>
+                        <div style="font-size: 25px;">QR Code: </div>
+                        <div style="width: 300px; height:300px">
+                            <img src={{profile.qr_code}} alt="">
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

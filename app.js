@@ -3,7 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var hbs = require('hbs');
 
+// set router zone
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
@@ -22,12 +24,13 @@ var newsRouter = require('./routes/news');
 
 var newsDetailRouter = require('./routes/news-detail');
 var bookDetailRouter = require('./routes/book-detail');
+var profileRouter = require('./routes/profile');
 
+// Setup livereload
 const livereload = require("livereload");
 
 var liveReloadServer = livereload.createServer();
 liveReloadServer.watch(path.join(__dirname, 'public'));
-// liveReloadServer.watch([path.join(__dirname, 'public'),path.join(__dirname, 'views')]);
 var connectLivereload = require("connect-livereload");
 
 var app = express();
@@ -49,7 +52,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// 
+// Set path zone
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
@@ -59,7 +62,6 @@ app.use('/storage', storageRouter);
 app.use('/sign-up', signUpRouter);
 
 app.use('/about', aboutRouter);
-// catch 404 and forward to error handler
 
 // set path news
 app.use('/news', newsRouter);
@@ -68,6 +70,8 @@ app.use('/news-detail', newsDetailRouter);
 app.use('/book-detail', bookDetailRouter);
 
 app.use('/forget-pass', forgetpassRouter)
+app.use('/profile', profileRouter);
+
     // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));
@@ -84,5 +88,12 @@ app.use(function(err, req, res, next) {
     res.render('error');
 });
 
+// Helper zone
+hbs.registerHelper('if_eq', function(a, b, opts) {
+    if(a == b) // Or === depending on your needs
+        return opts.fn(this);
+    else
+        return opts.inverse(this);
+});
 
 module.exports = app;
