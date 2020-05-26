@@ -5,7 +5,7 @@
             <input type="text" class="form-control" placeholder="Tìm kiếm sách, tin tức, ..." aria-label="Username"
                 aria-describedby="basic-addon1">
             <div class="input-group-append">
-                <a class="input-group-text" href="#"><img src="/images/search-icon.svg" alt="" style="width: 20px;"></a>
+                <a class="input-group-text" href="/search"><img src="/images/search-icon.svg" alt="" style="width: 20px;"></a>
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
                 <div class="d-flex justify-content-center">
                     {{#each sectionSuKien.articles}}
                     {{#if @first}}
-                    <a href="">
+                    <a href="/news-detail">
                         <div class="card" style="width: 220px; border:none;">
 
                             <div class="card-body" style="padding:5px">
@@ -49,21 +49,21 @@
                         {{#each sectionSuKien.articles}}
                         {{#if @first}}
                         {{else}}
-                        <a href="#">
+                        <a href="/news-detail">
                             <div style="color: black;">{{this.title}}</div>
                             <div style="color: grey;">{{this.date}}</div>
                         </a>
-                        <a href="#">
+                        <a href="/news-detail">
                             <div style="color: black;">{{this.title}}</div>
                             <div style="color: grey;">{{this.date}}</div>
                         </a>
-                        <a href="#">
+                        <a href="/news-detail">
                             <div style="color: black;">{{this.title}}</div>
                             <div style="color: grey;">{{this.date}}</div>
                         </a>
                         {{/if}}
                         {{/each}}
-                        <a href="#">
+                        <a href="/news">
                             <div class="text-right" style="color: #3498DB; font-weight:bold;">
                                 {{sectionSuKien.more_news}}</div>
                         </a>
@@ -85,7 +85,7 @@
                 <div class="d-flex justify-content-center">
                     {{#each sectionThongBao.articles}}
                     {{#if @first}}
-                    <a href="">
+                    <a href="/news-detail">
                         <div class="card" style="width: 220px; border:none;">
 
                             <div class="card-body" style="padding:5px">
@@ -116,21 +116,21 @@
                         {{#each sectionThongBao.articles}}
                         {{#if @first}}
                         {{else}}
-                        <a href="#">
+                        <a href="/news-detail">
                             <div style="color: black;">{{this.title}}</div>
                             <div style="color: grey;">{{this.date}}</div>
                         </a>
-                        <a href="#">
+                        <a href="/news-detail">
                             <div style="color: black;">{{this.title}}</div>
                             <div style="color: grey;">{{this.date}}</div>
                         </a>
-                        <a href="#">
+                        <a href="/news-detail">
                             <div style="color: black;">{{this.title}}</div>
                             <div style="color: grey;">{{this.date}}</div>
                         </a>
                         {{/if}}
                         {{/each}}
-                        <a href="#">
+                        <a href="/news">
                             <div class="text-right" style="color: #3498DB; font-weight:bold;">
                                 {{sectionThongBao.more_news}}</div>
                         </a>

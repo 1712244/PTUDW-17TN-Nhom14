@@ -5,7 +5,7 @@
             <input type="text" class="form-control" placeholder="Tìm kiếm sách, tin tức, ..." aria-label="Username"
                 aria-describedby="basic-addon1">
             <div class="input-group-append">
-                <a class="input-group-text" href="#"><img src="/images/search-icon.svg" alt="" style="width: 20px;"></a>
+                <a class="input-group-text" href="/search"><img src="/images/search-icon.svg" alt="" style="width: 20px;"></a>
             </div>
         </div>
     </div>
@@ -31,52 +31,55 @@
                 <img src="/images/icon-more-list-field.png" alt="" style="height: 20px;">
             </li>
         </ul>
-        <div class="row justify-content-around">
-            <div class="card" style="width: 200px; border:none;">
-                <img class="card-img-top" src="/images/book-thumbnail.png" alt="Card image cap">
-                <div class="card-body" style="padding:10px">
-                    <p class="card-text" style="margin: 0;">
-                        Kỹ nghệ phần mềm
-                    </p>
-                    <p class="card-text">
-                        TS. Lê Văn Phùng
-                    </p>
+        <a href="/book-detail" style="color: inherit;">
+            <div class="row justify-content-around">
+                <div class="card" style="width: 200px; border:none;">
+                    <img class="card-img-top" src="/images/book-thumbnail.png" alt="Card image cap">
+                    <div class="card-body" style="padding:10px">
+                        <p class="card-text" style="margin: 0;">
+                            Kỹ nghệ phần mềm
+                        </p>
+                        <p class="card-text">
+                            TS. Lê Văn Phùng
+                        </p>
+                    </div>
+                </div>
+                <div class="card" style="width: 200px; border:none;">
+                    <img class="card-img-top" src="/images/book-thumbnail.png" alt="Card image cap">
+                    <div class="card-body" style="padding:10px">
+                        <p class="card-text" style="margin: 0;">
+                            Kỹ nghệ phần mềm
+                        </p>
+                        <p class="card-text">
+                            TS. Lê Văn Phùng
+                        </p>
+                    </div>
+                </div>
+                <div class="card" style="width: 200px; border:none;">
+                    <img class="card-img-top" src="/images/book-thumbnail.png" alt="Card image cap">
+                    <div class="card-body" style="padding:10px">
+                        <p class="card-text" style="margin: 0;">
+                            Kỹ nghệ phần mềm
+                        </p>
+                        <p class="card-text">
+                            TS. Lê Văn Phùng
+                        </p>
+                    </div>
+                </div>
+                <div class="card" style="width: 200px; border:none;">
+                    <img class="card-img-top" src="/images/book-thumbnail.png" alt="Card image cap">
+                    <div class="card-body" style="padding:10px">
+                        <p class="card-text" style="margin: 0;">
+                            Kỹ nghệ phần mềm
+                        </p>
+                        <p class="card-text">
+                            TS. Lê Văn Phùng
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div class="card" style="width: 200px; border:none;">
-                <img class="card-img-top" src="/images/book-thumbnail.png" alt="Card image cap">
-                <div class="card-body" style="padding:10px">
-                    <p class="card-text" style="margin: 0;">
-                        Kỹ nghệ phần mềm
-                    </p>
-                    <p class="card-text">
-                        TS. Lê Văn Phùng
-                    </p>
-                </div>
-            </div>
-            <div class="card" style="width: 200px; border:none;">
-                <img class="card-img-top" src="/images/book-thumbnail.png" alt="Card image cap">
-                <div class="card-body" style="padding:10px">
-                    <p class="card-text" style="margin: 0;">
-                        Kỹ nghệ phần mềm
-                    </p>
-                    <p class="card-text">
-                        TS. Lê Văn Phùng
-                    </p>
-                </div>
-            </div>
-            <div class="card" style="width: 200px; border:none;">
-                <img class="card-img-top" src="/images/book-thumbnail.png" alt="Card image cap">
-                <div class="card-body" style="padding:10px">
-                    <p class="card-text" style="margin: 0;">
-                        Kỹ nghệ phần mềm
-                    </p>
-                    <p class="card-text">
-                        TS. Lê Văn Phùng
-                    </p>
-                </div>
-            </div>
-        </div>
+        </a>
+
     </div>
     <div class="content-section bg-white no-padding">
         <div class="title-section text-center">{{sectionTinTuc.title}}</div>
@@ -86,9 +89,9 @@
                 <div class="d-flex justify-content-center">
                     {{#each sectionTinTuc.articles}}
                     {{#if @first}}
-                    <a href="">
-                        <div class="card" style="width: 220px; border:none;">
 
+                    <div class="card" style="width: 220px; border:none;">
+                        <a href="/news-detail">
                             <div class="card-body" style="padding:5px">
                                 <p class="card-text" style="margin: 0; font-size:22px; color:black;">
                                     {{this.title}}
@@ -99,9 +102,9 @@
                             </div>
                             <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap"
                                 style="padding-bottom: 20px;">
+                        </a>
+                    </div>
 
-                        </div>
-                    </a>
 
                     {{/if}}
                     {{/each}}
@@ -117,21 +120,21 @@
                         {{#each sectionTinTuc.articles}}
                         {{#if @first}}
                         {{else}}
-                        <a href="#">
+                        <a href="/news-detail">
                             <div style="color: black;">{{this.title}}</div>
                             <div style="color: grey;">{{this.date}}</div>
                         </a>
-                        <a href="#">
+                        <a href="/news-detail">
                             <div style="color: black;">{{this.title}}</div>
                             <div style="color: grey;">{{this.date}}</div>
                         </a>
-                        <a href="#">
+                        <a href="/news-detail">
                             <div style="color: black;">{{this.title}}</div>
                             <div style="color: grey;">{{this.date}}</div>
                         </a>
                         {{/if}}
                         {{/each}}
-                        <a href="#">
+                        <a href="/news">
                             <div class="text-right" style="color: #3498DB; font-weight:bold;">
                                 {{sectionTinTuc.more_news}}</div>
                         </a>
