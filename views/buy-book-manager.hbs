@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <div class="container-fluid first-section bg-white">
     <div class="title font-size-xx text-center text-color-408CFF " style="padding: 2em 0;">Quản lý đặt sách</div>
 
@@ -18,60 +19,57 @@
         </div>
     </div>
 
-    <div class="data-shown padding-left-right-5em text-color-grey">
-        <div class="data-board display-flex ">
-            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-                Mã sách
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                Tên Sách
-            </div>
-            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-                Tái bản
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                Tác giả
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                Nhà xuất bản
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                Ngày đặt
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                Hành động
-            </div>
-        </div>
-    </div>
-    <div class="text-color-grey" style="padding: 3em 5em 0;">
-        <div class="data display-flex">
-            {{#each Booking_arr.booking_book}}
-            
-            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-                {{this.bookID}}
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                {{this.book_name}}
-            </div>
-            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-                {{this.reprint}}
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                {{this.book_author}}
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                {{this.producer}}
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                {{this.booking_date}}
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+    <div class="table-responsive padding-left-3em">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Mã sách</th>
+                    <th scope="col">Tên Sách</th>
+                    <th scope="col">Tái bản</th>
+                    <th scope="col">Tác giả</th>
+                    <th scope="col">Nhà sản xuất</th>
+                    <th scope="col">Ngày đặt</th>
+                    <th scope="col" id = "activate">Hoạt động</th>
+                    <th scope="col" style="display: none" id="bought-day"> Ngày nhập</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each Booking_arr.booking_book}}
                 
-            </div>
-            {{/each}}
-        </div>
+                <tr class="booking-data" >
+                    <th scope="row">{{this.ISBN}}</th>
+                    <th scope="row"> {{this.bookID}}</th>
+                    <th>{{this.book_name}}</th>
+                    <th> {{this.reprint}}</th>
+                    <th> {{this.book_author}}</th>
+                    <th> {{this.producer}}</th>
+                    <th> {{this.booking_date}}</th>
+                    <th><button class="confirm-button">xác nhận</button>
+                        <button class="customized-btn">Hủy bỏ</button>
+                    </th>
+                </tr>
+                
+                {{/each}}
+                {{#each Bought_arr.bought_book}}
+                <tr class="bought-book-data" style="display: none;">
+                    <th scope="row">{{this.ISBN}}</th>
+                    <th scope="row"> {{this.bookID}}</th>
+                    <th>{{this.book_name}}</th>
+                    <th> {{this.reprint}}</th>
+                    <th> {{this.book_author}}</th>
+                    <th> {{this.producer}}</th>
+                    <th> {{this.booking_date}}</th>
+                    <th>{{this.bought_date}}</th>
+                </tr>
+                {{/each}}
+            </tbody>
+
+        </table>
     </div>
     <div style="padding-bottom: 3em;">
 
     </div>
 </div>
+
+<script src="/function/buy-book-menu.js"></script>
