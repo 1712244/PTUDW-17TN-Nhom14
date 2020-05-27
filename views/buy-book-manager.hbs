@@ -1,0 +1,77 @@
+<div class="container-fluid first-section bg-white">
+    <div class="title font-size-xx text-center text-color-408CFF " style="padding: 2em 0;">Quản lý đặt sách</div>
+
+    <div class="content-section d-flex justify-content-center bg-white no-padding align-items-center">
+        <div id="" class="input-group col-6">
+            <input type="text" class="form-control" placeholder="Tìm kiếm sách, tin tức, ..." aria-label="Username"
+                aria-describedby="basic-addon1">
+            <div class="input-group-append">
+                <a class="input-group-text" href="#"><img src="/images/search-icon.svg" alt="" style="width: 20px;"></a>
+            </div>
+        </div>
+
+        <div>
+            <select class="select-box" name="sách đã mua" id="" style="height: 40px; border-radius: 10px">
+                <option value="booking-book">Sách đã đặt</option>
+                <option value="bought-book">Sách đã mua</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="data-shown padding-left-right-5em text-color-grey">
+        <div class="data-board display-flex ">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                Mã sách
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                Tên Sách
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                Tái bản
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                Tác giả
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                Nhà xuất bản
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                Ngày đặt
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                Hành động
+            </div>
+        </div>
+    </div>
+    <div class="text-color-grey" style="padding: 3em 5em 0;">
+        <div class="data display-flex">
+            {{#each Booking_arr.booking_book}}
+            
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                {{this.bookID}}
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                {{this.book_name}}
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                {{this.reprint}}
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                {{this.book_author}}
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                {{this.producer}}
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                {{this.booking_date}}
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <div style="padding-bottom: 3em;">
+
+    </div>
+</div>

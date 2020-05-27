@@ -26,12 +26,14 @@ var newsDetailRouter = require('./routes/news-detail');
 var bookDetailRouter = require('./routes/book-detail');
 var profileRouter = require('./routes/profile');
 var cartsRouter = require('./routes/carts');
-var cartDetailRouter =require('./routes/cart-detail');
+var cartDetailRouter = require('./routes/cart-detail');
 var buyBookRouter = require('./routes/buy-book')
 var returnBookListRouter = require('./routes/return-book-list');
 var rentBookListRouter = require('./routes/rent-book-list');
 
-    // Setup livereload
+var buybookManager = require('./routes/buy-book-manager')
+
+// Setup livereload
 const livereload = require("livereload");
 
 var liveReloadServer = livereload.createServer();
@@ -81,8 +83,9 @@ app.use('/cart-detail', cartDetailRouter);
 app.use('/buy-book', buyBookRouter)
 app.use('/return-book-list', returnBookListRouter);
 app.use('/rent-book-list', rentBookListRouter);
+app.use('/buy-book-manager', buybookManager)
 
-    // catch 404 and forward to error handler
+// catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));
 });
