@@ -11,7 +11,7 @@ function ChangeClassNavItem(innerText) {
         }
     }
 
-    console.log(found)
+    // console.log(found)
     if (found == undefined) {
         return 0;
     }

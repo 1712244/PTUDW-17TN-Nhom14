@@ -5,7 +5,8 @@
             <input type="text" class="form-control" placeholder="Tìm kiếm sách, tin tức, ..." aria-label="Username"
                 aria-describedby="basic-addon1">
             <div class="input-group-append">
-                <a class="input-group-text" href="/search"><img src="/images/search-icon.svg" alt="" style="width: 20px;"></a>
+                <a class="input-group-text" href="/search"><img src="/images/search-icon.svg" alt=""
+                        style="width: 20px;"></a>
             </div>
         </div>
     </div>
@@ -31,54 +32,40 @@
                 <img src="/images/icon-more-list-field.png" alt="" style="height: 20px;">
             </li>
         </ul>
-        <a href="/book-detail" style="color: inherit;">
-            <div class="row justify-content-around">
-                <div class="card" style="width: 200px; border:none;">
-                    <img class="card-img-top" src="/images/book-thumbnail.png" alt="Card image cap">
-                    <div class="card-body" style="padding:10px">
-                        <p class="card-text" style="margin: 0;">
-                            Kỹ nghệ phần mềm
-                        </p>
-                        <p class="card-text">
-                            TS. Lê Văn Phùng
-                        </p>
-                    </div>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                {{#each sectionSachHot.books}}
+                <div class="carousel-item {{#if @first}} active {{/if}} ">
+                    <a href="/book-detail" style="color: inherit;">
+                        <div class="row justify-content-around">
+                            {{#each this}}
+                            <div class="card col-md-2 col" style=" border:none;">
+                                <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                                <div class="card-body" style="padding:10px">
+                                    <p class="card-text" style="margin: 0;">
+                                        {{this.name}}
+                                    </p>
+                                    <p class="card-text">
+                                        {{this.author}}
+                                    </p>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </a>
                 </div>
-                <div class="card" style="width: 200px; border:none;">
-                    <img class="card-img-top" src="/images/book-thumbnail.png" alt="Card image cap">
-                    <div class="card-body" style="padding:10px">
-                        <p class="card-text" style="margin: 0;">
-                            Kỹ nghệ phần mềm
-                        </p>
-                        <p class="card-text">
-                            TS. Lê Văn Phùng
-                        </p>
-                    </div>
-                </div>
-                <div class="card" style="width: 200px; border:none;">
-                    <img class="card-img-top" src="/images/book-thumbnail.png" alt="Card image cap">
-                    <div class="card-body" style="padding:10px">
-                        <p class="card-text" style="margin: 0;">
-                            Kỹ nghệ phần mềm
-                        </p>
-                        <p class="card-text">
-                            TS. Lê Văn Phùng
-                        </p>
-                    </div>
-                </div>
-                <div class="card" style="width: 200px; border:none;">
-                    <img class="card-img-top" src="/images/book-thumbnail.png" alt="Card image cap">
-                    <div class="card-body" style="padding:10px">
-                        <p class="card-text" style="margin: 0;">
-                            Kỹ nghệ phần mềm
-                        </p>
-                        <p class="card-text">
-                            TS. Lê Văn Phùng
-                        </p>
-                    </div>
-                </div>
+                {{/each}}
             </div>
-        </a>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
 
     </div>
     <div class="content-section bg-white no-padding">
@@ -149,3 +136,7 @@
     </div>
 </div>
 <script src="/function/change-nav.js" current_page="Trang chủ"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="/function/shrink-carousel-sm.js"></script>

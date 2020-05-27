@@ -1,12 +1,28 @@
 var express = require('express');
 var router = express.Router();
 
+// in this section's array, I've already split it into segment. 
+// When working with server, we will need a function to automatic split them into fix number of item per slide
 const sectionSachHot =
 {
   title: "Sách hot chuyên ngành",
   list_categories: ["Công nghệ phần mềm", "Trí tuệ nhân tạo", "Cơ sở dữ liệu",
               "Mạng máy tính", "Khoa học máy tính", "Phát triển ứng dụng web"],
-  books: [{thumbnail:"/images/book-thumbnail.png", name:"Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng"} ]
+  books: [
+    [
+      {thumbnail:"/images/book-thumbnail.png", name:"Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng"},
+      {thumbnail:"/images/book-thumbnail.png", name:"Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng"},
+      {thumbnail:"/images/book-thumbnail.png", name:"Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng"},
+      {thumbnail:"/images/book-thumbnail.png", name:"Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng"},
+    ],
+    [
+      {thumbnail:"/images/book-thumbnail.png", name:"Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng"},
+      {thumbnail:"/images/book-thumbnail.png", name:"Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng"},
+      {thumbnail:"/images/book-thumbnail.png", name:"Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng"},
+      {thumbnail:"/images/book-thumbnail.png", name:"Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng"},
+    ],
+    
+  ]
 };
 
 const sectionTinTuc = {
