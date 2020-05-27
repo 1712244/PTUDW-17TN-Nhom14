@@ -25,7 +25,6 @@ const sectionSachHot =
       { thumbnail: "/images/book-thumbnail.png", name: "Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng" },
       { thumbnail: "/images/book-thumbnail.png", name: "Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng" },
     ],
-
   ]
 };
 
