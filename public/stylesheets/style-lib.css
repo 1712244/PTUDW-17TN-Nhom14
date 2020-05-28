@@ -152,9 +152,13 @@ footer {
     color: #656565;
     width: 100%;
     margin: 0px auto;
-    position: sticky;
-    top: 0px;
     background-color: white;
+    top: 0px;
+    position: sticky;
+}
+
+.second-title {
+    top: 24px;
 }
 
 .time-title.side-line:before, .time-title.side-line:after {

@@ -20,7 +20,7 @@
     padding-top: 5px;
 }
 
-#date-range-selector {
+#date-selector {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -28,16 +28,16 @@
     justify-content: center;
 }
 
-#date-time-input {
+#date-input {
     text-align: center;
     border-radius: 0px 5px 5px 0px;
 }
 
-#date-time-group {
-    width: 250px;
+#date-group {
+    width: 150px;
 }
 
-#date-range-selector > * {
+#date-selector > * {
     margin: 2px;
 }
 
@@ -53,7 +53,6 @@ hr {
     justify-content: center;
 }
 
-
-.second-title {
-    top: 24px;
+.time-title {
+    position: initial;
 }
