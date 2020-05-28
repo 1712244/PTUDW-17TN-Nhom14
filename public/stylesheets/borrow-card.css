@@ -36,4 +36,5 @@
 
 .book-name {
     color: #727272;
+    min-width: 150px;
 }

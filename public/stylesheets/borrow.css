@@ -1,0 +1,50 @@
+.borrow-card {
+    max-width: 550px;
+}
+
+#borrow-view {
+    height: 100%;
+    overflow-y: auto;
+}
+
+#content {
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#borrow-filter {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    padding-top: 10px;
+}
+
+#date-range-selector {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#date-time-input {
+    text-align: center;
+    border-radius: 0px 5px 5px 0px;
+}
+
+#date-time-group {
+    width: 250px;
+    margin: 10px;
+}
+
+hr {
+    margin: 0px;
+}
+
+.borrow-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}

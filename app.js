@@ -9,6 +9,7 @@ var hbs = require('hbs');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
+var searchRouter = require('./routes/search');
 
 var signUpRouter = require('./routes/sign-up');
 
@@ -72,7 +73,6 @@ app.use('/categories', categoriesRouter);
 app.use('/storage', storageRouter);
 app.use('/search', searchRouter);
 app.use('/sign-up', signUpRouter);
-
 app.use('/about', aboutRouter);
 app.use('/librarian', indexLibRouter);
 app.use('/librarian/borrow', borrowRouter);

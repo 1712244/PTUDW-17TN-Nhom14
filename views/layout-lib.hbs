@@ -20,11 +20,31 @@
 <body id>
   <div id="top-bar" class = "fluid-container row align-items-center">
     <div id="function" class = "col">
-      <div id="btn-qr">
-        <i class="fa fa-2x fa-qrcode"></i>
+      <div id="btn-menu" class = "header-btn">
+        <i class="fa fa-bars"></i>
+      </div>
+      <div id="btn-qr" class = "header-btn">
+        <i class="fa fa-qrcode"></i>
         <span>Quét mã QR</span>
       </div>
+      {{#if export}}
+      <div id="btn-export" class = "header-btn">
+        <i class="fa fa-save"></i>
+        <span>Xuất ra csv</span>
+      </div>
+      {{/if}}
+      {{#if search}}
+      <div id="search-box">
+        <div class="input-group">
+          <input id="search-input" type="text" class="form-control" placeholder="Thông tin cần tìm">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+      {{/if}}
     </div>
+
     <div id="account" class = "col-auto">
       <span id="username">
         Tên tài khoản
@@ -49,10 +69,10 @@
     </a>
     <ul class="nav flex-column">
       <li class="nav-item nav-current">
-        <a class="nav-link disabled" href="#">Trang chủ</a>
+        <a class="nav-link" href="/librarian/">Trang chủ</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Mượn sách</a>
+        <a class="nav-link" href="/librarian/borrow/">Mượn sách</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Trả sách</a>
@@ -82,6 +102,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"></script>
+  <script src="/function/layout.js"></script>
 </body>
 
 </html>

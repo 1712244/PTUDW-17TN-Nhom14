@@ -5,18 +5,24 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1; /* Stay on top */
+    z-index: 999; /* Stay on top */
     overflow-x: hidden; /* Disable horizontal scroll */
     padding: 0px;
 
     background: #ECECEC;
     box-shadow: 3px 0px 4px rgba(0, 0, 0, 0.25);
+
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+#btn-menu {
+    display: none;
 }
 
 #top-bar {
     height: 60px; /* Full-height: remove this if you want "auto" height */
     width: calc(100% - 210px); /* Set the width of the sidebar */
-    z-index: 1; /* Stay on top */
+    z-index: 999; /* Stay on top */
     top:0px;
     left:210px;
     margin: 0px;
@@ -44,6 +50,7 @@
 
 #side-bar .nav-link {
     padding: 12px 30px;
+    white-space: nowrap; 
 }
 
 #logo {
@@ -61,27 +68,44 @@ footer {
     padding: 5px;
 }
 
-#btn-qr:hover {
+.header-btn:hover {
     background-color: #DCDCDC;
     color: #2980B9;
 }
 
 #function {
     padding: 0px;
-    color: #656565
+    color: #656565;
+    display: flex;
 }
 
-#btn-qr > i{
-    margin-right: 10px;
-}
+.header-btn > span{
+    margin-left: 10px;
+}   
 
-#btn-qr {
+.header-btn, #search-box {
     display: inline-flex;
     align-items: center;
     width: auto;
     height: 60px;
     margin: 0px;
     padding: 0px 20px;
+}
+
+.header-btn {
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+#search-box {
+    max-width: 500px;
+    flex: 1;
+    margin-left: auto;
+}
+
+#search-input {
+    width: calc(100% - 40px);
+    
 }
 
 .nav-link {
@@ -91,4 +115,55 @@ footer {
 .nav-current > .nav-link {
     color: #2980B9;
     font-weight: bold;
+}
+
+@media only screen and (max-width : 700px) {
+    #username {
+        display: none;
+    }
+    .header-btn > span {
+        display: none;
+    }
+}
+
+@media only screen and (max-width : 1000px) {
+    #side-bar {
+        width: 0px;
+    }
+
+    #top-bar {
+        width: 100%;
+        left: 0;
+    }
+
+    #main {
+        margin-left: 0px; /* Same as the width of the sidebar */
+    }
+
+    #btn-menu {
+        display: inline-flex;
+    }
+}
+
+
+.time-title {
+    overflow: hidden;
+    text-align: center;
+    color: #656565;
+    width: 95%;
+    margin: 0px auto;
+}
+
+.time-title:before, .time-title:after {
+    content: "";
+    display: inline-block;
+    width: 50%;
+    margin: 0 .5em 0 -55%;
+    vertical-align: middle;
+    border-bottom: 1px solid;
+    border-color: #ACACAC;
+  }
+
+.time-title:after {
+    margin: 0 -55% 0 .5em;
 }

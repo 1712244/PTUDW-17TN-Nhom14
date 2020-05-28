@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="/stylesheets/borrow.css">
+<div id="borrow-filter">
+    <div id="date-range-selector">
+        <label for="date-time-input">Khoảng thời gian</label>
+        <div id="date-time-group" class="input-group">
+            <div class="input-group-prepend">
+                <button class="btn btn-secondary" type="button"><i class="fa fa-calendar"></i></button>
+            </div>
+            <input type="text" class="form-control" id="date-time-input">
+        </div>
+    </div>
+    <div id="filter-selector">
+        <p>Ẩn những sách đã mượn</p>
+    </div>
+</div>
+<hr>
+<div id = "borrow-view">
+    <div class="time-title">
+    7:00
+    </div>
+    <div class="borrow-list">
+        {{> borrow_card}}
+        {{> borrow_card}}
+        {{> borrow_card}}
+        {{> borrow_card}}
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/litepicker/dist/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/litepicker-module-ranges/dist/index.js"></script>
+<script>
+   var picker = new Litepicker({ element: document.getElementById('date-time-input'),
+        lang: "vi",
+        singleMode: false,
+        maxDate: new Date(),
+    });
+    picker.setDateRange(new Date(), new Date());
+</script>

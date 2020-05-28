@@ -88,6 +88,12 @@ function drawBorrowReturn() {
         legend: {
             show: true,
         },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                animation: true
+            }
+        },
         series: [
             {
                 name: 'Lượt mượn',

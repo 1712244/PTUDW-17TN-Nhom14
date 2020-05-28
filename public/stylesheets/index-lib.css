@@ -85,27 +85,6 @@
     height:245px;
 }
 
-.time-title {
-    overflow: hidden;
-    text-align: center;
-    color: #656565;
-    width: 95%;
-    margin: 0px auto;
-}
-
-.time-title:before, .time-title:after {
-    content: "";
-    display: inline-block;
-    width: 50%;
-    margin: 0 .5em 0 -55%;
-    vertical-align: middle;
-    border-bottom: 1px solid;
-    border-color: #ACACAC;
-  }
-
-.time-title:after {
-    margin: 0 -55% 0 .5em;
-}
 
 @media  only screen and (min-width: 1641px) {
     .half-card {
@@ -113,6 +92,6 @@
     }
 
     #borrow-group {
-        width: 920px !important;
+        width: 920px;
     }
 }
