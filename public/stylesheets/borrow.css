@@ -17,7 +17,7 @@
     display: flex;
     justify-content: space-evenly;
     align-items: flex-end;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 
 #date-range-selector {
@@ -35,11 +35,15 @@
 
 #date-time-group {
     width: 250px;
-    margin: 10px;
+}
+
+#date-range-selector > * {
+    margin: 2px;
 }
 
 hr {
     margin: 0px;
+    margin-top: 5px;
 }
 
 .borrow-list {
@@ -47,4 +51,9 @@ hr {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+
+.second-title {
+    top: 24px;
 }

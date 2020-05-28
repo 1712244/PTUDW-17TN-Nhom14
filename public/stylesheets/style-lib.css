@@ -150,20 +150,23 @@ footer {
     overflow: hidden;
     text-align: center;
     color: #656565;
-    width: 95%;
+    width: 100%;
     margin: 0px auto;
+    position: sticky;
+    top: 0px;
+    background-color: white;
 }
 
-.time-title:before, .time-title:after {
+.time-title.side-line:before, .time-title.side-line:after {
     content: "";
     display: inline-block;
     width: 50%;
-    margin: 0 .5em 0 -55%;
+    margin: 0 .5em 0 -50%;
     vertical-align: middle;
     border-bottom: 1px solid;
     border-color: #ACACAC;
   }
 
-.time-title:after {
-    margin: 0 -55% 0 .5em;
+.time-title.side-line:after {
+    margin: 0 -50% 0 .5em;
 }

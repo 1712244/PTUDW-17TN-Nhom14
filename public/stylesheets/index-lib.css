@@ -1,7 +1,11 @@
 .block-header {
     text-align: center;
-    font-size: xx-large;
+    font-size: x-large;
     color: #424242;
+    position: sticky;
+    margin: 10px;
+    top: 10px;
+    z-index: 1000;
 }
 
 #report-period {
@@ -68,7 +72,7 @@
 }
 
 .agenda-card{
-    height:500px;
+    height:550px;
 }
 
 .agenda-card .lib-card-body {
@@ -82,7 +86,7 @@
 }
 
 .half-card {
-    height:245px;
+    height:270px;
 }
 
 
