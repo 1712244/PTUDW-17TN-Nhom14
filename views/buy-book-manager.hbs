@@ -1,0 +1,76 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<div class="container-fluid first-section bg-white">
+    <div class="title font-size-xx text-center text-color-408CFF " style="padding: 2em 0;">Quản lý đặt sách</div>
+
+    <div class="content-section d-flex justify-content-center bg-white no-padding align-items-center">
+        <div id="" class="input-group col-6">
+            <input type="text" class="form-control" placeholder="Tìm kiếm sách, tin tức, ..." aria-label="Username"
+                aria-describedby="basic-addon1">
+            <div class="input-group-append">
+                <a class="input-group-text" href="#"><img src="/images/search-icon.svg" alt="" style="width: 20px;"></a>
+            </div>
+        </div>
+
+        <div>
+            <select class="select-box" name="sách đã mua" id="" style="height: 40px; border-radius: 10px">
+                <option value="booking-book">Sách đã đặt</option>
+                <option value="bought-book">Sách đã mua</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="table-responsive padding-left-3em">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Mã sách</th>
+                    <th scope="col">Tên Sách</th>
+                    <th scope="col">Tái bản</th>
+                    <th scope="col">Tác giả</th>
+                    <th scope="col">Nhà sản xuất</th>
+                    <th scope="col">Ngày đặt</th>
+                    <th scope="col" id = "activate">Hoạt động</th>
+                    <th scope="col" style="display: none" id="bought-day"> Ngày nhập</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each Booking_arr.booking_book}}
+                
+                <tr class="booking-data" >
+                    <th scope="row">{{this.ISBN}}</th>
+                    <th scope="row"> {{this.bookID}}</th>
+                    <th>{{this.book_name}}</th>
+                    <th> {{this.reprint}}</th>
+                    <th> {{this.book_author}}</th>
+                    <th> {{this.producer}}</th>
+                    <th> {{this.booking_date}}</th>
+                    <th><button class="confirm-button">xác nhận</button>
+                        <button class="customized-btn">Hủy bỏ</button>
+                    </th>
+                </tr>
+                
+                {{/each}}
+                {{#each Bought_arr.bought_book}}
+                <tr class="bought-book-data" style="display: none;">
+                    <th scope="row">{{this.ISBN}}</th>
+                    <th scope="row"> {{this.bookID}}</th>
+                    <th>{{this.book_name}}</th>
+                    <th> {{this.reprint}}</th>
+                    <th> {{this.book_author}}</th>
+                    <th> {{this.producer}}</th>
+                    <th> {{this.booking_date}}</th>
+                    <th>{{this.bought_date}}</th>
+                </tr>
+                {{/each}}
+            </tbody>
+
+        </table>
+    </div>
+    <div style="padding-bottom: 3em;">
+
+    </div>
+</div>
+
+<link rel="stylesheet" href="/stylesheets/buy-book-manager.css">
+<script src="/function/buy-book-menu.js"></script>
