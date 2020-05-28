@@ -47,13 +47,13 @@
         {{#each book_result}}
         <a href="/book-detail">
             <div class="row justify-content-center" style="padding: 10px;">
-                <div class="col-2">
+                <div class="col-4 col-sm-3 col-md-2 col-lg-1">
                     <div class="d-flex justify-content-end">
-                        <img src={{this.thumbnail}} alt="" style="height: 150px;">
+                        <img src={{this.thumbnail}} alt="" >
 
                     </div>
                 </div>
-                <div class="col-8">
+                <div class="col-6 col-sm-7 col-md-8 col-lg-8">
                     <div class=" title-search">{{this.name}}</div>
                     <div class="author-search">{{this.author}}</div>
                     <div style="overflow:hidden; text-overflow: ellipsis; color:black;">{{this.description}}</div>
@@ -87,13 +87,13 @@
         {{#each news_result}}
         <a href="/news-detail">
             <div class="row justify-content-center" style="padding: 10px;">
-                <div class="col-2">
+                <div class="col-4 col-sm-3 col-md-2">
                     <div class="d-flex justify-content-end">
                         <img src={{this.thumbnail}} alt="">
 
                     </div>
                 </div>
-                <div class="col-8">
+                <div class="col-6 col-sm-7 col-md-8">
                     <div class=" title-search">{{this.title}}</div>
                     <div class="author-search">{{this.date}}</div>
                     <div style="overflow:hidden; text-overflow: ellipsis; color:black;">{{this.description}}</div>
