@@ -1,4 +1,3 @@
-console.log("Test");
 
 function drawMostBorrowed() {
     var myChart = echarts.init(document.getElementById('most-borrowed-book-chart'));

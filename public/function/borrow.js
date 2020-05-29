@@ -14,29 +14,15 @@ var sections_pos = [];
 
 (function () {
     'use strict';
-    const section = document.querySelectorAll("#borrow-view > .time-title");
+    const section = document.querySelectorAll("#borrow-view > .title-group");
     var i = 0;
-
-    var parseDay = function(currentDay) {
-        return currentDay.split(" ").pop().split("/").reverse().join("-");  
-    }
 
     var currentDay = null;
     var firstTime = false;
     section.forEach(function (e, i) {
-        if (!firstTime) {
-            sections.push(e);
-            sections_pos.push(e.offsetTop - view.offsetTop);
-        }
-
-        if (e.classList.contains("second-title")) {
-            console.log();
-            sections_date.push(new Date(Date.parse(`${currentDay} ${e.innerText}`)));
-            firstTime = false;
-        } else {
-            currentDay = parseDay(e.innerText);
-            firstTime = true;
-        }
+        sections.push(e);
+        sections_date.push(new Date(Date.parse(e.getAttribute("data-time"))));
+        sections_pos.push(e.offsetTop - view.offsetTop);
     });
 })();
 
@@ -86,15 +72,12 @@ function sameDay(d1, d2) {
 
 
 picker.config.onChange.push(function(e) {
-    console.log(picker.selectedDates[0]);
     const selected = picker.selectedDates[0];
     gotoDate(selected);
 });
 
 
 document.getElementById("time-selector").onclick = function (e) {
-    console.log("hihi");
-
     var timeList = document.getElementById("time-list");
     timeList.textContent = '';
     const date = picker.selectedDates[0];
@@ -116,7 +99,6 @@ document.getElementById("time-selector").onclick = function (e) {
 
 
 document.getElementById("time-list").onclick = function(e) {
-    console.log("abc");
     var chosen = e.target.closest("a");
     if (!chosen)
         return;

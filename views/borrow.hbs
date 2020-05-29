@@ -29,50 +29,14 @@
 </div>
 <hr>
 <div id = "borrow-view">
-    <div class="time-title">
-        Thứ ba, ngày 28/05/2020
-    </div>
-    <div class="time-title second-title">
-        7:00
-    </div>
-    <div class="borrow-list">
-        {{> borrow_card}}
-        {{> borrow_card}}
-        {{> borrow_card}}
-        {{> borrow_card}}
-    </div>
-    <div class="time-title second-title">
-        8:00
-    </div>
-    <div class="borrow-list">
-        {{> borrow_card}}
-        {{> borrow_card}}
-        {{> borrow_card}}
-        {{> borrow_card}}
-    </div>
-    <div class="time-title">
-        Thứ tư, ngày 29/05/2020
-    </div>
-    <div class="time-title second-title">
-        9:00
-    </div>
-    <div class="borrow-list">
-        {{> borrow_card}}
-        {{> borrow_card}}
-        {{> borrow_card}}
-        {{> borrow_card}}
-    </div>
-    <div class="time-title second-title">
-        11:00
-    </div>
-    <div class="borrow-list">
-        {{> borrow_card}}
-        {{> borrow_card}}
-        {{> borrow_card}}
-        {{> borrow_card}}
-    </div>
+    {{#eachBorrow borrowData}}
+    {{> borrow_card borrowInfo=.}}
+    {{/eachBorrow}}
 </div>
     
 </div>
+<script>
+    const borrowData = {{stringify borrowData}};
+</script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="/function/borrow.js"></script>

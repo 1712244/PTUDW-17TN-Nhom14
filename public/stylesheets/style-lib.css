@@ -5,7 +5,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 999; /* Stay on top */
+    z-index: 1999; /* Stay on top */
     overflow-x: hidden; /* Disable horizontal scroll */
     padding: 0px;
 

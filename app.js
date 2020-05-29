@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('hbs');
+require('./routes/lib-helper.js');
 
 // set router zone
 var indexRouter = require('./routes/index');
@@ -46,7 +47,7 @@ var app = express();
 app.set('view options', { layout: false });
 
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
-console.log(path.join(__dirname, 'views/partials'));
+
 
 app.use(connectLivereload());
 liveReloadServer.server.once("connection", () => {

@@ -1,37 +1,24 @@
 <link rel="stylesheet" href="/stylesheets/borrow-card.css">
-<div class="borrow-card">
+<div class="borrow-card" data-borrow-id="{{borrowInfo.id}}">
     <div class="borrow-card-header">
         <div class="borrower-name">
-            Vương Hy
+            {{borrowInfo.borrower.name}}
         </div>
         <div class="borrower-id">
-            1612864
+            {{borrowInfo.borrower.id}}
         </div>
     </div>
+
     <div class="book-container">
+        {{#each borrowInfo.books}}
         <div class="book-item">
             <div class="book-id">
-                MSQ-XYZ
+                {{this.id}}
             </div>
             <div class="book-name">
-                xyz
+                {{this.name}}
             </div>
         </div>
-        <div class="book-item">
-            <div class="book-id">
-                MSQ-XYZ
-            </div>
-            <div class="book-name">
-                tdajsftdajsf
-            </div>
-        </div>
-        <div class="book-item">
-            <div class="book-id">
-                MSQ-MDF
-            </div>
-            <div class="book-name">
-                Nhập môn lập trình hướng đối tượng
-            </div>
-        </div>
+        {{/each}}
     </div>
 </div>

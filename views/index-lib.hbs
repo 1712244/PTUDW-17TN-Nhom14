@@ -109,15 +109,9 @@
                     </span>
                 </div>
                 <div class="lib-card-body">
-                    <div class="time-title">
-                       7:00
-                    </div>
-                    {{> borrow_card}}
-                    {{> borrow_card}}
-                    <div class="time-title">
-                       8:00
-                    </div>
-                    {{> borrow_card}}
+                    {{#eachBorrow borrowData}}
+                    {{>borrow_card borrowInfo = .}}
+                    {{/eachBorrow}}
                 </div>
             </div>
 
@@ -129,15 +123,9 @@
                         </span>
                     </div>
                     <div class="lib-card-body">
-                        <div class="time-title">
-                        7:00
-                        </div>
-                        {{> borrow_card}}
-                        {{> borrow_card}}
-                        <div class="time-title">
-                        8:00
-                        </div>
-                        {{> borrow_card}}
+                        {{#eachReturn returnData}}
+                        {{>borrow_card borrowInfo = .}}
+                        {{/eachReturn}}
                     </div>
                 </div>
 
@@ -146,6 +134,11 @@
                         <span>
                             Sách trễ hẹn trả
                         </span>
+                    </div>
+                    <div class="lib-card-body">
+                        {{#eachReturn dueData}}
+                        {{>borrow_card borrowInfo = .}}
+                        {{/eachReturn}}
                     </div>
                 </div>
             </div>
