@@ -228,3 +228,12 @@ img {
 a {
     text-decoration: none !important;
 }
+
+.fa-star, .fa-star-half {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: orange;
+}
+
+.fa-star:not(.star-checked){
+    color: white;
+}
