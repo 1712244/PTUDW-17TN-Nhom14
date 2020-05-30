@@ -1,24 +1,27 @@
 <link rel="stylesheet" href="/stylesheets/borrow-card.css">
 <div class="borrow-card" data-borrow-id="{{borrowInfo.id}}">
-    <div class="borrow-card-header">
-        <div class="borrower-name">
-            {{borrowInfo.borrower.name}}
+    <a href="/librarian/borrower?id={{borrowInfo.borrower.id}}">
+        <div class="borrow-card-header">
+            <div class="borrower-name">
+                {{borrowInfo.borrower.name}}
+            </div>
+            <div class="borrower-id">
+                {{borrowInfo.borrower.id}}
+            </div>
         </div>
-        <div class="borrower-id">
-            {{borrowInfo.borrower.id}}
-        </div>
-    </div>
-
+    </a>
     <div class="book-container">
         {{#each borrowInfo.books}}
-        <div class="book-item">
-            <div class="book-id">
-                {{this.id}}
+        <a href="/librarian/book?id={{this.id}}">
+            <div class="book-item">
+                <div class="book-id">
+                    {{this.id}}
+                </div>
+                <div class="book-name">
+                    {{this.name}}
+                </div>
             </div>
-            <div class="book-name">
-                {{this.name}}
-            </div>
-        </div>
+        </a>
         {{/each}}
     </div>
 </div>

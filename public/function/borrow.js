@@ -42,7 +42,9 @@ picker = new flatpickr("#date-input")
 function gotoDate(d) {
     const nearest = nearestDate(d);
     sections[nearest].scrollIntoView(true);
-    picker.setDate(sections_date[nearest], false);
+    const date = sections_date[nearest];
+    picker.setDate(date, false);
+    document.getElementById("time-selector").innerText = getTime(date);
 }
 
 view.onscroll = function () {
@@ -57,6 +59,7 @@ view.onscroll = function () {
     }
     const date = sections_date[last];
     picker.setDate(date,  false);
+    console.log(getTime(date));
     document.getElementById("time-selector").innerText = getTime(date);
 };
 

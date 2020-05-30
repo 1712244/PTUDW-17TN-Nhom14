@@ -95,6 +95,11 @@ hbs.registerHelper("eachReturn", function (borrow, options) {
 });
 
 
-hbs.registerHelper("stringify", function(object, options) {
-  return new hbs.handlebars.SafeString(JSON.stringify(object));
+hbs.registerHelper("datetimeToString", function(object, options) {
+  return new hbs.handlebars.SafeString(object.toLocaleString());
+});
+
+
+hbs.registerHelper("dateToString", function(object, options) {
+  return new hbs.handlebars.SafeString(object.toLocaleDateString());
 });
