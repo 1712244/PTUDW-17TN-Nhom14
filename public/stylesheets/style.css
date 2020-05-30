@@ -228,3 +228,24 @@ img {
 a {
     text-decoration: none !important;
 }
+
+#drop-down-button {
+    background-color: white;
+    color: black;
+    box-shadow: none;
+}
+
+#loged-in-sv:hover,
+#loged-in-gv:hover,
+#drop-down-button:hover {
+    background-color: #408CFF;
+    color: white;
+}
+
+.hover-text-white:hover {
+    color: white;
+}
+
+.d-contents {
+    display: contents;
+}
