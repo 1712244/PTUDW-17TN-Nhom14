@@ -1,121 +1,139 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container-fluid bg-white first-section">
 
-    <div class="display-grid grid-8-2 padding-top-3em">
-        <div class="book-detail display-flex">
-            <img src="{{sectionBook.book_image}}" alt="" class="book-23-per padding-left-3em">
+    <div class="row padding-top-3em">
+        <div class="col-md-10 no-padding">
+            <div class="book-detail row" style="padding-left: 10px;">
+                <div class="col-md-3  text-md-left text-center">
+                    <img src="{{book_image}}" alt="">
 
-            <div style="padding: 15px 10px; width: 100%;">
-                <div class="book-name font-size-xx text-color-2980B9">
-                    Kỹ nghệ phần mềm
                 </div>
-                <div class="book-author text-color-grey">
-                    Tác giả: <span class="text-color-408CFF">TS.Lê Văn Phùng</span>
+                <div class="col-md-9">
+                    <div style="padding: 15px 0px 15px 10px; width: 100%;">
+                        <div class="book-name font-size-xx text-color-2980B9">
+                            {{book_title}}
+                        </div>
+                        <div class="book-author text-color-grey">
+                            Tác giả: <span class="text-color-408CFF">{{book_author}} </span>
+                        </div>
+                        <div class="book-star-review">
+                            {{#each average_rate}}
+                            {{#if_eq this 1}}
+                            <span class="fa fa-star star-checked"></span>
+                            {{else}}
+                            {{#if_eq this 0.5}}
+                            <span class="fa fa-star-half star-checked"></span>
+                            {{else}}
+                            <span class="fa fa-star"></span>
+                            {{/if_eq}}
+                            {{/if_eq}}
+                            {{/each}}
+                            <span class="padding-left-3em text-color-408CFF">{{book_rates}} đánh giá</span>
+                        </div>
+                        <div class="book-review padding-top-3em">
+                            {{book_para}}
+                        </div>
+                    </div>
                 </div>
-                <div class="book-star-review">
-                    <span class="fa fa-star star-checked"></span>
-                    <span class="fa fa-star star-checked"></span>
-                    <span class="fa fa-star star-checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="padding-left-3em text-color-408CFF">9999 đánh giá</span>
-                </div>
-                <div class="book-review padding-top-3em">
-                    {{sectionBook.book_para}}
+
+            </div>
+        </div>
+        <div class="col-md-2 no-padding">
+            <div class="feature-button text-center padding-top-3em">
+                <a href="/carts"><button class="borrow-button font-normal-bold">Mượn sách</button></a>
+
+                <div style="display:block;">
+                    <i class="fa fa-comments-o text-color-408CFF" aria-hidden="true"></i> <a href="#comment-box"
+                        style="padding-left: 5px; color: #408CFF;">đánh giá</a><br>
+                    <i class="fa fa-envelope-o text-color-408CFF" aria-hidden="true"></i> <a href="#"
+                        style="padding-left: 5px; color: #408CFF;">Liên hệ tác
+                        giả</a><br>
+                    <i class="fa fa-shopping-cart text-color-408CFF" aria-hidden="true"></i> <a href="/carts"
+                        style="padding-left: 5px; color: #408CFF;">Kiểm tra giỏ
+                        sách</a><br>
                 </div>
             </div>
         </div>
-        <div class="feature-button text-center padding-top-3em">
-            <a href="/carts"><button class="borrow-button font-normal-bold">Mượn sách</button></a>
-            
-            <div style="display:block;">
-                <i class="fa fa-comments-o text-color-408CFF" aria-hidden="true"></i> <a href="#"
-                    style="padding-left: 5px; color: #408CFF;">đánh giá</a><br>
-                <i class="fa fa-envelope-o text-color-408CFF" aria-hidden="true"></i> <a href="#"
-                    style="padding-left: 5px; color: #408CFF;">Liên hệ tác
-                    giả</a><br>
-                <i class="fa fa-shopping-cart text-color-408CFF" aria-hidden="true"></i> <a href="#"
-                    style="padding-left: 5px; color: #408CFF;">Kiểm tra giỏ
-                    sách</a><br>
-            </div>
-        </div>
+
     </div>
-    <div class="related-book padding-left-3em">Các Sách tương tự</div>
-    <div class="row justify-content-around padding-top-3em">
-        <div class="card" style="width: 200px; border:none;">
-            <img class="card-img-top" src="/images/book-thumbnail.png" alt="Card image cap">
-            <div class="card-body" style="padding:10px">
-                <p class="card-text" style="margin: 0;">
-                    Kỹ nghệ phần mềm
-                </p>
-                <p class="card-text">
-                    TS. Lê Văn Phùng
-                </p>
+    <div class="related-book padding-left-3em" style="font-weight: bold;">Các Sách tương tự</div>
+    <div id="carousel_booklist_hot" class="carousel slide padding-top-3em" data-ride="carousel">
+        <div class="carousel-inner">
+            {{#each related_booklist}}
+            <div class="carousel-item {{#if @first}} active {{/if}} ">
+                <a href="/book-detail" style="color: inherit;">
+                    <div class="row justify-content-around">
+                        {{#each this}}
+                        <div class="card col-md-2 col" style=" border:none;">
+                            <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                            <div class="card-body" style="padding:10px">
+                                <p class="card-text" style="margin: 0;">
+                                    {{this.name}}
+                                </p>
+                                <p class="card-text" style="margin: 0;">
+                                    {{this.author}}
+                                </p>
+
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </a>
             </div>
+            {{/each}}
         </div>
-        <div class="card" style="width: 200px; border:none;">
-            <img class="card-img-top" src="/images/book-thumbnail.png" alt="Card image cap">
-            <div class="card-body" style="padding:10px">
-                <p class="card-text" style="margin: 0;">
-                    Kỹ nghệ phần mềm
-                </p>
-                <p class="card-text">
-                    TS. Lê Văn Phùng
-                </p>
-            </div>
-        </div>
-        <div class="card" style="width: 200px; border:none;">
-            <img class="card-img-top" src="/images/book-thumbnail.png" alt="Card image cap">
-            <div class="card-body" style="padding:10px">
-                <p class="card-text" style="margin: 0;">
-                    Kỹ nghệ phần mềm
-                </p>
-                <p class="card-text">
-                    TS. Lê Văn Phùng
-                </p>
-            </div>
-        </div>
-        <div class="card" style="width: 200px; border:none;">
-            <img class="card-img-top" src="/images/book-thumbnail.png" alt="Card image cap">
-            <div class="card-body" style="padding:10px">
-                <p class="card-text" style="margin: 0;">
-                    Kỹ nghệ phần mềm
-                </p>
-                <p class="card-text">
-                    TS. Lê Văn Phùng
-                </p>
-            </div>
-        </div>
+        <a class="carousel-control-prev" href="#carousel_booklist_hot" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel_booklist_hot" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
     <div class="comment-area padding-top-3em padding-left-3em">
         <img src="/images/news-thumbnail.png" alt="" class="avatar">
         <span>1712260</span>
+        {{!TODO: cho phép click}}
         <div class="">
-            <span class="fa fa-star star-checked"></span>
-            <span class="fa fa-star star-checked"></span>
-            <span class="fa fa-star star-checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
             <span class="fa fa-star"></span>
             <span class="fa fa-star"></span>
         </div>
         <div>
-            <textarea name="" id="comment-box"rows="10" placeholder="Đánh giá sách..."></textarea>
+            <textarea name="" id="comment-box" rows="10" placeholder="Đánh giá sách..."></textarea>
+        </div>
+        <div class="text-center text-md-right" style="padding-right: 50px;">
+            <button class="customized-btn blue-bg-white-text" style="border:none; background-color: #3498db;">Xác
+                nhận</button>
         </div>
     </div>
-    <div class="related-book" style = "padding-left: 2em;">Các đánh giá</div>
+    <div class="related-book" style="padding-left: 2em; font-weight:bold;">Các đánh giá</div>
     <div class="comment-area padding-top-3em padding-left-3em">
-        <img src="/images/news-thumbnail.png" alt="" class="avatar">
-        <span>1712260</span>
+        {{#each user_comments}}
+        <img src={{this.avatar}} alt="" class="avatar">
+        <span>{{this.username}} </span>
         <div class="">
+            {{#each this.user_rate}}
+            {{#if_eq this 1}}
             <span class="fa fa-star star-checked"></span>
-            <span class="fa fa-star star-checked"></span>
-            <span class="fa fa-star star-checked"></span>
+            {{else}}
+            {{#if_eq this 0.5}}
+            <span class="fa fa-star-half star-checked"></span>
+            {{else}}
             <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
+            {{/if_eq}}
+            {{/if_eq}}
+            {{/each}}
         </div>
         <div style="padding-bottom: 3em;">
             <div class="book-review">
-                    {{sectionBook.book_para}}
-                </div>
+                {{this.content}}
+            </div>
         </div>
+        {{/each}}
+
     </div>
 </div>

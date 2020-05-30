@@ -249,3 +249,13 @@ a {
 .d-contents {
     display: contents;
 }
+
+.fa-star,
+.fa-star-half {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: orange;
+}
+
+.fa-star:not(.star-checked) {
+    color: white;
+}
