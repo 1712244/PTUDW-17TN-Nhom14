@@ -47,7 +47,7 @@ const sectionSach =
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('storage', { title: 'Kho sách', sectionSachHot, sectionSach });
+  res.render('storage', {layout:"layout", title: 'Kho sách', sectionSachHot, sectionSach });
 });
 
 

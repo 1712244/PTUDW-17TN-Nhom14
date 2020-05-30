@@ -63,7 +63,7 @@ sectionBook.user_comments.forEach(comment => {
 
 router.get('/', function (req, res, next) {
 
-    res.render('book-detail', sectionBook);
+    res.render('book-detail', {layout:"layout", sectionBook });
 });
 
 module.exports = router;

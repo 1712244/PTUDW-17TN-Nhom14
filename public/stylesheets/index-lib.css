@@ -1,0 +1,101 @@
+.block-header {
+    text-align: center;
+    font-size: x-large;
+    color: #424242;
+    position: sticky;
+    margin: 10px;
+    top: 10px;
+    z-index: 1000;
+}
+
+#report-period {
+    color: #1E3896;
+}
+
+.block-subheader {
+    text-align: center;
+    font-size: small;
+    color:#656565;
+}
+
+.block {
+    margin: 10px 0px;
+}
+
+.lib-card {
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5);
+    margin:5px;
+}
+
+.stat-card{
+    height:300px;
+}
+
+#stat-summary {
+    background-color: #3498DB;
+    padding: 10px 10px 40px 10px;
+    color: white;
+
+}
+
+.summary-row {
+    height:50%;
+}
+
+
+#student-count, #teacher-count {
+    font-size: x-large;
+}
+
+#book-count, #visit-count {
+    font-size: xxx-large;
+}
+
+#borrow-count, #return-count {
+    font-size: xx-large;
+}
+
+.lib-card-header {
+    text-align: center;
+    color:white;
+    background-color: #3498DB;
+    padding: 5px 0px;
+}
+
+.lib-card-body {
+    height: 100%;
+    overflow: visible;
+}
+
+.agenda-card{
+    height:550px;
+}
+
+.agenda-card .lib-card-body {
+    overflow-y: auto;
+}
+
+#borrow-group {
+    display:flex;
+    flex-wrap: wrap;
+    width: 450px;
+}
+
+.half-card {
+    height:270px;
+}
+
+
+@media  only screen and (min-width: 1641px) {
+    .half-card {
+        height: 500px;
+    }
+
+    #borrow-group {
+        width: 920px;
+    }
+}

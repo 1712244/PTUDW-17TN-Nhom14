@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="/stylesheets/borrow.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<div id="borrow-filter">
+    <div id="date-selector">
+        <label for="date-input">Ngày</label>
+        <div id="date-group" class="input-group input-group-sm">
+            <div class="input-group-prepend">
+                <button class="btn btn-secondary" type="button"><i class="fa fa-calendar"></i></button>
+            </div>
+            <input type="text" class="form-control" id="date-input">
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="time-selector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        </button>
+        <div id="time-list" class="dropdown-menu" aria-labelledby="time-selector">
+        </div>
+    </div>
+
+    <button class="btn btn-sm btn-outline-primary" type="button" id="btn-now">
+        Hiện tại
+    </button>
+
+    
+    <button class="btn btn-sm btn-outline-secondary" type="button" id="btn-show-borrowed">
+        Hiện sách đã mượn
+    </button>
+</div>
+<hr>
+<div id = "borrow-view">
+    {{#eachBorrow borrowData}}
+    {{> borrow_card borrowInfo=.}}
+    {{/eachBorrow}}
+</div>
+    
+</div>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="/function/borrow.js"></script>
+<script src="/function/borrow-card.js"></script>

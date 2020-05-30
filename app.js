@@ -4,14 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('hbs');
+require('./routes/lib-helper.js');
 
 // set router zone
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var searchRouter = require('./routes/search');
-
-
 
 var signUpRouter = require('./routes/sign-up');
 
@@ -30,6 +29,11 @@ var cartDetailRouter = require('./routes/cart-detail');
 var buyBookRouter = require('./routes/buy-book')
 var returnBookListRouter = require('./routes/return-book-list');
 var rentBookListRouter = require('./routes/rent-book-list');
+var indexLibRouter = require('./routes/index-lib');
+var borrowRouter = require('./routes/borrow');
+var borrowerRouter = require('./routes/borrower-profile');
+
+
 
 var buybookManager = require('./routes/buy-book-manager')
 
@@ -40,7 +44,12 @@ var liveReloadServer = livereload.createServer();
 liveReloadServer.watch(path.join(__dirname, 'public'));
 var connectLivereload = require("connect-livereload");
 
+var hbs = require('hbs');
 var app = express();
+app.set('view options', { layout: false });
+
+hbs.registerPartials(path.join(__dirname, 'views/partials'));
+
 
 app.use(connectLivereload());
 liveReloadServer.server.once("connection", () => {
@@ -67,8 +76,10 @@ app.use('/categories', categoriesRouter);
 app.use('/storage', storageRouter);
 app.use('/search', searchRouter);
 app.use('/sign-up', signUpRouter);
-
 app.use('/about', aboutRouter);
+app.use('/librarian', indexLibRouter);
+app.use('/librarian/borrow', borrowRouter);
+app.use('/librarian/borrower', borrowerRouter);
 
 // set path news
 app.use('/news', newsRouter);

@@ -9,7 +9,7 @@ const list_most_famous_categories = [
 ];
 
 router.get('/', function (req, res, next) {
-  res.render('categories', { title:"Các thể loại của sách", list_categories:list_most_famous_categories  });
+  res.render('categories', {layout:"layout", title:"Các thể loại của sách", list_categories:list_most_famous_categories  });
 });
 
 

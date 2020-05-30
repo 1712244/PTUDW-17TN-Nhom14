@@ -22,7 +22,7 @@ const history_books = [
 ];
 
 router.get('/', function (req, res, next) {
-    res.render('rent-book-list', { rent_book_list: rent_book_list, history_books:history_books });
+    res.render('rent-book-list', {layout: "layout", rent_book_list: rent_book_list, history_books:history_books });
 });
 
 

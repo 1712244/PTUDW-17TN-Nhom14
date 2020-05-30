@@ -40,7 +40,7 @@ const sectionThongBao = {
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('news', { title: 'Trang Tin Tức', sectionSuKien,sectionThongBao  });
+  res.render('news', {layout:"layout", title: 'Trang Tin Tức', sectionSuKien,sectionThongBao  });
 });
 
 

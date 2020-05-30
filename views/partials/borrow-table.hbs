@@ -1,0 +1,32 @@
+{{#each borrow.books}}
+<h1>{{borrow.id}}</h1>
+
+<tr>
+    {{#unless @index}}
+    <th scope="row" rowspan="{{../borrow.books.length}}">{{../borrow.id}}</th>
+    {{/unless}}
+    <a href = "/librarian/book?id={{this.id}}">
+        <td>{{this.id}}</td>
+        <td>{{this.name}}</td>
+        <td>{{this.author}}</td>    
+    </a>
+    
+    <td></td>
+    {{#unless @index}}
+    <td rowspan="{{../borrow.books.length}}">{{datetimeToString ../borrow.bookedBorrowDate}}</td>
+    <td rowspan="{{../borrow.books.length}}">{{dateToString ../borrow.returnDate}}</td>
+    <td rowspan="{{../borrow.books.length}}">
+
+        <button class="btn btn-primary" type="button" id="btn-confirm-borrow">
+            <i class="fa fa-check"></i>
+        </button>
+        <button class="btn btn-secondary" type="button" id="btn-edit-borrow">
+            <i class="fa fa-edit"></i>
+        </button>
+        <button class="btn btn-danger" type="button" id="btn-delete-borrow">
+            <i class="fa fa-trash"></i>
+        </button>
+    </td>
+    {{/unless}}
+</tr>
+{{/each}}

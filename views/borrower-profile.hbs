@@ -1,0 +1,68 @@
+<div id="borrower-profile-header">
+    <img id="borrower-profile-picture" width="80px" src="/images/blank-profile-picture.png" alt="Ảnh đại diện">
+    <div>
+        <span id="borrower-id">
+            {{borrower.id}}
+        </span>
+        <br>
+        <span id="borrower-name">
+            {{borrower.name}}
+        </span>
+    </div>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="borrower-action" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-edit"></i>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="borrower-action">
+            <button class="dropdown-item" type="button">Tạm khóa tài khoản</button>
+            <button class="dropdown-item" type="button">Xóa tài khoản</button>
+        </div>
+    </div>
+</div>
+
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="borrowing-tab" data-toggle="pill" href="#borrowing" role="tab"
+            aria-controls="borrowing" aria-selected="true">Mượn sách</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="returning-tab" data-toggle="pill" href="#returning" role="tab" aria-controls="returning"
+            aria-selected="false">Trả sách</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="info-tab" data-toggle="pill" href="#info" role="tab" aria-controls="info"
+            aria-selected="false">Thông tin thêm</a>
+    </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="borrowing" role="tabpanel" aria-labelledby="borrowing-tab">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Mã mượn</th>
+                    <th scope="col">Mã sách</th>
+                    <th scope="col">Tên sách</th>
+                    <th scope="col">Tác giả</th>
+                    <th scope="col">Ghi chú</th>
+                    <th scope="col">Thời gian nhận</th>
+                    <th scope="col">Thời gian trả</th>
+                    <th scope="col">Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each borrower.borrowData}}
+                {{> borrow_table borrow=.}}
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="returning" role="tabpanel" aria-labelledby="returning-tab">
+
+    </div>
+    <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
+
+    </div>
+</div>
+
+<link rel="stylesheet" href="/stylesheets/borrower-profile.css">
