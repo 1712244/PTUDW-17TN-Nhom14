@@ -15,7 +15,7 @@ var news_result = [
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-    res.render('search',{book_result:book_result,news_result:news_result});
+    res.render('search',{layout: "layout", book_result:book_result,news_result:news_result});
 });
 
 module.exports = router;

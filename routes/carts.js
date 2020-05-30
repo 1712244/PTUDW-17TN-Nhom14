@@ -12,7 +12,7 @@ const carts = [
 
 
 router.get('/', function (req, res, next) {
-    res.render('carts', { carts: carts });
+    res.render('carts', {layout: "layout", carts: carts });
 });
 
 

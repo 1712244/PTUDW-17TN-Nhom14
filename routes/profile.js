@@ -12,7 +12,7 @@ const profile = {
 
 
 router.get('/', function (req, res, next) {
-  res.render('profile', { profile:profile  });
+  res.render('profile', {layout: "layout", profile:profile  });
 });
 
 
