@@ -41,41 +41,10 @@
             <li class="nav-item nav-item-padding">
               <a class="nav-link text-dark" href="/about">Giới thiệu</a>
             </li>
-            <li class="nav-item nav-item-padding" style="display: none;">
+
+            {{!login area}}
+            <li class="nav-item nav-item-padding" id="login-checking-area">
               <a class="nav-link text-dark" href="/login">Đăng nhập</a>
-            </li>
-            <li class="nav-item nav-item-padding btn-group d-contents" id="loged-in-sv">
-              <button type="button" class="text-left btn btn-action dropdown-toggle hover-text-white" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false" id="drop-down-button">
-                Sinh viên
-              </button>
-              <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="/profile">Thông tin cá nhân</a>
-                <a class="dropdown-item" href="#">Đổi mật khẩu</a>
-                <a class="dropdown-item" href="/return-book-list">Lịch sử mượn sách</a>
-                <a class="dropdown-item" href="/rent-book-list">Sách đang mượn</a>
-                <a class="dropdown-item" href="/cart-detail">Giỏ sách</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/login">Đăng xuất</a>
-              </div>
-            </li>
-            <li class="nav-item nav-item-padding btn-group d-contents" id="loged-in-gv"  style="display: none;">
-              <button type="button" class= "text-left btn btn-action dropdown-toggle hover-text-white" style="padding-left: 0" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false" id="drop-down-button">
-                Giáo viên
-              </button>
-              <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="/profile">Thông tin cá nhân</a>
-                <a class="dropdown-item" href="#">Đổi mật khẩu</a>
-                <a class="dropdown-item" href="#">Sách đang đặt</a>
-                <a class="dropdown-item" href="/buy-book">Đăng ký mua sách</a>
-                <a class="dropdown-item" href="/return-book-list">Lịch sử mượn sách</a>
-                <a class="dropdown-item" href="/rent-book-list">Sách đang mượn</a>
-                <a class="dropdown-item" href="/cart-detail">Giỏ sách</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/login">Đăng xuất</a>
-              </div>
-            </li>
             </li>
           </ul>
         </div>
@@ -116,6 +85,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"></script>
+  <script src="/function/login-checking-type-and-loading.js"></script>
 </body>
 
 </html>
