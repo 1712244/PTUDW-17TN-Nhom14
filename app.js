@@ -102,11 +102,20 @@ app.use(function(err, req, res, next) {
 });
 
 // Helper zone
+
+// Handy checking if equal handlebars helper
+// Usage:
+//       {{#if_eq a b}}
+//          ....
+//       {{else (optional)}}
+//          ....
+//       {{/if_eq}} 
 hbs.registerHelper('if_eq', function(a, b, opts) {
-    if (a == b) // Or === depending on your needs
+    if (a == b) 
         return opts.fn(this);
     else
         return opts.inverse(this);
 });
+
 
 module.exports = app;
