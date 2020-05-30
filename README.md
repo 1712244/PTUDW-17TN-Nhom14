@@ -12,4 +12,4 @@ Nhóm sử dụng expressjs để sinh project ban đầu. Sau đó ứng dụng
 
 Để phát triển đồ án, hãy đọc qua CONTRIBUTING.md để nắm rõ thông tin. 
 
-test pull
+test pull 2
