@@ -41,7 +41,9 @@
             <li class="nav-item nav-item-padding">
               <a class="nav-link text-dark" href="/about">Giới thiệu</a>
             </li>
-            <li class="nav-item nav-item-padding" style="display: none;">
+
+            {{!login area}}            
+            <li class="nav-item nav-item-padding" id="login-checking-area">
               <a class="nav-link text-dark" href="/login">Đăng nhập</a>
             </li>
             <li class="nav-item nav-item-padding btn-group d-contents" id="loged-in-sv">
@@ -116,6 +118,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"></script>
+    <script src="/function/login-checking.js"></script>
 </body>
 
 </html>

@@ -1,3 +1,4 @@
+
 //Chuyển định dạng ô của trang hiện tại
 function ChangeClassNavItem(innerText) {
     var aTags = document.getElementById("navbarNav").getElementsByClassName("nav-item");
@@ -20,7 +21,6 @@ function ChangeClassNavItem(innerText) {
     found.classList.add("active-nav");
     return 1;
 }
-
 
 var current_page = document.currentScript.getAttribute("current_page");
 ChangeClassNavItem(current_page)
