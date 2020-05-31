@@ -32,6 +32,7 @@ var rentBookListRouter = require('./routes/rent-book-list');
 var indexLibRouter = require('./routes/index-lib');
 var borrowRouter = require('./routes/borrow');
 var borrowerRouter = require('./routes/borrower-profile');
+var librarianLoginRouter = require('./routes/librarian-login');
 
 
 
@@ -80,6 +81,7 @@ app.use('/about', aboutRouter);
 app.use('/librarian', indexLibRouter);
 app.use('/librarian/borrow', borrowRouter);
 app.use('/librarian/borrower', borrowerRouter);
+app.use('/librarian/librarian-login', librarianLoginRouter);
 
 // set path news
 app.use('/news', newsRouter);
@@ -94,7 +96,7 @@ app.use('/cart-detail', cartDetailRouter);
 app.use('/buy-book', buyBookRouter)
 app.use('/return-book-list', returnBookListRouter);
 app.use('/rent-book-list', rentBookListRouter);
-app.use('/buy-book-manager', buybookManager)
+app.use('/buy-book-manager', buybookManager);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
