@@ -5,7 +5,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1999; /* Stay on top */
+    z-index: 999; /* Stay on top */
     overflow-x: hidden; /* Disable horizontal scroll */
     padding: 0px;
 
@@ -22,7 +22,7 @@
 #top-bar {
     height: 60px; /* Full-height: remove this if you want "auto" height */
     width: calc(100% - 210px); /* Set the width of the sidebar */
-    z-index: 999; /* Stay on top */
+    z-index: 990; /* Stay on top */
     top:0px;
     left:210px;
     margin: 0px;

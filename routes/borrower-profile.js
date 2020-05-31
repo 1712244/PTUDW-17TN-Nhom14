@@ -11,11 +11,12 @@ const borrower = {
     "1612868": {
         id: "1612868",
         name: "Vuong Hy XX",
+        borrowData: [],
     }
 }
 
 router.get('/', function (req, res, next) {
-    res.render('borrower-profile', {layout:"layout-lib", search: false, export: true, borrower: borrower[req.query.id]});
+    res.render('borrower-profile', {layout:"layout-lib", search: false, export: true, borrower: borrower[req.query.id], activeID: req.query.activeID});
 });
 
 module.exports = router;

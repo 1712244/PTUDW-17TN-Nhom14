@@ -1,21 +1,20 @@
 {{#each borrow.books}}
-<h1>{{borrow.id}}</h1>
-
-<tr>
-    {{#unless @index}}
+<tr {{#if @first}}id="borrow-{{../borrow.id}}"{{/if}} {{#if_eq ../borrow.id ../activeID}}class="table-primary"{{/if_eq}}>
+    {{#if @first}}
     <th scope="row" rowspan="{{../borrow.books.length}}">{{../borrow.id}}</th>
-    {{/unless}}
-    <a href = "/librarian/book?id={{this.id}}">
-        <td>{{this.id}}</td>
-        <td>{{this.name}}</td>
-        <td>{{this.author}}</td>    
-    </a>
-    
+    {{/if}}
+    <td>{{this.id}}</td>
+    <td>
+        <a href="/librarian/book?id={{this.id}}">
+            {{this.name}}
+        </a>
+    </td>
+    <td>{{this.author}}</td>    
     <td></td>
-    {{#unless @index}}
-    <td rowspan="{{../borrow.books.length}}">{{datetimeToString ../borrow.bookedBorrowDate}}</td>
-    <td rowspan="{{../borrow.books.length}}">{{dateToString ../borrow.returnDate}}</td>
-    <td rowspan="{{../borrow.books.length}}">
+    {{#if @first}}
+    <td class="tab-cell-center" rowspan="{{../borrow.books.length}}">{{datetimeToString ../borrow.bookedBorrowDate}}</td>
+    <td class="tab-cell-center" rowspan="{{../borrow.books.length}}">{{dateToString ../borrow.returnDueDate}}</td>
+    <td class="tab-cell-center" rowspan="{{../borrow.books.length}}">
 
         <button class="btn btn-primary" type="button" id="btn-confirm-borrow">
             <i class="fa fa-check"></i>
@@ -27,6 +26,6 @@
             <i class="fa fa-trash"></i>
         </button>
     </td>
-    {{/unless}}
+    {{/if}}
 </tr>
 {{/each}}

@@ -20,8 +20,7 @@
         </div>
     </div>
 </div>
-
-<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+<ul class="nav nav-pills mb-1" id="pills-tab" role="tablist">
     <li class="nav-item">
         <a class="nav-link active" id="borrowing-tab" data-toggle="pill" href="#borrowing" role="tab"
             aria-controls="borrowing" aria-selected="true">Mượn sách</a>
@@ -46,23 +45,116 @@
                     <th scope="col">Tác giả</th>
                     <th scope="col">Ghi chú</th>
                     <th scope="col">Thời gian nhận</th>
-                    <th scope="col">Thời gian trả</th>
+                    <th scope="col">Hạn trả</th>
                     <th scope="col">Hành động</th>
                 </tr>
             </thead>
             <tbody>
+                
                 {{#each borrower.borrowData}}
-                {{> borrow_table borrow=.}}
+                {{> borrow_table borrow=. activeID=../activeID}}
                 {{/each}}
             </tbody>
         </table>
     </div>
     <div class="tab-pane fade" id="returning" role="tabpanel" aria-labelledby="returning-tab">
+        <div id="return-function">
+            <div>
+                <button class="btn btn-primary">
+                    <i class="fa fa-qrcode"></i>
+                    <span>
+                        Quét mã sách trả
+                    </span>
+                </button>
+            </div>
+            <div id="borrow-fine">
+                <!-- Button trigger modal -->
+                <button id="btn-fine-detail" type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#fine-detail-modal">
+                    <span>Tiền phạt chưa trả:</span>
+                    <span>15.000đ</span>
+                </button>
 
+                <!-- Modal -->
+                <div class="modal fade" id="fine-detail-modal" tabindex="-1" role="dialog" aria-labelledby="fine-detail-modal-label" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="fine-detail-modal-label">Chi tiết tiền phạt</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                        <thead>
+                            <th>
+                                Tên sách
+                            </th>
+                            <th>
+                                Lý do
+                            </th>
+                            <th>
+                                Số tiền
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Trí tuệ nhân tạo
+                                </td>
+                                <td>
+                                    Trễ 7 ngày
+                                </td>
+                                <td>
+                                    10.000đ
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Lập trình c++
+                                </td>
+                                <td>
+                                    Mất
+                                </td>
+                                <td>
+                                    5.000đ
+                                </td>
+                            </tr>
+                        </tbody>    
+                    </table>
+                    </div>
+                    <div class="modal-footer">
+                        <span>
+                            Tổng 15.000đ
+                        </span>
+                        <button type="button" class="btn btn-primary">Thanh toán</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Mã mượn</th>
+                    <th scope="col">Mã sách</th>
+                    <th scope="col">Tên sách</th>
+                    <th scope="col">Tác giả</th>
+                    <th scope="col">Mất sách?</th>
+                    <th scope="col">Hạn trả</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each borrower.borrowData}}
+                {{> return_table borrow=. activeID=../activeID}}
+                {{/each}}
+            </tbody>
+        </table>
     </div>
     <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
 
     </div>
 </div>
-
 <link rel="stylesheet" href="/stylesheets/borrower-profile.css">

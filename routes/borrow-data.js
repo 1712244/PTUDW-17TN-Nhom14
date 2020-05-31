@@ -9,11 +9,13 @@ function randomBorrow(d) {
     return {
         id: Math.trunc(Math.random() * 1000).toString(),
         bookedBorrowDate: new Date(d),
-        returnDate: (new Date(d)).addDays(30),
+        returnDueDate: (new Date(d)).addDays(30),
         borrower: {
             id: "1612864",
             name: "Vuong Hy",
         },
+
+        returnDate: [(new Date(d)).addDays(25), null, null],
         books: [
             {
                 id: "MAS-QWX",

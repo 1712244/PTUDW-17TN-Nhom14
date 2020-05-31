@@ -59,7 +59,6 @@ view.onscroll = function () {
     }
     const date = sections_date[last];
     picker.setDate(date,  false);
-    console.log(getTime(date));
     document.getElementById("time-selector").innerText = getTime(date);
 };
 

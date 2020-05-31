@@ -103,3 +103,14 @@ hbs.registerHelper("datetimeToString", function(object, options) {
 hbs.registerHelper("dateToString", function(object, options) {
   return new hbs.handlebars.SafeString(object.toLocaleDateString());
 });
+
+hbs.registerHelper('unreturned', function (borrow, options) {
+  var unretBooks = [];
+  borrow.books.forEach((book, i) => {
+    if (!borrow.returnDate[i]) {
+      unretBooks.push(book);
+    }
+  });
+  borrow.unreturnedBooks = unretBooks;
+  return borrow.unreturnedBooks;
+})
