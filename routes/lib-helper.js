@@ -96,21 +96,46 @@ hbs.registerHelper("eachReturn", function (borrow, options) {
 
 
 hbs.registerHelper("datetimeToString", function(object, options) {
-  return new hbs.handlebars.SafeString(object.toLocaleString());
+  if (!object) {
+    return new  hbs.handlebars.SafeString("N/A");
+  } else {
+    return new hbs.handlebars.SafeString(object.toLocaleString());
+  }
 });
 
 
 hbs.registerHelper("dateToString", function(object, options) {
-  return new hbs.handlebars.SafeString(object.toLocaleDateString());
+  if (!object) {
+    return new  hbs.handlebars.SafeString("N/A");
+  } else {
+    return new hbs.handlebars.SafeString(object.toLocaleDateString());
+  }
 });
 
 hbs.registerHelper('unreturned', function (borrow, options) {
   var unretBooks = [];
-  borrow.books.forEach((book, i) => {
-    if (!borrow.returnDate[i]) {
+  borrow.books.forEach((book) => {
+    if (!book.returnDate) {
       unretBooks.push(book);
     }
   });
   borrow.unreturnedBooks = unretBooks;
   return borrow.unreturnedBooks;
-})
+});
+
+
+// Helper zone
+
+// Handy checking if equal handlebars helper
+// Usage:
+//       {{#if_eq a b}}
+//          ....
+//       {{else (optional)}}
+//          ....
+//       {{/if_eq}} 
+hbs.registerHelper('if_eq', function(a, b, opts) {
+  if (a == b) 
+      return opts.fn(this);
+  else
+      return opts.inverse(this);
+});

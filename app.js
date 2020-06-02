@@ -37,6 +37,10 @@ var librarianPostAnnouncer = require('./routes/post-announcer');
 var libconfirmIDRouter = require('./routes/lib-confirmID');
 var libProfileRouter = require('./routes/lib-profile');
 var libLawRouter = require('./routes/lib-law');
+var bookInfoLibRouter = require('./routes/book-info-lib');
+
+
+
 var buybookManager = require('./routes/buy-book-manager')
 var changePassword = require('./routes/change-password')
 var accManager = require('./routes/account-manager')
@@ -94,6 +98,7 @@ app.use('/librarian/lib-law', libLawRouter);
 app.use('/librarian/account-manager', accManager);
 app.use('/librarian/booking-manager', bookingManager);
 
+app.use('/librarian/book', bookInfoLibRouter);
 
 // set path news
 app.use('/news', newsRouter);
@@ -126,22 +131,5 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
-
-// Helper zone
-
-// Handy checking if equal handlebars helper
-// Usage:
-//       {{#if_eq a b}}
-//          ....
-//       {{else (optional)}}
-//          ....
-//       {{/if_eq}} 
-hbs.registerHelper('if_eq', function(a, b, opts) {
-    if (a == b)
-        return opts.fn(this);
-    else
-        return opts.inverse(this);
-});
-
 
 module.exports = app;
