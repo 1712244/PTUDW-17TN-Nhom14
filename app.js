@@ -33,6 +33,7 @@ var indexLibRouter = require('./routes/index-lib');
 var borrowRouter = require('./routes/borrow');
 var borrowerRouter = require('./routes/borrower-profile');
 var librarianLoginRouter = require('./routes/librarian-login');
+var bookInfoLibRouter = require('./routes/book-info-lib');
 
 
 
@@ -82,6 +83,7 @@ app.use('/librarian', indexLibRouter);
 app.use('/librarian/borrow', borrowRouter);
 app.use('/librarian/borrower', borrowerRouter);
 app.use('/librarian/librarian-login', librarianLoginRouter);
+app.use('/librarian/book', bookInfoLibRouter);
 
 // set path news
 app.use('/news', newsRouter);
@@ -113,22 +115,5 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
-
-// Helper zone
-
-// Handy checking if equal handlebars helper
-// Usage:
-//       {{#if_eq a b}}
-//          ....
-//       {{else (optional)}}
-//          ....
-//       {{/if_eq}} 
-hbs.registerHelper('if_eq', function(a, b, opts) {
-    if (a == b) 
-        return opts.fn(this);
-    else
-        return opts.inverse(this);
-});
-
 
 module.exports = app;

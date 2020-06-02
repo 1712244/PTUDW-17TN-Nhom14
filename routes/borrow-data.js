@@ -15,22 +15,27 @@ function randomBorrow(d) {
             name: "Vuong Hy",
         },
 
-        returnDate: [(new Date(d)).addDays(25), null, null],
         books: [
             {
                 id: "MAS-QWX",
                 name: "Lập trình hướng đối tượng",
                 author: "Noone",
+                returnDate: (new Date(d)).addDays(25),
+                lost: false,
             },
             {
                 id: "DWI-MCX",
                 name: "Trí tuệ nhân tạo",
                 author: "Noone II",
+                returnDate: null,
+                lost: false,
             },
             {
                 id: "DWI-MCX",
                 name: "Không biết là sách gì luôn",
                 author: "Noone III",
+                returnDate: null,
+                lost: false,
             }
         ]
     }
