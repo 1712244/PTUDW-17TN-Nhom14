@@ -5,19 +5,19 @@
         <div class="col-md-10 no-padding">
             <div class="book-detail row" style="padding-left: 10px;">
                 <div class="col-md-3  text-md-left text-center">
-                    <img src="{{book_image}}" alt="">
+                    <img src="{{sectionBook.book_image}}" alt="">
 
                 </div>
                 <div class="col-md-9">
                     <div style="padding: 15px 0px 15px 10px; width: 100%;">
                         <div class="book-name font-size-xx text-color-2980B9">
-                            {{book_title}}
+                            {{sectionBook.book_title}}
                         </div>
                         <div class="book-author text-color-grey">
-                            Tác giả: <span class="text-color-408CFF">{{book_author}} </span>
+                            Tác giả: <span class="text-color-408CFF">{{sectionBook.book_author}} </span>
                         </div>
                         <div class="book-star-review">
-                            {{#each average_rate}}
+                            {{#each sectionBook.average_rate}}
                             {{#if_eq this 1}}
                             <span class="fa fa-star star-checked"></span>
                             {{else}}
@@ -28,10 +28,10 @@
                             {{/if_eq}}
                             {{/if_eq}}
                             {{/each}}
-                            <span class="padding-left-3em text-color-408CFF">{{book_rates}} đánh giá</span>
+                            <span class="padding-left-3em text-color-408CFF">{{sectionBook.book_rates}} đánh giá</span>
                         </div>
                         <div class="book-review padding-top-3em">
-                            {{book_para}}
+                            {{sectionBook.book_para}}
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
     <div class="related-book padding-left-3em" style="font-weight: bold;">Các Sách tương tự</div>
     <div id="carousel_booklist_hot" class="carousel slide padding-top-3em" data-ride="carousel">
         <div class="carousel-inner">
-            {{#each related_booklist}}
+            {{#each sectionBook.related_booklist}}
             <div class="carousel-item {{#if @first}} active {{/if}} ">
                 <a href="/book-detail" style="color: inherit;">
                     <div class="row justify-content-around">
@@ -112,7 +112,7 @@
     </div>
     <div class="related-book" style="padding-left: 2em; font-weight:bold;">Các đánh giá</div>
     <div class="comment-area padding-top-3em padding-left-3em">
-        {{#each user_comments}}
+        {{#each sectionBook.user_comments}}
         <img src={{this.avatar}} alt="" class="avatar">
         <span>{{this.username}} </span>
         <div class="">

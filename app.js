@@ -33,7 +33,7 @@ var indexLibRouter = require('./routes/index-lib');
 var borrowRouter = require('./routes/borrow');
 var borrowerRouter = require('./routes/borrower-profile');
 var librarianLoginRouter = require('./routes/librarian-login');
-
+var librarianPostAnnouncer = require('./routes/post-announcer');
 
 
 var buybookManager = require('./routes/buy-book-manager')
@@ -82,6 +82,7 @@ app.use('/librarian', indexLibRouter);
 app.use('/librarian/borrow', borrowRouter);
 app.use('/librarian/borrower', borrowerRouter);
 app.use('/librarian/librarian-login', librarianLoginRouter);
+app.use('/librarian/post-announcer', librarianPostAnnouncer)
 
 // set path news
 app.use('/news', newsRouter);
@@ -124,7 +125,7 @@ app.use(function(err, req, res, next) {
 //          ....
 //       {{/if_eq}} 
 hbs.registerHelper('if_eq', function(a, b, opts) {
-    if (a == b) 
+    if (a == b)
         return opts.fn(this);
     else
         return opts.inverse(this);
