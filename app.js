@@ -37,8 +37,8 @@ var librarianPostAnnouncer = require('./routes/post-announcer');
 
 
 var buybookManager = require('./routes/buy-book-manager')
-
-// Setup livereload
+var changePassword = require('./routes/change-password')
+    // Setup livereload
 const livereload = require("livereload");
 
 var liveReloadServer = livereload.createServer();
@@ -98,6 +98,8 @@ app.use('/buy-book', buyBookRouter)
 app.use('/return-book-list', returnBookListRouter);
 app.use('/rent-book-list', rentBookListRouter);
 app.use('/buy-book-manager', buybookManager);
+app.use('/change-password', changePassword)
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
