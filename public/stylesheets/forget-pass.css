@@ -22,7 +22,8 @@
     padding-top: 15%;
 }
 
-.username {
+.username,
+.password {
     padding-top: 4%;
 }
 
