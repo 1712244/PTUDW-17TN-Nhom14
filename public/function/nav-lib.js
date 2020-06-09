@@ -1,5 +1,5 @@
 function ChangeClassNavItem_Lib(innerText) {
-    var aTags = document.getElementById("navbarNav").getElementsByClassName("nav-item");
+    var aTags = document.getElementById("side-bar").getElementsByClassName("nav-item");
     var searchText = innerText;
     var found;
     for (var i = 0; i < aTags.length; i++) {
@@ -14,11 +14,9 @@ function ChangeClassNavItem_Lib(innerText) {
     if (found == undefined) {
         return 0;
     }
-    found.childNodes[1].classList.remove("text-dark");
-    found.childNodes[1].classList.add("text-white");
-    found.classList.add("active-nav");
+    found.classList.add("nav-current");
     return 1;
 }
 
 var current_page = document.currentScript.getAttribute("current_page");
-ChangeClassNavItem(current_page)
+ChangeClassNavItem_Lib(current_page)
