@@ -38,14 +38,14 @@
                 {{#each Booking_arr.booking_book}}
 
                 <tr class="booking-data">
-                    <th scope="row">{{this.ISBN}}</th>
-                    <th scope="row"> {{this.bookID}}</th>
-                    <th>{{this.book_name}}</th>
-                    <th> {{this.reprint}}</th>
-                    <th> {{this.book_author}}</th>
-                    <th> {{this.producer}}</th>
-                    <th> {{this.booking_date}}</th>
-                    <th><button class="confirm-button">xác nhận</button>
+                    <th scope="row" class="l-height-3">{{this.ISBN}}</th>
+                    <th scope="row" class="l-height-3"> {{this.bookID}}</th>
+                    <th class="l-height-3">{{this.book_name}}</th>
+                    <th class="l-height-3"> {{this.reprint}}</th>
+                    <th class="l-height-3"> {{this.book_author}}</th>
+                    <th class="l-height-3"> {{this.producer}}</th>
+                    <th class="l-height-3"> {{this.booking_date}}</th>
+                    <th ><button class="confirm-button">xác nhận</button>
                         <button class="customized-btn">Hủy bỏ</button>
                     </th>
                 </tr>
@@ -53,14 +53,14 @@
                 {{/each}}
                 {{#each Bought_arr.bought_book}}
                 <tr class="bought-book-data" style="display: none;">
-                    <th scope="row">{{this.ISBN}}</th>
+                    <th scope="row" class="l-height-3">{{this.ISBN}}</th>
                     <th scope="row"> {{this.bookID}}</th>
-                    <th>{{this.book_name}}</th>
-                    <th> {{this.reprint}}</th>
-                    <th> {{this.book_author}}</th>
-                    <th> {{this.producer}}</th>
-                    <th> {{this.booking_date}}</th>
-                    <th>{{this.bought_date}}</th>
+                    <th class="l-height-3">{{this.book_name}}</th>
+                    <th class="l-height-3"> {{this.reprint}}</th>
+                    <th class="l-height-3"> {{this.book_author}}</th>
+                    <th class="l-height-3"> {{this.producer}}</th>
+                    <th class="l-height-3"> {{this.booking_date}}</th>
+                    <th class="l-height-3">{{this.bought_date}}</th>
                 </tr>
                 {{/each}}
             </tbody>

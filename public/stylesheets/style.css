@@ -259,3 +259,7 @@ a {
 .fa-star:not(.star-checked) {
     color: white;
 }
+
+.l-height-3 {
+    line-height: 3;
+}
