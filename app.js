@@ -39,6 +39,7 @@ var libProfileRouter = require('./routes/lib-profile');
 var libLawRouter = require('./routes/lib-law');
 var buybookManager = require('./routes/buy-book-manager')
 var changePassword = require('./routes/change-password')
+var accManager = require('./routes/account-manager')
     // Setup livereload
 const livereload = require("livereload");
 
@@ -87,6 +88,8 @@ app.use('/librarian/post-announcer', librarianPostAnnouncer)
 app.use('/librarian/lib-confirmID', libconfirmIDRouter);
 app.use('/librarian/lib-profile', libProfileRouter);
 app.use('/librarian/lib-law', libLawRouter);
+app.use('/librarian/account-manager', accManager);
+
 // set path news
 app.use('/news', newsRouter);
 app.use('/news-detail', newsDetailRouter);

@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="/stylesheets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="bg-white container-fluid" style="width: 100%;">
+    <div class="display-flex ">
+        <div class="text-color-408CFF font-size-xx" style="flex: 0.95;">
+            Quản lý tài khoản
+        </div>
+
+        <div class="csv-area" style="float: right">
+            <div>
+                <i class="fa fa-table" aria-hidden="true"></i>Xuất file csv
+            </div>
+            <div><i class="fa fa-table" aria-hidden="true"></i>Nhập từ file csv</div>
+        </div>
+    </div>
+    <div class="search-area display-flex padding-top-3em ">
+        <div id="" class="input-group col-6 padding-right-3em">
+            <input type="text" id="search-acc" class="form-control" placeholder="Tìm kiếm sách, tin tức, ..."
+                aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="padding-right-3em">
+            <select name="Loại tài khoản" id="account-type" style="height: 40px; border-radius: 10px">
+                <option value="type">Loại tài khoản</option>
+                <option value="teacher">giáo viên</option>
+                <option value="student">sinh viên</option>
+            </select>
+        </div>
+
+        <div>
+            <select name="trạng thái" id="status" style="height: 40px; border-radius: 10px">
+                <option value="status">trạng thái</option>
+                <option value="activate">hoạt động</option>
+                <option value="deactivate">ngưng hoạt động</option>
+            </select>
+        </div>
+    </div>
+    <div class="table-responsive padding-top-3em">
+        <table class="table" id="table-manager">
+            <thead>
+                <tr>
+                    <th scope="col">Mã tài khoản</th>
+                    <th scope="col">Tên Đăng Nhập</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Tên người dùng</th>
+                    <th scope="col">Loại tài khoản</th>
+                    <th scope="col">Mượn trả</th>
+                    <th scope="col">Trạng thái</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each account_data}}
+
+                <tr class="account-data">
+                    <th scope="row" class="l-height-3">{{this.accountID}}</th>
+                    <th scope="row" class="l-height-3"> {{this.account_name}}</th>
+                    <th class="l-height-3">{{this.email}}</th>
+                    <th class="l-height-3"> {{this.username}}</th>
+                    <th class="l-height-3"> {{this.type}}</th>
+                    <th class="l-height-3"> {{this.borow}}/{{this.give_back}}</th>
+                    <th class="l-height-3"> {{this.activate}}</th>
+                </tr>
+
+                {{/each}}
+            </tbody>
+
+        </table>
+    </div>
+    <div style="padding-bottom: 3em;">
+    </div>
