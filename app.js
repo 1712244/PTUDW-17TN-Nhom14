@@ -34,7 +34,7 @@ var borrowRouter = require('./routes/borrow');
 var borrowerRouter = require('./routes/borrower-profile');
 var librarianLoginRouter = require('./routes/librarian-login');
 var librarianPostAnnouncer = require('./routes/post-announcer');
-
+var libconfirmIDRouter = require('./routes/lib-confirmID');
 
 var buybookManager = require('./routes/buy-book-manager')
 var changePassword = require('./routes/change-password')
@@ -83,7 +83,7 @@ app.use('/librarian/borrow', borrowRouter);
 app.use('/librarian/borrower', borrowerRouter);
 app.use('/librarian/librarian-login', librarianLoginRouter);
 app.use('/librarian/post-announcer', librarianPostAnnouncer)
-
+app.use('/librarian/lib-confirmID', libconfirmIDRouter);
 // set path news
 app.use('/news', newsRouter);
 app.use('/news-detail', newsDetailRouter);
