@@ -35,7 +35,8 @@ var borrowerRouter = require('./routes/borrower-profile');
 var librarianLoginRouter = require('./routes/librarian-login');
 var librarianPostAnnouncer = require('./routes/post-announcer');
 var libconfirmIDRouter = require('./routes/lib-confirmID');
-
+var libProfileRouter = require('./routes/lib-profile');
+var libLawRouter = require('./routes/lib-law');
 var buybookManager = require('./routes/buy-book-manager')
 var changePassword = require('./routes/change-password')
     // Setup livereload
@@ -84,6 +85,8 @@ app.use('/librarian/borrower', borrowerRouter);
 app.use('/librarian/librarian-login', librarianLoginRouter);
 app.use('/librarian/post-announcer', librarianPostAnnouncer)
 app.use('/librarian/lib-confirmID', libconfirmIDRouter);
+app.use('/librarian/lib-profile', libProfileRouter);
+app.use('/librarian/lib-law', libLawRouter);
 // set path news
 app.use('/news', newsRouter);
 app.use('/news-detail', newsDetailRouter);
