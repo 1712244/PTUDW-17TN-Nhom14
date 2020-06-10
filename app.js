@@ -40,7 +40,10 @@ var libLawRouter = require('./routes/lib-law');
 var buybookManager = require('./routes/buy-book-manager')
 var changePassword = require('./routes/change-password')
 var accManager = require('./routes/account-manager')
-    // Setup livereload
+
+var bookingManager = require('./routes/lib-booking-book-manager')
+
+// Setup livereload
 const livereload = require("livereload");
 
 var liveReloadServer = livereload.createServer();
@@ -89,6 +92,8 @@ app.use('/librarian/lib-confirmID', libconfirmIDRouter);
 app.use('/librarian/lib-profile', libProfileRouter);
 app.use('/librarian/lib-law', libLawRouter);
 app.use('/librarian/account-manager', accManager);
+app.use('/librarian/booking-manager', bookingManager);
+
 
 // set path news
 app.use('/news', newsRouter);
@@ -105,7 +110,6 @@ app.use('/return-book-list', returnBookListRouter);
 app.use('/rent-book-list', rentBookListRouter);
 app.use('/buy-book-manager', buybookManager);
 app.use('/change-password', changePassword)
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="/stylesheets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="bg-white container-fluid" style="width: 100%;">
+    <div class="display-flex ">
+        <div class="text-color-408CFF font-size-xx" style="flex: 0.95;">
+            Quản lý tài khoản
+        </div>
+
+        <div class="csv-area" style="float: right">
+            <div>
+                <i class="fa fa-table" aria-hidden="true"></i>Xuất file csv
+            </div>
+            <div><i class="fa fa-table" aria-hidden="true"></i>Nhập từ file csv</div>
+        </div>
+    </div>
+    <div class="search-area display-flex padding-top-3em ">
+        <div id="" class="input-group col-6 padding-right-3em">
+            <input type="text" id="search-acc" class="form-control" placeholder="Tìm kiếm sách, tác giả, ..."
+                aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+    </div>
+    <div class="table-responsive padding-top-3em">
+        <table class="table" id="table-manager">
+            <thead>
+                <tr>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Tên Sách</th>
+                    <th scope="col">tái bản</th>
+                    <th scope="col">Tác giả</th>
+                    <th scope="col">Nhà xuất bản</th>
+                    <th scope="col">Ngày đặt</th>
+                    <th scope="col">Người đặt</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each booking_data}}
+
+                <tr class="booking-data">
+                    <th scope="row" class="l-height-3">{{this.ISBN}}</th>
+                    <th scope="row" class="l-height-3"> {{this.book_name}}</th>
+                    <th class="l-height-3">{{this.reprint}}</th>
+                    <th class="l-height-3"> {{this.author}}</th>
+                    <th class="l-height-3"> {{this.producer}}</th>
+                    <th class="l-height-3"> {{this.booking_date}}</th>
+                    <th class="l-height-3"> {{this.orderer}}</th>
+                </tr>
+
+                {{/each}}
+            </tbody>
+
+        </table>
+    </div>
+    <div style="padding-bottom: 3em;">
+    </div>
+
+<script src="/function/nav-lib.js" current_page="Quản lí mua sách"></script>
