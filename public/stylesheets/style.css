@@ -267,3 +267,11 @@ a {
 .padding-right-3em {
     padding-right: 3em;
 }
+
+.export-csv:hover {
+    cursor: pointer;
+}
+
+.input-csv:hover {
+    cursor: pointer;
+}
