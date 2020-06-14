@@ -29,7 +29,7 @@
     </li>
     <li class="nav-item">
         <a class="nav-link" id="detail-tab" data-toggle="pill" href="#book-detail" role="tab" aria-controls="returning"
-            aria-selected="false">Thông tin thêm</a>
+            aria-selected="false">Thông tin sách</a>
     </li>
 </ul>
 <div class="tab-content" id="pills-tabContent">
@@ -49,8 +49,8 @@
             </thead>
             <tbody>
                 {{#each borrowData}}
-                <tr>
-                    <td>
+                <tr {{#if_eq this.id ../activeID}}class="table-primary"{{/if_eq}}>
+                    <th scope="row">
                         <a href="/librarian/borrower?id={{this.borrower.id}}&&activeID={{this.id}}">
                             {{this.id}}
                         </a>
@@ -86,7 +86,50 @@
     </div>
     
     <div class="tab-pane fade" id="book-detail" role="tabpanel" aria-labelledby="info-tab">
-        <p>Haha</p>
+        <h1>
+            Mô tả
+            <button class = "btn btn-outline-secondary">
+                <i id="btn-edit-desc" class="fa fa-edit"></i>
+                <span>
+                    Chỉnh sửa
+                </span>
+            </button>
+        </h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <h1>
+            Thông tin sách
+        </h1>
+        <div class="table-responsive-md d-flex">
+            <table id ="book-info-tab" class = "table table-bordered table-responsive">
+                <colgroup>
+                    <col span="1">
+                    <col span="1" style="width: 300px;">
+                    <col span="1">
+                </colgroup>
+                
+                <thead>
+                    <tr>
+                        <th scope="col">Thông tin</th>
+                        <th scope="col">Giá trị</th>
+                        <th scope="col">Sửa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{>book_info_row header="ISBN" data=bookData.isbn editable=true}} 
+                    {{>book_info_row header="Tác giả" data=bookData.author editable=true}} 
+                    {{>book_info_row header="Nhà xuất bản" data=bookData.publisher editable=true}} 
+                    {{>book_info_row header="Tái bản" data=bookData.reprint editable=true}} 
+                    {{>book_info_row header="Năm" data=bookData.pubYear editable=true}}
+                    {{>book_info_row header="Lượt mượn" data=bookData.borrowed}}
+                    {{>book_info_row header="Đánh giá" data=bookData.rating}}
+                    {{>book_info_row header="Số bản sao còn" data=bookData.remCopies}}
+                    {{>book_info_row header="Số bản sao" data=bookData.copies}}
+
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <link rel="stylesheet" href="/stylesheets/book-info-lib.css">

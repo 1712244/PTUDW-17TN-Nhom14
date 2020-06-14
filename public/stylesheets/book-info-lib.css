@@ -1,3 +1,21 @@
+#book-borrowing, #book-detail {
+    height: 100%;
+    overflow-y: auto;
+}
+
+#book-detail {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#book-info-tab {
+    width: auto;
+    margin: auto;
+}
+
+#book-info-tab th[scope="row"] {
+    text-align: left;
+}
 
 #book-info-header {
     display: flex;

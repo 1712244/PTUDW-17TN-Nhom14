@@ -5,7 +5,7 @@
     {{/if}}
     <td>{{this.id}}</td>
     <td>
-        <a href="/librarian/book?id={{this.id}}">
+        <a href="/librarian/book?id={{this.id}}&&activeID={{../borrow.id}}">
             {{this.name}}
         </a>
     </td>

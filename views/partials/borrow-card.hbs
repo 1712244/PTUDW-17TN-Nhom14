@@ -12,7 +12,7 @@
     </a>
     <div class="book-container">
         {{#each borrowInfo.books}}
-        <a href="/librarian/book?id={{this.id}}">
+        <a href="/librarian/book?id={{this.id}}&&activeID={{../borrowInfo.id}}">
             <div class="book-item">
                 <div class="book-id">
                     {{this.id}}
