@@ -1,0 +1,22 @@
+{{#each borrow.books}}
+<tr {{#if @first}}id="return-{{../borrow.id}}"{{/if}} {{#if_eq ../borrow.id ../activeID}}class="table-primary"{{/if_eq}}>
+    {{#if @first}}
+    <th scope="row" rowspan="{{../borrow.books.length}}">{{../borrow.id}}</th>
+    {{/if}}
+    <td>{{this.id}}</td>
+    <td>
+        <a href="/librarian/book?id={{this.id}}&&activeID={{../borrow.id}}#borrow-{{../borrow.id}}">
+            {{this.name}}
+        </a>
+    </td>
+    <td>{{this.author}}</td>    
+    <td class="tab-cell-center">
+        <button class="btn btn-danger" type="button" id="btn-delete-borrow">
+            <i class="fa fa-trash"></i>
+        </button>
+    </td>
+    {{#if @first}}
+    <td class="tab-cell-center" rowspan="{{../borrow.books.length}}">{{dateToString ../borrow.returnDueDate}}</td>
+    {{/if}}
+</tr>
+{{/each}}

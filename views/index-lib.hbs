@@ -110,7 +110,7 @@
                 </div>
                 <div class="lib-card-body">
                     {{#eachBorrow borrowData}}
-                    {{>borrow_card borrowInfo = .}}
+                    {{>borrow_card borrowInfo = . linkType="borrow"}}
                     {{/eachBorrow}}
                 </div>
             </div>
@@ -124,7 +124,7 @@
                     </div>
                     <div class="lib-card-body">
                         {{#eachReturn returnData}}
-                        {{>borrow_card borrowInfo = .}}
+                        {{>borrow_card borrowInfo = . linkType="return"}}
                         {{/eachReturn}}
                     </div>
                 </div>
@@ -137,7 +137,7 @@
                     </div>
                     <div class="lib-card-body">
                         {{#eachReturn dueData}}
-                        {{>borrow_card borrowInfo = .}}
+                        {{>borrow_card borrowInfo = . linkType="return"}}
                         {{/eachReturn}}
                     </div>
                 </div>

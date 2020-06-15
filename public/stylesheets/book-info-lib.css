@@ -1,25 +1,43 @@
+#book-borrowing, #book-detail {
+    height: 100%;
+    overflow-y: auto;
+}
 
-#borrower-profile-header {
+#book-detail {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#book-info-tab {
+    width: auto;
+    margin: auto;
+}
+
+#book-info-tab th[scope="row"] {
+    text-align: left;
+}
+
+#book-info-header {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#borrower-profile-picture {
+#book-picture {
     margin: 10px;
 }
 
-#borrower-id {
+#book-id {
     font-size: small;
     color: #656565;
 }
 
-#borrower-name {
+#book-name {
     font-size: x-large;
     color: #323232;
 }
 
-#borrower-action {
+#book-action {
     margin-left: 20px;
 }
 
@@ -62,16 +80,4 @@
 
 .tab-cell-center {
     text-align: center;
-}
-
-#return-function {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top :5px;
-    margin-bottom: 5px;
-}
-
-#btn-fine-detail {
-    display: inline;
 }

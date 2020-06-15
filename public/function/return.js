@@ -1,4 +1,4 @@
-const view = document.getElementById("borrow-view");
+const view = document.getElementById("return-view");
 
 
 var sections = [];
@@ -13,8 +13,7 @@ function initPos() {
     }
 
     sections_pos = [];
-    const section = document.querySelectorAll("#borrow-view > .title-group");
-    section.forEach(function (e, i) {
+    sections.forEach(function (e) {
         sections_pos.push(e.offsetTop - view.offsetTop);
     });
     pos_valid = true;
@@ -22,7 +21,7 @@ function initPos() {
 
 function initData() {
     'use strict';
-    const section = document.querySelectorAll("#borrow-view > .title-group");
+    const section = document.querySelectorAll("#return-view > .time-title");
     var i = 0;
 
     sections = [];
@@ -32,7 +31,7 @@ function initData() {
     var firstTime = false;
     section.forEach(function (e, i) {
         sections.push(e);
-        sections_date.push(new Date(Date.parse(e.getAttribute("data-time"))));
+        sections_date.push(new Date(Date.parse(e.getAttribute("data-due-time"))));
     });
     initPos();
 };
@@ -59,7 +58,6 @@ function gotoDate(d) {
     sections[nearest].scrollIntoView(true);
     const date = sections_date[nearest];
     picker.setDate(date, false);
-    document.getElementById("time-selector").innerText = getTime(date);
 }
 
 view.onscroll = function () {
@@ -75,12 +73,7 @@ view.onscroll = function () {
     }
     const date = sections_date[last];
     picker.setDate(date,  false);
-    document.getElementById("time-selector").innerText = getTime(date);
 };
-
-function getTime(d) {
-    return d.toTimeString().substr(0,5);
-}
 
 function sameDay(d1, d2) {
     return d1.getFullYear() === d2.getFullYear() &&
@@ -88,42 +81,11 @@ function sameDay(d1, d2) {
       d1.getDate() === d2.getDate();
 }
 
-
 picker.config.onChange.push(function(e) {
     const selected = picker.selectedDates[0];
     gotoDate(selected);
 });
 
-
-document.getElementById("time-selector").onclick = function (e) {
-    var timeList = document.getElementById("time-list");
-    timeList.textContent = '';
-    const date = picker.selectedDates[0];
-
-    const createTimeItem = function(d) {
-        var item = document.createElement("a");
-        item.classList.add("dropdown-item");
-        item.text = getTime(d);
-        return item;
-    }
-
-    for (var d of sections_date) {
-        if (sameDay(d, date)) {
-            timeList.appendChild(createTimeItem(d));
-        }
-    }
-
-}
-
-
-document.getElementById("time-list").onclick = function(e) {
-    var chosen = e.target.closest("a");
-    if (!chosen)
-        return;
-
-    const date = new Date(picker.selectedDates[0].toDateString() + " " + chosen.text);
-    gotoDate(date);
-};
 
 document.getElementById("btn-now").onclick = function(e) {
     gotoDate(new Date(new Date().getTime() - 30*60*1000));

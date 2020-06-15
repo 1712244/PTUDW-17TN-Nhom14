@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/stylesheets/borrow-card.css">
 <div class="borrow-card" data-borrow-id="{{borrowInfo.id}}">
-    <a href="/librarian/borrower?id={{borrowInfo.borrower.id}}">
+    <a href="/librarian/borrower?id={{borrowInfo.borrower.id}}&&activeID={{borrowInfo.id}}&&type={{linkType}}#{{linkType}}-{{borrowInfo.id}}">
         <div class="borrow-card-header">
             <div class="borrower-name">
                 {{borrowInfo.borrower.name}}
@@ -12,7 +12,7 @@
     </a>
     <div class="book-container">
         {{#each borrowInfo.books}}
-        <a href="/librarian/book?id={{this.id}}">
+        <a href="/librarian/book?id={{this.id}}&&activeID={{../borrowInfo.id}}#borrow-{{../borrowInfo.id}}">
             <div class="book-item">
                 <div class="book-id">
                     {{this.id}}

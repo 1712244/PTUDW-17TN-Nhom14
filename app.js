@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('hbs');
-require('./routes/lib-helper.js');
+require('./routes/helper/lib-helper.js');
 
 // set router zone
 var indexRouter = require('./routes/index');
@@ -31,12 +31,17 @@ var returnBookListRouter = require('./routes/return-book-list');
 var rentBookListRouter = require('./routes/rent-book-list');
 var indexLibRouter = require('./routes/index-lib');
 var borrowRouter = require('./routes/borrow');
+var returnRouter = require('./routes/return');
 var borrowerRouter = require('./routes/borrower-profile');
 var librarianLoginRouter = require('./routes/librarian-login');
 var librarianPostAnnouncer = require('./routes/post-announcer');
 var libconfirmIDRouter = require('./routes/lib-confirmID');
 var libProfileRouter = require('./routes/lib-profile');
 var libLawRouter = require('./routes/lib-law');
+var bookInfoLibRouter = require('./routes/book-info-lib');
+
+
+
 var buybookManager = require('./routes/buy-book-manager')
 var changePassword = require('./routes/change-password')
 var accManager = require('./routes/account-manager')
@@ -85,6 +90,7 @@ app.use('/sign-up', signUpRouter);
 app.use('/about', aboutRouter);
 app.use('/librarian', indexLibRouter);
 app.use('/librarian/borrow', borrowRouter);
+app.use('/librarian/return', returnRouter);
 app.use('/librarian/borrower', borrowerRouter);
 app.use('/librarian/librarian-login', librarianLoginRouter);
 app.use('/librarian/post-announcer', librarianPostAnnouncer)
@@ -93,7 +99,7 @@ app.use('/librarian/lib-profile', libProfileRouter);
 app.use('/librarian/lib-law', libLawRouter);
 app.use('/librarian/account-manager', accManager);
 app.use('/librarian/booking-manager', bookingManager);
-
+app.use('/librarian/book', bookInfoLibRouter);
 
 // set path news
 app.use('/news', newsRouter);
@@ -126,22 +132,5 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
-
-// Helper zone
-
-// Handy checking if equal handlebars helper
-// Usage:
-//       {{#if_eq a b}}
-//          ....
-//       {{else (optional)}}
-//          ....
-//       {{/if_eq}} 
-hbs.registerHelper('if_eq', function(a, b, opts) {
-    if (a == b)
-        return opts.fn(this);
-    else
-        return opts.inverse(this);
-});
-
 
 module.exports = app;
