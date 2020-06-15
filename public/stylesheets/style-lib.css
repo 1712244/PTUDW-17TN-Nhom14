@@ -1,3 +1,12 @@
+* {
+    font-family: Roboto;
+}
+
+.no-padding-top-bot {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 /* The sidebar menu */
 #side-bar {
     height: 100%; /* Full-height: remove this if you want "auto" height */
@@ -56,6 +65,8 @@
 #logo {
     width:200px;
     margin: 20px 0px;
+    max-width: initial;
+    max-height: initial;
 }
 
 .nav-current {

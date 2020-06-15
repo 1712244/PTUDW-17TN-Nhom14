@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('hbs');
-require('./routes/lib-helper.js');
+require('./routes/helper/lib-helper.js');
 
 // set router zone
 var indexRouter = require('./routes/index');

@@ -12,19 +12,41 @@ var sections = [];
 var sections_date = [];
 var sections_pos = [];
 
-(function () {
+pos_valid = false;
+
+function initPos() {
+    if (pos_valid) {
+        return;
+    }
+
+    sections_pos = [];
+    const section = document.querySelectorAll("#borrow-view > .title-group");
+    section.forEach(function (e, i) {
+        sections_pos.push(e.offsetTop - view.offsetTop);
+    });
+    pos_valid = true;
+}
+
+function initData() {
     'use strict';
     const section = document.querySelectorAll("#borrow-view > .title-group");
     var i = 0;
+
+    sections = [];
+    sections_date = [];
 
     var currentDay = null;
     var firstTime = false;
     section.forEach(function (e, i) {
         sections.push(e);
         sections_date.push(new Date(Date.parse(e.getAttribute("data-time"))));
-        sections_pos.push(e.offsetTop - view.offsetTop);
     });
-})();
+    initPos();
+};
+
+window.addEventListener("resize", function() {
+    pos_valid = false;
+});
 
 function nearestDate(d) {
     var nearest = sections_date.length - 1;
@@ -48,6 +70,7 @@ function gotoDate(d) {
 }
 
 view.onscroll = function () {
+    initPos();
     const scrollPosition = view.scrollTop + 50;
     var last = 0;
     for (i in sections) {
@@ -110,7 +133,8 @@ document.getElementById("time-list").onclick = function(e) {
 };
 
 document.getElementById("btn-now").onclick = function(e) {
-    gotoDate(new Date());
+    gotoDate(new Date(new Date().getTime() - 30*60*1000));
 }
 
+initData();
 gotoDate(new Date());

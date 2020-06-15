@@ -149,7 +149,7 @@
                 </tr>
             </thead>
             <tbody>
-                {{#each borrower.borrowData}}
+                {{#each borrower.unreturnedData}}
                 {{> return_table borrow=. activeID=../activeID}}
                 {{/each}}
             </tbody>

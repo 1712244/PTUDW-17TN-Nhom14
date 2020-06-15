@@ -1,7 +1,7 @@
-{{#each (unreturned borrow)}}
+{{#each borrow.books}}
 <tr {{#if @first}}id="borrow-{{../borrow.id}}"{{/if}} {{#if_eq ../borrow.id ../activeID}}class="table-primary"{{/if_eq}}>
     {{#if @first}}
-    <th scope="row" rowspan="{{../borrow.unreturnedBooks.length}}">{{../borrow.id}}</th>
+    <th scope="row" rowspan="{{../borrow.books.length}}">{{../borrow.id}}</th>
     {{/if}}
     <td>{{this.id}}</td>
     <td>
@@ -16,8 +16,7 @@
         </button>
     </td>
     {{#if @first}}
-    <td class="tab-cell-center" rowspan="{{../borrow.unreturnedBooks.length}}">{{dateToString ../borrow.returnDueDate}}</td>
-
+    <td class="tab-cell-center" rowspan="{{../borrow.books.length}}">{{dateToString ../borrow.returnDueDate}}</td>
     {{/if}}
 </tr>
 {{/each}}
