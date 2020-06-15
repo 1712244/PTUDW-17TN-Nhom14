@@ -167,6 +167,9 @@ footer {
     top: 0px;
     position: sticky;
 }
+.title-group {
+    display: inline;
+}
 
 .second-title {
     top: 24px;

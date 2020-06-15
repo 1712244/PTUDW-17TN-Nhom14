@@ -1,10 +1,3 @@
-//var picker = new Litepicker({ element: document.getElementById('date-input'),
-//     lang: "vi",
-//     singleMode: false,
-//     maxDate: new Date(),
-// });
-// picker.setDateRange(new Date(), new Date());
-
 const view = document.getElementById("borrow-view");
 
 

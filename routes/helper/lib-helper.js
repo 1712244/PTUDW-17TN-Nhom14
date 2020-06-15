@@ -39,12 +39,12 @@ hbs.registerHelper("eachReturn", function (borrow, options) {
     return "";
   }
 
-  borrow.sort((a, b) => a.dueDate - b.dueDate);
+  borrow.sort((a, b) => a.returnDueDate - b.returnDueDate);
 
   var ret = "";
 
   var prevTime = "";
-  var curTime = borrow[0].dueDate;
+  var curTime = borrow[0].returnDueDate;
   const j = borrow.length;
   var i = 0;
   while (i < j) {
@@ -57,7 +57,7 @@ hbs.registerHelper("eachReturn", function (borrow, options) {
       ++i;
       if (i >= j)
         break;
-      curTime = borrow[i].dueDate;
+      curTime = borrow[i].returnDueDate;
     } while (th.sameDay(curTime, prevTime))
     
     ret += '</div>';
@@ -82,17 +82,6 @@ hbs.registerHelper("dateToString", function(object, options) {
   } else {
     return new hbs.handlebars.SafeString(object.toLocaleDateString());
   }
-});
-
-hbs.registerHelper('unreturned', function (borrow, options) {
-  var unretBooks = [];
-  borrow.books.forEach((book) => {
-    if (!book.returnDate) {
-      unretBooks.push(book);
-    }
-  });
-  borrow.unreturnedBooks = unretBooks;
-  return borrow.unreturnedBooks;
 });
 
 
