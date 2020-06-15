@@ -48,7 +48,7 @@ hbs.registerHelper("eachReturn", function (borrow, options) {
   const j = borrow.length;
   var i = 0;
   while (i < j) {
-    ret += '<div class="time-title data-due-time="'+ curTime.toISOString() +'">' + th.toDueTimeString(curTime) + '</div>';
+    ret += '<div class="time-title" data-due-time="'+ curTime.toISOString() +'">' + th.toDueTimeString(curTime) + '</div>';
     ret += '<div class="borrow-list">';
     prevTime = curTime;
 

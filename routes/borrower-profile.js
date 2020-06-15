@@ -28,7 +28,7 @@ function queryUser(userID) {
 
 router.get('/', function (req, res, next) {
     const user = queryUser(req.query.id);
-    res.render('borrower-profile', {layout:"layout-lib", search: false, export: true, borrower: user, activeID: req.query.activeID});
+    res.render('borrower-profile', {layout:"layout-lib", search: false, export: true, borrower: user, activeID: req.query.activeID, linkType: req.query.type,});
 });
 
 module.exports = router;

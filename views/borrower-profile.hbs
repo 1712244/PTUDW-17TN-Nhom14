@@ -22,12 +22,12 @@
 </div>
 <ul class="nav nav-pills mb-1" id="pills-tab" role="tablist">
     <li class="nav-item">
-        <a class="nav-link active" id="borrowing-tab" data-toggle="pill" href="#borrowing" role="tab"
-            aria-controls="borrowing" aria-selected="true">Mượn sách</a>
+        <a class="nav-link{{#if_eq linkType "borrow"}} active{{/if_eq}}" id="borrowing-tab" data-toggle="pill" href="#borrowing" role="tab"
+            aria-controls="borrowing" aria-selected={{#if_eq linkType "borrow"}}"true"{{else}}"false"{{/if_eq}}>Mượn sách</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="returning-tab" data-toggle="pill" href="#returning" role="tab" aria-controls="returning"
-            aria-selected="false">Trả sách</a>
+        <a class="nav-link{{#if_eq linkType "return"}} active{{/if_eq}}" id="returning-tab" data-toggle="pill" href="#returning" role="tab" aria-controls="returning"
+            aria-selected={{#if_eq linkType "return"}}"true"{{else}}"false"{{/if_eq}}>Trả sách</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" id="info-tab" data-toggle="pill" href="#info" role="tab" aria-controls="info"
@@ -35,7 +35,7 @@
     </li>
 </ul>
 <div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade show active" id="borrowing" role="tabpanel" aria-labelledby="borrowing-tab">
+    <div class="tab-pane fade{{#if_eq linkType "borrow"}} show active{{/if_eq}}" id="borrowing" role="tabpanel" aria-labelledby="borrowing-tab">
         <table class="table">
             <thead>
                 <tr>
@@ -57,7 +57,7 @@
             </tbody>
         </table>
     </div>
-    <div class="tab-pane fade" id="returning" role="tabpanel" aria-labelledby="returning-tab">
+    <div class="tab-pane fade{{#if_eq linkType "return"}} show active{{/if_eq}}" id="returning" role="tabpanel" aria-labelledby="returning-tab">
         <div id="return-function">
             <div>
                 <button class="btn btn-primary">

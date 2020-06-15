@@ -31,6 +31,7 @@ var returnBookListRouter = require('./routes/return-book-list');
 var rentBookListRouter = require('./routes/rent-book-list');
 var indexLibRouter = require('./routes/index-lib');
 var borrowRouter = require('./routes/borrow');
+var returnRouter = require('./routes/return');
 var borrowerRouter = require('./routes/borrower-profile');
 var librarianLoginRouter = require('./routes/librarian-login');
 var librarianPostAnnouncer = require('./routes/post-announcer');
@@ -89,6 +90,7 @@ app.use('/sign-up', signUpRouter);
 app.use('/about', aboutRouter);
 app.use('/librarian', indexLibRouter);
 app.use('/librarian/borrow', borrowRouter);
+app.use('/librarian/return', returnRouter);
 app.use('/librarian/borrower', borrowerRouter);
 app.use('/librarian/librarian-login', librarianLoginRouter);
 app.use('/librarian/post-announcer', librarianPostAnnouncer)
@@ -97,7 +99,6 @@ app.use('/librarian/lib-profile', libProfileRouter);
 app.use('/librarian/lib-law', libLawRouter);
 app.use('/librarian/account-manager', accManager);
 app.use('/librarian/booking-manager', bookingManager);
-
 app.use('/librarian/book', bookInfoLibRouter);
 
 // set path news

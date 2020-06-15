@@ -49,14 +49,14 @@
             </thead>
             <tbody>
                 {{#each borrowData}}
-                <tr {{#if_eq this.id ../activeID}}class="table-primary"{{/if_eq}}>
+                <tr id="borrow-{{this.id}}" {{#if_eq this.id ../activeID}}class="table-primary"{{/if_eq}}>
                     <th scope="row">
-                        <a href="/librarian/borrower?id={{this.borrower.id}}&&activeID={{this.id}}">
+                        <a href="/librarian/borrower?id={{this.borrower.id}}&&activeID={{this.id}}&&type=borrow#borrow-{{this.id}}">
                             {{this.id}}
                         </a>
                     </td>
                     <td>
-                        <a href="/librarian/borrower?id={{this.borrower.id}}&&activeID={{this.id}}">
+                        <a href="/librarian/borrower?id={{this.borrower.id}}&&activeID={{this.id}}&&type=borrow#borrow-{{this.id}}">
                             {{this.borrower.name}}
                         </a>
                     </td>
