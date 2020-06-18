@@ -2,8 +2,8 @@
 <div class="container-fluid first-section bg-white">
     <div class="title font-size-xx text-center text-color-408CFF " style="padding: 2em 0;">Quản lý đặt sách</div>
 
-    <div class="content-section d-flex justify-content-center bg-white no-padding align-items-center">
-        <div id="" class="input-group col-6">
+    <div class="content-section row justify-content-center bg-white no-padding align-items-center">
+        <div id="" class="input-group col-md-6">
             <input type="text" id = "search-book" class="form-control" placeholder="Tìm kiếm sách, tin tức, ..." aria-label="Username"
                 aria-describedby="basic-addon1">
             <div class="input-group-append">
@@ -11,8 +11,8 @@
             </div>
         </div>
 
-        <div>
-            <select class="select-box" name="sách đã mua" id="" style="height: 40px; border-radius: 10px">
+        <div class="col-md-1 text-md-left text-center m-1 m-lg-0">
+            <select class="select-box" name="sách đã mua" id="" style="height: 40px; border-radius: 10px; padding: 5px">
                 <option value="booking-book">Sách đã đặt</option>
                 <option value="bought-book">Sách đã mua</option>
             </select>
@@ -23,29 +23,29 @@
         <table class="table" id = "table-manager">
             <thead>
                 <tr>
-                    <th scope="col">ISBN</th>
-                    <th scope="col">Mã sách</th>
-                    <th scope="col">Tên Sách</th>
-                    <th scope="col">Tái bản</th>
-                    <th scope="col">Tác giả</th>
-                    <th scope="col">Nhà sản xuất</th>
-                    <th scope="col">Ngày đặt</th>
-                    <th scope="col" id="activate">Hoạt động</th>
-                    <th scope="col" style="display: none" id="bought-day"> Ngày nhập</th>
+                    <th style="white-space: nowrap;" scope="col">ISBN</th>
+                    <th style="white-space: nowrap;" scope="col">Mã sách</th>
+                    <th style="white-space: nowrap;" scope="col">Tên Sách</th>
+                    <th style="white-space: nowrap;" scope="col">Tái bản</th>
+                    <th style="white-space: nowrap;" scope="col">Tác giả</th>
+                    <th style="white-space: nowrap;" scope="col">Nhà sản xuất</th>
+                    <th style="white-space: nowrap;" scope="col">Ngày đặt</th>
+                    <th style="white-space: nowrap;" scope="col" id="activate">Hoạt động</th>
+                    <th style="white-space: nowrap; display: none" scope="col" id="bought-day"> Ngày nhập</th>
                 </tr>
             </thead>
             <tbody>
                 {{#each Booking_arr.booking_book}}
 
                 <tr class="booking-data">
-                    <th scope="row" class="l-height-3">{{this.ISBN}}</th>
-                    <th scope="row" class="l-height-3"> {{this.bookID}}</th>
-                    <th class="l-height-3">{{this.book_name}}</th>
-                    <th class="l-height-3"> {{this.reprint}}</th>
-                    <th class="l-height-3"> {{this.book_author}}</th>
-                    <th class="l-height-3"> {{this.producer}}</th>
-                    <th class="l-height-3"> {{this.booking_date}}</th>
-                    <th ><button class="confirm-button">xác nhận</button>
+                    <th style="white-space: nowrap;" scope="row" class="l-height-3">{{this.ISBN}}</th>
+                    <th style="white-space: nowrap;" scope="row" class="l-height-3"> {{this.bookID}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3">{{this.book_name}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3"> {{this.reprint}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3"> {{this.book_author}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3"> {{this.producer}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3"> {{this.booking_date}}</th>
+                    <th style="white-space: nowrap;" ><button class="confirm-button">Xác nhận</button>
                         <button class="customized-btn">Hủy bỏ</button>
                     </th>
                 </tr>
@@ -53,14 +53,14 @@
                 {{/each}}
                 {{#each Bought_arr.bought_book}}
                 <tr class="bought-book-data" style="display: none;">
-                    <th scope="row" class="l-height-3">{{this.ISBN}}</th>
-                    <th scope="row"> {{this.bookID}}</th>
-                    <th class="l-height-3">{{this.book_name}}</th>
-                    <th class="l-height-3"> {{this.reprint}}</th>
-                    <th class="l-height-3"> {{this.book_author}}</th>
-                    <th class="l-height-3"> {{this.producer}}</th>
-                    <th class="l-height-3"> {{this.booking_date}}</th>
-                    <th class="l-height-3">{{this.bought_date}}</th>
+                    <th style="white-space: nowrap;" scope="row" class="l-height-3">{{this.ISBN}}</th>
+                    <th style="white-space: nowrap;" scope="row"> {{this.bookID}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3">{{this.book_name}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3"> {{this.reprint}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3"> {{this.book_author}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3"> {{this.producer}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3"> {{this.booking_date}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3">{{this.bought_date}}</th>
                 </tr>
                 {{/each}}
             </tbody>
