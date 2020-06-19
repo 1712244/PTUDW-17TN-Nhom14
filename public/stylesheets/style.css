@@ -153,6 +153,10 @@ body {
     text-align: center;
 }
 
+.text-right {
+    text-align: right;
+}
+
 .borrow-button,
 .confirm-button,
 .cancel-button {
