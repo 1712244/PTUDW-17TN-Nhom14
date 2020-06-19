@@ -13,3 +13,7 @@
 .padding-left-right-5em {
     padding: 0 5em;
 }
+
+.text-right {
+    text-align: right;
+}
