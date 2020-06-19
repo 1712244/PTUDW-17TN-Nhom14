@@ -14,27 +14,32 @@
             <div class="input-csv"><i class="fa fa-table" aria-hidden="true"></i>Nhập từ file csv</div>
         </div>
     </div>
-    <div class="search-area display-flex padding-top-3em ">
-        <div id="" class="input-group col-6 padding-right-3em">
+    <div class="search-area row padding-top-3em ">
+        <div id="" class="input-group col-md-6 padding-right-3em">
             <input type="text" id="search-acc" class="form-control" placeholder="Tìm id, username, ..."
                 aria-label="Username" aria-describedby="basic-addon1">
+            <div class="input-group-append">
+                <a class="input-group-text" href="#"><img src="/images/search-icon.svg" alt="" style="width: 20px;"></a>
+            </div>
+        </div>
+        <div class="row col-md-6 justify-content-center mt-2 mt-md-0">
+            <div class="padding-right-3em col text-center">
+                <select name="Loại tài khoản" id="account-type" style="height: 40px; border-radius: 10px">
+                    <option value="type">Loại tài khoản</option>
+                    <option value="teacher">Giáo viên</option>
+                    <option value="student">Sinh viên</option>
+                </select>
+            </div>
+
+            <div class="col">
+                <select name="trạng thái" id="status" class="text-center" style="height: 40px; border-radius: 10px">
+                    <option value="status">Trạng thái</option>
+                    <option value="activate">Hoạt động</option>
+                    <option value="deactivate">Ngưng hoạt động</option>
+                </select>
+            </div>
         </div>
 
-        <div class="padding-right-3em">
-            <select name="Loại tài khoản" id="account-type" style="height: 40px; border-radius: 10px">
-                <option value="type">Loại tài khoản</option>
-                <option value="teacher">giáo viên</option>
-                <option value="student">sinh viên</option>
-            </select>
-        </div>
-
-        <div>
-            <select name="trạng thái" id="status" style="height: 40px; border-radius: 10px">
-                <option value="status">trạng thái</option>
-                <option value="activate">hoạt động</option>
-                <option value="deactivate">ngưng hoạt động</option>
-            </select>
-        </div>
     </div>
     <div class="table-responsive padding-top-3em">
         <table class="table" id="table-manager">

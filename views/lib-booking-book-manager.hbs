@@ -14,32 +14,35 @@
         <div id="" class="input-group col-6 padding-right-3em">
             <input type="text" id="search-acc" class="form-control" placeholder="Tìm kiếm sách, tác giả, ..."
                 aria-label="Username" aria-describedby="basic-addon1">
+            <div class="input-group-append">
+                <a class="input-group-text" href="#"><img src="/images/search-icon.svg" alt="" style="width: 20px;"></a>
+            </div>
         </div>
     </div>
     <div class="table-responsive padding-top-3em">
         <table class="table" id="table-manager">
             <thead>
                 <tr>
-                    <th scope="col">ISBN</th>
-                    <th scope="col">Tên Sách</th>
-                    <th scope="col">tái bản</th>
-                    <th scope="col">Tác giả</th>
-                    <th scope="col">Nhà xuất bản</th>
-                    <th scope="col">Ngày đặt</th>
-                    <th scope="col">Người đặt</th>
+                    <th style="white-space: nowrap;" scope="col">ISBN</th>
+                    <th style="white-space: nowrap;" scope="col">Tên Sách</th>
+                    <th style="white-space: nowrap;" scope="col">tái bản</th>
+                    <th style="white-space: nowrap;" scope="col">Tác giả</th>
+                    <th style="white-space: nowrap;" scope="col">Nhà xuất bản</th>
+                    <th style="white-space: nowrap;" scope="col">Ngày đặt</th>
+                    <th style="white-space: nowrap;" scope="col">Người đặt</th>
                 </tr>
             </thead>
             <tbody>
                 {{#each booking_data}}
 
                 <tr class="booking-data">
-                    <th scope="row" class="l-height-3">{{this.ISBN}}</th>
-                    <th scope="row" class="l-height-3"> {{this.book_name}}</th>
-                    <th class="l-height-3">{{this.reprint}}</th>
-                    <th class="l-height-3"> {{this.author}}</th>
-                    <th class="l-height-3"> {{this.producer}}</th>
-                    <th class="l-height-3"> {{this.booking_date}}</th>
-                    <th class="l-height-3"> {{this.orderer}}</th>
+                    <th style="white-space: nowrap;" scope="row" class="l-height-3">{{this.ISBN}}</th>
+                    <th style="white-space: nowrap;" scope="row" class="l-height-3"> {{this.book_name}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3">{{this.reprint}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3"> {{this.author}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3"> {{this.producer}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3"> {{this.booking_date}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3"> {{this.orderer}}</th>
                 </tr>
 
                 {{/each}}
