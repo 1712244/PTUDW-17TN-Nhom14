@@ -1,11 +1,17 @@
 <link rel="stylesheet" href="/stylesheets/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">
 <div class="bg-white container-fluid" style="width: 100%;">
-    <div class="row  justify-content-between">
-        <div class="title-section text-left">Quản lý tài khoản</div>
-        <div class="text-right" style="padding-right: 10px; padding-top:20px">
-            <div> <img src="/images/icon-export.svg" alt=""> Xuất ra csv</div>
-            <div><img src="/images/icon-import.svg" alt=""> Nhập từ csv</div>
+    <div class="display-flex ">
+        <div class="text-color-408CFF font-size-xx" style="flex: 0.95;">
+            Quản lý tài khoản
+        </div>
+
+        <div class="csv-area" style="float: right">
+            <div class="export-csv" id="btn">
+                <i class="fa fa-table" aria-hidden="true"></i>Xuất file csv
+            </div>
+            <div class="input-csv"><i class="fa fa-table" aria-hidden="true"></i>Nhập từ file csv</div>
         </div>
     </div>
     <div class="search-area row padding-top-3em ">
@@ -39,26 +45,28 @@
         <table class="table" id="table-manager">
             <thead>
                 <tr>
-                    <th style="white-space: nowrap;" scope="col">Mã tài khoản</th>
-                    <th style="white-space: nowrap;" scope="col">Tên Đăng Nhập</th>
-                    <th style="white-space: nowrap;" scope="col">Email</th>
-                    <th style="white-space: nowrap;" scope="col">Tên người dùng</th>
-                    <th style="white-space: nowrap;" scope="col">Loại tài khoản</th>
-                    <th style="white-space: nowrap;" scope="col">Mượn trả</th>
-                    <th style="white-space: nowrap;" scope="col">Trạng thái</th>
+                    <th scope="col">Mã tài khoản</th>
+                    <th scope="col">Tên Đăng Nhập</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Tên người dùng</th>
+                    <th scope="col">Loại tài khoản</th>
+                    <th scope="col">Số sách chưa trả</th>
+                    <th scope="col">Tổng sách</th>
+                    <th scope="col">Trạng thái</th>
                 </tr>
             </thead>
             <tbody>
                 {{#each account_data}}
 
                 <tr class="account-data">
-                    <th style="white-space: nowrap;" scope="row" class="l-height-3">{{this.accountID}}</th>
-                    <th style="white-space: nowrap;" scope="row" class="l-height-3"> {{this.account_name}}</th>
-                    <th style="white-space: nowrap;" class="l-height-3">{{this.email}}</th>
-                    <th style="white-space: nowrap;" class="l-height-3"> {{this.username}}</th>
-                    <th style="white-space: nowrap;" class="l-height-3"> {{this.type}}</th>
-                    <th style="white-space: nowrap;" class="l-height-3"> {{this.borow}}/{{this.give_back}}</th>
-                    <th style="white-space: nowrap;" class="l-height-3"> {{this.activate}}</th>
+                    <th scope="row" class="l-height-3">{{this.accountID}}</th>
+                    <th scope="row" class="l-height-3"> {{this.account_name}}</th>
+                    <th class="l-height-3">{{this.email}}</th>
+                    <th class="l-height-3"> {{this.username}}</th>
+                    <th class="l-height-3"> {{this.type}}</th>
+                    <th class="l-height-3"> {{this.book_left}}</th>
+                    <th class="l-height-3"> {{this.total}}</th>
+                    <th class="l-height-3"> {{this.activate}}</th>
                 </tr>
 
                 {{/each}}
@@ -69,4 +77,5 @@
     <div style="padding-bottom: 3em;">
     </div>
 
-    <script src="/function/nav-lib.js" current_page="Quản lí tài khoản"></script>
+<script src="/function/nav-lib.js" current_page="Quản lí tài khoản"></script>
+<script src="/function/csv.js"></script>
