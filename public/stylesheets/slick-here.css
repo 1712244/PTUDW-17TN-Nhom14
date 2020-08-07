@@ -1,0 +1,21 @@
+
+  .slick-book-here{
+    width:90%;
+    margin:0px auto;
+  }
+  .slick-slide{
+    margin:10px;
+    height: auto;
+  }
+  .slick-slide img{
+    width:90%;
+    height: auto;
+    border: 2px solid #fff;
+  }
+
+  .slick-prev:before {
+    color: lightgray;
+  }
+  .slick-next:before {
+    color: lightgray;
+  }
