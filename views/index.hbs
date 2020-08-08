@@ -12,60 +12,43 @@
     </div>
     <div class="content-section bg-white no-padding">
         <div class="title-section text-center">{{sectionSachHot.title}}</div>
-        <div id="carousel_list_specialize" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                {{#each sectionSachHot.list_categories}}
-                {{#if @first}}
-                <div class="carousel-item active">
-                    <ul class="nav nav-pills nav-fill align-items-center" style="padding:5px">
-                        {{#each this}}
-                        {{#if @first}}
-                        <li class="nav-item col-sm-2  ">
-                            <a class="nav-link active-modified-list-cs" href="#">
-                                {{this}}
-                            </a>
-                        </li>
-                        {{else}}
-                        <li class="nav-item col-sm-2 ">
-                            <a class="nav-link text-dark" href="#">
-                                {{this}}
-                            </a>
-                        </li>
-                        {{/if}}
-                        {{/each}}
-                    </ul>
-                </div>
-                {{else}}
-                <div class="carousel-item">
-                    <ul class="nav nav-pills nav-fill align-items-center" style="padding:5px">
-                        {{#each this}}
-                        <li class="nav-item col-sm-2 ">
-                            <a class="nav-link text-dark" href="#">
-                                {{this}}
-                            </a>
-                        </li>
-                        {{/each}}
-                    </ul>
-                </div>
-                {{/if}}
-                {{/each}}
-            </div>
-            <a class="carousel-control-prev" href="#carousel_list_specialize" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel_list_specialize" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
+        <ul class="nav nav-pills nav-fill align-items-center slick-nav-book-here" style="padding:5px;">
+            {{#each sectionSachHot.list_categories}}
+            {{#if @first}}
+            {{#each this}}
+            {{#if @first}}
+            <li class="nav-item col-sm-2  " style="padding: 0; margin:0">
+                <a class="nav-link active-modified-list-cs" href="#">
+                    {{this}}
+                </a>
+            </li>
+            {{else}}
+            <li class="nav-item col-sm-2 " style="padding: 0; margin:0">
+                <a class="nav-link text-dark" href="#">
+                    {{this}}
+                </a>
+            </li>
+            {{/if}}
+            {{/each}}
+            {{else}}
+            {{#each this}}
+            <li class="nav-item col-sm-2 " style="padding: 0; margin:0">
+                <a class="nav-link text-dark" href="#">
+                    {{this}}
+                </a>
+            </li>
+            {{/each}}
+            {{/if}}
+            {{/each}}
+
+        </ul>
         {{!Carousel book list}}
         <div class="slick-book-here">
             {{#each sectionSachHot.books}}
-                {{#each this}}
-                <a href="/book-detail" style="color: inherit;">
-                <div class="card" style=" border:none;" >
-                    <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap" >
+            {{#each this}}
+            <a href="/book-detail" style="color: inherit;">
+                <div class="card" style=" border:none;">
+                    <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
                     <div class="card-body" style="padding:10px">
                         <p class="card-text" style="margin: 0;">
                             {{this.name}}
@@ -75,11 +58,13 @@
                         </p>
                     </div>
                 </div>
-                </a>
-                {{/each}}            
+            </a>
+            {{/each}}
             {{/each}}
         </div>
     </div>
+
+    {{!News section}}
     <div class="content-section bg-white no-padding">
         <div class="title-section text-center">{{sectionTinTuc.title}}</div>
         <div class="row">
