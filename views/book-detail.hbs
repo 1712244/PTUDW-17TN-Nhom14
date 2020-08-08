@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/stylesheets/slick-here.css">
+
 <div class="container-fluid bg-white first-section">
 
     <div class="row padding-top-3em">
@@ -57,40 +59,27 @@
 
     </div>
     <div class="related-book padding-left-3em" style="font-weight: bold;">Các Sách tương tự</div>
-    <div id="carousel_booklist_hot" class="carousel slide padding-top-3em" data-ride="carousel">
-        <div class="carousel-inner">
-            {{#each sectionBook.related_booklist}}
-            <div class="carousel-item {{#if @first}} active {{/if}} ">
-                <a href="/book-detail" style="color: inherit;">
-                    <div class="row justify-content-around">
-                        {{#each this}}
-                        <div class="card col-md-2 col" style=" border:none;">
-                            <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
-                            <div class="card-body" style="padding:10px">
-                                <p class="card-text" style="margin: 0;">
-                                    {{this.name}}
-                                </p>
-                                <p class="card-text" style="margin: 0;">
-                                    {{this.author}}
-                                </p>
-
-                            </div>
-                        </div>
-                        {{/each}}
-                    </div>
-                </a>
+    <div class="slick-book-here">
+        {{#each sectionBook.related_booklist}}
+        {{#each this}}
+        <a href="/book-detail" style="color: inherit;">
+            <div class="card" style=" border:none;">
+                <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                <div class="card-body" style="padding:10px">
+                    <p class="card-text" style="margin: 0;">
+                        {{this.name}}
+                    </p>
+                    <p class="card-text">
+                        {{this.author}}
+                    </p>
+                    
+                </div>
             </div>
-            {{/each}}
-        </div>
-        <a class="carousel-control-prev" href="#carousel_booklist_hot" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carousel_booklist_hot" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+        {{/each}}
+        {{/each}}
     </div>
+
     <div class="comment-area padding-top-3em padding-left-3em">
         <img src="/images/news-thumbnail.png" alt="" class="avatar">
         <span>1712260</span>

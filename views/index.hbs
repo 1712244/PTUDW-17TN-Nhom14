@@ -1,7 +1,7 @@
+<link rel="stylesheet" href="/stylesheets/slick-here.css">
 <div class="container-fluid" style="padding:0; width:95%">
     <div class="content-section picture-search d-flex justify-content-center bg-white no-padding align-items-center">
         <div id="searchbar-in-picture" class="input-group col-8">
-
             <input type="text" class="form-control" placeholder="Tìm kiếm sách, tin tức, ..." aria-label="Username"
                 aria-describedby="basic-addon1">
             <div class="input-group-append">
@@ -12,93 +12,59 @@
     </div>
     <div class="content-section bg-white no-padding">
         <div class="title-section text-center">{{sectionSachHot.title}}</div>
-        <div id="carousel_list_specialize" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                {{#each sectionSachHot.list_categories}}
-                {{#if @first}}
-                <div class="carousel-item active">
-                    <ul class="nav nav-pills nav-fill align-items-center" style="padding:5px">
-                        {{#each this}}
-                        {{#if @first}}
-                        <li class="nav-item col-sm-2  ">
-                            <a class="nav-link active-modified-list-cs" href="#">
-                                {{this}}
-                            </a>
-                        </li>
-                        {{else}}
-                        <li class="nav-item col-sm-2 ">
-                            <a class="nav-link text-dark" href="#">
-                                {{this}}
-                            </a>
-                        </li>
-                        {{/if}}
-                        {{/each}}
-                    </ul>
-                </div>
-                {{else}}
-                <div class="carousel-item">
-                    <ul class="nav nav-pills nav-fill align-items-center" style="padding:5px">
-                        {{#each this}}
-                        <li class="nav-item col-sm-2 ">
-                            <a class="nav-link text-dark" href="#">
-                                {{this}}
-                            </a>
-                        </li>
+        <ul class="nav nav-pills nav-fill align-items-center slick-nav-book-here" style="padding:5px;">
+            {{#each sectionSachHot.list_categories}}
+            {{#if @first}}
+            {{#each this}}
+            {{#if @first}}
+            <li class="nav-item col-sm-2  " style="padding: 0; margin:0">
+                <a class="nav-link active-modified-list-cs" href="#">
+                    {{this}}
+                </a>
+            </li>
+            {{else}}
+            <li class="nav-item col-sm-2 " style="padding: 0; margin:0">
+                <a class="nav-link text-dark" href="#">
+                    {{this}}
+                </a>
+            </li>
+            {{/if}}
+            {{/each}}
+            {{else}}
+            {{#each this}}
+            <li class="nav-item col-sm-2 " style="padding: 0; margin:0">
+                <a class="nav-link text-dark" href="#">
+                    {{this}}
+                </a>
+            </li>
+            {{/each}}
+            {{/if}}
+            {{/each}}
 
-                        {{/each}}
-                    </ul>
-                </div>
-                {{/if}}
-                {{/each}}
-            </div>
-            <a class="carousel-control-prev" href="#carousel_list_specialize" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel_list_specialize" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-
+        </ul>
         {{!Carousel book list}}
-        <div id="carousel_booklist" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                {{#each sectionSachHot.books}}
-                <div class="carousel-item {{#if @first}} active {{/if}} ">
-                    <a href="/book-detail" style="color: inherit;">
-                        <div class="row justify-content-around">
-                            {{#each this}}
-                            <div class="card col-md-2 col" style=" border:none;">
-                                <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
-                                <div class="card-body" style="padding:10px">
-                                    <p class="card-text" style="margin: 0;">
-                                        {{this.name}}
-                                    </p>
-                                    <p class="card-text">
-                                        {{this.author}}
-                                    </p>
-                                </div>
-                            </div>
-                            {{/each}}
-                        </div>
-                    </a>
+        <div class="slick-book-here">
+            {{#each sectionSachHot.books}}
+            {{#each this}}
+            <a href="/book-detail" style="color: inherit;">
+                <div class="card" style=" border:none;">
+                    <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                    <div class="card-body" style="padding:10px">
+                        <p class="card-text" style="margin: 0;">
+                            {{this.name}}
+                        </p>
+                        <p class="card-text">
+                            {{this.author}}
+                        </p>
+                    </div>
                 </div>
-                {{/each}}
-            </div>
-            <a class="carousel-control-prev" href="#carousel_booklist" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carousel_booklist" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            {{/each}}
+            {{/each}}
         </div>
-
-
     </div>
 
+    {{!News section}}
     <div class="content-section bg-white no-padding">
         <div class="title-section text-center">{{sectionTinTuc.title}}</div>
         <div class="row">
@@ -107,7 +73,6 @@
                 <div class="d-flex justify-content-center">
                     {{#each sectionTinTuc.articles}}
                     {{#if @first}}
-
                     <div class="card" style="width: 220px; border:none;">
                         <a href="/news-detail">
                             <div class="card-body" style="padding:5px">
@@ -122,13 +87,9 @@
                                 style="padding-bottom: 20px;">
                         </a>
                     </div>
-
-
                     {{/if}}
                     {{/each}}
                 </div>
-
-
             </div>
             <div class="col-md">
                 <div class="d-flex justify-content-center">
@@ -156,11 +117,8 @@
                             <div class="text-right" style="color: #3498DB; font-weight:bold;">
                                 {{sectionTinTuc.more_news}}</div>
                         </a>
-
                     </div>
-
                 </div>
-
             </div>
             <div class="col-2"></div>
         </div>
