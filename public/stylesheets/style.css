@@ -73,6 +73,14 @@ body {
     font-weight: bold;
     font-size: 40px;
 }
+@media screen and (max-width: 600px) {
+    .title-section {
+        padding: 25px;
+        color: #3498db;
+        font-weight: bold;
+        font-size: 30px;
+    }
+  }
 
 .active-modified-list-cs {
     background-color: #ECF0F1;

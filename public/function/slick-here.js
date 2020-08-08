@@ -17,7 +17,7 @@ $('.slick-book-here').slick({
       },  {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
         }
       }]

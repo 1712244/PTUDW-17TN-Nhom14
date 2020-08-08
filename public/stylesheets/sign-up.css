@@ -16,7 +16,6 @@
 
 .sign-up {
     width: auto;
-    padding-left: 20%;
 }
 
 .padding-top-15-per {
@@ -26,6 +25,7 @@
 .username,
 .password {
     padding-top: 4%;
+    width: 80%;
 }
 
 .sign-up-but {
