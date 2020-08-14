@@ -15,7 +15,6 @@
 
 .forget-pass {
     width: auto;
-    padding-left: 20%;
 }
 
 .padding-top-15-per {
@@ -32,7 +31,7 @@
 }
 
 .user-input {
-    width: 17em;
+    width: 18em;
 }
 
 .font-size-xxx-large {
@@ -71,10 +70,6 @@
     border-radius: 50px;
 }
 
-.forget-pass {
-    padding-left: 3.5em;
-    font-size: medium;
-}
 
 .rectangle-ECF0F1 {
     background-color: #ECF0F1;

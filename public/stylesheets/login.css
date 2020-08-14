@@ -15,7 +15,7 @@
 
 .login {
     width: auto;
-    padding-left: 20%;
+    
 }
 
 .padding-top-15-per {
@@ -25,6 +25,7 @@
 .username,
 .password {
     padding-top: 4%;
+    width: 80%;
 }
 
 .login-forget-pass {
@@ -73,7 +74,7 @@
 }
 
 .forget-pass {
-    padding-left: 3.5em;
+    padding-left: 3em;
     font-size: medium;
 }
 
