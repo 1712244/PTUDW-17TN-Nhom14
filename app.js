@@ -1,65 +1,28 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var hbs = require('hbs');
-require('./routes/helper/lib-helper.js');
-
-// set router zone
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var loginRouter = require('./routes/login');
-var searchRouter = require('./routes/search');
-
-var signUpRouter = require('./routes/sign-up');
-
-var forgetpassRouter = require('./routes/forget-pass');
-var categoriesRouter = require('./routes/categories');
-var storageRouter = require('./routes/storage');
-var aboutRouter = require('./routes/about');
-
-var newsRouter = require('./routes/news');
-
-var newsDetailRouter = require('./routes/news-detail');
-var bookDetailRouter = require('./routes/book-detail');
-var profileRouter = require('./routes/profile');
-var cartsRouter = require('./routes/carts');
-var cartDetailRouter = require('./routes/cart-detail');
-var buyBookRouter = require('./routes/buy-book')
-var returnBookListRouter = require('./routes/return-book-list');
-var rentBookListRouter = require('./routes/rent-book-list');
-var indexLibRouter = require('./routes/index-lib');
-var borrowRouter = require('./routes/borrow');
-var returnRouter = require('./routes/return');
-var borrowerRouter = require('./routes/borrower-profile');
-var librarianLoginRouter = require('./routes/librarian-login');
-var librarianPostAnnouncer = require('./routes/post-announcer');
-var libconfirmIDRouter = require('./routes/lib-confirmID');
-var libProfileRouter = require('./routes/lib-profile');
-var libLawRouter = require('./routes/lib-law');
-var bookInfoLibRouter = require('./routes/book-info-lib');
-
-
-
-var buybookManager = require('./routes/buy-book-manager')
-var changePassword = require('./routes/change-password')
-var accManager = require('./routes/account-manager')
-
-var bookingManager = require('./routes/lib-booking-book-manager')
+var createError = require("http-errors");
+var express = require("express");
+var path = require("path");
+var cookieParser = require("cookie-parser");
+var logger = require("morgan");
+var hbs = require("hbs");
+require("./routes/front-end/helper/lib-helper.js");
 
 // Setup livereload
 const livereload = require("livereload");
 
+// // connect db
+// const mongo = require("./db/mongo");
+// mongo.connectMongo()
+
+
 var liveReloadServer = livereload.createServer();
-liveReloadServer.watch(path.join(__dirname, 'public'));
+liveReloadServer.watch(path.join(__dirname, "public"));
 var connectLivereload = require("connect-livereload");
 
-var hbs = require('hbs');
+var hbs = require("hbs");
 var app = express();
-app.set('view options', { layout: false });
+app.set("view options", { layout: false });
 
-hbs.registerPartials(path.join(__dirname, 'views/partials'));
+hbs.registerPartials(path.join(__dirname, "views/partials"));
 
 
 app.use(connectLivereload());
@@ -70,52 +33,53 @@ liveReloadServer.server.once("connection", () => {
 });
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "hbs");
 
-app.use(logger('dev'));
+app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
-// Set path zone
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/login', loginRouter);
-app.use('/categories', categoriesRouter);
-app.use('/storage', storageRouter);
-app.use('/search', searchRouter);
-app.use('/sign-up', signUpRouter);
-app.use('/about', aboutRouter);
-app.use('/librarian', indexLibRouter);
-app.use('/librarian/borrow', borrowRouter);
-app.use('/librarian/return', returnRouter);
-app.use('/librarian/borrower', borrowerRouter);
-app.use('/librarian/librarian-login', librarianLoginRouter);
-app.use('/librarian/post-announcer', librarianPostAnnouncer)
-app.use('/librarian/lib-confirmID', libconfirmIDRouter);
-app.use('/librarian/lib-profile', libProfileRouter);
-app.use('/librarian/lib-law', libLawRouter);
-app.use('/librarian/account-manager', accManager);
-app.use('/librarian/booking-manager', bookingManager);
-app.use('/librarian/book', bookInfoLibRouter);
+// Set path render zone
+app.use("/", require("./routes/front-end/index"));
+app.use("/users", require("./routes/front-end/users"));
+app.use("/login", require("./routes/front-end/login"));
+app.use("/categories", require("./routes/front-end/search"));
+app.use("/storage", require("./routes/front-end/storage"));
+app.use("/search", require("./routes/front-end/search"));
+app.use("/sign-up", require("./routes/front-end/sign-up"));
+app.use("/about", require("./routes/front-end/about"));
+app.use("/librarian", require("./routes/front-end/index-lib"));
+app.use("/librarian/borrow", require("./routes/front-end/borrow"));
+app.use("/librarian/return", require("./routes/front-end/return"));
+app.use("/librarian/borrower", require("./routes/front-end/borrower-profile"));
+app.use("/librarian/librarian-login", require("./routes/front-end/librarian-login"));
+app.use("/librarian/post-announcer", require("./routes/front-end/post-announcer"))
+app.use("/librarian/lib-confirmID", require("./routes/front-end/lib-confirmID"));
+app.use("/librarian/lib-profile", require("./routes/front-end/lib-profile"));
+app.use("/librarian/lib-law", require("./routes/front-end/lib-law"));
+app.use("/librarian/account-manager", require("./routes/front-end/account-manager"));
+app.use("/librarian/booking-manager", require("./routes/front-end/lib-booking-book-manager"));
+app.use("/librarian/book", require("./routes/front-end/book-info-lib"));
 
-// set path news
-app.use('/news', newsRouter);
-app.use('/news-detail', newsDetailRouter);
+// set path render news
+app.use("/news", require("./routes/front-end/news"));
+app.use("/news-detail", require("./routes/front-end/news-detail"));
 
-app.use('/book-detail', bookDetailRouter);
+app.use("/book-detail", require("./routes/front-end/book-detail"));
 
-app.use('/forget-pass', forgetpassRouter);
-app.use('/profile', profileRouter);
-app.use('/carts', cartsRouter);
-app.use('/cart-detail', cartDetailRouter);
-app.use('/buy-book', buyBookRouter)
-app.use('/return-book-list', returnBookListRouter);
-app.use('/rent-book-list', rentBookListRouter);
-app.use('/buy-book-manager', buybookManager);
-app.use('/change-password', changePassword)
+app.use("/forget-pass", require("./routes/front-end/forget-pass"));
+app.use("/profile", require("./routes/front-end/profile"));
+app.use("/carts", require("./routes/front-end/carts"));
+app.use("/cart-detail", require("./routes/front-end/cart-detail"));
+app.use("/buy-book", require("./routes/front-end/buy-book"))
+app.use("/return-book-list", require("./routes/front-end/return-book-list"));
+app.use("/rent-book-list", require("./routes/front-end/rent-book-list"));
+app.use("/buy-book-manager", require("./routes/front-end/buy-book-manager"));
+app.use("/change-password", require("./routes/front-end/change-password"))
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -126,11 +90,11 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
+    res.locals.error = req.app.get("env") === "development" ? err : {};
 
     // render the error page
     res.status(err.status || 500);
-    res.render('error');
+    res.render("error");
 });
 
 module.exports = app;
