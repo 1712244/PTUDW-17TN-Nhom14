@@ -87,7 +87,7 @@ app.use("/api", require("./routes/back-end/author")());
 app.use("/api", require("./routes/back-end/producer")());
 app.use("/api", require("./routes/back-end/book")());
 app.use("/api", require("./routes/back-end/news")());
-
+app.use("/api", require("./routes/back-end/comment")());
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));

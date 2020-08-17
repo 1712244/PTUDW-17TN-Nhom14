@@ -3,7 +3,7 @@ const bookService = require('./../services/book')
 async function insert(req, res) {
     try {
         const { ISBN, author, reprint, producer, desc, tag, borrower_id, image_url } = req.body;
-        const newBookDocument = userService.createModel(_id, author, reprint, producer, desc, tag, borrower_id, image_url);
+        const newBookDocument = userService.createModel(ISBN, author, reprint, producer, desc, tag, borrower_id, image_url);
         await bookService.insert(newBookDocument);
         return res.status(200).send({ book: newBookDocument });
     } catch (error) {

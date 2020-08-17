@@ -29,7 +29,7 @@ function insert(newBookDocument) {
 
 function removeById(_id) {
     return new Promise((resolve, reject) => {
-        Book.deleteOne({ _id: book_id }).exec(error => {
+        Book.deleteOne({ _id: _id }).exec(error => {
             if (error) return reject(error);
             return resolve(true);
         });
@@ -47,7 +47,7 @@ function removeByISBN(ISBN) {
 
 function updateById(_id, ISBN, name, author, reprint, producer, desc, tag, borrower_id, image_url) {
     return new Promise((resolve, reject) => {
-        Book.updateOne({ _id: book_id }, { ISBN: ISBN, name: name, author: author, reprint: reprint, producer: producer, desc: desc, tag: tag, borrower_id: borrower_id, image_url: image_url }).exec(error => {
+        Book.updateOne({ _id: _id }, { ISBN: ISBN, name: name, author: author, reprint: reprint, producer: producer, desc: desc, tag: tag, borrower_id: borrower_id, image_url: image_url }).exec(error => {
             if (error) return reject(error);
             return resolve(true);
         });
@@ -65,7 +65,7 @@ function updateByISBN(ISBN, name, author, reprint, producer, desc, tag, borrower
 
 function getById(_id) {
     return new Promise((resolve, reject) => {
-        Book.findOne({ _id: book_id }).select("_id book_id ISBN name author reprint producer desc tag borrower_id image_url cDate mDate").exec((error, bookDocument) => {
+        Book.findOne({ _id: _id }).select("_id ISBN name author reprint producer desc tag borrower_id image_url cDate mDate").exec((error, bookDocument) => {
             if (error) return reject(error);
             return resolve(bookDocument);
         });
@@ -74,7 +74,7 @@ function getById(_id) {
 
 function getByISBN(ISBN) {
     return new Promise((resolve, reject) => {
-        Book.findOne({ ISBN: ISBN }).select("_id book_id ISBN name author reprint producer desc tag borrower_id image_url cDate mDate").exec((error, bookDocument) => {
+        Book.findOne({ ISBN: ISBN }).select("_id ISBN name author reprint producer desc tag borrower_id image_url cDate mDate").exec((error, bookDocument) => {
             if (error) return reject(error);
             return resolve(bookDocument);
         });
@@ -83,7 +83,7 @@ function getByISBN(ISBN) {
 
 function getManyByName(name) {
     return new Promise((resolve, reject) => {
-        Book.find({ name: name }).select("_id book_id ISBN name author reprint producer desc tag borrower_id image_url cDate mDate").exec((error, bookDocument) => {
+        Book.find({ name: name }).select("_id ISBN name author reprint producer desc tag borrower_id image_url cDate mDate").exec((error, bookDocument) => {
             if (error) return reject(error);
             return resolve(bookDocument);
         });
@@ -92,7 +92,7 @@ function getManyByName(name) {
 
 function getManyByAuthor(author) {
     return new Promise((resolve, reject) => {
-        Book.find({ author: author }).select("_id book_id ISBN name author reprint producer desc tag borrower_id image_url cDate mDate").exec((error, bookDocument) => {
+        Book.find({ author: author }).select("_id ISBN name author reprint producer desc tag borrower_id image_url cDate mDate").exec((error, bookDocument) => {
             if (error) return reject(error);
             return resolve(bookDocument);
         });
@@ -101,7 +101,7 @@ function getManyByAuthor(author) {
 
 function getManyByProducer(producer) {
     return new Promise((resolve, reject) => {
-        Book.find({ producer: producer }).select("_id book_id ISBN name author reprint producer desc tag borrower_id image_url cDate mDate").exec((error, bookDocument) => {
+        Book.find({ producer: producer }).select("_id ISBN name author reprint producer desc tag borrower_id image_url cDate mDate").exec((error, bookDocument) => {
             if (error) return reject(error);
             return resolve(bookDocument);
         });
