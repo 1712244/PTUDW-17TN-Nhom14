@@ -34,7 +34,7 @@
         </div>
 
         <div class="display-flex button-area justify-content-center">
-            <button onclick="logdata()"  class="customized-btn blue-bg-white-text" style="border: none;">Đăng</button>
+            <button onclick="logdata()" class="customized-btn blue-bg-white-text" style="border: none;">Đăng</button>
             <button style="margin-left:15px" class="customized-btn white-bg-black-text">Hủy</button>
         </div>
     </div>
@@ -45,11 +45,12 @@
 <!-- Include the Quill library -->
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <script src="/function/upload.js"></script>
-<script type="module" src="/function/word-area-quillEditor.js"></script>
+{{!-- <script src="./../word-area-quillEditor.js"></script> --}}
 <!-- Initialize Quill editor -->
 <script>
-    function logdata(){
-        console.log( quill.getContents())
+    function logdata() {
+        console.log(editor.getContents())
+        console.log(editor.root.innerHTML);
     }
 
     var toolbarOptions = [
@@ -72,7 +73,8 @@
         ['clean'], // remove formatting button
         ['image']
     ];
-    var quill = new Quill("#editor", {
+
+    var editor = new Quill("#editor", {
 
         debug: 'info',
         modules: {
@@ -81,5 +83,7 @@
         placeholder: 'Compose an epic...',
         theme: 'snow'
     });
+
+    editor.insertText(0, 'Hello', 'bold', true);
 </script>
 <script src="/function/nav-lib.js" current_page="Đăng thông báo"></script>

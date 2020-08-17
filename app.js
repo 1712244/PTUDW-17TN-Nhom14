@@ -83,8 +83,10 @@ app.use("/change-password", require("./routes/front-end/change-password"))
 // api db
 app.use("/api", require("./routes/back-end/user")());
 app.use("/api", require("./routes/back-end/account")());
-
-
+app.use("/api", require("./routes/back-end/author")());
+app.use("/api", require("./routes/back-end/producer")());
+app.use("/api", require("./routes/back-end/book")());
+app.use("/api", require("./routes/back-end/news")());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

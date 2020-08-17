@@ -1,6 +1,6 @@
 const Account = require("./../collections/account");
 const dateTimeService = require('./../utils/dateTime');
-const user = require("./user");
+
 
 function createModel(email, password) {
     const newAccount = new Account({
@@ -41,9 +41,9 @@ function removeByEmail(email) {
 
 function getByEmail(email) {
     return new Promise((resolve, reject) => {
-        Account.findOne({ email: email }).select("email password cDate mDate").exec((error, accrDocument) => {
+        Account.findOne({ email: email }).select("email password cDate mDate").exec((error, accDocument) => {
             if (error) return reject(error);
-            return resolve(accrDocument);
+            return resolve(accDocument);
         })
     });
 }

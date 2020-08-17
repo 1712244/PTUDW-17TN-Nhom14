@@ -30,8 +30,8 @@ function getById(user_id) {
         User.findOne({ user_id: user_id }).select("_id user_id name email sdt type cDate mDate").exec((error, UserDocument) => {
             if (error) return reject(error);
             return resolve(UserDocument);
-        })
-    })
+        });
+    });
 }
 
 function getManyByName(name) {
@@ -39,8 +39,8 @@ function getManyByName(name) {
         User.find({ name: name }).select("_id user_id name email sdt type cDate mDate").exec((error, UserDocument) => {
             if (error) return reject(error);
             return resolve(UserDocument);
-        })
-    })
+        });
+    });
 }
 
 function removeById(user_id) {
@@ -48,8 +48,8 @@ function removeById(user_id) {
         User.deleteOne({ user_id: user_id }).exec(error => {
             if (error) return reject(error);
             return resolve(true);
-        })
-    })
+        });
+    });
 }
 
 function updateById(user_id, name, email, sdt) {
@@ -57,8 +57,8 @@ function updateById(user_id, name, email, sdt) {
         User.updateOne({ user_id: user_id }, { name: name, email: email, sdt: sdt }).exec(error => {
             if (error) return reject(error);
             return resolve(true);
-        })
-    })
+        });
+    });
 }
 
 module.exports = {
