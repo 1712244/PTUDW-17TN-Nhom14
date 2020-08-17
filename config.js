@@ -1,0 +1,5 @@
+module.exports = {
+    ERROR_404: "NOT_FOUND",
+    ERROR_401_PASSWORD: "NOT_MACTH_PASSWORD",
+    STATUS_200_OK: "OK"
+}
