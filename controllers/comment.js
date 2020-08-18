@@ -41,9 +41,31 @@ async function getById(req, res) {
     }
 }
 
+async function getAll(req, res) {
+    try {
+        const commentDocument = await commentService.getAll()
+        return res.status(200).send({ result: commentDocument });
+    } catch (error) {
+        return res.status(500).send({ message: error });
+    }
+}
+
+async function getbyAttribute(req, res) {
+    try {
+        const obj = req.body;
+        const commentDocument = await commentService.getByAttribute(obj)
+        return res.status(200).send({ result: commentDocument });
+    } catch (error) {
+        return res.status(500).send({ message: error });
+    }
+}
+
+
 module.exports = {
     insert: insert,
     updateById: updateById,
     getById: getById,
+    getbyAttribute: getbyAttribute,
+    getAll: getAll,
     removeById: removeById
 }

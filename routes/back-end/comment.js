@@ -6,5 +6,7 @@ module.exports = () => {
     router.post("/comment/update-by-id", commentController.updateById);
     router.delete("/comment/remove-by-id", commentController.removeById);
     router.get("/comment/get-by-id", commentController.getById);
+    router.get("/comment/get-all", commentController.getAll);
+    router.get("/comment/get-by-attribute", commentController.getbyAttribute);
     return router;
 }

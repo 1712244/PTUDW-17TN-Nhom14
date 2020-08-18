@@ -7,5 +7,6 @@ module.exports = () => {
     router.delete("/user/remove-by-id", userController.removeById);
     router.get("/user/get-one-by-id", userController.getById);
     router.get("/user/get-many-by-name", userController.getManyByName);
+    router.get("/user/get-all", userController.getAll);
     return router
 }

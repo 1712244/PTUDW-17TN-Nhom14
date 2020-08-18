@@ -52,10 +52,20 @@ async function getManyByName(req, res) {
     }
 }
 
+async function getAll(req, res) {
+    try {
+        const userDocument = await userService.getAll();
+        return res.status(200).send({ result: userDocument });
+    } catch (error) {
+        return res.status(500).send({ message: error })
+    }
+}
+
 module.exports = {
     insert: insert,
     updateById: updateById,
     removeById: removeById,
     getById: getById,
-    getManyByName: getManyByName
+    getManyByName: getManyByName,
+    getAll: getAll
 }

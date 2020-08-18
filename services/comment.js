@@ -49,10 +49,30 @@ function getById(_id) {
     });
 }
 
+function getAll() {
+    return new Promise((resolve, reject) => {
+        Comment.find().select("_id user_id book_ISBN content rating cDate mDate").exec((error, cmtDocument) => {
+            if (error) return reject(error);
+            return resolve(cmtDocument);
+        });
+    });
+}
+
+function getByAttribute(obj) {
+    return new Promise((resolve, reject) => {
+        Comment.find(obj).select("_id user_id book_ISBN content rating cDate mDate").exec((error, cmtDocument) => {
+            if (error) return reject(error);
+            return resolve(cmtDocument);
+        });
+    });
+}
+
 module.exports = {
     createModel: createModel,
     insert: insert,
     getById: getById,
     updateById: updateById,
-    removeById: removeById
+    removeById: removeById,
+    getAll: getAll,
+    getByAttribute: getByAttribute
 }

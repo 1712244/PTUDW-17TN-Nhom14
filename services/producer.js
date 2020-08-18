@@ -1,4 +1,5 @@
 const Producer = require("./../collections/producer")
+const dateTimeService = require("./../utils/dateTime")
 
 function createModel(name) {
     const newProducer = new Producer({
@@ -55,11 +56,21 @@ function getManyByName(name) {
 }
 
 
+function getAll() {
+    return new Promise((resolve, reject) => {
+        Producer.find().select("_id name cDate mDate").exec((error, prdDocument) => {
+            if (error) return reject(error);
+            return resolve(prdDocument);
+        });
+    });
+}
+
 module.exports = {
     createModel: createModel,
     insert: insert,
     getById: getById,
     getManyByName: getManyByName,
+    getAll: getAll,
     removeById: removeById,
     updateById: updateById
 }

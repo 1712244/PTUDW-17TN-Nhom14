@@ -7,5 +7,6 @@ module.exports = () => {
     router.delete("/author/remove-by-id", authorController.removeById);
     router.get("/author/get-by-id", authorController.getById);
     router.get("/author/get-by-name", authorController.getManyByName);
+    router.get("/author/get-all", authorController.getAll);
     return router;
 }

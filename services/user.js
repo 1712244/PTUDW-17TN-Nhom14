@@ -43,6 +43,15 @@ function getManyByName(name) {
     });
 }
 
+function getAll() {
+    return new Promise((resolve, reject) => {
+        User.find().select("_id user_id name email sdt type cDate mDate").exec((error, UserDocument) => {
+            if (error) return reject(error);
+            return resolve(UserDocument);
+        });
+    });
+}
+
 function removeById(user_id) {
     return new Promise((resolve, reject) => {
         User.deleteOne({ user_id: user_id }).exec(error => {
@@ -66,6 +75,7 @@ module.exports = {
     insert: insert,
     getById: getById,
     getManyByName: getManyByName,
+    getAll: getAll,
     removeById: removeById,
     updateById: updateById
 }

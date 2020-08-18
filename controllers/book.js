@@ -1,20 +1,22 @@
-const bookService = require('./../services/book')
+const bookService = require('./../services/book');
+const { log } = require('debug');
 
 async function insert(req, res) {
     try {
-        const { ISBN, author, reprint, producer, desc, tag, borrower_id, image_url } = req.body;
-        const newBookDocument = userService.createModel(ISBN, author, reprint, producer, desc, tag, borrower_id, image_url);
+        const { ISBN, name, author, reprint, producer, desc, tag, borrower_id, image_url, bought_date, price } = req.body;
+        const newBookDocument = bookService.createModel(ISBN, name, author, reprint, producer, desc, tag, borrower_id, image_url, bought_date, price);
         await bookService.insert(newBookDocument);
         return res.status(200).send({ book: newBookDocument });
     } catch (error) {
+        console.log(error);
         res.status(500).send({ message: error });
     }
 }
 
 async function updateById(req, res) {
     try {
-        const { _id, ISBN, author, reprint, producer, desc, tag, borrower_id, image_url } = req.body;
-        await bookService.updateById(_id, ISBN, author, reprint, producer, desc, tag, borrower_id, image_url)
+        const { _id, ISBN, author, reprint, producer, desc, tag, borrower_id, image_url, bought_date, price } = req.body;
+        await bookService.updateById(_id, ISBN, name, author, reprint, producer, desc, tag, borrower_id, image_url, bought_date, price)
         return res.status(200).send({ result: config.STATUS_200_OK });
     } catch (error) {
         return res.status(500).send({ message: error });
@@ -24,7 +26,7 @@ async function updateById(req, res) {
 async function updateByISBN(req, res) {
     try {
         const { ISBN, author, reprint, producer, desc, tag, borrower_id, image_url } = req.body;
-        await bookService.updateByISBN(ISBN, author, reprint, producer, desc, tag, borrower_id, image_url)
+        await bookService.updateByISBN(ISBN, name, author, reprint, producer, desc, tag, borrower_id, image_url, bought_date, price)
         return res.status(200).send({ result: config.STATUS_200_OK });
     } catch (error) {
         return res.status(500).send({ message: error });
@@ -101,6 +103,27 @@ async function getManyByProducer(req, res) {
     }
 }
 
+async function getAll(req, res) {
+    try {
+        const {} = req.body;
+        const bookDocument = await bookService.getAll();
+        return res.status(200).send({ result: bookDocument });
+    } catch (error) {
+        return res.status(500).send({ message: error });
+    }
+}
+
+async function getByAttribute(req, res) {
+    try {
+        // const obj = req.body;
+        const { tag, name } = req.body;
+        const bookDocument = await bookService.getByAttribute(tag, [], name);
+        return res.status(200).send({ result: bookDocument });
+    } catch (error) {
+        return res.status(500).send({ message: error });
+    }
+}
+
 module.exports = {
     insert: insert,
     getManyByName: getManyByName,
@@ -108,6 +131,8 @@ module.exports = {
     getManyByProducer: getManyByProducer,
     getById: getById,
     getByISBN: getByISBN,
+    getAll: getAll,
+    getByAttribute: getByAttribute,
     updateById: updateById,
     updateByISBN: updateByISBN,
     removeById: removeById,

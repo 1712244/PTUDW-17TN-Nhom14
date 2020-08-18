@@ -6,7 +6,7 @@ const config = require("../config")
 async function insert(req, res) {
     try {
         const { title, content, tag, writer } = req.body;
-        const newNewsDocument = userService.createModel(title, content, tag, writer);
+        const newNewsDocument = newsService.createModel(title, content, tag, writer);
         await newsService.insert(newNewsDocument);
         return res.status(200).send({ News: newNewsDocument });
     } catch (error) {
@@ -17,7 +17,7 @@ async function insert(req, res) {
 async function removeById(req, res) {
     try {
         const { _id } = req.body;
-        await newsService.removeById(author_id)
+        await newsService.removeById(_id)
         return res.status(200).send({ result: config.STATUS_200_OK });
     } catch (error) {
         return res.status(500).send({ message: error });
@@ -27,7 +27,7 @@ async function removeById(req, res) {
 async function getById(req, res) {
     try {
         const { _id } = req.body;
-        const NewsDocument = await newsService.getById(author_id);
+        const NewsDocument = await newsService.getById(_id);
         return res.status(200).send({ result: NewsDocument });
     } catch (error) {
         return res.status(500).send({ message: error });
@@ -44,9 +44,21 @@ async function updateById(req, res) {
     }
 }
 
+
+async function getAll(req, res) {
+    try {
+        const NewsDocument = await newsService.getAll();
+        return res.status(200).send({ result: NewsDocument });
+    } catch (error) {
+        return res.status(500).send({ message: error });
+    }
+}
+
+
 module.exports = {
     insert: insert,
     updateById: updateById,
     removeById: removeById,
-    getById: getById
+    getById: getById,
+    getAll: getAll
 }

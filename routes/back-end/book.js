@@ -12,6 +12,7 @@ module.exports = () => {
     router.get("/book/get-by-name", bookController.getManyByName);
     router.get("/book/get-by-author", bookController.getManyByAuthor);
     router.get("/book/get-by-poducer", bookController.getManyByProducer);
-
+    router.get("/book/get-all", bookController.getAll);
+    router.get("/book/get-by-attribute", bookController.getByAttribute);
     return router;
 }

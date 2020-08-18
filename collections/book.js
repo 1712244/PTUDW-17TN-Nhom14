@@ -3,14 +3,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const bookSchema = new Schema({
-    _id: {
-        type: Schema.Types.ObjectId
-    },
     ISBN: {
-        type: String
+        type: String,
+        required: true,
+        unique: true
     },
     name: {
-        type: true,
+        type: String,
         required: true
     },
     author: {
@@ -35,16 +34,20 @@ const bookSchema = new Schema({
         type: String
     },
     image_url: {
-        type: String,
+        type: String
+    },
+    bought_date: {
+        type: Date,
         required: true
+    },
+    price: {
+        type: Number
     },
     cDate: {
-        type: Date,
-        required: true
+        type: Date
     },
     mDate: {
-        type: Date,
-        required: true
+        type: Date
     }
 
 });

@@ -31,6 +31,15 @@ function getById(_id) {
     });
 }
 
+function getAll() {
+    return new Promise((resolve, reject) => {
+        News.find().select("_id title content tag writer cDate mDate").exec((error, newsDocument) => {
+            if (error) return reject(error);
+            return resolve(newsDocument);
+        });
+    });
+}
+
 function removeById(_id) {
     return new Promise((resolve, reject) => {
         News.deleteOne({ _id: _id }).exec((error) => {
@@ -54,6 +63,7 @@ module.exports = {
     createModel: createModel,
     insert: insert,
     getById: getById,
+    getAll: getAll,
     removeById: removeById,
     updateById: updateById
 }

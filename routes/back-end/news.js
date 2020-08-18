@@ -6,5 +6,6 @@ module.exports = () => {
     router.post("/news/update-by-id", newsController.updateById);
     router.delete("/news/remove-by-id", newsController.removeById);
     router.get("/news/get-by-id", newsController.getById);
+    router.get("/news/get-all", newsController.getAll);
     return router;
 }

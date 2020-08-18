@@ -19,27 +19,27 @@ function insert(newAuthor) {
     });
 }
 
-function removeById(author_id) {
+function removeById(_id) {
     return new Promise((resolve, reject) => {
-        Author.deleteOne({ author_id: author_id }).exec(error => {
+        Author.deleteOne({ _id: _id }).exec(error => {
             if (error) return reject(error);
             return resolve(true)
         })
     });
 }
 
-function updateById(author_id, name) {
+function updateById(_id, name) {
     return new Promise((resolve, reject) => {
-        Author.updateOne({ author_id: author_id }, { name: name }).exec(error => {
+        Author.updateOne({ _id: _id }, { name: name }).exec(error => {
             if (error) return reject(error);
             return resolve(true);
         });
     });
 }
 
-function getById(author_id) {
+function getById(_id) {
     return new Promise((resolve, reject) => {
-        Author.findOne({ _id: author_id }).select("author_id name cDate mDate").exec((error, athDocument) => {
+        Author.findOne({ _id: _id }).select("_id name cDate mDate").exec((error, athDocument) => {
             if (error) return reject(error);
             return resolve(athDocument);
         })
@@ -48,19 +48,28 @@ function getById(author_id) {
 
 function getManyByName(name) {
     return new Promise((resolve, reject) => {
-        Author.find({ name: name }).select("author_id name cDate mDate").exec((error, athDocument) => {
+        Author.find({ name: name }).select("_id name cDate mDate").exec((error, athDocument) => {
             if (error) return reject(error);
             return resolve(athDocument);
         });
     });
 }
 
+function getAll() {
+    return new Promise((resolve, reject) => {
+        Author.find().select("_id name cDate mDate").exec((error, athDocument) => {
+            if (error) return reject(error);
+            return resolve(athDocument);
+        });
+    });
+}
 
 module.exports = {
     createModel: createModel,
     insert: insert,
     getById: getById,
     getManyByName: getManyByName,
+    getAll: getAll,
     removeById: removeById,
     updateById: updateById
 }
