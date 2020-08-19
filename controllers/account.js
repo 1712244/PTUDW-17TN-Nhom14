@@ -1,11 +1,10 @@
 const accountService = require('./../services/account');
+const userService = require('./../services/user');
+
 const config = require('./../config')
 const crypto = require('crypto');
 const cipher = crypto.createCipher('aes128', 'a password');
 const decipher = crypto.createDecipher('aes128', 'a password');
-
-
-const Account = require("./../collections/account");
 
 async function signUp(req, res) {
     try {
@@ -13,12 +12,15 @@ async function signUp(req, res) {
 
         // ma hoa pass binh thuong de luu tru trong db
 
-        let encryptedPass = cipher.update(password, 'utf8', 'hex');
-        encryptedPass += cipher.final('hex');
-
-        const newAccountDocument = accountService.createModel(email, encryptedPass);
+        // let encryptedPass = cipher.update(password, 'utf8', 'hex');
+        // encryptedPass += cipher.final('hex');
+        
+        const newAccountDocument = accountService.createModel(email, password);
+        const newUserDoc = userService.createModel(newAccountDocument.id_user, email);;
         await accountService.insert(newAccountDocument);
-
+        await userService.insert(newUserDoc)
+        req.session.username = newAccountDocument.username;
+        console.log(req.session.username);
         return res.status(200).send({ result: newAccountDocument });
     } catch (error) {
         return res.status(500).send({ message: error });
@@ -46,7 +48,6 @@ async function signIn(req, res, next) {
 
 
         req.session.username = username;
-        console.log(req.session.username);
         return res.status(200).send({ result: config.STATUS_200_OK });
     } catch (error) {
         res.status(500).send({ message: error });

@@ -3,17 +3,15 @@ const dateTimeService = require('./../utils/dateTime');
 
 
 
-function createModel(user_id, name, email, sdt, type, avatar, qrcode) {
+function createModel(id, email) {
     const userModel = new User({
-        user_id: user_id,
-        name: name,
+        id: id,
+        name: "",
         email: email,
-        sdt: sdt,
-        type: type,
-        avatar: avatar,
-        qrcode: qrcode,
-        cDate: dateTimeService.now(),
-        mDate: dateTimeService.now()
+        sdt: "",
+        type: 2,
+        avatar: "",
+        qr_code: ""
     });
     return userModel;
 }

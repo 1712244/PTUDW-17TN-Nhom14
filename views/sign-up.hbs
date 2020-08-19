@@ -4,22 +4,21 @@
             <div class="col-lg row align-content-center justify-content-center" style="margin-left: 2px;">
                 <div class="sign-up-input row justify-content-center align-items-center" style="width: 80%;">
                     <div class="sign-up ">
-                        <div class="row justify-content-center" >
+                        <div class="row justify-content-center">
                             <span class="title-section text-center" style="padding-bottom: 0;"> Đăng Ký </span>
                         </div>
+                        <form id="formSignup" action="" method="POST">
+                            <div class="username">
+                                <input id="username_form" type="text" name="email" class="user-input" placeholder="Email sinh viên">
+                            </div>
+                            <div class="password">
+                                <input id="password_form" type="text" name="password" class="user-input" placeholder="Mật khẩu">
+                            </div>
+                            <div class="sign-up-but row justify-content-center">
+                                <button type="submit" class="sign-up-button font-normal-bold">Đăng Ký</button>
+                            </div>
+                        </form>
 
-                        <div class="username">
-                            <input type="text" class="user-input" placeholder="Email sinh viên">
-                        </div>
-                        <div class="password">
-                            <input type="text" class="user-input" placeholder="Mật khẩu">
-                        </div>
-                        <div class="sign-up-but row justify-content-center">
-                            <a href="/">
-                                <button class="sign-up-button font-normal-bold">Đăng Ký</button>
-                            </a>
-
-                        </div>
                     </div>
 
 
@@ -56,4 +55,7 @@
 
 
 <link rel="stylesheet" href="/stylesheets/sign-up.css">
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
 <script src="/function/change-nav.js" current_page="Đăng nhập"></script>
+<script src="/function/login.js"></script>

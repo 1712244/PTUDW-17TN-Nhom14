@@ -3,11 +3,14 @@ const dateTimeService = require('./../utils/dateTime');
 
 
 function createModel(email, password) {
+    var id_user = email.split("@")[0]
+    var username = id_user
     const newAccount = new Account({
+        id_user: id_user,
+        username: username,
         email: email,
-        password: password,
-        cDate: dateTimeService.now(),
-        mDate: dateTimeService.now()
+        password: password
+        
     });
     return newAccount;
 }
