@@ -9,9 +9,11 @@ require("./routes/front-end/helper/lib-helper.js");
 // Setup livereload
 const livereload = require("livereload");
 
+
 // // connect db
 // const mongo = require("./db/mongo");
 // mongo.connectMongo()
+
 
 
 var liveReloadServer = livereload.createServer();
