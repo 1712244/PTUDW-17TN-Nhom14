@@ -3,11 +3,14 @@ const dateTimeService = require('./../utils/dateTime');
 
 
 function createModel(email, password) {
+    var id_user = email.split("@")[0]
+    var username = id_user
     const newAccount = new Account({
+        id_user: id_user,
+        username: username,
         email: email,
-        password: password,
-        cDate: dateTimeService.now(),
-        mDate: dateTimeService.now()
+        password: password
+        
     });
     return newAccount;
 }
@@ -48,10 +51,28 @@ function getByEmail(email) {
     });
 }
 
+function findByUsername(username) {
+    return new Promise((resolve, reject) => {
+        Account.findOne({ username: username }).select("username password").exec((error, accDocument) => {
+            if (error) return reject(error);
+            return resolve(accDocument);
+        })
+    });
+}
+const User = require("./../collections/user");
+
+async function getUserInfo(username) {
+    var acc = await Account.findOne({ username: username }).select("id_user username").exec();
+    var user = await User.findOne({ id: acc.id_user }).select("id name email sdt avatar qr_code type").exec();
+    return {user,username}
+}
+
 module.exports = {
     createModel: createModel,
     insert: insert,
     updateByEmail: updateByEmail,
     removeByEmail: removeByEmail,
-    getByEmail: getByEmail
+    getByEmail: getByEmail,
+    findByUsername: findByUsername,
+    getUserInfo: getUserInfo,
 }

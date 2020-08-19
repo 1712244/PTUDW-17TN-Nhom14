@@ -3,41 +3,29 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserShema = new Schema({
-    user_id: {
+    id: {
         type: String,
-        required: true,
-        unique: true
     },
     name: {
         type: String,
-        required: true
     },
     email: {
         type: String,
-        required: true
     },
     sdt: {
         type: String,
-        required: true
     },
     type: {
         type: Number,
-        required: true
     },
     avatar: {
         type: String
     },
-    qrcode: {
+    qr_code: {
         type: String
-    },
-    cDate: {
-        type: Date
-    },
-    mDate: {
-        type: Date
     }
 });
 
-const User = mongoose.model('user', UserShema);
+const User = mongoose.model('user', UserShema, 'user');
 
 module.exports = User;

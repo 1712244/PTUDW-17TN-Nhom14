@@ -12,10 +12,11 @@
   <link rel="stylesheet" href="/stylesheets/style.css">
   <link rel="stylesheet" type="text/css" href="/slick/slick.css" />
   <link rel="stylesheet" type="text/css" href="/slick/slick-theme.css" />
-  
+
 </head>
 
 <body>
+
   <header class="container-fluid header-nav fixed-top">
     <div class="row justify-content-between ">
       <a class="navbar-brand no-padding-top-bot" href="/">
@@ -44,10 +45,23 @@
               <a class="nav-link text-dark" href="/about">Giới thiệu</a>
             </li>
 
-            {{!login area}}
+            {{!login area, 1 gv, 2 sv}}
+            {{#if user.username}}
+            {{#ifeq user.user.type 2}}
+            <li class="nav-item nav-item-padding btn-group d-contents" id="login-checking-area">
+              {{>sinhvien_dropdown}}
+            </li>
+            {{else}}
+            <li class="nav-item nav-item-padding btn-group d-contents" id="login-checking-area">
+              {{>giaovien_dropdown}}
+            </li>
+            {{/ifeq}}
+            {{else}}
             <li class="nav-item nav-item-padding" id="login-checking-area">
               <a class="nav-link text-dark" href="/login">Đăng nhập</a>
             </li>
+            {{/if}}
+
           </ul>
         </div>
       </nav>
@@ -90,7 +104,6 @@
   <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
   <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <script type="text/javascript" src="/slick/slick.min.js"></script>
-  <script src="/function/login-checking-type-and-loading.js"></script>
   <script src="/function/layout.js"></script>
   <script src="/function/slick-here.js"></script>
 </body>

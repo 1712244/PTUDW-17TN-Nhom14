@@ -3,23 +3,17 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const accountSchema = new Schema({
-    email: {
+    id_user: {
+        type: String, 
+    },
+    username: {
         type: String,
-        required: true,
-        unique: true
     },
     password: {
         type: String,
-        required: true
-    },
-    cDate: {
-        type: Date
-    },
-    mDate: {
-        type: Date
     }
 });
 
-const account = mongoose.model('account', accountSchema);
-
+// tham số cuối là tên collection, set cứng vì lên atlas nó tự "số nhiều hóa" (thêm s)
+const account = mongoose.model('account', accountSchema, 'account');
 module.exports = account;
