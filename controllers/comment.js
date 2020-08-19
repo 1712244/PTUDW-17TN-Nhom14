@@ -5,7 +5,7 @@ async function insert(req, res) {
         const { user_id, book_ISBN, content, rating } = req.body;
         const newCommentDocument = commentService.createModel(user_id, book_ISBN, content, rating);
         await commentService.insert(newCommentDocument);
-        return res.status(200).send({ book: newCommentDocument });
+        return res.status(200).send({ result: newCommentDocument });
     } catch (error) {
         res.status(500).send({ message: error });
     }
