@@ -9,9 +9,11 @@ require("./routes/front-end/helper/lib-helper.js");
 // Setup livereload
 const livereload = require("livereload");
 
-// connect db
-const mongo = require("./db/mongo");
-mongo.connectMongo()
+
+// // connect db
+// const mongo = require("./db/mongo");
+// mongo.connectMongo()
+
 
 
 var liveReloadServer = livereload.createServer();
@@ -80,14 +82,7 @@ app.use("/rent-book-list", require("./routes/front-end/rent-book-list"));
 app.use("/buy-book-manager", require("./routes/front-end/buy-book-manager"));
 app.use("/change-password", require("./routes/front-end/change-password"))
 
-// api db
-app.use("/api", require("./routes/back-end/user")());
-app.use("/api", require("./routes/back-end/account")());
-app.use("/api", require("./routes/back-end/author")());
-app.use("/api", require("./routes/back-end/producer")());
-app.use("/api", require("./routes/back-end/book")());
-app.use("/api", require("./routes/back-end/news")());
-app.use("/api", require("./routes/back-end/comment")());
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));
