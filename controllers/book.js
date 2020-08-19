@@ -103,6 +103,16 @@ async function getManyByProducer(req, res) {
     }
 }
 
+async function getManyByTag(req, res) {
+    try {
+        const { tag } = req.body;
+        const bookDocument = await bookService.getManyByProducer(tag);
+        return res.status(200).send({ result: bookDocument });
+    } catch (error) {
+        return res.status(500).send({ message: error });
+    }
+}
+
 async function getAll(req, res) {
     try {
         const {} = req.body;
@@ -131,6 +141,7 @@ module.exports = {
     getManyByProducer: getManyByProducer,
     getById: getById,
     getByISBN: getByISBN,
+    getManyByTag: getManyByTag,
     getAll: getAll,
     getByAttribute: getByAttribute,
     updateById: updateById,

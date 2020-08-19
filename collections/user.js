@@ -24,6 +24,12 @@ const UserShema = new Schema({
         type: Number,
         required: true
     },
+    avatar: {
+        type: String
+    },
+    qrcode: {
+        type: String
+    },
     cDate: {
         type: Date
     },

@@ -5,8 +5,8 @@ const config = require("../config")
 
 async function insert(req, res) {
     try {
-        const { title, content, tag, writer } = req.body;
-        const newNewsDocument = newsService.createModel(title, content, tag, writer);
+        const { title, content, tag, writer, type } = req.body;
+        const newNewsDocument = newsService.createModel(title, content, tag, writer, type);
         await newsService.insert(newNewsDocument);
         return res.status(200).send({ News: newNewsDocument });
     } catch (error) {
@@ -36,8 +36,8 @@ async function getById(req, res) {
 
 async function updateById(req, res) {
     try {
-        const { _id, title, content, tag, writer } = req.body;
-        await newsService.updateById(_id, title, content, tag, writer)
+        const { _id, title, content, tag, writer, type } = req.body;
+        await newsService.updateById(_id, title, content, tag, writer, type)
         return res.status(200).send({ message: config.STATUS_200_OK })
     } catch (error) {
         return res.status(500).send({ message: error })

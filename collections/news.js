@@ -17,6 +17,10 @@ const NewsSchema = new Schema({
     writer: {
         type: Array
     },
+    type: {
+        type: Number,
+        required: true
+    },
     cDate: {
         type: Date,
         required: true

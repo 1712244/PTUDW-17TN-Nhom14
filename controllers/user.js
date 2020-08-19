@@ -3,8 +3,8 @@ const config = require('../config')
 
 async function insert(req, res) {
     try {
-        const { user_id, name, email, sdt, type } = req.body;
-        const newUserDocument = userService.createModel(user_id, name, email, sdt, type);
+        const { user_id, name, email, sdt, type, avatar, qrcode } = req.body;
+        const newUserDocument = userService.createModel(user_id, name, email, sdt, type, avatar, qrcode);
         await userService.insert(newUserDocument);
         return res.status(200).send({ user: newUserDocument });
     } catch (error) {
@@ -14,8 +14,8 @@ async function insert(req, res) {
 
 async function updateById(req, res) {
     try {
-        const { user_id, name, email, sdt } = req.body;
-        await userService.updateById(user_id, name, email, sdt)
+        const { user_id, name, email, sdt, avatar, qrcode } = req.body;
+        await userService.updateById(user_id, name, email, sdt, avatar, qrcode)
         return res.status(200).send({ result: config.STATUS_200_OK });
     } catch (error) {
         return res.status(500).send({ message: error });

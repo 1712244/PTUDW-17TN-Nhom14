@@ -85,7 +85,7 @@ function getByISBN(ISBN) {
 
 function getManyByName(name) {
     return new Promise((resolve, reject) => {
-        Book.find({ name: name }).select("_id ISBN name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
+        Book.find({ name: { $in: name } }).select("_id ISBN name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
             if (error) return reject(error);
             return resolve(bookDocument);
         });
@@ -94,7 +94,7 @@ function getManyByName(name) {
 
 function getManyByAuthor(author) {
     return new Promise((resolve, reject) => {
-        Book.find({ author: author }).select("_id ISBN name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
+        Book.find({ author: { $in: author } }).select("_id ISBN name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
             if (error) return reject(error);
             return resolve(bookDocument);
         });
@@ -103,7 +103,16 @@ function getManyByAuthor(author) {
 
 function getManyByProducer(producer) {
     return new Promise((resolve, reject) => {
-        Book.find({ producer: producer }).select("_id ISBN name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
+        Book.find({ producer: { $in: producer } }).select("_id ISBN name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
+            if (error) return reject(error);
+            return resolve(bookDocument);
+        });
+    });
+}
+
+function getManyByTag(tag) {
+    return new Promise((resolve, reject) => {
+        Book.find({ tag: { $in: tag } }).select("_id ISBN name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
             if (error) return reject(error);
             return resolve(bookDocument);
         });
@@ -143,5 +152,6 @@ module.exports = {
     removeById: removeById,
     removeByISBN: removeByISBN,
     updateById: updateById,
-    updateByISBN: updateByISBN
+    updateByISBN: updateByISBN,
+    getManyByTag: getManyByTag
 }

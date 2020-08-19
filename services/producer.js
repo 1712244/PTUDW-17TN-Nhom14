@@ -48,7 +48,7 @@ function getById(_id) {
 
 function getManyByName(name) {
     return new Promise((resolve, reject) => {
-        Producer.find({ name: name }).select("_id name cDate mDate").exec((error, prdDocument) => {
+        Producer.find({ name: { $in: name } }).select("_id name cDate mDate").exec((error, prdDocument) => {
             if (error) return reject(error);
             return resolve(prdDocument);
         });
