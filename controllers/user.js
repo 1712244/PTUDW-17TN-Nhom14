@@ -1,6 +1,6 @@
 const userService = require('./../services/user');
 const config = require('../config')
-
+const Model = require('./../collections/user')
 async function insert(req, res) {
     try {
         const { user_id, name, email, sdt, type, avatar, qrcode } = req.body;
@@ -61,11 +61,12 @@ async function getAll(req, res) {
     }
 }
 
+
 module.exports = {
     insert: insert,
     updateById: updateById,
     removeById: removeById,
     getById: getById,
     getManyByName: getManyByName,
-    getAll: getAll
+    getAll: getAll, 
 }

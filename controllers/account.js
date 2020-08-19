@@ -3,6 +3,10 @@ const config = require('./../config')
 const crypto = require('crypto');
 const cipher = crypto.createCipher('aes128', 'a password');
 const decipher = crypto.createDecipher('aes128', 'a password');
+
+
+const Account = require("./../collections/account");
+
 async function signUp(req, res) {
     try {
         const { email, password } = req.body;
@@ -21,23 +25,26 @@ async function signUp(req, res) {
     }
 }
 
-async function signIn(req, res) {
+async function signIn(req, res, next) {
     try {
-        const { email, password } = req.body;
-        const accountDocument = await accountService.getByEmail(email);
+        const { username, password } = req.body;
+        const accountDocument = await accountService.findByUsername(username);
 
         console.log(accountDocument);
-
         if (!accountDocument)
             return res.status(404).send({ message: config.ERROR_404 });
 
         // ma hoa pass tu db sang pass binh thuong
-        let decrypted = decipher.update(accountDocument["password"], 'hex', 'utf8');
-        decrypted += decipher.final('utf8');
+        // let decrypted = decipher.update(accountDocument["password"], 'hex', 'utf8');
+        // decrypted += decipher.final('utf8');
 
-        if (decrypted != password)
+        // if (decrypted != password)
+        //     return res.status(401).send({ message: config.ERROR_401_PASSWORD });
+
+        if (accountDocument["password"] != password)
             return res.status(401).send({ message: config.ERROR_401_PASSWORD });
-
+        
+        // TODO: set session
         return res.status(200).send({ result: config.STATUS_200_OK });
     } catch (error) {
         res.status(500).send({ message: error });

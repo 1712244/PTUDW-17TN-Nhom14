@@ -48,10 +48,20 @@ function getByEmail(email) {
     });
 }
 
+function findByUsername(username) {
+    return new Promise((resolve, reject) => {
+        Account.findOne({username:username}).select("username password").exec((error, accDocument) => {
+            if (error) return reject(error);
+            return resolve(accDocument);
+        })
+    });
+}
+
 module.exports = {
     createModel: createModel,
     insert: insert,
     updateByEmail: updateByEmail,
     removeByEmail: removeByEmail,
-    getByEmail: getByEmail
+    getByEmail: getByEmail,
+    findByUsername:findByUsername,
 }

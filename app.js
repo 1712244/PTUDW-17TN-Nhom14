@@ -1,5 +1,6 @@
 var createError = require("http-errors");
 var express = require("express");
+const session = require('express-session');
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
@@ -11,8 +12,8 @@ const livereload = require("livereload");
 
 
 // // connect db
-// const mongo = require("./db/mongo");
-// mongo.connectMongo()
+const mongo = require("./db/mongo");
+mongo.connectMongo()
 
 
 
@@ -42,7 +43,22 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use(
+    session({
+        secret: 'thuvien',
+		saveUninitialized: true,
+		resave: true
+	})
+    );
+    
 app.use(express.static(path.join(__dirname, "public")));
+// app.use(async function(req, res, next){
+// 	if (req.session.username){
+// 		res.locals.user = await UserController.getUserInfo(req.session.username);
+// 	}
+// 	next();
+// });
 
 // Set path render zone
 app.use("/", require("./routes/front-end/index"));
@@ -82,7 +98,7 @@ app.use("/rent-book-list", require("./routes/front-end/rent-book-list"));
 app.use("/buy-book-manager", require("./routes/front-end/buy-book-manager"));
 app.use("/change-password", require("./routes/front-end/change-password"))
 
-
+app.use("/api", require("./routes/back-end/account")());
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));
