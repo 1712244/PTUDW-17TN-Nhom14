@@ -5,6 +5,8 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var hbs = require("hbs");
+const accountService = require('./services/account');
+
 require("./routes/front-end/helper/lib-helper.js");
 
 // Setup livereload
@@ -24,8 +26,10 @@ var connectLivereload = require("connect-livereload");
 var hbs = require("hbs");
 var app = express();
 app.set("view options", { layout: false });
-
 hbs.registerPartials(path.join(__dirname, "views/partials"));
+hbs.registerHelper('ifeq', function(arg1, arg2, options) {
+    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
 
 
 app.use(connectLivereload());
@@ -53,12 +57,12 @@ app.use(
     );
     
 app.use(express.static(path.join(__dirname, "public")));
-// app.use(async function(req, res, next){
-// 	if (req.session.username){
-// 		res.locals.user = await UserController.getUserInfo(req.session.username);
-// 	}
-// 	next();
-// });
+app.use(async function(req, res, next){
+	if (req.session.username){
+        res.locals.user = await accountService.getUserInfo(req.session.username);
+    }
+	next();
+});
 
 // Set path render zone
 app.use("/", require("./routes/front-end/index"));

@@ -30,7 +30,7 @@ async function signIn(req, res, next) {
         const { username, password } = req.body;
         const accountDocument = await accountService.findByUsername(username);
 
-        console.log(accountDocument);
+        // console.log(accountDocument);
         if (!accountDocument)
             return res.status(404).send({ message: config.ERROR_404 });
 
@@ -43,13 +43,25 @@ async function signIn(req, res, next) {
 
         if (accountDocument["password"] != password)
             return res.status(401).send({ message: config.ERROR_401_PASSWORD });
-        
-        // TODO: set session
+
+
+        req.session.username = username;
+        console.log(req.session.username);
         return res.status(200).send({ result: config.STATUS_200_OK });
     } catch (error) {
         res.status(500).send({ message: error });
     }
 }
+
+async function signOut(req, res) {
+    req.session.destroy((err) => {
+        if(err) {
+            return console.log(err);
+        }
+        res.redirect('/');
+    });
+}
+
 
 async function getByEmail(req, res) {
     try {
@@ -88,6 +100,7 @@ async function updateByEmail(req, res) {
 module.exports = {
     signIn: signIn,
     signUp: signUp,
+    signOut:signOut,
     removeByEmail: removeByEmail,
     getByEmail: getByEmail,
     updateByEmail: updateByEmail
