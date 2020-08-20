@@ -17,14 +17,14 @@
             {{#each sectionSachHot.list_categories}}
             {{#if @first}}
             <li class="nav-item col-sm-2  " style="padding: 0; margin:0">
-                <a class="nav-link active" id="pills-{{this._id}}-tab" data-toggle="pill" href="#pills-{{this._id}}"
+                <a class="nav-link navitema active" id="pills-{{this._id}}-tab" data-toggle="pill" href="#pills-{{this._id}}"
                     role="tab" aria-controls="pills-{{this._id}}" aria-selected="true">
                     {{this.name}}
                 </a>
             </li>
             {{else}}
             <li class="nav-item col-sm-2 " style="padding: 0; margin:0">
-                <a class="nav-link" id="pills-{{this._id}}-tab" data-toggle="pill" href="#pills-{{this._id}}" role="tab"
+                <a class="nav-link navitema" id="pills-{{this._id}}-tab" data-toggle="pill" href="#pills-{{this._id}}" role="tab"
                     aria-controls="pills-{{this._id}}" aria-selected="false">
                     {{this.name}}
                 </a>

@@ -68,7 +68,7 @@ app.use(async function(req, res, next){
 app.use("/", require("./routes/front-end/index"));
 app.use("/users", require("./routes/front-end/users"));
 app.use("/login", require("./routes/front-end/login"));
-app.use("/categories", require("./routes/front-end/search"));
+app.use("/categories", require("./routes/front-end/categories"));
 app.use("/storage", require("./routes/front-end/storage"));
 app.use("/search", require("./routes/front-end/search"));
 app.use("/sign-up", require("./routes/front-end/sign-up"));
