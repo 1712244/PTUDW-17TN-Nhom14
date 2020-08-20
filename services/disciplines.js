@@ -58,7 +58,7 @@ function getManyByName(name) {
 
 function getAll() {
     return new Promise((resolve, reject) => {
-        disciplines.find().select("_id name").exec((error, prdDocument) => {
+        disciplines.find().lean().select("_id name").exec((error, prdDocument) => {
             if (error) return reject(error);
             return resolve(prdDocument);
         });

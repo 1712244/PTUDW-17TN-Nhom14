@@ -44,14 +44,12 @@ const sectionTinTuc = {
   ]
 }
 
-async function mergeBook(){
-  var all_disc = await DisciplineService.getAll();
-  var all_book = await BookService.getAll();
-  var all_author = await AuthorService.getAll();
+async function mergeBook(all_book, all_disc, all_author){
   all_book.forEach(cbook => {
     all_disc.forEach(cdisc => {
       if (cbook.discipline == cdisc._id) {
-        cbook.discipline = cdisc.name
+        cbook.discipline = cdisc;
+        cbook.discipline._id=cbook.discipline._id.toString();
       }
     });
     cbook.author.forEach(function(part, index) {
@@ -62,15 +60,31 @@ async function mergeBook(){
       })
     }, cbook.author);
   });
-  console.log(all_book)
   return all_book
+}
+
+
+async function splitBookDiscipline(all_book, all_disc){
+  all_disc.forEach(cdisc =>{
+    cdisc.books = []
+    all_book.forEach(cbook => {
+      if (cbook.discipline._id == cdisc._id){
+        cdisc.books.push(cbook)
+      }
+    })
+  })
+  return all_disc
 }
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
-  const all_book = await mergeBook();
+  var all_disc = await DisciplineService.getAll();
+  var all_book = await BookService.getAll();
+  var all_author = await AuthorService.getAll();
+  all_book = await mergeBook(all_book, all_disc, all_author);
+  all_disc = await splitBookDiscipline(all_book, all_disc)
   sectionSachHot.books = all_book; 
-  sectionSachHot.list_categories = await DisciplineService.getAllName();
+  sectionSachHot.list_categories = all_disc
   res.render('index', {layout:"layout", title: 'Thư viện Khoa CNTT DHQG TPHCM', sectionSachHot, sectionTinTuc });
 });
 

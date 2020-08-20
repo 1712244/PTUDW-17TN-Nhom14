@@ -57,7 +57,7 @@ function getManyByName(name) {
 
 function getAll() {
     return new Promise((resolve, reject) => {
-        Author.find().select("_id name cDate mDate").exec((error, athDocument) => {
+        Author.find().lean().select("_id name cDate mDate").exec((error, athDocument) => {
             if (error) return reject(error);
             return resolve(athDocument);
         });

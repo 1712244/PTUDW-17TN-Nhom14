@@ -122,7 +122,7 @@ function getManyByTag(tag) {
 
 function getAll() {
     return new Promise((resolve, reject) => {
-        Book.find().select("_id isbn book_name author reprint producer desc tag borrower_id image_url bought_date price discipline").exec((error, bookDocument) => {
+        Book.find().lean().select("_id isbn book_name author reprint producer desc tag borrower_id image_url bought_date price discipline").exec((error, bookDocument) => {
             if (error) return reject(error);
             return resolve(bookDocument);
         });
