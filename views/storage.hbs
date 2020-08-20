@@ -17,7 +17,7 @@
         <div class="title-section text-center">{{sectionSachHot.title}}</div>
         <div class="slick-book-here">
             {{#each sectionSachHot.books}}
-            <a href="/book-detail" style="color: inherit;">
+            <a href="/book-detail/{{this._id}}" style="color: inherit;">
                 <div class="card" style=" border:none;">
                     <img class="card-img-top" src={{this.image_url}} alt="Card image cap">
                     <div class="card-body" style="padding:10px">
