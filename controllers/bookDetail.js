@@ -98,7 +98,6 @@ async function getById(req, res, next) {
         comment.image_url = comment.image_url.avatar
     }
 
-    // TODO: get all book :D 
     book.related_booklist = await bookService.getAll();
     book.related_booklist.forEach(cbook => {
         cbook.author.forEach(function(part, index) {
