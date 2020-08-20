@@ -46,8 +46,11 @@
         </div>
         <div class="col-md-2 no-padding">
             <div class="feature-button text-center padding-top-3em">
+                {{#if user.username}}
                 <a href="/carts"><button class="borrow-button font-normal-bold">Mượn sách</button></a>
-
+                {{else}}
+                <button class="borrow-button font-normal-bold" disabled style="background-color: grey;">Mượn sách</button>
+                {{/if}}
                 <div style="display:block;">
                     <i class="fa fa-comments-o text-color-408CFF" aria-hidden="true"></i> <a href="#comment-box"
                         style="padding-left: 5px; color: #408CFF;">đánh giá</a><br>
@@ -81,10 +84,10 @@
         </a>
         {{/each}}
     </div>
-
+    {{#if user.username}}
     <div class="comment-area padding-top-3em padding-left-3em">
         <img src="/images/news-thumbnail.png" alt="" class="avatar">
-        <span>1712260</span>
+        <span>{{user.username}}</span>
         {{!TODO: cho phép click}}
         <div class="">
             <span class="fa fa-star"></span>
@@ -101,6 +104,11 @@
                 nhận</button>
         </div>
     </div>
+    {{else}}
+    <div class="comment-area padding-top-3em padding-left-3em text-center" style="color: red;">Vui lòng đăng nhập để có thể đánh giá bình luận</div>
+    {{/if}}
+
+
     <div class="related-book" style="padding-left: 2em; font-weight:bold;">Các đánh giá</div>
     <div class="comment-area padding-top-3em padding-left-3em">
         {{#each book.user_comments}}
