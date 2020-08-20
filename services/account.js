@@ -67,6 +67,10 @@ async function getUserInfo(username) {
     return {user,username}
 }
 
+function findByIdUser(user_id) {
+    return  Account.findOne({ id_user: user_id }).select("username").exec();
+}
+
 module.exports = {
     createModel: createModel,
     insert: insert,
@@ -75,4 +79,5 @@ module.exports = {
     getByEmail: getByEmail,
     findByUsername: findByUsername,
     getUserInfo: getUserInfo,
+    findByIdUser: findByIdUser,
 }

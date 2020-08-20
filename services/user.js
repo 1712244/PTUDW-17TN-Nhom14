@@ -25,9 +25,9 @@ function insert(newUserDocument) {
     })
 }
 
-function getById(user_id) {
+function getById(id) {
     return new Promise((resolve, reject) => {
-        User.findOne({ user_id: user_id }).select("_id user_id name email sdt type avatar qrcode").exec((error, UserDocument) => {
+        User.findOne({ id: id }).lean().select("_id id name email sdt type avatar qr_code").exec((error, UserDocument) => {
             if (error) return reject(error);
             return resolve(UserDocument);
         });
@@ -36,7 +36,7 @@ function getById(user_id) {
 
 function getManyByName(name) {
     return new Promise((resolve, reject) => {
-        User.find({ name: { $in: name } }).select("_id user_id name email sdt type avatar qrcode").exec((error, UserDocument) => {
+        User.find({ name: { $in: name } }).select("_id id name email sdt type avatar qr_code").exec((error, UserDocument) => {
             if (error) return reject(error);
             return resolve(UserDocument);
         });
@@ -45,30 +45,31 @@ function getManyByName(name) {
 
 function getAll() {
     return new Promise((resolve, reject) => {
-        User.find().select("_id user_id name email sdt type avatar qrcode ").exec((error, UserDocument) => {
+        User.find().select("_id id name email sdt type avatar qr_code ").exec((error, UserDocument) => {
             if (error) return reject(error);
             return resolve(UserDocument);
         });
     });
 }
 
-function removeById(user_id) {
+function removeById(id) {
     return new Promise((resolve, reject) => {
-        User.deleteOne({ user_id: user_id }).exec(error => {
+        User.deleteOne({ id: id }).exec(error => {
             if (error) return reject(error);
             return resolve(true);
         });
     });
 }
 
-function updateById(user_id, name, email, sdt) {
+function updateById(id, name, email, sdt) {
     return new Promise((resolve, reject) => {
-        User.updateOne({ user_id: user_id }, { name: name, email: email, sdt: sdt, avatar: avatar, qrcode: qrcode }).exec(error => {
+        User.updateOne({ id: id }, { name: name, email: email, sdt: sdt, avatar: avatar, qr_code: qr_code }).exec(error => {
             if (error) return reject(error);
             return resolve(true);
         });
     });
 }
+
 
 module.exports = {
     createModel: createModel,

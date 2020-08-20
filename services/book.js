@@ -67,7 +67,7 @@ function updateByisbn(isbn, book_name, author, reprint, producer, desc, tag, bor
 
 function getById(_id) {
     return new Promise((resolve, reject) => {
-        Book.findOne({ _id: _id }).select("_id isbn book_name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
+        Book.findOne({ _id: _id }).lean().select("_id id isbn book_name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
             if (error) return reject(error);
             return resolve(bookDocument);
         });
