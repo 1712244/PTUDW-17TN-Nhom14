@@ -50,7 +50,7 @@ $('.slick-nav-book-here').slick({
 
 });
 
-$('.nav-item a').on('click', function (e) {
+$('.navitema').on('click', function (e) {
   e.preventDefault();
   $('.nav-link').removeClass('active');
   $(this).tab('show');  
