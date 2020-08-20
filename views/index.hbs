@@ -44,7 +44,7 @@
 
                 <div class="slick-book-here">
                     {{#each this.books}}
-                    <a href="/book-detail" style="color: inherit;">
+                    <a href="/book-detail/{{this._id}}" style="color: inherit;">
                         <div class="card" style=" border:none;">
                             <img class="card-img-top" src={{this.image_url}} alt="Card image cap">
                             <div class="card-body" style="padding:10px">
@@ -65,7 +65,7 @@
                 aria-labelledby="pills-{{this._id}}-tab">
                 <div class="slick-book-here">
                     {{#each this.books}}
-                    <a href="/book-detail" style="color: inherit;">
+                    <a href="/book-detail/{{this._id}}" style="color: inherit;">
                         <div class="card" style=" border:none;">
                             <img class="card-img-top" src={{this.image_url}} alt="Card image cap">
                             <div class="card-body" style="padding:10px">

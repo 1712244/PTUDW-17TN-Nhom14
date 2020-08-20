@@ -39,7 +39,7 @@ function updateById(_id, name) {
 
 function getById(_id) {
     return new Promise((resolve, reject) => {
-        Author.findOne({ _id: _id }).select("_id name cDate mDate").exec((error, athDocument) => {
+        Author.findOne({ _id: _id }).lean().select("_id name cDate mDate").exec((error, athDocument) => {
             if (error) return reject(error);
             return resolve(athDocument);
         })

@@ -79,7 +79,7 @@ async function splitBookDiscipline(all_book, all_disc){
 /* GET home page. */
 router.get('/', async function (req, res, next) {
   var all_disc = await DisciplineService.getAll();
-  var all_book = await BookService.getAll();
+  var all_book = await BookService.getAll(); 
   var all_author = await AuthorService.getAll();
   all_book = await mergeBook(all_book, all_disc, all_author);
   all_disc = await splitBookDiscipline(all_book, all_disc)
