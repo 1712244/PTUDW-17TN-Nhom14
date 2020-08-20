@@ -51,17 +51,17 @@ app.use(cookieParser());
 app.use(
     session({
         secret: 'thuvien',
-		saveUninitialized: true,
-		resave: true
-	})
-    );
-    
+        saveUninitialized: true,
+        resave: true
+    })
+);
+
 app.use(express.static(path.join(__dirname, "public")));
-app.use(async function(req, res, next){
-	if (req.session.username){
+app.use(async function(req, res, next) {
+    if (req.session.username) {
         res.locals.user = await accountService.getUserInfo(req.session.username);
     }
-	next();
+    next();
 });
 
 // Set path render zone
@@ -103,6 +103,9 @@ app.use("/buy-book-manager", require("./routes/front-end/buy-book-manager"));
 app.use("/change-password", require("./routes/front-end/change-password"))
 
 app.use("/api", require("./routes/back-end/account")());
+app.use("/api", require("./routes/back-end/image"))
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));

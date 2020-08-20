@@ -2,42 +2,51 @@
 <link rel="stylesheet" href="/stylesheets/post-announcer.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <div class="container-fluid bg-white">
     <div class="title-section text-center">
         Đăng thông báo
     </div>
-
-    <div class="display-flex justify-content-center" style="width: 100%; height: 100%;">
-        <div class="upload-img row">
-            <input type="file" id="input-file" accept="image/png, image/jpeg" />
-            <div id="img-area"></div>
-        </div>
-        <div class="book-info col-xs-4 col-sm-4 col-md-4 col-lg-4" style="padding-left: 3em;">
-            <div>
-                <div>Tiêu Đề</div>
-                <input type="text" name="book-name" id="book-name" style="width: 500px;" placeholder="Kỹ nghệ phần mềm">
+    <form id="formdata">
+        <div class="display-flex justify-content-center" style="width: 100%; height: 100%;">
+            <div class="upload-img row">
+                <input type="file" id="input-file" accept="image/png, image/jpeg" name="avaterNews" />
+                <div id="img-area"></div>
             </div>
+            <div class="book-info col-xs-4 col-sm-4 col-md-4 col-lg-4" style="padding-left: 3em;">
+                <div>
+                    <div>Tiêu Đề</div>
+                    <input type="text" name="title" id="title" style="width: 500px;" placeholder="Kỹ nghệ phần mềm">
+                </div>
 
-            <div class="padding-top-1em">
-                <div>Từ khóa</div>
-                <input type="text" name="book-author" id="book-author" style="width: 500px;" placeholder="Lê Văn Phùng">
+                <div class="padding-top-1em">
+                    <div>Từ khóa</div>
+                    <input type="text" name="tags" id="tags" style="width: 500px;" placeholder="Lê Văn Phùng">
+                </div>
+                <div style="padding-top: 11%;">
+                    <input type="radio" id="pronouncer" name="type" value="pronouncer" checked>
+                    <label for="pronouncer">Thông báo</label>
+
+                    <input type="radio" id="event" name="type" value="event">
+                    <label for="event">Sự kiện</label>
+                </div>
+
             </div>
-
-        </div>
+    </form>
+</div>
+<div id="word-area" style="padding-top: 4em;">
+    <div id="editor" style="height: 20em; overflow:scroll">
+        <p>Hello World!</p>
+        <p>Some initial <strong>bold</strong> text</p>
+        <p><br /></p>
     </div>
-    <div id="word-area" style="padding-top: 4em;">
-        <div id="editor" style="height: 20em; overflow:scroll">
-            <p>Hello World!</p>
-            <p>Some initial <strong>bold</strong> text</p>
-            <p><br /></p>
-        </div>
 
-        <div class="display-flex button-area justify-content-center">
-            <button onclick="logdata()" class="customized-btn blue-bg-white-text" style="border: none;">Đăng</button>
-            <button style="margin-left:15px" class="customized-btn white-bg-black-text">Hủy</button>
-        </div>
+    <div class="display-flex button-area justify-content-center">
+        <button id="btn-submit" class="customized-btn blue-bg-white-text" style="border: none;">Đăng</button>
+        <button style="margin-left:15px" class="customized-btn white-bg-black-text">Hủy</button>
     </div>
+</div>
 
 </div>
 
@@ -48,9 +57,16 @@
 {{!-- <script src="./../word-area-quillEditor.js"></script> --}}
 <!-- Initialize Quill editor -->
 <script>
+
+
+
     function logdata() {
-        console.log(editor.getContents())
-        console.log(editor.root.innerHTML);
+        //console.log(editor.getContents())
+        //console.log(editor.root.innerHTML);
+        //console.log(typeof (editor.root.innerHTML))
+        //let IUP = document.getElementById("input-file");
+        //console.log(IUP)
+        console.log(fields)
     }
 
     var toolbarOptions = [
@@ -85,5 +101,34 @@
     });
 
     editor.insertText(0, 'Hello', 'bold', true);
+
+
+    $(document).ready(function () {
+        $('#btn-submit').click(function () {
+            title = document.getElementById("title").value
+            tags = document.getElementById("tags").value
+            if (title == "") {
+                alert("missing title");
+                return false;
+            }
+            if (tags == "") {
+                alert("missing keyword")
+                return false;
+            }
+            let fields = $("#formdata").serializeArray();
+            fields.push({ "content": editor.root.innerHTML });
+            fields.push({ "writer": "Thu thu" });
+            $.post("/api/news/insert", fields)
+                .done(function (data) {
+                    json = data.responseJSON
+                    alert(json)
+                }).fail(function (data) {
+                    json = data.responseJSON;
+                    alert(json.message);
+                })
+            return false;
+        });
+    });
+
 </script>
 <script src="/function/nav-lib.js" current_page="Đăng thông báo"></script>
