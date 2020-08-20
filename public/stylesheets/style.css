@@ -287,3 +287,11 @@ a {
 .input-csv:hover {
     cursor: pointer;
 }
+
+.nav-pills .nav-link.active {
+    background-color: #ECF0F1!important;
+    color: #3498DB;
+}
+.nav-pills .nav-link:not(.active) {
+    color: #343a40!important;
+}

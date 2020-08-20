@@ -1,6 +1,6 @@
 const bookService = require('./../services/book');
 const { log } = require('debug');
-
+ 
 async function insert(req, res) {
     try {
         const { ISBN, name, author, reprint, producer, desc, tag, borrower_id, image_url, bought_date, price } = req.body;
