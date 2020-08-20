@@ -17,13 +17,12 @@
         <div class="title-section text-center">{{sectionSachHot.title}}</div>
         <div class="slick-book-here">
             {{#each sectionSachHot.books}}
-            {{#each this}}
             <a href="/book-detail" style="color: inherit;">
                 <div class="card" style=" border:none;">
-                    <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
+                    <img class="card-img-top" src={{this.image_url}} alt="Card image cap">
                     <div class="card-body" style="padding:10px">
                         <p class="card-text" style="margin: 0;">
-                            {{this.name}}
+                            {{this.book_name}}
                         </p>
                         <p class="card-text" style="margin: 0;">
                             {{this.author}}
@@ -35,64 +34,84 @@
                 </div>
             </a>
             {{/each}}
-            {{/each}}
         </div>        
     </div>
 
     {{!section sách chuyên ngành}}
     <div class="content-section bg-white no-padding">
         <div class="title-section text-center">{{sectionSach.title}}</div>
-        <ul class="nav nav-pills nav-fill align-items-center slick-nav-book-here" style="padding:5px;">
+        <ul class="nav nav-pills nav-fill align-items-center slick-nav-book-here" role="tablist" style="padding:5px;">
             {{#each sectionSach.list_categories}}
             {{#if @first}}
-            {{#each this}}
-            {{#if @first}}
             <li class="nav-item col-sm-2  " style="padding: 0; margin:0">
-                <a class="nav-link active-modified-list-cs" href="#">
-                    {{this}}
+                <a class="nav-link navitema active" id="pills-{{this._id}}-tab" data-toggle="pill" href="#pills-{{this._id}}"
+                    role="tab" aria-controls="pills-{{this._id}}" aria-selected="true">
+                    {{this.name}}
                 </a>
             </li>
             {{else}}
             <li class="nav-item col-sm-2 " style="padding: 0; margin:0">
-                <a class="nav-link text-dark" href="#">
-                    {{this}}
+                <a class="nav-link navitema" id="pills-{{this._id}}-tab" data-toggle="pill" href="#pills-{{this._id}}" role="tab"
+                    aria-controls="pills-{{this._id}}" aria-selected="false">
+                    {{this.name}}
                 </a>
             </li>
-            {{/if}}
-            {{/each}}
-            {{else}}
-            {{#each this}}
-            <li class="nav-item col-sm-2 " style="padding: 0; margin:0">
-                <a class="nav-link text-dark" href="#">
-                    {{this}}
-                </a>
-            </li>
-            {{/each}}
             {{/if}}
             {{/each}}
 
         </ul>
-        {{!Carousel book list}}
-        <div class="slick-book-here">
-            {{#each sectionSach.books}}
-            {{#each this}}
-            <a href="/book-detail" style="color: inherit;">
-                <div class="card" style=" border:none;">
-                    <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
-                    <div class="card-body" style="padding:10px">
-                        <p class="card-text" style="margin: 0;">
-                            {{this.name}}
-                        </p>
-                        <p class="card-text">
-                            {{this.author}}
-                        </p>
-                    </div>
-                </div>
-            </a>
-            {{/each}}
-            {{/each}}
-        </div>
 
+
+        {{!Carousel book list, for disc for book check disc}}
+        <div class="tab-content">
+            {{#each sectionSach.list_categories}}
+            {{#if @first}}
+            <div class="tab-pane fade show active" id="pills-{{this._id}}" role="tabpanel"
+                aria-labelledby="pills-{{this._id}}-tab">
+
+                <div class="slick-book-here">
+                    {{#each this.books}}
+                    <a href="/book-detail/{{this._id}}" style="color: inherit;">
+                        <div class="card" style=" border:none;">
+                            <img class="card-img-top" src={{this.image_url}} alt="Card image cap">
+                            <div class="card-body" style="padding:10px">
+                                <p class="card-text" style="margin: 0;">
+                                    {{this.book_name}}
+                                </p>
+                                <p class="card-text">
+                                    {{this.author}}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    {{/each}}
+                </div>
+            </div>
+            {{else}}
+            <div class="tab-pane fade " id="pills-{{this._id}}" role="tabpanel"
+                aria-labelledby="pills-{{this._id}}-tab">
+                <div class="slick-book-here">
+                    {{#each this.books}}
+                    <a href="/book-detail/{{this._id}}" style="color: inherit;">
+                        <div class="card" style=" border:none;">
+                            <img class="card-img-top" src={{this.image_url}} alt="Card image cap">
+                            <div class="card-body" style="padding:10px">
+                                <p class="card-text" style="margin: 0;">
+                                    {{this.book_name}}
+                                </p>
+                                <p class="card-text">
+                                    {{this.author}}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    {{/each}}
+                </div>
+            </div>
+            {{/if}}
+            {{/each}}
+
+        </div>
 
     </div>
 
