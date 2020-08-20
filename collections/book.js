@@ -3,34 +3,35 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const bookSchema = new Schema({
-    ISBN: {
+    isbn: {
         type: String,
-        required: true,
-        unique: true
     },
-    name: {
+    book_name: {
         type: String,
-        required: true
+        
     },
     author: {
         type: Array
     },
     reprint: {
         type: Number,
-        required: true
+        
     },
     producer: {
         type: String,
-        required: true
+        
     },
     desc: {
         type: String
     },
     tag: {
         type: Array,
-        required: true
+        
     },
     borrower_id: {
+        type: String
+    },
+    discipline: {
         type: String
     },
     image_url: {
@@ -38,10 +39,7 @@ const bookSchema = new Schema({
     },
     bought_date: {
         type: Date,
-        required: true
-    },
-    price: {
-        type: Number
+        
     },
     cDate: {
         type: Date
@@ -52,6 +50,6 @@ const bookSchema = new Schema({
 
 });
 
-const book = mongoose.model('book', bookSchema);
+const book = mongoose.model('book', bookSchema, 'book');
 
 module.exports = book;

@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 const authorSchema = new Schema({
     name: {
         type: String,
-        required: true
     },
     cDate: {
         type: Date
@@ -15,6 +14,6 @@ const authorSchema = new Schema({
     }
 });
 
-const Author = mongoose.model('author', authorSchema);
+const Author = mongoose.model('author', authorSchema, 'author');
 
 module.exports = Author;

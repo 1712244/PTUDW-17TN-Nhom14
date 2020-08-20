@@ -1,10 +1,10 @@
-const Book = require('./../collections/book')
+const Book = require('./../collections/book') 
 const dateTimeService = require('./../utils/dateTime');
 
-function createModel(ISBN, name, author, reprint, producer, desc, tag, borrower_id, image_url, bought_date, price) {
+function createModel(isbn, book_name, author, reprint, producer, desc, tag, borrower_id, image_url, bought_date, price) {
     const bookModel = new Book({
-        ISBN: ISBN,
-        name: name,
+        isbn: isbn,
+        book_name: book_name,
         author: author,
         reprint: reprint,
         producer: producer,
@@ -38,27 +38,27 @@ function removeById(_id) {
     });
 }
 
-function removeByISBN(ISBN) {
+function removeByisbn(isbn) {
     return new Promise((resolve, reject) => {
-        Book.deleteOne({ ISBN: ISBN }).exec(error => {
+        Book.deleteOne({ isbn: isbn }).exec(error => {
             if (error) return reject(error);
             return resolve(true);
         });
     });
 }
 
-function updateById(_id, ISBN, name, author, reprint, producer, desc, tag, borrower_id, image_url, bought_date, price) {
+function updateById(_id, isbn, book_name, author, reprint, producer, desc, tag, borrower_id, image_url, bought_date, price) {
     return new Promise((resolve, reject) => {
-        Book.updateOne({ _id: _id }, { ISBN: ISBN, name: name, author: author, reprint: reprint, producer: producer, desc: desc, tag: tag, borrower_id: borrower_id, image_url: image_url, bought_date: bought_date, price: price }).exec(error => {
+        Book.updateOne({ _id: _id }, { isbn: isbn, book_name: book_name, author: author, reprint: reprint, producer: producer, desc: desc, tag: tag, borrower_id: borrower_id, image_url: image_url, bought_date: bought_date, price: price }).exec(error => {
             if (error) return reject(error);
             return resolve(true);
         });
     });
 }
 
-function updateByISBN(ISBN, name, author, reprint, producer, desc, tag, borrower_id, image_url, bought_date, price) {
+function updateByisbn(isbn, book_name, author, reprint, producer, desc, tag, borrower_id, image_url, bought_date, price) {
     return new Promise((resolve, reject) => {
-        Book.updateOne({ ISBN: ISBN }, { name: name, author: author, reprint: reprint, producer: producer, desc: desc, tag: tag, borrower_id: borrower_id, image_url: image_url, bought_date: bought_date, price: price }).exec(error => {
+        Book.updateOne({ isbn: isbn }, { book_name: book_name, author: author, reprint: reprint, producer: producer, desc: desc, tag: tag, borrower_id: borrower_id, image_url: image_url, bought_date: bought_date, price: price }).exec(error => {
             if (error) return reject(error);
             return resolve(true);
         });
@@ -67,25 +67,25 @@ function updateByISBN(ISBN, name, author, reprint, producer, desc, tag, borrower
 
 function getById(_id) {
     return new Promise((resolve, reject) => {
-        Book.findOne({ _id: _id }).select("_id ISBN name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
+        Book.findOne({ _id: _id }).select("_id isbn book_name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
             if (error) return reject(error);
             return resolve(bookDocument);
         });
     });
 }
 
-function getByISBN(ISBN) {
+function getByisbn(isbn) {
     return new Promise((resolve, reject) => {
-        Book.findOne({ ISBN: ISBN }).select("_id ISBN name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
+        Book.findOne({ isbn: isbn }).select("_id isbn book_name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
             if (error) return reject(error);
             return resolve(bookDocument);
         });
     });
 }
 
-function getManyByName(name) {
+function getManyByName(book_name) {
     return new Promise((resolve, reject) => {
-        Book.find({ name: { $in: name } }).select("_id ISBN name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
+        Book.find({ book_name: { $in: book_name } }).select("_id isbn book_name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
             if (error) return reject(error);
             return resolve(bookDocument);
         });
@@ -94,7 +94,7 @@ function getManyByName(name) {
 
 function getManyByAuthor(author) {
     return new Promise((resolve, reject) => {
-        Book.find({ author: { $in: author } }).select("_id ISBN name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
+        Book.find({ author: { $in: author } }).select("_id isbn book_name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
             if (error) return reject(error);
             return resolve(bookDocument);
         });
@@ -103,7 +103,7 @@ function getManyByAuthor(author) {
 
 function getManyByProducer(producer) {
     return new Promise((resolve, reject) => {
-        Book.find({ producer: { $in: producer } }).select("_id ISBN name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
+        Book.find({ producer: { $in: producer } }).select("_id isbn book_name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
             if (error) return reject(error);
             return resolve(bookDocument);
         });
@@ -112,7 +112,7 @@ function getManyByProducer(producer) {
 
 function getManyByTag(tag) {
     return new Promise((resolve, reject) => {
-        Book.find({ tag: { $in: tag } }).select("_id ISBN name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
+        Book.find({ tag: { $in: tag } }).select("_id isbn book_name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
             if (error) return reject(error);
             return resolve(bookDocument);
         });
@@ -122,7 +122,7 @@ function getManyByTag(tag) {
 
 function getAll() {
     return new Promise((resolve, reject) => {
-        Book.find().select("_id ISBN name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
+        Book.find().select("_id isbn book_name author reprint producer desc tag borrower_id image_url bought_date price discipline").exec((error, bookDocument) => {
             if (error) return reject(error);
             return resolve(bookDocument);
         });
@@ -131,7 +131,7 @@ function getAll() {
 
 function getByAttribute(obj) {
     return new Promise((resolve, reject) => {
-        Book.find(obj).select("_id ISBN name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
+        Book.find(obj).select("_id isbn book_name author reprint producer desc tag borrower_id image_url bought_date price").exec((error, bookDocument) => {
             if (error) return reject(error);
             return resolve(bookDocument);
         });
@@ -146,12 +146,12 @@ module.exports = {
     getManyByAuthor: getManyByAuthor,
     getManyByProducer: getManyByProducer,
     getById: getById,
-    getByISBN: getByISBN,
+    getByisbn: getByisbn,
     getAll: getAll,
     getByAttribute: getByAttribute,
     removeById: removeById,
-    removeByISBN: removeByISBN,
+    removeByisbn: removeByisbn,
     updateById: updateById,
-    updateByISBN: updateByISBN,
+    updateByisbn: updateByisbn,
     getManyByTag: getManyByTag
 }
