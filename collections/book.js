@@ -28,7 +28,7 @@ const bookSchema = new Schema({
         type: Array,
         
     },
-    borrower_id: {
+    id_borrower: {
         type: String
     },
     discipline: {

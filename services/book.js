@@ -138,7 +138,14 @@ function getByAttribute(obj) {
     });
 }
 
-
+function updateIdBorrower(_id, id_borrower) {
+    return new Promise((resolve, reject) => {
+        Book.updateOne({ _id: _id }, { id_borrower: id_borrower}).exec(error => {
+            if (error) return reject(error);
+            return resolve(true);
+        });
+    });
+}
 module.exports = {
     createModel: createModel,
     insert: insert,
@@ -153,5 +160,6 @@ module.exports = {
     removeByisbn: removeByisbn,
     updateById: updateById,
     updateByisbn: updateByisbn,
-    getManyByTag: getManyByTag
+    getManyByTag: getManyByTag,
+    updateIdBorrower:updateIdBorrower,
 }

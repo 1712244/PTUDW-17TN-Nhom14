@@ -19,8 +19,8 @@
                             Tác giả: <span class="text-color-408CFF">
                                 {{#each book.author}}
                                 {{this.name}}
-                                {{/each}} 
-                                </span>
+                                {{/each}}
+                            </span>
                         </div>
                         <div class="book-star-review">
                             {{#each book.average_rate}}
@@ -47,9 +47,13 @@
         <div class="col-md-2 no-padding">
             <div class="feature-button text-center padding-top-3em">
                 {{#if user.username}}
-                <a href="/carts"><button class="borrow-button font-normal-bold">Mượn sách</button></a>
+                <form action="" method="post">
+                    <button type="submit" class="borrow-button font-normal-bold">Mượn sách</button>
+                </form>
+
                 {{else}}
-                <button class="borrow-button font-normal-bold" disabled style="background-color: grey;">Mượn sách</button>
+                <button class="borrow-button font-normal-bold" disabled style="background-color: grey;">Mượn
+                    sách</button>
                 {{/if}}
                 <div style="display:block;">
                     <i class="fa fa-comments-o text-color-408CFF" aria-hidden="true"></i> <a href="#comment-box"
@@ -78,7 +82,7 @@
                     <p class="card-text">
                         {{this.author}}
                     </p>
-                    
+
                 </div>
             </div>
         </a>
@@ -105,7 +109,8 @@
         </div>
     </div>
     {{else}}
-    <div class="comment-area padding-top-3em padding-left-3em text-center" style="color: red;">Vui lòng đăng nhập để có thể đánh giá bình luận</div>
+    <div class="comment-area padding-top-3em padding-left-3em text-center" style="color: red;">Vui lòng đăng nhập để có
+        thể đánh giá bình luận</div>
     {{/if}}
 
 
