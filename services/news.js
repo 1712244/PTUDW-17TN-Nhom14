@@ -60,11 +60,23 @@ function updateById(_id, title, content, tag, writer) {
     });
 }
 
+function newsSearch(text) { 
+    let regx = new RegExp(text, 'i');
+    return News.find({
+        $or: [{
+            title: regx
+        }, {
+            desc: regx
+        }]
+    }).lean().exec()
+}
+
 module.exports = {
     createModel: createModel,
     insert: insert,
     getById: getById,
     getAll: getAll,
     removeById: removeById,
-    updateById: updateById
+    updateById: updateById,
+    newsSearch
 }

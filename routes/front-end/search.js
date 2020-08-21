@@ -1,21 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-var book_result = [
-    { name: "Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng", thumbnail:"/images/book-thumbnail.png", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et sem nibh. Suspendisse ornare accumsan metus eget maximus. Sed suscipit molestie pellentesque. Morbi varius fermentum urna, bibendum dapibus odio fermentum at." },
-    { name: "Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng", thumbnail:"/images/book-thumbnail.png", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et sem nibh. Suspendisse ornare accumsan metus eget maximus. Sed suscipit molestie pellentesque. Morbi varius fermentum urna, bibendum dapibus odio fermentum at." },
-    { name: "Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng", thumbnail:"/images/book-thumbnail.png", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et sem nibh. Suspendisse ornare accumsan metus eget maximus. Sed suscipit molestie pellentesque. Morbi varius fermentum urna, bibendum dapibus odio fermentum at." },
-];
-var news_result = [
-{title: "Thông báo mở đăng ký mua sách", date:"20/01/2020", thumbnail:"/images/news-thumbnail.png",description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et sem nibh. Suspendisse ornare accumsan metus eget maximus. Sed suscipit molestie pellentesque. Morbi varius fermentum urna, bibendum dapibus odio fermentum at."},
-{title: "Thông báo mở đăng ký mua sách", date:"20/01/2020", thumbnail:"/images/news-thumbnail.png",description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et sem nibh. Suspendisse ornare accumsan metus eget maximus. Sed suscipit molestie pellentesque. Morbi varius fermentum urna, bibendum dapibus odio fermentum at."},
-{title: "Thông báo mở đăng ký mua sách", date:"20/01/2020", thumbnail:"/images/news-thumbnail.png",description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et sem nibh. Suspendisse ornare accumsan metus eget maximus. Sed suscipit molestie pellentesque. Morbi varius fermentum urna, bibendum dapibus odio fermentum at."},
-];
+const searchControllers = require('./../../controllers/search');
 
 
 /* GET users listing. */
-router.get('/', function (req, res, next) {
-    res.render('search',{layout: "layout", book_result:book_result,news_result:news_result});
-});
+router.get('/', searchControllers.searchDefault);
+router.get('/:text', searchControllers.searchQuery);
+router.post('/:text', searchControllers.postSearch);
+router.post('/', searchControllers.postSearch);
 
 module.exports = router;

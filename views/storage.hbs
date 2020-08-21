@@ -2,15 +2,15 @@
 
 <div class="container-fluid" style="padding:0; width:95%">
     <div class="content-section picture-search d-flex justify-content-center bg-white no-padding align-items-center">
-        <div id="searchbar-in-picture" class="input-group col-8">
+        <form id="searchbar-in-picture" class="input-group col-8" method="POST" action="/search">
 
-            <input type="text" class="form-control" placeholder="Tìm kiếm sách, tin tức, ..." aria-label="Username"
+            <input type="text" name="searchBar" class="form-control" placeholder="Tìm kiếm sách, tin tức, ..." aria-label="Username"
                 aria-describedby="basic-addon1">
             <div class="input-group-append">
-                <a class="input-group-text" href="/search"><img src="/images/search-icon.svg" alt=""
-                        style="width: 20px;"></a>
+                <button type="submit" class="input-group-text" ><img src="/images/search-icon.svg"
+                            alt="" style="width: 20px;"></button>
             </div>
-        </div>
+        </form>
     </div>
     {{!section sách hot}}
     <div class="content-section bg-white no-padding">

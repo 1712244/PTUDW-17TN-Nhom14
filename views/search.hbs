@@ -11,21 +11,21 @@
                     <a class="dropdown-item" href="#">Tin tức</a>
                 </div>
             </div>
-            <form id="searchbar-in-picture" class="input-group col-8">
+            <form id="searchbar-in-picture" class="input-group col-8" method="POST">
 
-                <input type="text" class="form-control" placeholder="Tìm kiếm sách, tin tức, ..." aria-label="Username"
-                    aria-describedby="basic-addon1">
+                <input type="text" name="searchBar"  class="form-control" placeholder="Tìm kiếm sách, tin tức, ..." aria-label="Username"
+                    aria-describedby="basic-addon1" value="{{query}}">
                 <div class="input-group-append">
-                    <a class="input-group-text" href="#"><img src="/images/search-icon.svg" alt=""
-                            style="width: 20px;"></a>
+                    <button type="submit" class="input-group-text"><img src="/images/search-icon.svg" alt=""
+                            style="width: 20px;"></button>
                 </div>
             </form>
 
         </div>
-        <div id="book_result_section">
+        <div id="books_section">
         <div class="row justify-content-center align-items-center" style="padding-top:10px">
             <div class="col-1"></div>
-            <div class="col row justify-content-center">Có {{book_result.length}} kết quả</div>
+            <div class="col row justify-content-center">Có {{books.length}} kết quả</div>
             <div class="row align-items-center justify-content-center col-6">
                 <div>Sắp xếp theo </div>
 
@@ -44,29 +44,33 @@
             <div class="col-1"></div>
         </div>
 
-        {{#each book_result}}
+        {{#each books}}
         <a href="/book-detail">
             <div class="row justify-content-center" style="padding: 10px;">
                 <div class="col-4 col-sm-3 col-md-2 col-lg-1">
                     <div class="d-flex justify-content-end">
-                        <img src={{this.thumbnail}} alt="" >
+                        <img src={{this.image_url}} alt="" >
 
                     </div>
                 </div>
                 <div class="col-6 col-sm-7 col-md-8 col-lg-8">
-                    <div class=" title-search">{{this.name}}</div>
-                    <div class="author-search">{{this.author}}</div>
-                    <div style="overflow:hidden; text-overflow: ellipsis; color:black;">{{this.description}}</div>
+                    <div class=" title-search">{{this.book_name}}</div>
+                    <div class="author-search">
+                        {{#each this.author}}
+                        {{this.name}}
+                        {{/each}}
+                        </div>
+                    <div style="overflow:hidden; text-overflow: ellipsis; color:black;">{{this.desc}}</div>
                 </div>
             </div>
         </a>
 
         {{/each}}
     </div>
-    <div id="news_result_section" style="display: none;">
+    <div id="news_section" style="display: none;">
         <div class="row justify-content-center align-items-center" style="padding-top:10px">
             <div class="col-1"></div>
-            <div class="col row justify-content-center">Có {{news_result.length}} kết quả</div>
+            <div class="col row justify-content-center">Có {{news.length}} kết quả</div>
             <div class="row align-items-center justify-content-center col-6">
                 <div>Sắp xếp theo </div>
 
@@ -84,19 +88,19 @@
             <div class="col row justify-content-center">+ Thêm bộ lọc</div>
             <div class="col-1"></div>
         </div>
-        {{#each news_result}}
+        {{#each news}}
         <a href="/news-detail">
             <div class="row justify-content-center" style="padding: 10px;">
                 <div class="col-4 col-sm-3 col-md-2">
                     <div class="d-flex justify-content-end">
-                        <img src={{this.thumbnail}} alt="">
+                        <img src={{this.image_url}} alt="">
 
                     </div>
                 </div>
                 <div class="col-6 col-sm-7 col-md-8">
                     <div class=" title-search">{{this.title}}</div>
                     <div class="author-search">{{this.date}}</div>
-                    <div style="overflow:hidden; text-overflow: ellipsis; color:black;">{{this.description}}</div>
+                    <div style="overflow:hidden; text-overflow: ellipsis; color:black;">{{this.desc}}</div>
                 </div>
             </div>
         </a>
