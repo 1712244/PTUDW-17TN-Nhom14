@@ -2,18 +2,20 @@
 
     <div class="article-header padding-left-3em">
         <div class=" article-title  first-section font-size-xx">
-            {{sectionArticles.article_title}}
+            {{newsDocument.title}}
         </div>
         <div class=" article-title text-color-grey">
-            {{sectionArticles.article_date}}
+            {{newsDocument.date}}
         </div>
     </div>
 
     <div class="article-body" style="text-align: center; padding-bottom: 3em">
-        <img class="card-img-top" src={{sectionArticles.article_image}} alt="Card image cap"
-                                style="width: 30%; height: 30%; ">
-        <div class="article-detail padding-2-side-3em" style="text-align: left;">
-                    {{{sectionArticles.article_para}}}    
+        {{!-- <img class="card-img-top" src={{sectionArticles.article_image}} alt="Card image cap"
+                                style="width: 30%; height: 30%; "> --}}
+        <img class="card-img-top" src={{newsDocument.article_image}} alt="Card image cap"
+            style="width: 30%; height: 30%; ">
+        <div class="article-detail padding-2-side-3em" id="news-content" style="text-align: left;">
+            {{{newsDocument.desc}}}
         </div>
 
     </div>

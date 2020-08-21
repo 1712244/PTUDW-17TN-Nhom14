@@ -107,25 +107,26 @@
         $('#btn-submit').click(function () {
             title = document.getElementById("title").value
             tags = document.getElementById("tags").value
-            if (title == "") {
-                alert("missing title");
-                return false;
-            }
-            if (tags == "") {
-                alert("missing keyword")
-                return false;
-            }
+            //if (title == "") {
+            //    alert("missing title");
+            //    return false;
+            //}
+            //if (tags == "") {
+            //    alert("missing keyword")
+            //    return false;
+            //}
             let fields = $("#formdata").serializeArray();
             fields.push({ "content": editor.root.innerHTML });
             fields.push({ "writer": "Thu thu" });
-            $.post("/api/news/insert", fields)
-                .done(function (data) {
-                    json = data.responseJSON
-                    alert(json)
-                }).fail(function (data) {
-                    json = data.responseJSON;
-                    alert(json.message);
-                })
+            console.log(fields)
+            //$.post("/api/news/insert", fields)
+            //    .done(function (data) {
+            //        json = data.responseJSON
+            //        alert(json)
+            //    }).fail(function (data) {
+            //        json = data.responseJSON;
+            //        alert(json.message);
+            //    })
             return false;
         });
     });
