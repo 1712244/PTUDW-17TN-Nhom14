@@ -60,11 +60,31 @@ function updateById(_id, title, desc, tag, writer) {
     });
 }
 
+function get3EventByLatestDate() {
+    return new Promise((resolve, reject) => {
+        News.find({ type: 1 }).sort({ "date": -1 }).limit(2).exec((error, newsDocument) => {
+            if (error) return reject(error);
+            return resolve(newsDocument);
+        });
+    })
+}
+
+function get3PronouncerByLatestDate() {
+    return new Promise((resolve, reject) => {
+        News.find({ type: 0 }).sort({ "date": -1 }).limit(2).exec((error, newsDocument) => {
+            if (error) return reject(error);
+            return resolve(newsDocument);
+        });
+    })
+}
+
 module.exports = {
     createModel: createModel,
     insert: insert,
     getById: getById,
     getAll: getAll,
+    get3EventByLatestDate: get3EventByLatestDate,
+    get3PronouncerByLatestDate: get3PronouncerByLatestDate,
     removeById: removeById,
     updateById: updateById
 }
