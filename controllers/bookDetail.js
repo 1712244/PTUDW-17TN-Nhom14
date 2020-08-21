@@ -11,8 +11,10 @@ const { all } = require('../routes/front-end/book-detail');
 const user = require('./../services/user');
 
 
+
 async function toStringDDMMYYYY(date) {
-    return date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear();
+    var month = parseInt(date.getMonth())+1
+    return date.getDate() + '/' + month  + '/' + date.getFullYear();
 }
 
 function to_01(rate) {

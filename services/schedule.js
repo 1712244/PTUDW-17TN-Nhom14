@@ -81,7 +81,7 @@ function getManyByLocation(location) {
 
 function getAll() {
     return new Promise((resolve, reject) => {
-        Schedule.find().select("_id book_id user_id rent_date back_date location status").exec((error, scheduleDocument) => {
+        Schedule.find().lean().select("_id book_id user_id rent_date back_date location status").exec((error, scheduleDocument) => {
             if (error) return reject(error);
             return resolve(scheduleDocument);
         })
@@ -110,7 +110,7 @@ function toDateFromDDMMYYYY(ddmmyyyy){
     var date = new Date(); 
     var strdate = ddmmyyyy.split('/')
     date.setDate(strdate[0])
-    date.setMonth(strdate[1])
+    date.setMonth(parseInt(strdate[1]) - 1)
     date.setFullYear(strdate[2])
     return date;
 }
