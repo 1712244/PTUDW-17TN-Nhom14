@@ -3,6 +3,7 @@ var router = express.Router();
 const DisciplineService =  require("./../../services/disciplines");
 const BookService =  require("./../../services/book");
 const AuthorService =  require("./../../services/author");
+const miscUtil = require("./../../utils/misc");
 
 
 const sectionSachHot =
@@ -81,6 +82,7 @@ router.get('/', async function (req, res, next) {
   var all_disc = await DisciplineService.getAll();
   var all_book = await BookService.getAll(); 
   var all_author = await AuthorService.getAll();
+  all_book = await miscUtil.cleanAllBook(all_book);
   all_book = await mergeBook(all_book, all_disc, all_author);
   all_disc = await splitBookDiscipline(all_book, all_disc)
   sectionSachHot.books = all_book; 

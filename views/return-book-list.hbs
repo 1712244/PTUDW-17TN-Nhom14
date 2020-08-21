@@ -11,7 +11,9 @@
                     </div>
                     <div style="padding-left: 10px">
                         <div style="font-size: 23px; font-weight:bold; color:#3498db">{{this.name}} </div>
-                        <div>{{this.author}} </div>
+                        <div>{{#each this.author}}
+                            {{this.name}},
+                            {{/each}}</div>
                         <div style="font-size: 20px;">Ngày nhận: {{this.rent_date}} </div>
                         <div style="font-size: 20px;">Ngày trả: {{this.return_date}} </div>
                     </div>
@@ -27,14 +29,14 @@
                     Các sách đã mượn và trả
                 </div>
             </div>
-            <div class="col-md" >
+            <div class="col-md">
                 <div class="text-center text-md-right " style="font-weight: bold;">
                     <a href="/rent-book-list">Xem các sách đã hẹn mượn</a>
                 </div>
             </div>
         </div>
         <hr style="margin-top: 0;">
-        <div class="row" style="padding-left: 100px; padding-bottom: 20px;" >
+        <div class="row" style="padding-left: 100px; padding-bottom: 20px;">
             {{#each history_books}}
             <a href="#">
                 <div class="card" style="width: 100px; border:none;">
@@ -44,7 +46,9 @@
                             {{this.name}}
                         </p>
                         <p class="card-text" style="font-size: 14px; color:grey;">
-                            {{this.author}}
+                            {{#each this.author}}
+                            {{this.name}},
+                            {{/each}}
                         </p>
                     </div>
                 </div>

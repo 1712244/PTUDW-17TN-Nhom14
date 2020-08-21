@@ -2,6 +2,7 @@ const DisciplineService = require("./../services/disciplines");
 const BookService = require("./../services/book");
 const AuthorService = require("./../services/author");
 const commentService = require('./../services/comment');
+const miscUtil = require("./../utils/misc");
 
 const config = require("./../config")
 
@@ -66,6 +67,7 @@ async function getStorage(req, res, next) {
     var all_book = await BookService.getAll(); 
     var all_author = await AuthorService.getAll();
     var all_comment = await commentService.getAll();
+    all_book = await miscUtil.cleanAllBook(all_book);
     all_book = await mergeBook(all_book, all_disc, all_author);
     all_disc = await splitBookDiscipline(all_book, all_disc)
     sectionSach.list_categories = all_disc

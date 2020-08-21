@@ -11,7 +11,9 @@
                     </div>
                     <div style="padding-left: 10px">
                         <div style="font-size: 23px; font-weight:bold; color:#3498db">{{this.name}} </div>
-                        <div>{{this.author}} </div>
+                        <div>{{#each this.author}}
+                            {{this.name}},
+                            {{/each}} </div>
                         <div style="font-size: 20px;">Ngày nhận: {{this.rent_date}} </div>
                         <div style="font-size: 20px;">Ngày trả: {{this.return_date}} </div>
                     </div>
@@ -44,7 +46,9 @@
                             {{this.name}}
                         </p>
                         <p class="card-text" style="font-size: 14px; color:grey;">
-                            {{this.author}}
+                            {{#each this.author}}
+                            {{this.name}},
+                            {{/each}}
                         </p>
                     </div>
                 </div>

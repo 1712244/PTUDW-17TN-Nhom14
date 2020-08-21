@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const rblController = require('./../../controllers/returnBookList')
 
 const return_book_list = [
     {
@@ -21,9 +22,7 @@ const history_books = [
     },
 ];
 
-router.get('/', function (req, res, next) {
-    res.render('return-book-list', {layout: "layout", return_book_list: return_book_list, history_books:history_books });
-});
+router.get('/', rblController.getReturnBookList);
 
 
 

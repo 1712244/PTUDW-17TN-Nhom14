@@ -2,6 +2,10 @@
     <div class="content-section first-section bg-white no-padding ">
         <div class="title-section text-center">Các sách trong giỏ</div>
         <hr>
+        {{#ifeq sizecart 0}}
+        <div class="text-center">Không có sách trong giỏ hàng</div>
+        <hr>
+        {{else}}
         {{#each carts}}
         <div class="row" style="padding: 0 100px">
             <div class="col-md">
@@ -11,7 +15,11 @@
                     </div>
                     <div style="padding-left: 10px">
                         <div style="font-size: 23px; font-weight:bold; color:#3498db">{{this.name}} </div>
-                        <div>{{this.author}} </div>
+                        <div>
+                            {{#each this.author}}
+                            <span>{{this.name}}, </span>
+                            {{/each}}
+                        </div>
                     </div>
 
                 </div>
@@ -22,7 +30,7 @@
                     </div>
                     <div class=" text-md-right text-center" style="font-size: 20px;">Ngày trả: {{this.return_date}}
                     </div>
-                    <a href="/cart-detail">
+                    <a href="/cart-detail/{{this.id}}">
                         <div class=" text-md-right text-center" style="font-size: 20px; color:grey;">
                             <img src="/images/icon-edit.svg" alt="">
                             Sửa
@@ -34,6 +42,7 @@
         </div>
         <hr>
         {{/each}}
+        {{/ifeq}}
         <div class="row align-content-center" style="padding: 0 100px">
             <div class="col-md">
                 <div class="text-center text-md-left">
@@ -44,15 +53,26 @@
             </div>
             <div class="col-md" style="padding-bottom: 20px;">
                 <div class="text-center text-md-right ">
-                    <a href="/rent-book-list">
+                    {{#ifeq sizecart 0}}
+                    <button class="customized-btn blue-bg-white-text" style="border:none; background-color: grey;"
+                        disabled>Xác nhận</button>
+                    <button class="customized-btn white-bg-black-text"
+                        style="padding: 5px 13px; background-color: grey;" disabled>
+                        <div style="width:8ch">Hủy</div>
+                    </button>
+
+                    {{else}}
+                    <a href="/carts/accept">
                         <button class="customized-btn blue-bg-white-text"
                             style="border:none; background-color: #3498db;">Xác nhận</button>
                     </a>
-                    <a href="#">
+                    <a href="/carts/abort">
                         <button class="customized-btn white-bg-black-text" style="padding: 5px 13px;">
                             <div style="width:8ch">Hủy</div>
                         </button>
                     </a>
+                    {{/ifeq}}
+
 
                 </div>
 

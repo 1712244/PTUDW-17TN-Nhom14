@@ -3,49 +3,19 @@ const authorService = require("./../services/author");
 const commentService = require('./../services/comment');
 const accountService = require('./../services/account');
 const userService  = require('./../services/user');
+const scheduleService  = require('./../services/schedule');
+const dateTimeService = require("./../utils/dateTime");
+const miscUtil = require("./../utils/misc");
 
 const config = require("./../config");
 const { all } = require('../routes/front-end/book-detail');
 const user = require('./../services/user');
 
-const _related_booklist = [
-    [
-        { thumbnail: "/images/book-thumbnail.png", name: "Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng" },
-        { thumbnail: "/images/book-thumbnail.png", name: "Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng" },
-        { thumbnail: "/images/book-thumbnail.png", name: "Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng" },
-        { thumbnail: "/images/book-thumbnail.png", name: "Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng" },
-    ],
-    [
-        { thumbnail: "/images/book-thumbnail.png", name: "Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng" },
-        { thumbnail: "/images/book-thumbnail.png", name: "Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng" },
-        { thumbnail: "/images/book-thumbnail.png", name: "Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng" },
-        { thumbnail: "/images/book-thumbnail.png", name: "Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng" },
-    ],
-];
 
 
-const sectionBook = {
-    book_title: "Kỹ nghệ phần mềm",
-    book_author: "TS. Lê Văn Phùng",
-    book_date: "01/01/2020",
-    book_rates: 9999,
-    average_rate: 3.5,
-    book_para: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et sem nibh. Suspendisse ornare accumsan metus eget maximus. Sed suscipit molestie pellentesque. Morbi varius fermentum urna, bibendum dapibus odio fermentum at. Mauris rutrum justo dui, auctor sagittis enim suscipit ut. Vestibulum gravida dui quam, sit amet porta tortor malesuada id. Praesent ut pharetra sapien. Praesent sit amet consectetur lorem. Nam at mi non sapien efficitur porttitor vel quis nulla. Praesent pulvinar, ligula non molestie cursus, purus turpis tincidunt sem, eu sollicitudin ligula libero eget est. Cras dignissim tortor ante, et tincidunt odio dictum eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eleifend ante ac neque aliquet, at gravida lectus ultrices. Quisque id nulla neque. Sed quis mi at purus dictum volutpat. Aenean a malesuada risus, ut pulvinar nisl. Donec facilisis pellentesque ex, ut blandit ligula accumsan nec. Aliquam nibh nulla, elementum vitae mattis quis, consectetur et risus. Nullam quis turpis diam. Vestibulum iaculis eros vitae nunc volutpat egestas. Fusce fermentum at leo a ultrices. Nunc sollicitudin, risus non ultrices ultricies, magna urna pharetra lacus, sed vehicula leo quam id risus. Nam elementum sit amet nunc aliquet aliquam",
-    book_image: "images/book-thumbnail.png",
-    user_comments: [{
-            avatar: '/images/news-thumbnail.png',
-            username: 1712760,
-            user_rate: 3,
-            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        },
-        {
-            avatar: '/images/news-thumbnail.png',
-            username: 1712760,
-            user_rate: 3,
-            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        },
-    ],
-    related_booklist: _related_booklist
+async function toStringDDMMYYYY(date) {
+    var month = parseInt(date.getMonth())+1
+    return date.getDate() + '/' + month  + '/' + date.getFullYear();
 }
 
 function to_01(rate) {
@@ -62,7 +32,14 @@ function to_01(rate) {
     return res_list;
 }
 
-
+function isBookAvailable(all_book, book_id) {
+    for (var item of all_book) {
+        if (item.id == book_id && item.id_borrower == "") {
+            return 1
+        } 
+    }
+    return 0;
+}
 
 async function getById(req, res, next) {
     const data = req.params;
@@ -97,8 +74,8 @@ async function getById(req, res, next) {
         comment.image_url = await userService.getById(comment.user_id)
         comment.image_url = comment.image_url.avatar
     }
-
-    book.related_booklist = await bookService.getAll();
+    var all_book = await bookService.getAll()
+    book.related_booklist = await miscUtil.cleanAllBook(all_book);
     book.related_booklist.forEach(cbook => {
         cbook.author.forEach(function(part, index) {
           all_author.forEach(cauth => {
@@ -108,9 +85,38 @@ async function getById(req, res, next) {
           })
         }, cbook.author);
       });
+
+    book.available_for_rent = await isBookAvailable(all_book, book.id); // 1 ok 0 no
     res.render('book-detail', { layout: "layout", book });
 }
 
+async function postBorrowId(req, res, next) {
+    const data = req.params;
+    var book = await bookService.getById(data.id);
+    var all_author = await authorService.getAll();
+    book.author.forEach(function(part, index) {
+        all_author.forEach(cau => {
+            if (this[index] == cau._id) {
+                this[index] = cau;
+            }
+        })
+    }, book.author);
+    var schedule = {
+        book_id: book.id,
+        user_id: res.locals.user.id,
+        rent_date: await toStringDDMMYYYY(dateTimeService.now()),
+        back_date: await toStringDDMMYYYY(dateTimeService.now()),
+        location: "Thư viện",
+        status: 0
+    }
+    if (!req.session.carts) {
+        req.session.carts = []
+    }
+    req.session.carts.push({schedule, book})
+    res.redirect('/carts');
+}
+
 module.exports = {
-    getById: getById
+    getById: getById,
+    postBorrowId:postBorrowId,
 }
