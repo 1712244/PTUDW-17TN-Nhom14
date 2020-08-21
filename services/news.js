@@ -1,15 +1,15 @@
 const News = require("./../collections/news");
 const dateTimeService = require('./../utils/dateTime');
 
-function createModel(title, content, tag, writer, type) {
+function createModel(title, desc, tag, writer, type) {
     const newNewsModel = new News({
         title: title,
-        content: content,
+        desc: desc,
         tag: tag,
         type: type,
         writer: writer,
         cDate: dateTimeService.now(),
-        mDate: dateTimeService.new()
+        mDate: dateTimeService.now()
     });
     return newNewsModel;
 }
@@ -25,7 +25,7 @@ function insert(newNews) {
 
 function getById(_id) {
     return new Promise((resolve, reject) => {
-        News.findOne({ _id: _id }).select("_id title content tag writer type cDate mDate").exec((error, newsDocument) => {
+        News.findOne({ _id: _id }).select("_id title desc date image_url type").exec((error, newsDocument) => {
             if (error) return reject(error);
             return resolve(newsDocument);
         });
@@ -34,7 +34,7 @@ function getById(_id) {
 
 function getAll() {
     return new Promise((resolve, reject) => {
-        News.find().select("_id title content tag writer type cDate mDate").exec((error, newsDocument) => {
+        News.find().exec((error, newsDocument) => {
             if (error) return reject(error);
             return resolve(newsDocument);
         });
@@ -51,14 +51,15 @@ function removeById(_id) {
 }
 
 
-function updateById(_id, title, content, tag, writer) {
+function updateById(_id, title, desc, tag, writer) {
     return new Promise((resolve, reject) => {
-        News.updateOne({ _id: _id }, { title: title, content: content, tag: tag, writer: writer, type: type }).exec((error) => {
+        News.updateOne({ _id: _id }, { title: title, desc: desc, tag: tag, writer: writer, type: type }).exec((error) => {
             if (error) return reject(error);
             return resolve(true);
         })
     });
 }
+
 
 function newsSearch(text) { 
     let regx = new RegExp(text, 'i');
@@ -70,13 +71,42 @@ function newsSearch(text) {
         }]
     }).lean().exec()
 }
+  function get3EventByLatestDate() {
+    return new Promise((resolve, reject) => {
+        News.find({ type: 1 }).sort({ "date": -1 }).limit(2).exec((error, newsDocument) => {
+            if (error) return reject(error);
+            return resolve(newsDocument);
+        });
+    })
+}
+
+function get3PronouncerByLatestDate() {
+    return new Promise((resolve, reject) => {
+        News.find({ type: 0 }).sort({ "date": -1 }).limit(2).exec((error, newsDocument) => {
+            if (error) return reject(error);
+            return resolve(newsDocument);
+        });
+    })
+}
+
+function get5NewsByLatestDate() {
+    return new Promise((resolve, reject) => {
+        News.find().sort({ "date": -1 }).limit(2).exec((error, newsDocument) => {
+            if (error) return reject(error);
+            return resolve(newsDocument);
+        });
+    })
+}
 
 module.exports = {
     createModel: createModel,
     insert: insert,
     getById: getById,
     getAll: getAll,
+    get3EventByLatestDate: get3EventByLatestDate,
+    get3PronouncerByLatestDate: get3PronouncerByLatestDate,
+    get5NewsByLatestDate: get5NewsByLatestDate,
     removeById: removeById,
     updateById: updateById,
-    newsSearch
+    newsSearch: newsSearch
 }

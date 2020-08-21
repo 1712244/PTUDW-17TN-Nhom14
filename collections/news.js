@@ -7,7 +7,7 @@ const NewsSchema = new Schema({
         type: String,
         required: true
     },
-    content: {
+    desc: {
         type: String,
         required: true
     },
