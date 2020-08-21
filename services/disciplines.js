@@ -1,18 +1,18 @@
-const Author = require("./../collections/author")
+const disciplines = require("./../collections/disciplines")
 const dateTimeService = require("./../utils/dateTime")
 
 function createModel(name) {
-    const newAuthor = new Author({
+    const newdisciplines = new disciplines({
         name: name,
         cDate: dateTimeService.now(),
         mDate: dateTimeService.now()
     });
-    return newAuthor;
+    return newdisciplines;
 }
 
-function insert(newAuthor) {
+function insert(newdisciplines) {
     return new Promise((resolve, reject) => {
-        newAuthor.save(error => {
+        newdisciplines.save(error => {
             if (error) return reject(error);
             return resolve(true)
         })
@@ -21,7 +21,7 @@ function insert(newAuthor) {
 
 function removeById(_id) {
     return new Promise((resolve, reject) => {
-        Author.deleteOne({ _id: _id }).exec(error => {
+        disciplines.deleteOne({ disciplines_id: disciplines_id }).exec(error => {
             if (error) return reject(error);
             return resolve(true)
         })
@@ -30,7 +30,7 @@ function removeById(_id) {
 
 function updateById(_id, name) {
     return new Promise((resolve, reject) => {
-        Author.updateOne({ _id: _id }, { name: name }).exec(error => {
+        disciplines.updateOne({ _id: _id }, { name: name }).exec(error => {
             if (error) return reject(error);
             return resolve(true);
         });
@@ -39,27 +39,38 @@ function updateById(_id, name) {
 
 function getById(_id) {
     return new Promise((resolve, reject) => {
-        Author.findOne({ _id: _id }).lean().select("_id name cDate mDate").exec((error, athDocument) => {
+        disciplines.findOne({ _id: _id }).select("_id name cDate mDate").exec((error, prdDocument) => {
             if (error) return reject(error);
-            return resolve(athDocument);
+            return resolve(prdDocument);
         })
     });
 }
 
 function getManyByName(name) {
     return new Promise((resolve, reject) => {
-        Author.find({ name: name }).select("_id name cDate mDate").exec((error, athDocument) => {
+        disciplines.find({ name: { $in: name } }).select("_id name cDate mDate").exec((error, prdDocument) => {
             if (error) return reject(error);
-            return resolve(athDocument);
+            return resolve(prdDocument);
         });
     });
 }
 
+
 function getAll() {
     return new Promise((resolve, reject) => {
-        Author.find().lean().select("_id name cDate mDate").exec((error, athDocument) => {
+        disciplines.find().lean().select("_id name").exec((error, prdDocument) => {
             if (error) return reject(error);
-            return resolve(athDocument);
+            return resolve(prdDocument);
+        });
+    });
+}
+
+function getAllName() {
+    return new Promise((resolve, reject) => {
+        disciplines.find({}, {name:1, _id:0}).select("name").exec((error, prdDocument) => {
+            if (error) return reject(error);
+            var vals = prdDocument.map(x => x.name)
+            return resolve(vals);
         });
     });
 }
@@ -71,5 +82,6 @@ module.exports = {
     getManyByName: getManyByName,
     getAll: getAll,
     removeById: removeById,
-    updateById: updateById
+    updateById: updateById,
+    getAllName:getAllName
 }

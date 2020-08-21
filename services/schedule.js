@@ -81,7 +81,7 @@ function getManyByLocation(location) {
 
 function getAll() {
     return new Promise((resolve, reject) => {
-        Schedule.find().select("_id book_id user_id rent_date back_date location status").exec((error, scheduleDocument) => {
+        Schedule.find().lean().select("_id book_id user_id rent_date back_date location status").exec((error, scheduleDocument) => {
             if (error) return reject(error);
             return resolve(scheduleDocument);
         })
@@ -106,6 +106,27 @@ function updateById(_id, book_id, user_id, rent_date, back_date, location, statu
     });
 }
 
+function toDateFromDDMMYYYY(ddmmyyyy){
+    var date = new Date(); 
+    var strdate = ddmmyyyy.split('/')
+    date.setDate(strdate[0])
+    date.setMonth(parseInt(strdate[1]) - 1)
+    date.setFullYear(strdate[2])
+    return date;
+}
+
+function insertJSON(newSchedule) {
+    newSchedule.rent_date = toDateFromDDMMYYYY(newSchedule.rent_date)
+    newSchedule.back_date = toDateFromDDMMYYYY(newSchedule.back_date)
+    const newScheduleModel = new Schedule(newSchedule)
+    return new Promise((resolve, reject) => {
+        newScheduleModel.save(error => {
+            if (error) return reject(error);
+            return resolve(true)
+        })
+    });
+}
+
 module.exports = {
     createModel: createModel,
     insert: insert,
@@ -117,5 +138,6 @@ module.exports = {
     getManyByBackDate: getManyByBackDate,
     getManyByLocation: getManyByLocation,
     removeById: removeById,
-    updateById: updateById
+    updateById: updateById,
+    insertJSON:insertJSON,
 }

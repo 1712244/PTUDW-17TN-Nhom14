@@ -11,7 +11,8 @@ const accountSchema = new Schema({
     },
     password: {
         type: String,
-    }
+    },
+    
 });
 
 // tham số cuối là tên collection, set cứng vì lên atlas nó tự "số nhiều hóa" (thêm s)

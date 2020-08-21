@@ -27,7 +27,7 @@ var hbs = require("hbs");
 var app = express();
 app.set("view options", { layout: false });
 hbs.registerPartials(path.join(__dirname, "views/partials"));
-hbs.registerHelper('ifeq', function(arg1, arg2, options) {
+hbs.registerHelper('ifeq', function (arg1, arg2, options) {
     return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
 });
 
@@ -57,10 +57,14 @@ app.use(
 );
 
 app.use(express.static(path.join(__dirname, "public")));
-app.use(async function(req, res, next) {
-    if (req.session.username) {
+
+=======
+app.use(async function (req, res, next) {
+    if (req.session.username){
         res.locals.user = await accountService.getUserInfo(req.session.username);
     }
+    // req.session.username = '1712760'
+    // res.locals.user = { id: '1712760', username: '1712760' }
     next();
 });
 
@@ -68,7 +72,7 @@ app.use(async function(req, res, next) {
 app.use("/", require("./routes/front-end/index"));
 app.use("/users", require("./routes/front-end/users"));
 app.use("/login", require("./routes/front-end/login"));
-app.use("/categories", require("./routes/front-end/search"));
+app.use("/categories", require("./routes/front-end/categories"));
 app.use("/storage", require("./routes/front-end/storage"));
 app.use("/search", require("./routes/front-end/search"));
 app.use("/sign-up", require("./routes/front-end/sign-up"));
@@ -103,16 +107,15 @@ app.use("/buy-book-manager", require("./routes/front-end/buy-book-manager"));
 app.use("/change-password", require("./routes/front-end/change-password"))
 
 app.use("/api", require("./routes/back-end/account")());
-
-
-
+app.use("/api", require("./routes/back-end/comment")());
+  
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get("env") === "development" ? err : {};

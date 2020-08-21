@@ -60,7 +60,18 @@ function updateById(_id, title, desc, tag, writer) {
     });
 }
 
-function get3EventByLatestDate() {
+
+function newsSearch(text) { 
+    let regx = new RegExp(text, 'i');
+    return News.find({
+        $or: [{
+            title: regx
+        }, {
+            desc: regx
+        }]
+    }).lean().exec()
+}
+  function get3EventByLatestDate() {
     return new Promise((resolve, reject) => {
         News.find({ type: 1 }).sort({ "date": -1 }).limit(2).exec((error, newsDocument) => {
             if (error) return reject(error);
@@ -96,5 +107,6 @@ module.exports = {
     get3PronouncerByLatestDate: get3PronouncerByLatestDate,
     get5NewsByLatestDate: get5NewsByLatestDate,
     removeById: removeById,
-    updateById: updateById
+    updateById: updateById,
+    newsSearch: newsSearch
 }

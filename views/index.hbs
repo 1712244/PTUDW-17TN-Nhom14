@@ -1,67 +1,94 @@
 <link rel="stylesheet" href="/stylesheets/slick-here.css">
 <div class="container-fluid" style="padding:0; width:95%">
     <div class="content-section picture-search d-flex justify-content-center bg-white no-padding align-items-center">
-        <div id="searchbar-in-picture" class="input-group col-8">
-            <input type="text" class="form-control" placeholder="Tìm kiếm sách, tin tức, ..." aria-label="Username"
-                aria-describedby="basic-addon1">
-            <div class="input-group-append">
-                <a class="input-group-text" href="/search"><img src="/images/search-icon.svg" alt=""
-                        style="width: 20px;"></a>
-            </div>
-        </div>
+        <form id="searchbar-in-picture" class="input-group col-8" method="POST" action="/search">
+            
+                <input type="text" name="searchBar" class="form-control" placeholder="Tìm kiếm sách, tin tức, ..."
+                    aria-label="Username" aria-describedby="basic-addon1">
+                <div class="input-group-append">
+                    <button type="submit" class="input-group-text" ><img src="/images/search-icon.svg"
+                            alt="" style="width: 20px;"></button>
+                </div>
+            
+
+        </form>
     </div>
+
     <div class="content-section bg-white no-padding">
         <div class="title-section text-center">{{sectionSachHot.title}}</div>
-        <ul class="nav nav-pills nav-fill align-items-center slick-nav-book-here" style="padding:5px;">
+        <ul class="nav nav-pills nav-fill align-items-center slick-nav-book-here" role="tablist" style="padding:5px;">
             {{#each sectionSachHot.list_categories}}
             {{#if @first}}
-            {{#each this}}
-            {{#if @first}}
             <li class="nav-item col-sm-2  " style="padding: 0; margin:0">
-                <a class="nav-link active-modified-list-cs" href="#">
-                    {{this}}
+                <a class="nav-link navitema active" id="pills-{{this._id}}-tab" data-toggle="pill"
+                    href="#pills-{{this._id}}" role="tab" aria-controls="pills-{{this._id}}" aria-selected="true">
+                    {{this.name}}
                 </a>
             </li>
             {{else}}
             <li class="nav-item col-sm-2 " style="padding: 0; margin:0">
-                <a class="nav-link text-dark" href="#">
-                    {{this}}
+                <a class="nav-link navitema" id="pills-{{this._id}}-tab" data-toggle="pill" href="#pills-{{this._id}}"
+                    role="tab" aria-controls="pills-{{this._id}}" aria-selected="false">
+                    {{this.name}}
                 </a>
             </li>
-            {{/if}}
-            {{/each}}
-            {{else}}
-            {{#each this}}
-            <li class="nav-item col-sm-2 " style="padding: 0; margin:0">
-                <a class="nav-link text-dark" href="#">
-                    {{this}}
-                </a>
-            </li>
-            {{/each}}
             {{/if}}
             {{/each}}
 
         </ul>
-        {{!Carousel book list}}
-        <div class="slick-book-here">
-            {{#each sectionSachHot.books}}
-            {{#each this}}
-            <a href="/book-detail" style="color: inherit;">
-                <div class="card" style=" border:none;">
-                    <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap">
-                    <div class="card-body" style="padding:10px">
-                        <p class="card-text" style="margin: 0;">
-                            {{this.name}}
-                        </p>
-                        <p class="card-text">
-                            {{this.author}}
-                        </p>
-                    </div>
+
+
+        {{!Carousel book list, for disc for book check disc}}
+        <div class="tab-content">
+            {{#each sectionSachHot.list_categories}}
+            {{#if @first}}
+            <div class="tab-pane fade show active" id="pills-{{this._id}}" role="tabpanel"
+                aria-labelledby="pills-{{this._id}}-tab">
+
+                <div class="slick-book-here">
+                    {{#each this.books}}
+                    <a href="/book-detail/{{this._id}}" style="color: inherit;">
+                        <div class="card" style=" border:none;">
+                            <img class="card-img-top" src={{this.image_url}} alt="Card image cap">
+                            <div class="card-body" style="padding:10px">
+                                <p class="card-text" style="margin: 0;">
+                                    {{this.book_name}}
+                                </p>
+                                <p class="card-text">
+                                    {{this.author}}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    {{/each}}
                 </div>
-            </a>
+            </div>
+            {{else}}
+            <div class="tab-pane fade " id="pills-{{this._id}}" role="tabpanel"
+                aria-labelledby="pills-{{this._id}}-tab">
+                <div class="slick-book-here">
+                    {{#each this.books}}
+                    <a href="/book-detail/{{this._id}}" style="color: inherit;">
+                        <div class="card" style=" border:none;">
+                            <img class="card-img-top" src={{this.image_url}} alt="Card image cap">
+                            <div class="card-body" style="padding:10px">
+                                <p class="card-text" style="margin: 0;">
+                                    {{this.book_name}}
+                                </p>
+                                <p class="card-text">
+                                    {{this.author}}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    {{/each}}
+                </div>
+            </div>
+            {{/if}}
             {{/each}}
-            {{/each}}
+
         </div>
+
     </div>
 
     {{!News section}}
@@ -83,7 +110,7 @@
                                     {{this.date}}
                                 </p>
                             </div>
-                            <img class="card-img-top" src={{this.thumbnail}} alt="Card image cap"
+                            <img class="card-img-top" src={{this.image_url}} alt="Card image cap"
                                 style="padding-bottom: 20px;">
                         </a>
                     </div>

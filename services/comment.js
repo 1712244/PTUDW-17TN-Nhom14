@@ -1,12 +1,12 @@
 const Comment = require("./../collections/comment")
-const dateTimeService = require("./../utils/dateTime")
+const dateTimeService = require("./../utils/dateTime") 
 
-function createModel(user_id, book_ISBN, content, rating) {
+function createModel(user_id, book_id, content, rate) {
     const newCommentDocument = new Comment({
         user_id: user_id,
-        book_ISBN: book_ISBN,
+        book_id: book_id,
         content: content,
-        rating: rating,
+        rate: rate,
         cDAte: dateTimeService.now(),
         mDate: dateTimeService.now()
     });
@@ -31,9 +31,9 @@ function removeById(_id) {
     });
 }
 
-function updateById(_id, content, rating) {
+function updateById(_id, content, rate) {
     return new Promise((resolve, reject) => {
-        Comment.updateOne({ _id: _id }, { content: content, rating: rating }).exec(error => {
+        Comment.updateOne({ _id: _id }, { content: content, rate: rate }).exec(error => {
             if (error) return reject(error);
             return resolve(true);
         });
@@ -42,7 +42,7 @@ function updateById(_id, content, rating) {
 
 function getById(_id) {
     return new Promise((resolve, reject) => {
-        Comment.findOne({ _id: _id }).select("_id user_id book_ISBN content rating cDate mDate").exec((error, cmtDocument) => {
+        Comment.findOne({ _id: _id }).select("_id user_id book_id content rate date cDate mDate").exec((error, cmtDocument) => {
             if (error) return reject(error);
             return resolve(cmtDocument);
         });
@@ -51,7 +51,7 @@ function getById(_id) {
 
 function getAll() {
     return new Promise((resolve, reject) => {
-        Comment.find().select("_id user_id book_ISBN content rating cDate mDate").exec((error, cmtDocument) => {
+        Comment.find().lean().select("_id user_id book_id content rate date cDate mDate").exec((error, cmtDocument) => {
             if (error) return reject(error);
             return resolve(cmtDocument);
         });
@@ -60,9 +60,27 @@ function getAll() {
 
 function getByAttribute(obj) {
     return new Promise((resolve, reject) => {
-        Comment.find(obj).select("_id user_id book_ISBN content rating cDate mDate").exec((error, cmtDocument) => {
+        Comment.find(obj).select("_id user_id book_id content rate date cDate mDate").exec((error, cmtDocument) => {
             if (error) return reject(error);
             return resolve(cmtDocument);
+        });
+    });
+}
+
+function insertCommentJSON(comment) {
+    var newCommentDocument = new Comment({
+        user_id: comment.user_id,
+        book_id: comment.book_id,
+        content: comment.content,
+        rate: comment.rate,
+        date: dateTimeService.now(),
+        cDAte: dateTimeService.now(),
+        mDate: dateTimeService.now()
+    });
+    return new Promise((resolve, reject) => {
+        newCommentDocument.save(error => {
+            if (error) return reject(error);
+            return resolve(true);
         });
     });
 }
@@ -74,5 +92,6 @@ module.exports = {
     updateById: updateById,
     removeById: removeById,
     getAll: getAll,
-    getByAttribute: getByAttribute
+    getByAttribute: getByAttribute,
+    insertCommentJSON
 }
