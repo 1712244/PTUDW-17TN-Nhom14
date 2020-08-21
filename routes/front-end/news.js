@@ -47,11 +47,11 @@ const sectionThongBao = {
 }
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('news', { layout: "layout", title: 'Trang Tin Tức', sectionSuKien, sectionThongBao });
-});
+// router.get('/', function(req, res, next) {
+//     res.render('news', { layout: "layout", title: 'Trang Tin Tức', sectionSuKien, sectionThongBao });
+// });
 
-router.get('/3article', newsController.get3BylatestDate);
+router.get('/', newsController.get3BylatestDate);
 
 
 

@@ -99,11 +99,43 @@ async function get3BylatestDate(req, res) {
     }
 }
 
+
+async function get5NewsByLatestDate(req, res) {
+    try {
+        const NewsDocument = await newsService.get5NewsByLatestDate();
+
+        const sectionTinTuc = {
+            title: "Sự kiện",
+            other_news: "Các tin khác",
+            more_news: "→ xem tất cả sự kiện",
+            articles: NewsDocument
+        }
+
+        for (i in sectionTinTuc.articles) {
+            console.log(sectionSuKien.articles[i].image_url);
+            sectionTinTuc.articles[i].date = dateTimeService.dateToNiceString(new Date());
+            if (sectionTinTuc.articles[i].type == 1) {
+                sectionTinTuc.articles[i].image_url = "/images/alert-late-thumbnail.png"
+            } else {
+                sectionTinTuc.articles[i].image_url = "/images/news-thumbnail.png"
+            }
+
+
+        }
+        return sectionTinTuc
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send({ message: error });
+    }
+}
+
 module.exports = {
     insert: insert,
     updateById: updateById,
     removeById: removeById,
     getById: getById,
     getAll: getAll,
+    get5NewsByLatestDate: get5NewsByLatestDate,
     get3BylatestDate: get3BylatestDate
 }
