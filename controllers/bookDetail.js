@@ -5,6 +5,7 @@ const accountService = require('./../services/account');
 const userService  = require('./../services/user');
 const scheduleService  = require('./../services/schedule');
 const dateTimeService = require("./../utils/dateTime");
+const miscUtil = require("./../utils/misc");
 
 const config = require("./../config");
 const { all } = require('../routes/front-end/book-detail');
@@ -29,6 +30,15 @@ function to_01(rate) {
         rate -= 1;
     }
     return res_list;
+}
+
+function isBookAvailable(all_book, book_id) {
+    for (var item of all_book) {
+        if (item.id == book_id && item.id_borrower == "") {
+            return 1
+        } 
+    }
+    return 0;
 }
 
 async function getById(req, res, next) {
@@ -64,8 +74,8 @@ async function getById(req, res, next) {
         comment.image_url = await userService.getById(comment.user_id)
         comment.image_url = comment.image_url.avatar
     }
-
-    book.related_booklist = await bookService.getAll();
+    var all_book = await bookService.getAll()
+    book.related_booklist = await miscUtil.cleanAllBook(all_book);
     book.related_booklist.forEach(cbook => {
         cbook.author.forEach(function(part, index) {
           all_author.forEach(cauth => {
@@ -75,6 +85,8 @@ async function getById(req, res, next) {
           })
         }, cbook.author);
       });
+
+    book.available_for_rent = await isBookAvailable(all_book, book.id); // 1 ok 0 no
     res.render('book-detail', { layout: "layout", book });
 }
 

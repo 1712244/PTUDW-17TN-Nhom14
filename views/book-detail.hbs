@@ -47,10 +47,15 @@
         <div class="col-md-2 no-padding">
             <div class="feature-button text-center padding-top-3em">
                 {{#if user.username}}
+
+                {{#ifeq book.available_for_rent 1}}
                 <form action="" method="post">
                     <button type="submit" class="borrow-button font-normal-bold">Mượn sách</button>
                 </form>
-
+                {{else}}
+                <button class="borrow-button font-normal-bold" disabled style="background-color: grey;">Hết
+                    sách</button>
+                {{/ifeq}}
                 {{else}}
                 <button class="borrow-button font-normal-bold" disabled style="background-color: grey;">Mượn
                     sách</button>
