@@ -58,11 +58,11 @@ app.use(
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(async function (req, res, next) {
-    // if (req.session.username){
-    //     res.locals.user = await accountService.getUserInfo(req.session.username);
-    // }
-    req.session.username = '1712760'
-    res.locals.user = { id: '1712760', username: '1712760' }
+    if (req.session.username){
+        res.locals.user = await accountService.getUserInfo(req.session.username);
+    }
+    // req.session.username = '1712760'
+    // res.locals.user = { id: '1712760', username: '1712760' }
     
 
     next();
