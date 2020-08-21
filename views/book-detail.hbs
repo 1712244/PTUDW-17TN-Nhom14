@@ -94,25 +94,31 @@
         {{/each}}
     </div>
     {{#if user.username}}
-    <div class="comment-area padding-top-3em padding-left-3em">
-        <img src="/images/news-thumbnail.png" alt="" class="avatar">
-        <span>{{user.username}}</span>
-        {{!TODO: cho phép click}}
-        <div class="">
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
+    <form action="/api/comment/post" method="post">
+        <div class="comment-area padding-top-3em padding-left-3em">
+            <img src="/images/news-thumbnail.png" alt="" class="avatar">
+            <span>{{user.username}}</span>
+            {{!TODO: cho phép click}}
+            <div class="">
+                <span class="fa fa-star star-checked" id="1star" name="1star"></span>
+                <span class="fa fa-star" id="2star" name="2star"></span>
+                <span class="fa fa-star" id="3star" name="3star"></span>
+                <span class="fa fa-star" id="4star" name="4star"></span>
+                <span class="fa fa-star" id="5star" name="5star"></span>
+            </div>
+            <input type="hidden" value="1star" id="rate" name="rate">
+            <input type="hidden" value="{{book._id}}" name="book_objid">
+            <input type="hidden" value="{{book.id}}" name="book_id">
+            <div>
+                <textarea name="content" id="comment-box" rows="10" placeholder="Đánh giá sách..."></textarea>
+            </div>
+            <div class="text-center text-md-right" style="padding-right: 50px;">
+                <button type="submit" class="customized-btn blue-bg-white-text" style="border:none; background-color: #3498db;">Xác
+                    nhận</button>
+            </div>
         </div>
-        <div>
-            <textarea name="" id="comment-box" rows="10" placeholder="Đánh giá sách..."></textarea>
-        </div>
-        <div class="text-center text-md-right" style="padding-right: 50px;">
-            <button class="customized-btn blue-bg-white-text" style="border:none; background-color: #3498db;">Xác
-                nhận</button>
-        </div>
-    </div>
+    </form>
+
     {{else}}
     <div class="comment-area padding-top-3em padding-left-3em text-center" style="color: red;">Vui lòng đăng nhập để có
         thể đánh giá bình luận</div>
@@ -146,3 +152,6 @@
 
     </div>
 </div>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="/function/star-click.js"></script>

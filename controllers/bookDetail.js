@@ -87,6 +87,7 @@ async function getById(req, res, next) {
       });
 
     book.available_for_rent = await isBookAvailable(all_book, book.id); // 1 ok 0 no
+    book._id = book._id.toString()
     res.render('book-detail', { layout: "layout", book });
 }
 

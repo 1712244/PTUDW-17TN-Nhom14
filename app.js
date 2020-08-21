@@ -107,6 +107,7 @@ app.use("/buy-book-manager", require("./routes/front-end/buy-book-manager"));
 app.use("/change-password", require("./routes/front-end/change-password"))
 
 app.use("/api", require("./routes/back-end/account")());
+app.use("/api", require("./routes/back-end/comment")());
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));

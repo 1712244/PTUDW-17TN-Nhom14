@@ -5,23 +5,27 @@ const Schema = mongoose.Schema;
 const commentSchema = new Schema({
     user_id: {
         type: String,
-        required: true
+        
     },
-    book_ISBN: {
+    book_id: {
         type: String,
-        required: true
+        
     },
     content: {
         type: String,
-        required: true
+        
     },
-    rating: {
+    rate: {
         type: Number,
-        required: true
+        
+    },
+    date: {
+        type: Date,
+        
     },
     cDate: {
         type: Date,
-        required: true
+        
     },
     mDate: {
         type: Date

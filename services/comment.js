@@ -1,5 +1,5 @@
 const Comment = require("./../collections/comment")
-const dateTimeService = require("./../utils/dateTime")
+const dateTimeService = require("./../utils/dateTime") 
 
 function createModel(user_id, book_id, content, rate) {
     const newCommentDocument = new Comment({
@@ -67,6 +67,24 @@ function getByAttribute(obj) {
     });
 }
 
+function insertCommentJSON(comment) {
+    var newCommentDocument = new Comment({
+        user_id: comment.user_id,
+        book_id: comment.book_id,
+        content: comment.content,
+        rate: comment.rate,
+        date: dateTimeService.now(),
+        cDAte: dateTimeService.now(),
+        mDate: dateTimeService.now()
+    });
+    return new Promise((resolve, reject) => {
+        newCommentDocument.save(error => {
+            if (error) return reject(error);
+            return resolve(true);
+        });
+    });
+}
+
 module.exports = {
     createModel: createModel,
     insert: insert,
@@ -74,5 +92,6 @@ module.exports = {
     updateById: updateById,
     removeById: removeById,
     getAll: getAll,
-    getByAttribute: getByAttribute
+    getByAttribute: getByAttribute,
+    insertCommentJSON
 }
