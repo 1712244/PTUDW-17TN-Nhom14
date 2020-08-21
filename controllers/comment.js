@@ -60,6 +60,17 @@ async function getbyAttribute(req, res) {
     }
 }
 
+async function postRate(req, res, next) {
+    var data = req.body
+    var comment = {
+        user_id: res.locals.user.id,
+        book_id : data.book_id,
+        content : data.content, 
+        rate: data.rate
+    }
+    await commentService.insertCommentJSON(comment)
+    res.redirect('/book-detail/'+data.book_objid);
+}
 
 module.exports = {
     insert: insert,
@@ -67,5 +78,6 @@ module.exports = {
     getById: getById,
     getbyAttribute: getbyAttribute,
     getAll: getAll,
-    removeById: removeById
+    removeById: removeById, 
+    postRate
 }
