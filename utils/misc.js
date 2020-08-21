@@ -21,14 +21,19 @@ function cleanAllBook(all_book) {
 function findAvailableBook(all_book, book_id) { 
     for (var b of all_book) {
         if (b.id == book_id && b.id_borrower == '') { 
-            console.log(b)
             return b._id.toString()
         }
     }
 
 }
 
+function toStringDDMMYYYY(date) {
+    var month = parseInt(date.getMonth())+1
+    return date.getDate() + '/' + month  + '/' + date.getFullYear();
+}
+
 module.exports = {
     cleanAllBook, 
     findAvailableBook,
+    toStringDDMMYYYY,
 }

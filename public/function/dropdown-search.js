@@ -8,12 +8,12 @@ $(function(){
     $("#dropdown_searchtype:first-child").val($(this).text());
     var chosen_type = $(this).text();
     if (chosen_type == "Sách"){
-        $("#book_result_section").show();
-        $("#news_result_section").hide();
+        $("#books_section").show();
+        $("#news_section").hide();
     }
     else {
-        $("#book_result_section").hide();
-        $("#news_result_section").show();
+        $("#books_section").hide();
+        $("#news_section").show();
     }
  });
 });

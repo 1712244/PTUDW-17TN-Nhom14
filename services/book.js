@@ -146,6 +146,18 @@ function updateIdBorrower(_id, id_borrower) {
         });
     });
 }
+
+function bookSearch(text) { 
+    let regx = new RegExp(text, 'i');
+    return Book.find({
+        $or: [{
+            book_name: regx
+        }, {
+            desc: regx
+        }]
+    }).lean().exec()
+}
+
 module.exports = {
     createModel: createModel,
     insert: insert,
@@ -162,4 +174,5 @@ module.exports = {
     updateByisbn: updateByisbn,
     getManyByTag: getManyByTag,
     updateIdBorrower:updateIdBorrower,
+    bookSearch
 }
