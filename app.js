@@ -77,7 +77,7 @@ app.use("/storage", require("./routes/front-end/storage"));
 app.use("/search", require("./routes/front-end/search"));
 app.use("/sign-up", require("./routes/front-end/sign-up"));
 app.use("/about", require("./routes/front-end/about"));
-app.use("/librarian", require("./routes/front-end/index-lib"));
+app.use("/librarian", require("./routes/front-end/lib-index"));
 app.use("/librarian/borrow", require("./routes/front-end/borrow"));
 app.use("/librarian/return", require("./routes/front-end/return"));
 app.use("/librarian/borrower", require("./routes/front-end/borrower-profile"));

@@ -46,8 +46,8 @@ async function getRentBookList(req, res, next) {
                 thumbnail: cs.book.image_url,
                 name: cs.book.book_name, 
                 author: cs.book.author,
-                rent_date: await toStringDDMMYYYY(cs.rent_date),
-                return_date: await toStringDDMMYYYY(cs.back_date)
+                book_date: await toStringDDMMYYYY(cs.book_date),
+                due_date: await toStringDDMMYYYY(cs.due_date)
             }
             if (cs.status == config.SCHEDULE_TYPE.WAITING_BORROW) {
                 rent_book_list.push(item)

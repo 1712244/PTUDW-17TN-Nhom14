@@ -2,12 +2,16 @@ var express = require('express');
 var router = express.Router();
 const th = require('./helper/time-helper');
 const bd = require('./borrow-data');
-const rawData = bd.rawData;
+const scheduleService  = require('./../../services/schedule');
 
 
-router.get('/', function (req, res, next) {
+
+
+router.get('/', async function (req, res, next) {
+  const rawData = await bd.GetAllBorrowData();
   const borrowData = rawData.getTodayBorrow().borrowData;
   const allReturnData = rawData.getUnreturnedData();
+
   allReturnData.sortByDueDate();
   var returnData = [];
   var dueData = [];
@@ -20,7 +24,7 @@ router.get('/', function (req, res, next) {
     }
   });
 
-  res.render('index-lib', {layout:"layout-lib", borrowData: borrowData, returnData: returnData, dueData: dueData});
+  res.render('lib-index', {layout:"layout-lib", borrowData: borrowData, returnData: returnData, dueData: dueData});
 });
 
 module.exports = router;

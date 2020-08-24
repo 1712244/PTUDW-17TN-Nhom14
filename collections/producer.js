@@ -9,6 +9,9 @@ const producerSchema = new Schema({
     },
     cDate: {
         type: Date
+    },
+    mDate: {
+        type: Date
     }
 });
 

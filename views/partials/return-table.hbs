@@ -1,8 +1,8 @@
 {{#each borrow.books}}
 <tr {{#if @first}}id="return-{{../borrow.id}}"{{/if}} {{#if_eq ../borrow.id ../activeID}}class="table-primary"{{/if_eq}}>
-    {{#if @first}}
+    {{!-- {{#if @first}}
     <th scope="row" rowspan="{{../borrow.books.length}}">{{../borrow.id}}</th>
-    {{/if}}
+    {{/if}} --}}
     <td>{{this.id}}</td>
     <td>
         <a href="/librarian/book?id={{this.id}}&&activeID={{../borrow.id}}#borrow-{{../borrow.id}}">

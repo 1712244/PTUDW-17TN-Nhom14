@@ -24,8 +24,8 @@ async function getCart(req, res, next) {
         name: book.book.book_name, 
         author: book.book.author,
         rent_time:"17:00",
-        rent_date: book.schedule.rent_date,
-        return_date: book.schedule.back_date,
+        book_date: book.schedule.book_date,
+        due_date: book.schedule.due_date,
         location: book.schedule.location,
     }
     res.render('cart-detail', {layout: "layout", cart_detail: cart_detail });
@@ -36,19 +36,18 @@ async function postCartDetail(req, res, next) {
     var book_id = req.params.id; 
     // req.session.carts.forEach(item => {
     //     if (item.book.id == book_id) {
-    //         item.schedule.rent_date = data.rent_date
+    //         item.schedule.book_date = data.book_date
     //         item.schedule.rent_time = data.rent_time
-    //         item.schedule.back_date = data.return_date
+    //         item.schedule.due_date = data.due_date
     //         item.schedule.location = data.location
     //     }
     // })  
-    console.log(data) 
     for (var item of req.session.carts) {
         
         if (item.book.id == book_id) {
-            item.schedule.rent_date = data.rent_date
+            item.schedule.book_date = data.book_date
             item.schedule.rent_time = data.rent_time
-            item.schedule.back_date = data.return_date
+            item.schedule.due_date = data.due_date
             item.schedule.location = data.location
             break
         }

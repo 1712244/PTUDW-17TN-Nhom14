@@ -10,7 +10,7 @@ module.exports = () => {
     router.get("/schedule/get-many-by-userid", scheduleController.getManyByUserId);
     router.get("/schedule/get-many-by-bookid", scheduleController.getManyByBookId);
     router.get("/schedule/get-many-by-rentdate", scheduleController.getManyByRentDate);
-    router.get("/schedule/get-many-by-back-date", scheduleController.getManyByBackDate);
+    router.get("/schedule/get-many-by-back-date", scheduleController.getManyByDueDate);
     router.get("/schedule/get-many-by-location", scheduleController.getManyByLocation);
 
     return router

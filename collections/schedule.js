@@ -9,10 +9,16 @@ const ScheduleSchema = new Schema({
     user_id: {
         type: String,
     },
-    rent_date: {
+    book_date: {
         type: Date,
     },
-    back_date: {
+    recieve_date: {
+        type: Date,
+    },
+    due_date: {
+        type: Date,
+    },
+    return_date: {
         type: Date,
     },
     location: {
@@ -29,7 +35,6 @@ const ScheduleSchema = new Schema({
     }
 
 });
-
 
 const Schedule = mongoose.model('schedule', ScheduleSchema, 'schedule');
 

@@ -6,6 +6,9 @@ const bookSchema = new Schema({
     isbn: {
         type: String,
     },
+    id: {
+        type: String,
+    },
     book_name: {
         type: String,
         

@@ -3,8 +3,8 @@ const { log } = require('debug');
  
 async function insert(req, res) {
     try {
-        const { ISBN, name, author, reprint, producer, desc, tag, borrower_id, image_url, bought_date, price } = req.body;
-        const newBookDocument = bookService.createModel(ISBN, name, author, reprint, producer, desc, tag, borrower_id, image_url, bought_date, price);
+        const { ISBN, id, name, author, reprint, producer, desc, tag, borrower_id, image_url, bought_date, price } = req.body;
+        const newBookDocument = bookService.createModel(ISBN, id, name, author, reprint, producer, desc, tag, borrower_id, image_url, bought_date, price);
         await bookService.insert(newBookDocument);
         return res.status(200).send({ book: newBookDocument });
     } catch (error) {

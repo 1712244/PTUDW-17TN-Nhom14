@@ -16,8 +16,8 @@ async function getCart(req, res, next) {
                 thumbnail: item.book.image_url, 
                 name: item.book.book_name, 
                 author: item.book.author,
-                rent_date: item.schedule.rent_date, 
-                return_date: item.schedule.back_date,
+                book_date: item.schedule.book_date, 
+                due_date: item.schedule.due_date,
             }
             carts.push(cartitem)
         }
@@ -40,7 +40,7 @@ async function acceptCart(req, res, next) {
         // không clean để duyệt được hết, và gọi mỗi lần loop để refresh mỗi lần update
         var all_book = await bookService.getAll(); 
         var avail_id = await miscUtil.findAvailableBook(all_book, book.id)
-        console.log(avail_id);
+
         await bookService.updateIdBorrower(avail_id, schedule.user_id);
         await scheduleService.insertJSON(schedule);
     }

@@ -6,8 +6,8 @@ const return_book_list = [
     {
         thumbnail: "/images/book-thumbnail.png",
         name: "Kỹ nghệ phần mềm", author: "TS. Lê Văn Phùng",
-        rent_date: "29/1/2020",
-        return_date: "29/2/2020"
+        book_date: "29/1/2020",
+        due_date: "29/2/2020"
     }
 ];
 
