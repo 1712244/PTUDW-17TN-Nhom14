@@ -15,6 +15,6 @@ const producerSchema = new Schema({
     }
 });
 
-const Producer = mongoose.model('producer', producerSchema);
+const Producer = mongoose.model('producer', producerSchema, 'producer');
 
 module.exports = Producer
