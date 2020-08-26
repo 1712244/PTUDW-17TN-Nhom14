@@ -105,8 +105,10 @@ async function postBorrowId(req, res, next) {
     var schedule = {
         book_id: book.id,
         user_id: res.locals.user.id,
-        rent_date: await toStringDDMMYYYY(dateTimeService.now()),
-        back_date: await toStringDDMMYYYY(dateTimeService.now()),
+        book_date: await toStringDDMMYYYY(dateTimeService.now()),
+        recieve_date: null,
+        due_date: await toStringDDMMYYYY(dateTimeService.now()),
+        return_date: null,
         location: "Thư viện",
         status: 0
     }

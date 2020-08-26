@@ -3,8 +3,8 @@ const config = require("./../config")
 
 async function insert(req, res) {
     try {
-        const { book_id, user_id, rent_date, back_date, location, status } = req.body;
-        const newScheduleDocument = scheduleService.createModel(book_id, user_id, rent_date, back_date, location, status);
+        const { book_id, user_id, book_date, due_date, location, status } = req.body;
+        const newScheduleDocument = scheduleService.createModel(book_id, user_id, book_date, due_date, location, status);
         await scheduleService.insert(newScheduleDocument);
         return res.status(200).send({ result: newScheduleDocument })
     } catch (error) {
@@ -54,18 +54,18 @@ async function getManyByBookId(req, res) {
 
 async function getManyByRentDate(req, res) {
     try {
-        const { rent_date } = req.body;
-        const scheduleDocument = await scheduleService.getManyByRentDate(rent_date);
+        const { book_date } = req.body;
+        const scheduleDocument = await scheduleService.getManyByRentDate(book_date);
         return res.status(200).send({ result: scheduleDocument });
     } catch (error) {
         return res.status(500).send({ message: error });
     }
 }
 
-async function getManyByBackDate(req, res) {
+async function getManyByDueDate(req, res) {
     try {
-        const { back_date } = req.body;
-        const scheduleDocument = await scheduleService.getManyByBackDate(back_date);
+        const { due_date } = req.body;
+        const scheduleDocument = await scheduleService.getManyByDueDate(due_date);
         return res.status(200).send({ result: scheduleDocument });
     } catch (error) {
         return res.status(500).send({ message: error });
@@ -94,8 +94,8 @@ async function removeById(req, res) {
 
 async function updateById(req, res) {
     try {
-        const { _id, book_id, user_id, rent_date, back_date, location, status } = req.body;
-        await scheduleService.updateById(_id, book_id, user_id, rent_date, back_date, location, status)
+        const { _id, book_id, user_id, book_date, due_date, location, status } = req.body;
+        await scheduleService.updateById(_id, book_id, user_id, book_date, due_date, location, status)
         return res.status(200).send({ result: config.STATUS_200_OK });
     } catch (error) {
         return res.status(500).send({ message: error });
@@ -109,7 +109,7 @@ module.exports = {
     getManyByBookId: getManyByBookId,
     getManyByUserId: getManyByUserId,
     getManyByRentDate: getManyByRentDate,
-    getManyByBackDate: getManyByBackDate,
+    getManyByDueDate: getManyByDueDate,
     getManyByLocation: getManyByLocation,
     removeById: removeById,
     updateById: updateById

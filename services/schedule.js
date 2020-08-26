@@ -2,12 +2,14 @@ const Schedule = require("./../collections/schedule")
 const dateTimeService = require("./../utils/dateTime");
 
 
-function createModel(book_id, user_id, rent_date, back_date, location, status) {
+function createModel(book_id, user_id, book_date, due_date, location, status) {
     const newScheduleDocument = new Schedule({
         book_id: book_id,
         user_id: user_id,
-        rent_date: rent_date,
-        back_date: back_date,
+        book_date: book_date,
+        recieve_date: book_date,
+        due_date: due_date,
+        return_date: due_date,
         location: location,
         status: status,
         cDate: dateTimeService.now(),
@@ -27,7 +29,7 @@ function insert(newScheduleModel) {
 
 function getById(_id) {
     return new Promise((resolve, reject) => {
-        Schedule.findOne({ _id: _id }).select("_id book_id user_id rent_date back_date location status").exec((error, scheduleDocument) => {
+        Schedule.findOne({ _id: _id }).select("_id book_id user_id book_date recieve_date due_date return_date location status").exec((error, scheduleDocument) => {
             if (error) return reject(error);
             return resolve(scheduleDocument);
         })
@@ -36,7 +38,7 @@ function getById(_id) {
 
 function getManyByUserId(user_id) {
     return new Promise((resolve, reject) => {
-        Schedule.find({ user_id: user_id }).select("_id book_id user_id rent_date back_date location status").exec((error, scheduleDocument) => {
+        Schedule.find({ user_id: user_id }).select("_id book_id user_id book_date recieve_date due_date return_date location status").exec((error, scheduleDocument) => {
             if (error) return reject(error);
             return resolve(scheduleDocument);
         })
@@ -45,25 +47,25 @@ function getManyByUserId(user_id) {
 
 function getManyByBookId(book_id) {
     return new Promise((resolve, reject) => {
-        Schedule.find({ book_id: book_id }).select("_id book_id user_id rent_date back_date location status").exec((error, scheduleDocument) => {
+        Schedule.find({ book_id: book_id }).select("_id book_id user_id book_date recieve_date due_date return_date location status").exec((error, scheduleDocument) => {
             if (error) return reject(error);
             return resolve(scheduleDocument);
         })
     })
 }
 
-function getManyByRentDate(rent_date) {
+function getManyByRentDate(book_date) {
     return new Promise((resolve, reject) => {
-        Schedule.find({ rent_date: rent_date }).select("_id book_id user_id rent_date back_date location status").exec((error, scheduleDocument) => {
+        Schedule.find({ book_date: book_date }).select("_id book_id user_id book_date recieve_date due_date return_date location status").exec((error, scheduleDocument) => {
             if (error) return reject(error);
             return resolve(scheduleDocument);
         })
     })
 }
 
-function getManyByBackDate(back_date) {
+function getManyByDueDate(due_date) {
     return new Promise((resolve, reject) => {
-        Schedule.find({ back_date: back_date }).select("_id book_id user_id rent_date back_date location status").exec((error, scheduleDocument) => {
+        Schedule.find({ due_date: due_date }).select("_id book_id user_id book_date recieve_date due_date return_date location status").exec((error, scheduleDocument) => {
             if (error) return reject(error);
             return resolve(scheduleDocument);
         })
@@ -72,7 +74,7 @@ function getManyByBackDate(back_date) {
 
 function getManyByLocation(location) {
     return new Promise((resolve, reject) => {
-        Schedule.find({ location: location }).select("_id book_id user_id rent_date back_date location status").exec((error, scheduleDocument) => {
+        Schedule.find({ location: location }).select("_id book_id user_id book_date recieve_date due_date return_date location status").exec((error, scheduleDocument) => {
             if (error) return reject(error);
             return resolve(scheduleDocument);
         })
@@ -81,7 +83,7 @@ function getManyByLocation(location) {
 
 function getAll() {
     return new Promise((resolve, reject) => {
-        Schedule.find().lean().select("_id book_id user_id rent_date back_date location status").exec((error, scheduleDocument) => {
+        Schedule.find().lean().select("_id book_id user_id book_date recieve_date due_date return_date location status").exec((error, scheduleDocument) => {
             if (error) return reject(error);
             return resolve(scheduleDocument);
         })
@@ -97,9 +99,9 @@ function removeById(_id) {
     });
 }
 
-function updateById(_id, book_id, user_id, rent_date, back_date, location, status) {
+function updateById(_id, book_id, user_id, book_date, due_date, location, status) {
     return new Promise((resolve, reject) => {
-        Schedule.updateOne({ _id: _id }, { book_id: book_id, user_id: user_id, rent_date: rent_date, back_date: back_date, location: location, status: status }).exec((error) => {
+        Schedule.updateOne({ _id: _id }, { book_id: book_id, user_id: user_id, book_date: book_date, due_date: due_date, location: location, status: status }).exec((error) => {
             if (error) return reject(error);
             return resolve(true)
         })
@@ -116,8 +118,8 @@ function toDateFromDDMMYYYY(ddmmyyyy){
 }
 
 function insertJSON(newSchedule) {
-    newSchedule.rent_date = toDateFromDDMMYYYY(newSchedule.rent_date)
-    newSchedule.back_date = toDateFromDDMMYYYY(newSchedule.back_date)
+    newSchedule.book_date = toDateFromDDMMYYYY(newSchedule.book_date)
+    newSchedule.due_date = toDateFromDDMMYYYY(newSchedule.due_date)
     const newScheduleModel = new Schedule(newSchedule)
     return new Promise((resolve, reject) => {
         newScheduleModel.save(error => {
@@ -135,7 +137,7 @@ module.exports = {
     getManyByBookId: getManyByBookId,
     getManyByUserId: getManyByUserId,
     getManyByRentDate: getManyByRentDate,
-    getManyByBackDate: getManyByBackDate,
+    getManyByDueDate: getManyByDueDate,
     getManyByLocation: getManyByLocation,
     removeById: removeById,
     updateById: updateById,

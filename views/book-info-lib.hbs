@@ -1,5 +1,5 @@
 <div id="book-info-header">
-    <img id="book-picture" width="80px" src="/images/blank-profile-picture.png" alt="Ảnh đại diện">
+    <img id="book-picture" width="80px" src="{{bookData.image_url}}" alt="Ảnh đại diện">
     <div>
         <span id="book-id">
             {{bookData.id}}
@@ -37,7 +37,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Mã mượn</th>
+                    {{!-- <th scope="col">Mã mượn</th> --}}
                     <th scope="col">Người mượn</th>
                     <th scope="col">Đặt nhận</th>
                     <th scope="col">Nhận</th>
@@ -50,11 +50,11 @@
             <tbody>
                 {{#each borrowData}}
                 <tr id="borrow-{{this.id}}" {{#if_eq this.id ../activeID}}class="table-primary"{{/if_eq}}>
-                    <th scope="row">
+                    {{!-- <th scope="row">
                         <a href="/librarian/borrower?id={{this.borrower.id}}&&activeID={{this.id}}&&type=borrow#borrow-{{this.id}}">
                             {{this.id}}
                         </a>
-                    </td>
+                    </td> --}}
                     <td>
                         <a href="/librarian/borrower?id={{this.borrower.id}}&&activeID={{this.id}}&&type=borrow#borrow-{{this.id}}">
                             {{this.borrower.name}}
@@ -96,7 +96,7 @@
             </button>
         </h1>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+           {{bookData.description}}
         </p>
         <h1>
             Thông tin sách

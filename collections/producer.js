@@ -9,9 +9,12 @@ const producerSchema = new Schema({
     },
     cDate: {
         type: Date
+    },
+    mDate: {
+        type: Date
     }
 });
 
-const Producer = mongoose.model('producer', producerSchema);
+const Producer = mongoose.model('producer', producerSchema, 'producer');
 
 module.exports = Producer

@@ -3,8 +3,9 @@ var router = express.Router();
 
 const bd = require("./borrow-data.js")
 
-router.get('/', function (req, res, next) {
-  res.render('return', {layout:"layout-lib", search: true, export: true, returnData: bd.rawData.getUnreturnedData().borrowData});
+router.get('/', async function (req, res, next) {
+  const rawData = await bd.GetAllBorrowData()
+  res.render('return', {layout:"layout-lib", search: true, export: true, returnData: rawData.getUnreturnedData().borrowData});
 });
 
 module.exports = router;

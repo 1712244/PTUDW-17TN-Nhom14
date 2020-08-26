@@ -1,9 +1,10 @@
 const Book = require('./../collections/book') 
 const dateTimeService = require('./../utils/dateTime');
 
-function createModel(isbn, book_name, author, reprint, producer, desc, tag, id_borrower, image_url, bought_date, price) {
+function createModel(isbn, id, book_name, author, reprint, producer, desc, tag, id_borrower, image_url, bought_date, price) {
     const bookModel = new Book({
         isbn: isbn,
+        id: id,
         book_name: book_name,
         author: author,
         reprint: reprint,
@@ -74,7 +75,18 @@ function getById(_id) {
     });
 }
 
-function getByisbn(isbn) {
+
+function getByBookId(id) {
+    return new Promise((resolve, reject) => {
+        Book.findOne({ id: id }).lean().select("_id id isbn book_name author reprint producer desc tag id_borrower image_url bought_date price").exec((error, bookDocument) => {
+            if (error) return reject(error);
+            return resolve(bookDocument);
+        });
+    });
+}
+
+
+function getByIsbn(isbn) {
     return new Promise((resolve, reject) => {
         Book.findOne({ isbn: isbn }).select("_id isbn book_name author reprint producer desc tag id_borrower image_url bought_date price").exec((error, bookDocument) => {
             if (error) return reject(error);
@@ -165,7 +177,8 @@ module.exports = {
     getManyByAuthor: getManyByAuthor,
     getManyByProducer: getManyByProducer,
     getById: getById,
-    getByisbn: getByisbn,
+    getByBookId: getByBookId,
+    getByIsbn: getByIsbn,
     getAll: getAll,
     getByAttribute: getByAttribute,
     removeById: removeById,
