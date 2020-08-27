@@ -108,7 +108,7 @@ app.use("/change-password", require("./routes/front-end/change-password"))
 
 app.use("/api", require("./routes/back-end/account")());
 app.use("/api", require("./routes/back-end/comment")());
-
+app.use("/api", require("./routes/back-end/buy-registed")());
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));

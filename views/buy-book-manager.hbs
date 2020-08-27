@@ -24,27 +24,28 @@
             <thead>
                 <tr>
                     <th style="white-space: nowrap;" scope="col">ISBN</th>
-                    <th style="white-space: nowrap;" scope="col">Mã sách</th>
+                    <th style="white-space: nowrap;" scope="col">user id</th>
                     <th style="white-space: nowrap;" scope="col">Tên Sách</th>
                     <th style="white-space: nowrap;" scope="col">Tái bản</th>
                     <th style="white-space: nowrap;" scope="col">Tác giả</th>
                     <th style="white-space: nowrap;" scope="col">Nhà sản xuất</th>
+                    <th style="white-space: nowrap;" scope="col">discipline</th>
                     <th style="white-space: nowrap;" scope="col">Ngày đặt</th>
                     <th style="white-space: nowrap;" scope="col" id="activate">Hoạt động</th>
-                    <th style="white-space: nowrap; display: none" scope="col" id="bought-day"> Ngày nhập</th>
                 </tr>
             </thead>
             <tbody>
                 {{#each Booking_arr.booking_book}}
 
                 <tr class="booking-data">
-                    <th style="white-space: nowrap;" scope="row" class="l-height-3">{{this.ISBN}}</th>
-                    <th style="white-space: nowrap;" scope="row" class="l-height-3"> {{this.bookID}}</th>
+                    <th style="white-space: nowrap;" scope="row" class="l-height-3">{{this.book_isbn}}</th>
+                    <th style="white-space: nowrap;" scope="row" class="l-height-3"> {{this.user_id}}</th>
                     <th style="white-space: nowrap;" class="l-height-3">{{this.book_name}}</th>
                     <th style="white-space: nowrap;" class="l-height-3"> {{this.reprint}}</th>
-                    <th style="white-space: nowrap;" class="l-height-3"> {{this.book_author}}</th>
+                    <th style="word-wrap: break-word;" class="l-height-3"> {{this.author}}</th>
                     <th style="white-space: nowrap;" class="l-height-3"> {{this.producer}}</th>
-                    <th style="white-space: nowrap;" class="l-height-3"> {{this.booking_date}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3"> {{this.discipline}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3"> {{this.date_registed}}</th>
                     <th style="white-space: nowrap;" ><button class="confirm-button">Xác nhận</button>
                         <button class="customized-btn">Hủy bỏ</button>
                     </th>
@@ -53,14 +54,14 @@
                 {{/each}}
                 {{#each Bought_arr.bought_book}}
                 <tr class="bought-book-data" style="display: none;">
-                    <th style="white-space: nowrap;" scope="row" class="l-height-3">{{this.ISBN}}</th>
-                    <th style="white-space: nowrap;" scope="row"> {{this.bookID}}</th>
+                    <th style="white-space: nowrap;" scope="row" class="l-height-3">{{this.book_isbn}}</th>
+                    <th style="white-space: nowrap;" scope="row"> {{this.user_id}}</th>
                     <th style="white-space: nowrap;" class="l-height-3">{{this.book_name}}</th>
                     <th style="white-space: nowrap;" class="l-height-3"> {{this.reprint}}</th>
-                    <th style="white-space: nowrap;" class="l-height-3"> {{this.book_author}}</th>
+                    <th style=" word-wrap: break-word;"  class="l-height-3"> {{this.author}}</th>
                     <th style="white-space: nowrap;" class="l-height-3"> {{this.producer}}</th>
-                    <th style="white-space: nowrap;" class="l-height-3"> {{this.booking_date}}</th>
-                    <th style="white-space: nowrap;" class="l-height-3">{{this.bought_date}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3"> {{this.discipline}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3">{{this.date_registed}}</th>
                 </tr>
                 {{/each}}
             </tbody>

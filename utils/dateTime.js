@@ -6,6 +6,11 @@ function stringToDate(YYYY_MM_DD) {
     return new Date(YYYY_MM_DD)
 }
 
+function DateToDMY(current_datetime) {
+    let formatted_date = current_datetime.getDate() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getFullYear()
+    return formatted_date;
+}
+
 function dateToNiceString(myDate) {
     var month = new Array();
     month[0] = "Jan";
@@ -34,5 +39,6 @@ function dateToNiceString(myDate) {
 module.exports = {
     now: now,
     stringToDate: stringToDate,
-    dateToNiceString: dateToNiceString
+    dateToNiceString: dateToNiceString,
+    DateToDMY: DateToDMY
 }

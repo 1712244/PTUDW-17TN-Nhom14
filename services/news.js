@@ -61,7 +61,7 @@ function updateById(_id, title, desc, tag, writer) {
 }
 
 
-function newsSearch(text) { 
+function newsSearch(text) {
     let regx = new RegExp(text, 'i');
     return News.find({
         $or: [{
@@ -71,9 +71,10 @@ function newsSearch(text) {
         }]
     }).lean().exec()
 }
-  function get3EventByLatestDate() {
+
+function get3EventByLatestDate() {
     return new Promise((resolve, reject) => {
-        News.find({ type: 1 }).sort({ "date": -1 }).limit(2).exec((error, newsDocument) => {
+        News.find({ type: 1 }).sort({ "date": -1 }).limit(3).exec((error, newsDocument) => {
             if (error) return reject(error);
             return resolve(newsDocument);
         });
@@ -82,7 +83,7 @@ function newsSearch(text) {
 
 function get3PronouncerByLatestDate() {
     return new Promise((resolve, reject) => {
-        News.find({ type: 0 }).sort({ "date": -1 }).limit(2).exec((error, newsDocument) => {
+        News.find({ type: 0 }).sort({ "date": -1 }).limit(3).exec((error, newsDocument) => {
             if (error) return reject(error);
             return resolve(newsDocument);
         });
@@ -91,7 +92,7 @@ function get3PronouncerByLatestDate() {
 
 function get5NewsByLatestDate() {
     return new Promise((resolve, reject) => {
-        News.find().sort({ "date": -1 }).limit(2).exec((error, newsDocument) => {
+        News.find().sort({ "date": -1 }).limit(5).exec((error, newsDocument) => {
             if (error) return reject(error);
             return resolve(newsDocument);
         });
