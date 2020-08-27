@@ -7,6 +7,9 @@ const BuyRegistedSchema = new Schema({
         type: String,
         required: true
     },
+    book_isbn: {
+        type: String,
+    },
     book_name: {
         type: String,
         required: true
@@ -21,11 +24,14 @@ const BuyRegistedSchema = new Schema({
     },
     producer: {
         type: String,
-        type: true
+        required: true
     },
     date_registed: {
         type: Date,
         required: true
+    },
+    discipline: {
+        type: String
     },
     cDate: {
         type: Date
@@ -35,6 +41,6 @@ const BuyRegistedSchema = new Schema({
     }
 });
 
-const BuyRegisted = mongoose.model('buy_registed', BuyRegistedSchema);
+const BuyRegisted = mongoose.model('buy_registed', BuyRegistedSchema, 'buyRegisted');
 
 module.exports = BuyRegisted;

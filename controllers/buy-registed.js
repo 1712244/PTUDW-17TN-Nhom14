@@ -2,8 +2,8 @@ const buyRegistedService = require("../services/buy-registed");
 
 async function insert(req, res) {
     try {
-        const { user_id, book_name, reprint, author, producer, date_registed } = req.body;
-        const newBuyRegistedDocument = buyRegistedService.createModel(user_id, book_name, reprint, author, producer, date_registed);
+        const { user_id, book_name, book_isbn, reprint, author, producer, date_registed } = req.body;
+        const newBuyRegistedDocument = buyRegistedService.createModel(user_id, book_isbn, book_name, reprint, author, producer, date_registed);
         await buyRegistedService.insert(newBuyRegistedDocument);
         return res.status(200).send({ result: newBuyRegistedDocument });
     } catch (error) {
@@ -14,7 +14,7 @@ async function insert(req, res) {
 async function updateById(req, res) {
     try {
         const { _id, user_id, book_name, reprint, author, producer, date_registed } = req.body;
-        await buyRegistedService.updateById(_id, user_id, book_name, reprint, author, producer, date_registed)
+        await buyRegistedService.updateById(_id, user_id, book_isbn, book_name, reprint, author, producer, date_registed)
         return res.status(200).send({ result: config.STATUS_200_OK });
     } catch (error) {
         return res.status(500).send({ message: error });
@@ -44,6 +44,16 @@ async function getById(req, res) {
 async function getAll(req, res) {
     try {
         const BuyRegistedDocument = await buyRegistedService.getAll()
+        return res.status(200).send({ result: BuyRegistedDocument });
+    } catch (error) {
+        return res.status(500).send({ message: error });
+    }
+}
+
+async function getByStatus(req, res) {
+    try {
+        const { status } = req.body
+        const BuyRegistedDocument = await buyRegistedService.getByStatus(status)
         return res.status(200).send({ result: BuyRegistedDocument });
     } catch (error) {
         return res.status(500).send({ message: error });
@@ -100,5 +110,6 @@ module.exports = {
     getManyByRegistDate: getManyByRegistDate,
     getAll: getAll,
     removeById: removeById,
-    updateById: updateById
+    updateById: updateById,
+    getByStatus: getByStatus
 }

@@ -100,7 +100,7 @@ async function get3BylatestDate(req, res) {
 }
 
 
-async function get5NewsByLatestDate(req, res) {
+async function get5NewsByLatestDate() {
     try {
         const NewsDocument = await newsService.get5NewsByLatestDate();
 
@@ -112,21 +112,17 @@ async function get5NewsByLatestDate(req, res) {
         }
 
         for (i in sectionTinTuc.articles) {
-            console.log(sectionSuKien.articles[i].image_url);
             sectionTinTuc.articles[i].date = dateTimeService.dateToNiceString(new Date());
             if (sectionTinTuc.articles[i].type == 1) {
                 sectionTinTuc.articles[i].image_url = "/images/alert-late-thumbnail.png"
             } else {
                 sectionTinTuc.articles[i].image_url = "/images/news-thumbnail.png"
             }
-
-
         }
         return sectionTinTuc
 
     } catch (error) {
         console.log(error);
-        return res.status(500).send({ message: error });
     }
 }
 

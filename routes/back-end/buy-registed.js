@@ -12,4 +12,6 @@ module.exports = () => {
     router.get("/buy-registed/get-by-producer", buyRegistedController.getManyByProducer);
     router.get("/buy-registed/get-by-regist-date", buyRegistedController.getManyByRegistDate);
     router.get("/buy-registed/get-by-userid", buyRegistedController.getManyByUserId);
+    router.get("/buy-registed/get-by-status", buyRegistedController.getByStatus);
+    return router;
 }
