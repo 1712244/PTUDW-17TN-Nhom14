@@ -159,9 +159,9 @@ function updateIdBorrower(_id, id_borrower) {
     });
 }
 
-function returnIds(_ids) {
+function returnIds(ids) {
     return new Promise((resolve, reject) => {
-        Book.updateMany({ _id: {"$in": _ids} }, { id_borrower: ""}).exec(error => {
+        Book.updateMany({ id: {"$in": ids} }, { id_borrower: ""}).exec(error => {
             if (error) return reject(error);
             return resolve(true);
         });

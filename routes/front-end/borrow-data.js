@@ -18,7 +18,6 @@ async function GetAllBorrowData() {
 
     id = 0;
     async function init_borrow(b) {
-        console.log(b.user_id)
         return {
             id: b._id,
             bookedBorrowDate: b.book_date,
@@ -37,7 +36,7 @@ async function GetAllBorrowData() {
     id = 0
     borrow = await init_borrow(borrowData[0])
     for(const b of borrowData) {
-        if (b.book_date !== borrow.bookedBorrowDate || b.user_id !== borrow.borrower.id) {
+        if (b.book_date.getTime() !== borrow.bookedBorrowDate.getTime() || b.user_id !== borrow.borrower.id) {
             borrows.push(borrow)
             borrow = await init_borrow(b)
         }
@@ -55,7 +54,6 @@ async function GetAllBorrowData() {
         })
     }
     borrows.push(borrow)
-
     return new BorrowData(borrows)
 }
 

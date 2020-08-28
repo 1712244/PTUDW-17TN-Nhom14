@@ -23,9 +23,9 @@ async function getCart(req, res, next) {
         thumbnail: book.book.image_url,
         name: book.book.book_name, 
         author: book.book.author,
-        rent_time:"17:00",
-        book_date: book.schedule.book_date,
-        due_date: book.schedule.due_date,
+        rent_time: dateTimeService.ToHHMM(new Date(book.schedule.book_date)),
+        book_date: dateTimeService.toStringDDMMYYYY(new Date(book.schedule.book_date)),
+        due_date: dateTimeService.toStringDDMMYYYY(new Date(book.schedule.due_date)),
         location: book.schedule.location,
     }
     res.render('cart-detail', {layout: "layout", cart_detail: cart_detail });
@@ -34,20 +34,11 @@ async function getCart(req, res, next) {
 async function postCartDetail(req, res, next) {    
     const data = req.body;
     var book_id = req.params.id; 
-    // req.session.carts.forEach(item => {
-    //     if (item.book.id == book_id) {
-    //         item.schedule.book_date = data.book_date
-    //         item.schedule.rent_time = data.rent_time
-    //         item.schedule.due_date = data.due_date
-    //         item.schedule.location = data.location
-    //     }
-    // })  
     for (var item of req.session.carts) {
         
         if (item.book.id == book_id) {
-            item.schedule.book_date = data.book_date
-            item.schedule.rent_time = data.rent_time
-            item.schedule.due_date = data.due_date
+            item.schedule.book_date = dateTimeService.DateTimetoDate(data.book_date, data.rent_time);
+            item.schedule.due_date = dateTimeService.DateTimetoDate(data.due_date,"0:00");
             item.schedule.location = data.location
             break
         }

@@ -37,6 +37,16 @@ function getById(_id) {
     })
 }
 
+function getBookIdByIds(_ids) {
+    return new Promise((resolve, reject) => {
+        Schedule.find({ _id: {"$in":_ids} }).select("book_id").exec((error, scheduleDocument) => {
+            if (error) return reject(error);
+            return resolve(scheduleDocument.map(t => t.book_id));
+        })
+    })
+}
+
+
 function getManyByUserId(user_id) {
     return new Promise((resolve, reject) => {
         Schedule.find({ user_id: user_id }).select("_id book_id user_id book_date recieve_date due_date return_date location status").exec((error, scheduleDocument) => {
@@ -159,8 +169,6 @@ function toDateFromDDMMYYYY(ddmmyyyy){
 }
 
 function insertJSON(newSchedule) {
-    newSchedule.book_date = toDateFromDDMMYYYY(newSchedule.book_date)
-    newSchedule.due_date = toDateFromDDMMYYYY(newSchedule.due_date)
     const newScheduleModel = new Schedule(newSchedule)
     return new Promise((resolve, reject) => {
         newScheduleModel.save(error => {
@@ -175,6 +183,7 @@ module.exports = {
     insert,
     getAll,
     getById,
+    getBookIdByIds,
     getManyByBookId,
     getManyByUserId,
     getManyByRentDate,
