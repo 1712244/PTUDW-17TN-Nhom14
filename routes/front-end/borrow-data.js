@@ -5,76 +5,6 @@ const scheduleService = require("../../services/schedule");
 const authorService = require("../../services/author");
 const config = require("../../config");
 
-function randomBorrow(d) {
-    d = new Date(d);
-    var borrowDate = (d < new Date())?d : null;
-    var returnDate = (new Date(d)).addDays(25);
-    if (returnDate > new Date()) {
-        returnDate = null;
-    }
-
-    return {
-        id: Math.trunc(Math.random() * 1000).toString(),
-        bookedBorrowDate: d,
-        borrowDate: borrowDate, 
-        returnDueDate: (new Date(d)).addDays(30),
-        borrower: {
-            id: "1612864",
-            name: "Vuong Hy",
-        },
-
-        books: [
-            {
-                id: "MAS-QWX",
-                name: "Lập trình hướng đối tượng",
-                author: "Noone",
-                returnDate: returnDate,
-                lost: false,
-            },
-            {
-                id: "DWI-MCX",
-                name: "Trí tuệ nhân tạo",
-                author: "Noone II",
-                returnDate: null,
-                lost: false,
-            },
-            {
-                id: "DWI-MCX",
-                name: "Không biết là sách gì luôn",
-                author: "Noone III",
-                returnDate: null,
-                lost: false,
-            }
-        ]
-    }
-}
-
-var borrowData = [
-    randomBorrow("2020-05-29 07:00"),
-    randomBorrow("2020-05-29 12:00"),
-    randomBorrow("2020-05-30 8:00"),
-    randomBorrow("2020-05-30 9:00"),
-    randomBorrow("2020-05-30 15:00"),
-    randomBorrow("2020-05-30 16:00"),
-    randomBorrow("2020-05-31 9:30"),
-    randomBorrow((new Date()).addDays(-32)),
-    randomBorrow((new Date()).addDays(-28)),
-    randomBorrow((new Date()).addDays(-28)),
-    randomBorrow((new Date()).addDays(-26)),
-    randomBorrow((new Date()).addDays(-24)),
-    randomBorrow((new Date()).addDays(-22)),
-    randomBorrow((new Date()).addHours(-2)),
-    randomBorrow(new Date()),
-    randomBorrow(new Date()),
-    randomBorrow(new Date()),
-    randomBorrow((new Date()).addHours(3)),
-    randomBorrow((new Date()).addDays(1).addHours(-2)),
-    randomBorrow((new Date()).addDays(2)),
-    randomBorrow((new Date()).addDays(2).addHours(1)),
-
-
-];
-
 async function GetAllBorrowData() {
     borrowData = await scheduleService.getAll();
     borrowData.sort((a,b) => {
@@ -97,6 +27,7 @@ async function GetAllBorrowData() {
                 id: b.user_id,
                 name: (await userService.getById(b.user_id)).name,
             },
+            ids: [],
             books: []
         }
     }
@@ -105,21 +36,24 @@ async function GetAllBorrowData() {
     id = 0
     borrow = await init_borrow(borrowData[0])
     for(const b of borrowData) {
-        if (b.book_date !== borrow.bookedBorrowDate || b.user_id !== borrow.borrower.id) {
+        if (b.book_date.getTime() !== borrow.bookedBorrowDate.getTime() || b.user_id !== borrow.borrower.id) {
             borrows.push(borrow)
             borrow = await init_borrow(b)
         }
         book = await bookService.getByBookId(b.book_id)
+        borrow.ids.push(b._id);
         borrow.books.push({
+            bid : b._id,
             id: book.id,
             name: book.book_name,
             author: (await authorService.getById(book.author[0])).name,
+            recieveDate: b.recieve_date,
             returnDate: b.return_date,
             lost: b.status == config.SCHEDULE_TYPE.LOST,
+            cancelled: b.status == config.SCHEDULE_TYPE.ABORT,
         })
     }
     borrows.push(borrow)
-
     return new BorrowData(borrows)
 }
 
@@ -179,7 +113,6 @@ function BorrowData(borrowData) {
 }
 
 module.exports = {
-    rawData: (new BorrowData(borrowData)).sortByBookedDate(),
     BorrowData,
     GetAllBorrowData,
 }

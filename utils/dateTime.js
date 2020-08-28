@@ -6,9 +6,24 @@ function stringToDate(YYYY_MM_DD) {
     return new Date(YYYY_MM_DD)
 }
 
+function DateTimetoDate(date, time) {
+    d = date.split("/")
+    t = time.split(":")
+    return new Date(d[2],d[1],d[0],t[0],t[1],0,0);
+}
+
 function DateToDMY(current_datetime) {
     let formatted_date = current_datetime.getDate() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getFullYear()
     return formatted_date;
+}
+
+function toStringDDMMYYYY(date) {
+    var month = parseInt(date.getMonth())+1
+    return date.getDate() + '/' + month  + '/' + date.getFullYear();
+}
+
+function ToHHMM(time) {
+    return time.getHours() + ":" + (time.getMinutes() < 10?'0':'') + time.getMinutes();
 }
 
 function dateToNiceString(myDate) {
@@ -37,8 +52,11 @@ function dateToNiceString(myDate) {
 
 
 module.exports = {
-    now: now,
-    stringToDate: stringToDate,
-    dateToNiceString: dateToNiceString,
-    DateToDMY: DateToDMY
+    now,
+    stringToDate,
+    dateToNiceString,
+    DateToDMY,
+    ToHHMM,
+    toStringDDMMYYYY,
+    DateTimetoDate
 }

@@ -11,12 +11,7 @@ const config = require("./../config");
 const { all } = require('../routes/front-end/book-detail');
 const user = require('./../services/user');
 
-
-
-async function toStringDDMMYYYY(date) {
-    var month = parseInt(date.getMonth())+1
-    return date.getDate() + '/' + month  + '/' + date.getFullYear();
-}
+require('../routes/front-end/helper/time-helper')
 
 function to_01(rate) {
     var res_list = [];
@@ -102,12 +97,17 @@ async function postBorrowId(req, res, next) {
             }
         })
     }, book.author);
+
+    book_date =  dateTimeService.now();
+    due_date =  dateTimeService.now().addDays(15);
+    book_date.setMinutes(Math.ceil(book_date.getMinutes()/15)*15,0,0);
+    due_date.setHours(0,0,0,0)
     var schedule = {
         book_id: book.id,
         user_id: res.locals.user.id,
-        book_date: await toStringDDMMYYYY(dateTimeService.now()),
+        book_date,
         recieve_date: null,
-        due_date: await toStringDDMMYYYY(dateTimeService.now()),
+        due_date,
         return_date: null,
         location: "Thư viện",
         status: 0

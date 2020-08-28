@@ -159,6 +159,15 @@ function updateIdBorrower(_id, id_borrower) {
     });
 }
 
+function returnIds(ids) {
+    return new Promise((resolve, reject) => {
+        Book.updateMany({ id: {"$in": ids} }, { id_borrower: ""}).exec(error => {
+            if (error) return reject(error);
+            return resolve(true);
+        });
+    });
+}
+
 function bookSearch(text) { 
     let regx = new RegExp(text, 'i');
     return Book.find({
@@ -187,5 +196,6 @@ module.exports = {
     updateByisbn: updateByisbn,
     getManyByTag: getManyByTag,
     updateIdBorrower:updateIdBorrower,
+    returnIds,
     bookSearch
 }

@@ -11,13 +11,15 @@ async function getCart(req, res, next) {
     var carts = []
     if (req.session.carts) {
         for (var item of req.session.carts) {
+            console.log(item.schedule);
             var cartitem = {
                 id: item.book.id,
                 thumbnail: item.book.image_url, 
                 name: item.book.book_name, 
                 author: item.book.author,
-                book_date: item.schedule.book_date, 
-                due_date: item.schedule.due_date,
+                rent_time: dateTimeService.ToHHMM(new Date(item.schedule.book_date)),
+                book_date: dateTimeService.toStringDDMMYYYY(new Date(item.schedule.book_date)), 
+                due_date: dateTimeService.toStringDDMMYYYY(new Date(item.schedule.due_date)),
             }
             carts.push(cartitem)
         }

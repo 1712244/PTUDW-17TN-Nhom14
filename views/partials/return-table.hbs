@@ -11,9 +11,16 @@
     </td>
     <td>{{this.author}}</td>    
     <td class="tab-cell-center">
-        <button class="btn btn-danger" type="button" id="btn-delete-borrow">
-            <i class="fa fa-trash"></i>
-        </button>
+        <a href="/librarian-api/borrow/return?id={{this.bid}}">
+            <button class="btn btn-primary" type="button" id="btn-return-borrow">
+                <i class="fa fa-check"></i>
+            </button>
+        </a>
+        <a href="/librarian-api/borrow/lost?id={{this.bid}}">
+            <button class="btn btn-danger" type="button" id="btn-delete-borrow">
+                <i class="fa fa-trash"></i>
+            </button>
+        </a>
     </td>
     {{#if @first}}
     <td class="tab-cell-center" rowspan="{{../borrow.books.length}}">{{dateToString ../borrow.returnDueDate}}</td>
