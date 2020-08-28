@@ -25,9 +25,9 @@ var Bought_arr = {
 }
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-    res.render('buy-book-manager', { layout: "layout", Booking_arr, Bought_arr });
-});
+// router.get('/', function(req, res, next) {
+//     res.render('buy-book-manager', { layout: "layout", Booking_arr, Bought_arr });
+// });
 
-router.get('/test', buyBookManagerController.getData);
+router.get('/', buyBookManagerController.getData);
 module.exports = router;
