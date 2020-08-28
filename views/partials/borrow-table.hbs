@@ -12,21 +12,43 @@
         </a>
     </td>
     <td>{{this.author}}</td>    
-    <td></td>
+    <td>
+    {{#if this.cancelled}}
+    Đã hủy mượn
+    {{/if}}
+    {{#if this.returnDate}}
+    {{#if this.lost}}
+    Làm mất sách
+    {{else}}
+    Đã trả sách
+    {{/if}}
+    {{else}}
+    {{#if this.recieveDate}}
+    Đã nhận sách
+    {{/if}}
+    {{/if}}
+    </td>
     {{#if @first}}
     <td class="tab-cell-center" rowspan="{{../borrow.books.length}}">{{datetimeToString ../borrow.bookedBorrowDate}}</td>
     <td class="tab-cell-center" rowspan="{{../borrow.books.length}}">{{dateToString ../borrow.returnDueDate}}</td>
     <td class="tab-cell-center" rowspan="{{../borrow.books.length}}">
-
-        <button class="btn btn-primary" type="button" id="btn-confirm-borrow">
-            <i class="fa fa-check"></i>
-        </button>
+        {{#unless this.cancelled}}
         <button class="btn btn-secondary" type="button" id="btn-edit-borrow">
             <i class="fa fa-edit"></i>
         </button>
+        {{#unless this.recieveDate}}
+        <a href="/librarian-api/borrow/accept?id={{../borrow.ids}}">
+            <button class="btn btn-primary" type="button" id="btn-confirm-borrow">
+                <i class="fa fa-check"></i>
+            </button>
+        </a>
+        <a href="/librarian-api/borrow/cancel?id={{../borrow.ids}}">
         <button class="btn btn-danger" type="button" id="btn-delete-borrow">
             <i class="fa fa-trash"></i>
         </button>
+        </a>
+        {{/unless}}
+        {{/unless}}
     </td>
     {{/if}}
 </tr>

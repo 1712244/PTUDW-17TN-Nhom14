@@ -1,5 +1,6 @@
 const Schedule = require("./../collections/schedule")
 const dateTimeService = require("./../utils/dateTime");
+const config = require("../config");
 
 
 function createModel(book_id, user_id, book_date, due_date, location, status) {
@@ -99,14 +100,54 @@ function removeById(_id) {
     });
 }
 
-function updateById(_id, book_id, user_id, book_date, due_date, location, status) {
+function updateById(_id, book_id, user_id, book_date, recieve_date, due_date, return_date, location, status) {
     return new Promise((resolve, reject) => {
-        Schedule.updateOne({ _id: _id }, { book_id: book_id, user_id: user_id, book_date: book_date, due_date: due_date, location: location, status: status }).exec((error) => {
+        Schedule.updateOne({ _id: _id }, { book_id, user_id, book_date, recieve_date, due_date, return_date, location, status }).exec((error) => {
             if (error) return reject(error);
             return resolve(true)
         })
     });
 }
+
+function borrowByIds(ids) {
+    return new Promise((resolve, reject) => {
+    Schedule.updateMany({ _id:  { "$in": ids } }, { recieve_date: dateTimeService.now(), status: config.SCHEDULE_TYPE.WAITING_RETURN}).exec((error) => {
+            if (error) return reject(error);
+            return resolve(true)
+        })
+    });
+}
+
+
+function returnByIds(ids) {
+    return new Promise((resolve, reject) => {
+    Schedule.updateMany({ _id:  { "$in": ids } }, { return_date: dateTimeService.now(), status: config.SCHEDULE_TYPE.RETURNED}).exec((error) => {
+            if (error) return reject(error);
+            return resolve(true)
+        })
+    });
+}
+
+
+function lostByIds(ids) {
+    return new Promise((resolve, reject) => {
+    Schedule.updateMany({ _id:  { "$in": ids } }, { return_date: dateTimeService.now(), status: config.SCHEDULE_TYPE.LOST}).exec((error) => {
+            if (error) return reject(error);
+            return resolve(true)
+        })
+    });
+}
+
+
+function cancelByIds(ids) {
+    return new Promise((resolve, reject) => {
+    Schedule.updateMany({ _id:  { "$in": ids } }, { status: config.SCHEDULE_TYPE.ABORT}).exec((error) => {
+            if (error) return reject(error);
+            return resolve(true)
+        })
+    });
+}
+
 
 function toDateFromDDMMYYYY(ddmmyyyy){
     var date = new Date(); 
@@ -130,16 +171,20 @@ function insertJSON(newSchedule) {
 }
 
 module.exports = {
-    createModel: createModel,
-    insert: insert,
-    getAll: getAll,
-    getById: getById,
-    getManyByBookId: getManyByBookId,
-    getManyByUserId: getManyByUserId,
-    getManyByRentDate: getManyByRentDate,
-    getManyByDueDate: getManyByDueDate,
-    getManyByLocation: getManyByLocation,
-    removeById: removeById,
-    updateById: updateById,
-    insertJSON:insertJSON,
+    createModel,
+    insert,
+    getAll,
+    getById,
+    getManyByBookId,
+    getManyByUserId,
+    getManyByRentDate,
+    getManyByDueDate,
+    getManyByLocation,
+    removeById,
+    updateById,
+    borrowByIds,
+    cancelByIds,
+    returnByIds,
+    lostByIds,
+    insertJSON,
 }

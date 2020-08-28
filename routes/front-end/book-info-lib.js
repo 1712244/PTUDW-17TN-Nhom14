@@ -7,8 +7,6 @@ var publisherService = require('../../services/producer');
 const bd = require("./borrow-data.js");
 
 router.get('/', async function (req, res, next) {
-    
-    // console.log(await publisherService.getAll())
     const rawData = await bd.GetAllBorrowData()
     const rawBook = await bookService.getByBookId(req.query.id)
 
@@ -21,7 +19,6 @@ router.get('/', async function (req, res, next) {
     if (publisher)
         publisher = publisher.name
 
-    //console.log(mongoose.isValidObjectId(rawBook.producer))
     const book = {
         id: rawBook.id,
         name: rawBook.book_name,

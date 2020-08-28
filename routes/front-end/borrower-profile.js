@@ -17,7 +17,6 @@ async function queryUser(userID) {
     unreturnedData.sortByDueDate();
     user.unreturnedData = unreturnedData.borrowData;
 
-    // console.log(user)
     return user;
 }
 
