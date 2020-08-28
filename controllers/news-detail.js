@@ -6,7 +6,7 @@ async function getById(req, res, next) {
         const _id = req.params.id;
         console.log(_id);
         const newsDocument = await newsService.getById(_id);
-        console.log(newsDocument);
+        // console.log(newsDocument);
         if (newsDocument.type == 0) {
             newsDocument.article_image = "/images/news-thumbnail.png"
         }

@@ -20,7 +20,7 @@ async function signUp(req, res) {
         await accountService.insert(newAccountDocument);
         await userService.insert(newUserDoc)
         req.session.username = newAccountDocument.username;
-        console.log(req.session.username);
+        // console.log(req.session.username);
         return res.status(200).send({ result: newAccountDocument });
     } catch (error) {
         return res.status(500).send({ message: error });

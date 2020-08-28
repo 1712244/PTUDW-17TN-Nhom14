@@ -8,7 +8,7 @@ const bd = require("./borrow-data.js");
 
 router.get('/', async function (req, res, next) {
     
-    console.log(await publisherService.getAll())
+    // console.log(await publisherService.getAll())
     const rawData = await bd.GetAllBorrowData()
     const rawBook = await bookService.getByBookId(req.query.id)
 

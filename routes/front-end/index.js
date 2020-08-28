@@ -85,7 +85,7 @@ router.get('/', async function(req, res, next) {
     sectionSachHot.books = all_book;
     sectionSachHot.list_categories = all_disc
     let sectionTinTuc = await NewsController.get5NewsByLatestDate()
-    console.log(sectionTinTuc);
+    // console.log(sectionTinTuc);
     res.render('index', { layout: "layout", title: 'Thư viện Khoa CNTT DHQG TPHCM', sectionSachHot, sectionTinTuc });
 });
 

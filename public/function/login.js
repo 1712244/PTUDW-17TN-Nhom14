@@ -17,7 +17,7 @@ $(document).ready(function () {
   
     formSignup.submit(function () {
       body = $(this).serializeArray(); 
-      console.log(body)
+      // console.log(body)
       $.post('/api/account/sign-up', body)
         .done(function (data) {
           window.location.href = "/";
