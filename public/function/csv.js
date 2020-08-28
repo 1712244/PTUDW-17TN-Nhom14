@@ -2,7 +2,7 @@ function download_csv(csv, filename) {
     var csvFile;
     var downloadLink;
     convertString = JSON.parse(JSON.stringify(csv));
-    console.log(convertString);
+    // console.log(convertString);
     var encodedUri = encodeURI(convertString);
     var link = document.createElement("a");
     link.setAttribute("href", "data:text/csv;charset=utf-8,\uFEFF" + encodedUri);

@@ -67,7 +67,7 @@ async function get3BylatestDate(req, res) {
         }
 
         for (i in sectionSuKien.articles) {
-            console.log(sectionSuKien.articles[i].image_url);
+            // console.log(sectionSuKien.articles[i].image_url);
             sectionSuKien.articles[i].date = dateTimeService.dateToNiceString(new Date());
             sectionSuKien.articles[i].image_url = "/images/alert-late-thumbnail.png"
         }
@@ -80,7 +80,7 @@ async function get3BylatestDate(req, res) {
         }
 
         for (i in sectionThongBao.articles) {
-            console.log(sectionSuKien.articles[i].image_url);
+            // console.log(sectionSuKien.articles[i].image_url);
             sectionThongBao.articles[i].date = dateTimeService.dateToNiceString(new Date());
             sectionThongBao.articles[i].image_url = "/images/news-thumbnail.png"
         }

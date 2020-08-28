@@ -9,12 +9,12 @@ async function getData(req, res) {
         BuyRegistedStatus1Document = JSON.parse(JSON.stringify(BuyRegistedStatus1Document));
 
         for (i in BuyRegistedStatus0Document) {
-            console.log(BuyRegistedStatus0Document[i]);
+            // console.log(BuyRegistedStatus0Document[i]);
             BuyRegistedStatus0Document[i]['date_registed'] = dateTimeService.DateToDMY(new Date(BuyRegistedStatus0Document[i].date_registed));
         }
         for (i in BuyRegistedStatus1Document) {
-            console.log(BuyRegistedStatus1Document[i]);
             BuyRegistedStatus1Document[i].date_registed = dateTimeService.DateToDMY(new Date(BuyRegistedStatus0Document[i].date_registed));
+            // console.log(BuyRegistedStatus0Document[i]);
         }
         let Booking_arr = {
             booking_book: BuyRegistedStatus0Document

@@ -1,6 +1,6 @@
 $('.select-box').on('change', function() {
     if (this.value == "bought-book") {
-        console.log(this.value);
+        // console.log(this.value);
 
         $(".booking-data").hide();
         $("#activate").hide();
@@ -9,7 +9,7 @@ $('.select-box').on('change', function() {
     }
 
     if (this.value == "booking-book") {
-        console.log(this.value);
+        // console.log(this.value);
 
         $(".booking-data").show();
         $("#activate").show();
@@ -24,7 +24,7 @@ $(document).ready(function() {
     $("#search-book").on("keyup", function() {
 
         $('.select-box').val();
-        console.log($('.select-box').val());
+        // console.log($('.select-box').val());
 
         if ($('.select-box').val() == "bought-book") {
             var value = $(this).val().toLowerCase();

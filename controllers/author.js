@@ -6,11 +6,11 @@ async function insert(req, res) {
     try {
         const { name } = req.body;
         const newAuthorDocument = authorService.createModel(name);
-        console.log(newAuthorDocument);
+        // console.log(newAuthorDocument);
         await authorService.insert(newAuthorDocument);
         return res.status(200).send({ author: newAuthorDocument });
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         res.status(500).send({ message: error });
     }
 }
