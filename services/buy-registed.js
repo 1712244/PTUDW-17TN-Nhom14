@@ -65,7 +65,7 @@ function getManyByRegistDate(date_registed) {
 
 function getManyByUserId(user_id) {
     return new Promise((resolve, reject) => {
-        BuyRegisted.find({ user_id: user_id }).select("_id user_id book_isbn book_name reprint author producer date_registed discipline").exec((error, buyRegistedDocument) => {
+        BuyRegisted.find({ user_id: user_id }).exec((error, buyRegistedDocument) => {
             if (error) return reject(error);
             return resolve(buyRegistedDocument);
         });
