@@ -21,6 +21,7 @@ var news_result = [
     { title: "Thông báo mở đăng ký mua sách", date: "20/01/2020", thumbnail: "/images/news-thumbnail.png", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et sem nibh. Suspendisse ornare accumsan metus eget maximus. Sed suscipit molestie pellentesque. Morbi varius fermentum urna, bibendum dapibus odio fermentum at." },
 ];
 
+const MAX_PAGE = 5
 
 async function searchDefault(req, res, next) {
     var data ={text:""}
@@ -42,7 +43,19 @@ async function searchDefault(req, res, next) {
     news.forEach(n => {
         n.date = miscUtil.toStringDDMMYYYY(n.date)
     })
-    res.render('search', { layout: "layout", query: data.text, books, news });
+
+    // split 
+    var tmpbook = [] 
+    var books_length = books.length
+    while (books.length > 0) {
+        tmpbook.push(books.splice(0,MAX_PAGE))
+    }
+    books = tmpbook
+    var booknav = [...Array(books.length).keys()]
+    booknav = booknav.map(x => ++x)
+    console.log(booknav, books)
+    // render
+    res.render('search', { layout: "layout", query: data.text,books_length, books, booknav, news });
 }
 
 async function searchQuery(req, res, next) {
