@@ -1,11 +1,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <div class="container-fluid first-section bg-white">
-    <div class="title-section text-center" >Quản lý đặt sách</div>
+    <div class="title-section text-center">Quản lý đặt sách</div>
 
     <div class="content-section row justify-content-center bg-white no-padding align-items-center">
         <div id="" class="input-group col-md-6">
-            <input type="text" id = "search-book" class="form-control" placeholder="Tìm kiếm sách, tin tức, ..." aria-label="Username"
-                aria-describedby="basic-addon1">
+            <input type="text" id="search-book" class="form-control" placeholder="Tìm kiếm sách, tin tức, ..."
+                aria-label="Username" aria-describedby="basic-addon1">
             <div class="input-group-append">
                 <a class="input-group-text" href="#"><img src="/images/search-icon.svg" alt="" style="width: 20px;"></a>
             </div>
@@ -20,7 +20,7 @@
     </div>
 
     <div class="table-responsive padding-left-3em">
-        <table class="table" id = "table-manager">
+        <table class="table" id="table-manager">
             <thead>
                 <tr>
                     <th style="white-space: nowrap;" scope="col">ISBN</th>
@@ -43,12 +43,17 @@
                     <th style="white-space: nowrap;" scope="row" class="l-height-3"> {{this.user_id}}</th>
                     <th style="white-space: nowrap;" class="l-height-3">{{this.book_name}}</th>
                     <th style="white-space: nowrap;" class="l-height-3"> {{this.reprint}}</th>
-                    <th style="word-wrap: break-word;" class="l-height-3"> {{this.author}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3"> {{this.author}}</th>
                     <th style="white-space: nowrap;" class="l-height-3"> {{this.producer}}</th>
                     <th style="white-space: nowrap;" class="l-height-3"> {{this.discipline}}</th>
                     <th style="white-space: nowrap;" class="l-height-3"> {{this.date_registed}}</th>
-                    <th style="white-space: nowrap;" ><button onclick="test(this)" class="confirm-button">Sửa</button>
-                        <button class="customized-btn">Hủy bỏ</button>
+                    <th style="white-space: nowrap;"><button onclick="test(this)" class="confirm-button">
+                            <div style="width: 6ch;">
+
+                                Sửa
+                            </div>
+                        </button>
+                        <button class="customized-btn" style="padding: 5px 13px">Hủy bỏ</button>
                     </th>
                 </tr>
 
@@ -59,7 +64,7 @@
                     <th style="white-space: nowrap;" scope="row"> {{this.user_id}}</th>
                     <th style="white-space: nowrap;" class="l-height-3">{{this.book_name}}</th>
                     <th style="white-space: nowrap;" class="l-height-3"> {{this.reprint}}</th>
-                    <th style=" word-wrap: break-word;"  class="l-height-3"> {{this.author}}</th>
+                    <th style="white-space: nowrap;" class="l-height-3"> {{this.author}}</th>
                     <th style="white-space: nowrap;" class="l-height-3"> {{this.producer}}</th>
                     <th style="white-space: nowrap;" class="l-height-3"> {{this.discipline}}</th>
                     <th style="white-space: nowrap;" class="l-height-3">{{this.date_registed}}</th>
