@@ -101,7 +101,7 @@
                     {{#each sectionTinTuc.articles}}
                     {{#if @first}}
                     <div class="card" style="width: 220px; border:none;">
-                        <a href="/news-detail">
+                        <a href="/news-detail/{{this._id}}">
                             <div class="card-body" style="padding:5px">
                                 <p class="card-text" style="margin: 0; font-size:22px; color:black;">
                                     {{this.title}}
@@ -126,7 +126,7 @@
                         {{#each sectionTinTuc.articles}}
                         {{#if @first}}
                         {{else}}
-                        <a href="/news-detail">
+                        <a href="/news-detail/{{this._id}}">
                             <div style="color: black;">{{this.title}}</div>
                             <div style="color: grey;">{{this.date}}</div>
                         </a>
