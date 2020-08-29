@@ -9,38 +9,37 @@
             <div class="book-info  col-md-4 ml-md-4">
                 <div>
                     <div>Tên sách</div>
-                    <input type="text" name="book-name" id="book-name" class="text-box-size-100-per"
-                        placeholder="Kỹ nghệ phần mềm">
+                    <input type="text" name="book_name" id="book-name" class="text-box-size-100-per"
+                        placeholder="Kỹ nghệ phần mềm" value="{{buyBookSection.book_name}}">
                 </div>
                 <div class="padding-top-1em">
                     <div>Tác giả</div>
-                    <input type="text" name="book-author" id="book-author" class="text-box-size-100-per"
-                        placeholder="Lê Văn Phùng">
+                    <input type="text" name="author" id="book-author" class="text-box-size-100-per"
+                        placeholder="Lê Văn Phùng" value="{{buyBookSection.author}}">
                 </div>
                 <div class="padding-top-1em">
                     <div>Tải bản lần thứ</div>
-                    <input type="text" name="book-renumber" id="book-renumber" class="text-box-size-100-per"
-                        placeholder="3">
+                    <input type="text" name="reprint" id="book-renumber" class="text-box-size-100-per"
+                        placeholder="3" value="{{buyBookSection.reprint}}">
                 </div>
                 <div class="padding-top-1em">
                     <div>Nhà xuất bản</div>
-                    <input type="text" name="book-producer" id="book-producer" class="text-box-size-100-per"
-                        placeholder="NXB trẻ">
+                    <input type="text" name="producer" id="book-producer" class="text-box-size-100-per"
+                        placeholder="NXB trẻ" value="{{buyBookSection.producer}}">
                 </div>
                 <div class="padding-top-1em">
-                    <div>Link tham khảo</div>
-                    <input type="text" name="link-prove" id="link-prove" class="text-box-size-100-per"
-                        placeholder="https://amazon.com/ky-nghe-phan-mem">
+                    <div>Discipline</div>
+                    <input type="text" name="discipline" id="discipline" class="text-box-size-100-per"
+                        placeholder="Ai" value="{{buyBookSection.discipline}}">
                 </div>
                 <div class="padding-top-1em">
                     <div>ISBN</div>
-                    <input type="text" name="ISBN" id="ISBN" class="text-box-size-100-per" placeholder="0123456789">
+                    <input type="text" name="book_isbn" id="ISBN" class="text-box-size-100-per" placeholder="0123456789" value="{{buyBookSection.book_isbn}}">
                 </div>
-
             </div>
         </div>
         <div class="padding-top-1em text-center">
-            <button class="customized-btn blue-bg-white-text" style="border:none; background-color: #3498db;">Xác
+            <button id ="btn-submit" type="submit" class="customized-btn blue-bg-white-text" style="border:none; background-color: #3498db;">Xác
                 nhận</button>
             <button class="customized-btn white-bg-black-text" style="padding: 5px 13px; margin-left:5px">
                 <div style="width:8ch">Hủy</div>
@@ -49,4 +48,5 @@
     </form>
 
 </div>
-<script src="/function/upload.js"></script>
+<script src="/function/buybook.js" current_page="Đăng ký mua sách"></script>
+{{!-- <script src="/function/upload.js"></script> --}}

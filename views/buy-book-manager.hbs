@@ -38,6 +38,7 @@
                 {{#each Booking_arr.booking_book}}
 
                 <tr class="booking-data">
+                    <th style="display: none; white-space: nowrap;" scope="row" class="l-height-3 num">{{this._id}}</th>
                     <th style="white-space: nowrap;" scope="row" class="l-height-3">{{this.book_isbn}}</th>
                     <th style="white-space: nowrap;" scope="row" class="l-height-3"> {{this.user_id}}</th>
                     <th style="white-space: nowrap;" class="l-height-3">{{this.book_name}}</th>
@@ -46,7 +47,7 @@
                     <th style="white-space: nowrap;" class="l-height-3"> {{this.producer}}</th>
                     <th style="white-space: nowrap;" class="l-height-3"> {{this.discipline}}</th>
                     <th style="white-space: nowrap;" class="l-height-3"> {{this.date_registed}}</th>
-                    <th style="white-space: nowrap;" ><button class="confirm-button">Sửa</button>
+                    <th style="white-space: nowrap;" ><button onclick="test(this)" class="confirm-button">Sửa</button>
                         <button class="customized-btn">Hủy bỏ</button>
                     </th>
                 </tr>
@@ -73,5 +74,12 @@
     </div>
 </div>
 
+<script>
+    function test(param) {
+        rowData = param.parentElement.parentElement.cells
+        console.log(rowData[0].innerText)
+        window.location.href = "/buy-book/" + rowData[0].innerText
+    }
+</script>
 <link rel="stylesheet" href="/stylesheets/buy-book-manager.css">
 <script src="/function/buy-book-menu.js"></script>
