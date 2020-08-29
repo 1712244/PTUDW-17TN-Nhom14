@@ -46,41 +46,81 @@
             </div>
             <div class="tab-content">
                 {{#each books}}
-                <a href="/book-detail/{{this._id}}">
-                    <div class="row justify-content-center" style="padding: 10px;">
-                        <div class="col-4 col-sm-3 col-md-2 col-lg-1">
-                            <div class="d-flex justify-content-end">
-                                <img src={{this.image_url}} alt="">
+                {{#if @first}}
+                <div class="tab-pane fade show active" id="pills-{{this.id}}" role="tabpanel"
+                    aria-labelledby="pills-{{this.id}}-tab">
+                    {{#each this.book}}
+                    <a href="/book-detail/{{this._id}}">
+                        <div class="row justify-content-center" style="padding: 10px;">
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <div class="d-flex justify-content-end">
+                                    <img src={{this.image_url}} alt="">
 
+                                </div>
+                            </div>
+                            <div class="col-6 col-sm-7 col-md-8 col-lg-8">
+                                <div class=" title-search">{{this.book_name}}</div>
+                                <div class="author-search">
+                                    {{#each this.author}}
+                                    {{this.name}}
+                                    {{/each}}
+                                </div>
+                                <div style="overflow:hidden; text-overflow: ellipsis; color:black;">{{this.desc}}</div>
                             </div>
                         </div>
-                        <div class="col-6 col-sm-7 col-md-8 col-lg-8">
-                            <div class=" title-search">{{this.book_name}}</div>
-                            <div class="author-search">
-                                {{#each this.author}}
-                                {{this.name}}
-                                {{/each}}
+                    </a>
+                    {{/each}}
+                </div>
+                {{else}}
+                <div class="tab-pane fade" id="pills-{{this.id}}" role="tabpanel"
+                    aria-labelledby="pills-{{this.id}}-tab">
+                    {{#each this.book}}
+                    <a href="/book-detail/{{this._id}}">
+                        <div class="row justify-content-center" style="padding: 10px;">
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                                <div class="d-flex justify-content-end">
+                                    <img src={{this.image_url}} alt="">
+
+                                </div>
                             </div>
-                            <div style="overflow:hidden; text-overflow: ellipsis; color:black;">{{this.desc}}</div>
+                            <div class="col-6 col-sm-7 col-md-8 col-lg-8">
+                                <div class=" title-search">{{this.book_name}}</div>
+                                <div class="author-search">
+                                    {{#each this.author}}
+                                    {{this.name}}
+                                    {{/each}}
+                                </div>
+                                <div style="overflow:hidden; text-overflow: ellipsis; color:black;">{{this.desc}}</div>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                    {{/each}}
+                </div>
+                {{/if}}
                 {{/each}}
             </div>
 
 
             <nav id="book_nav">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item">
+                <ul class="nav nav-pills pagination justify-content-center" role="tablist">
+                    <li class="page-item nav-item">
                         <a class="page-link" href="#" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                             <span class="sr-only">Previous</span>
                         </a>
                     </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
+                    {{#each books}}
+                    {{#if @first}}
+                    <li class="page-item nav-item"><a class="page-link nav-link active" id="pills-{{this.id}}-tab" data-toggle="pill"
+                            href="#pills-{{this.id}}" role="tab" aria-controls="pills-{{this.id}}"
+                            aria-selected="true">{{this.id}}</a></li>
+                    {{else}}
+                    <li class="page-item nav-item"><a class="page-link nav-link" id="pills-{{this.id}}-tab" data-toggle="pill"
+                            href="#pills-{{this.id}}" role="tab" aria-controls="pills-{{this.id}}"
+                            aria-selected="false">{{this.id}}</a></li>
+                    {{/if}}
+                    {{/each}}
+                    <li class="page-item nav-item">
                         <a class="page-link" href="#" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                             <span class="sr-only">Next</span>

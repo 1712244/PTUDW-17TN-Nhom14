@@ -47,15 +47,15 @@ async function searchDefault(req, res, next) {
     // split 
     var tmpbook = [] 
     var books_length = books.length
+    var i = 0
     while (books.length > 0) {
-        tmpbook.push(books.splice(0,MAX_PAGE))
+        i++
+        var book = books.splice(0,MAX_PAGE)
+        tmpbook.push({"id": i, book})
     }
     books = tmpbook
-    var booknav = [...Array(books.length).keys()]
-    booknav = booknav.map(x => ++x)
-    console.log(booknav, books)
     // render
-    res.render('search', { layout: "layout", query: data.text,books_length, books, booknav, news });
+    res.render('search', { layout: "layout", query: data.text,books_length, books, news });
 }
 
 async function searchQuery(req, res, next) {
