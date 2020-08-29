@@ -19,9 +19,16 @@ module.exports.sameDay = function(d1, d2) {
 module.exports.toDayString = function(d) {
     return d.toLocaleDateString("vi", { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' });
 };
-
 module.exports.toTimeString = function(d) {
     return d.toTimeString().substr(0, 5);
+}
+
+Date.prototype.toShortDateString = function() {
+    let y = this.getFullYear();
+    let m = this.getMonth() + 1;
+    let d = this.getDate();
+
+    return y + '-' + (m < 10?'0':'') + m + '-' + (d < 10?'0':'') + d; 
 }
 
 module.exports.toDueTimeString = function(date) {

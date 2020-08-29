@@ -11,6 +11,6 @@ const disciplinesSchema = new Schema({
     }
 });
 
-const disciplines = mongoose.model('disciplines', disciplinesSchema);
+const disciplines = mongoose.model('disciplines', disciplinesSchema, 'disciplines');
 
 module.exports = disciplines
