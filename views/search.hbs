@@ -45,7 +45,7 @@
         </div>
 
         {{#each books}}
-        <a href="/book-detail">
+        <a href="/book-detail/{{this._id}}">
             <div class="row justify-content-center" style="padding: 10px;">
                 <div class="col-4 col-sm-3 col-md-2 col-lg-1">
                     <div class="d-flex justify-content-end">
@@ -89,7 +89,7 @@
             <div class="col-1"></div>
         </div>
         {{#each news}}
-        <a href="/news-detail">
+        <a href="/news-detail/{{this._id}}">
             <div class="row justify-content-center" style="padding: 10px;">
                 <div class="col-4 col-sm-3 col-md-2">
                     <div class="d-flex justify-content-end">

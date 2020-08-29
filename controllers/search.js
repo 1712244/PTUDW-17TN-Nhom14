@@ -46,7 +46,7 @@ async function searchDefault(req, res, next) {
 }
 
 async function searchQuery(req, res, next) {
-    const data = req.params;
+    const data = req.params; 
     var books = await bookService.bookSearch(data.text);
     books = await miscUtil.cleanAllBook(books);
     var all_author = await authorService.getAll();
