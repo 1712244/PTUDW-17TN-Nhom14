@@ -35,7 +35,7 @@
                         <div style="font-size: 25px;">Mã tài khoản: {{profile.usercode}} </div>
                         <div style="font-size: 25px;">QR Code: </div>
                         <div style="width: 300px; height:300px">
-                            <img src={{profile.qr_code}} alt="">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data={{profile.usercode}}" alt="">
                         </div>
                     </div>
 
