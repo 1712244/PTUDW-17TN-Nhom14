@@ -19,7 +19,7 @@ const BuyRegistedSchema = new Schema({
         required: true
     },
     author: {
-        type: Array,
+        type: String,
         required: true
     },
     producer: {
@@ -32,6 +32,10 @@ const BuyRegistedSchema = new Schema({
     },
     discipline: {
         type: String
+    },
+    status: {
+        type: Number,
+        required: true
     },
     cDate: {
         type: Date

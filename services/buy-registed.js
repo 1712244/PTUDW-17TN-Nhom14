@@ -2,18 +2,19 @@ const dateTimeService = require("./../utils/dateTime");
 const BuyRegisted = require("./../collections/buy-registed");
 const { mode } = require("crypto-js");
 
-function createModel(user_id, book_isbn, book_name, reprint, author, producer, date_registed, discipline) {
-    const newBuyRegistedModel = new buyRegisted({
+function createModel(user_id, book_isbn, book_name, reprint, author, producer, discipline) {
+    const newBuyRegistedModel = new BuyRegisted({
         user_id: user_id,
         book_isbn: book_isbn,
         book_name: book_name,
         reprint: reprint,
         author: author,
         producer: producer,
-        date_registed: dateTimeService.stringToDate(date_registed),
+        date_registed: dateTimeService.now(),
         discipline: discipline,
-        cDate: dateTimeService.now(),
-        mDate: dateTimeService.new()
+        status: 0
+            // cDate: dateTimeService.now(),
+            // mDate: dateTimeService.now()
     });
     return newBuyRegistedModel;
 }
@@ -99,9 +100,9 @@ function removeById(_id) {
     });
 }
 
-function updateById(_id, user_id, book_isbn, book_name, reprint, author, producer, date_registed, discipline) {
+function updateById(_id, book_isbn, book_name, reprint, author, producer, discipline) {
     return new Promise((resolve, reject) => {
-        BuyRegisted.updateOne({ _id: _id }, { user_id: user_id, book_isbn: book_isbn, book_name: book_name, reprint: reprint, author: author, producer: producer, date_registed: dateTimeService.stringToDate(date_registed), discipline: discipline }).exec(error => {
+        BuyRegisted.updateOne({ _id: _id }, { book_isbn: book_isbn, book_name: book_name, reprint: reprint, author: author, producer: producer, discipline: discipline }).exec(error => {
             if (error) return reject(error);
             return resolve(true);
         });
