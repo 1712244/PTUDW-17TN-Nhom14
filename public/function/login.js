@@ -9,7 +9,14 @@ $(document).ready(function() {
             })
             .fail(function(data) {
                 json = data.responseJSON;
-                alert(json.message);
+                // alert(json.message);
+                $('#noti-login-problem').html(`<div class="alert alert-danger alert-dismissible fade show" role="alert"
+                style="margin-top: -60px;">
+                Mật khẩu hoặc tài khoản không đúng! Mời nhập lại!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>`)
             });
         return false;
     })
