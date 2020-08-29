@@ -54,8 +54,18 @@ async function searchDefault(req, res, next) {
         tmpbook.push({"id": i, book})
     }
     books = tmpbook
+
+    var tmpnew = [] 
+    var news_length = news.length
+    i = 0
+    while (news.length > 0) {
+        i++
+        var newc = news.splice(0,MAX_PAGE)
+        tmpnew.push({"id": i, newc})
+    }
+    news = tmpnew
     // render
-    res.render('search', { layout: "layout", query: data.text,books_length, books, news });
+    res.render('search', { layout: "layout", query: data.text,books_length, books, news_length, news });
 }
 
 async function searchQuery(req, res, next) {
