@@ -2,12 +2,36 @@ var express = require('express');
 var router = express.Router();
 const th = require('./helper/time-helper');
 const bd = require('./borrow-data');
-const scheduleService  = require('./../../services/schedule');
+const scheduleService = require('./../../services/schedule');
 
 
 
 
 router.get('/', async function (req, res, next) {
+  // check account type and login
+  if (req.session.username) {
+    if (res.locals.user.user.type != 3) {
+      req.session.destroy((err) => {
+        if (err) {
+          return console.log(err);
+        }
+        res.locals.user = null
+        res.redirect('/librarian/librarian-login')
+        return
+      });
+    }
+  }
+  else {
+    req.session.destroy((err) => {
+      if (err) {
+        return console.log(err);
+      }
+      res.locals.user = null
+      res.redirect('/librarian/librarian-login')
+      return
+    });
+  }
+
   const rawData = await bd.GetAllBorrowData();
   const borrowData = rawData.getTodayBorrow().borrowData;
   const allReturnData = rawData.getUnreturnedData();
@@ -24,7 +48,7 @@ router.get('/', async function (req, res, next) {
     }
   });
 
-  res.render('lib-index', {layout:"layout-lib", borrowData: borrowData, returnData: returnData, dueData: dueData});
+  res.render('lib-index', { layout: "layout-lib", borrowData: borrowData, returnData: returnData, dueData: dueData });
 });
 
 module.exports = router;
