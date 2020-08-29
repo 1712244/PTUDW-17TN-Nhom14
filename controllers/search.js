@@ -24,7 +24,7 @@ var news_result = [
 const MAX_PAGE = 5
 
 async function searchDefault(req, res, next) {
-    var data ={text:""}
+    var data = { text: "" }
     var books = await bookService.bookSearch(data.text);
     books = await miscUtil.cleanAllBook(books);
     var all_author = await authorService.getAll();
@@ -45,31 +45,31 @@ async function searchDefault(req, res, next) {
     })
 
     // split 
-    var tmpbook = [] 
+    var tmpbook = []
     var books_length = books.length
     var i = 0
     while (books.length > 0) {
         i++
-        var book = books.splice(0,MAX_PAGE)
-        tmpbook.push({"id": i, book})
+        var book = books.splice(0, MAX_PAGE)
+        tmpbook.push({ "id": i, book })
     }
     books = tmpbook
 
-    var tmpnew = [] 
+    var tmpnew = []
     var news_length = news.length
     i = 0
     while (news.length > 0) {
         i++
-        var newc = news.splice(0,MAX_PAGE)
-        tmpnew.push({"id": i, newc})
+        var newc = news.splice(0, MAX_PAGE)
+        tmpnew.push({ "id": i, newc })
     }
     news = tmpnew
     // render
-    res.render('search', { layout: "layout", query: data.text,books_length, books, news_length, news });
+    res.render('search', { layout: "layout", query: data.text, books_length, books, news_length, news });
 }
 
 async function searchQuery(req, res, next) {
-    const data = req.params; 
+    const data = req.params;
     var books = await bookService.bookSearch(data.text);
     books = await miscUtil.cleanAllBook(books);
     var all_author = await authorService.getAll();
@@ -88,7 +88,30 @@ async function searchQuery(req, res, next) {
     news.forEach(n => {
         n.date = miscUtil.toStringDDMMYYYY(n.date)
     })
-    res.render('search', { layout: "layout", query: data.text, books, news });
+
+    //split 
+    // split 
+    var tmpbook = []
+    var books_length = books.length
+    var i = 0
+    while (books.length > 0) {
+        i++
+        var book = books.splice(0, MAX_PAGE)
+        tmpbook.push({ "id": i, book })
+    }
+    books = tmpbook
+
+    var tmpnew = []
+    var news_length = news.length
+    i = 0
+    while (news.length > 0) {
+        i++
+        var newc = news.splice(0, MAX_PAGE)
+        tmpnew.push({ "id": i, newc })
+    }
+    news = tmpnew
+    // render
+    res.render('search', { layout: "layout", query: data.text, books_length, books, news_length, news  });
 }
 
 async function postSearch(req, res, next) {
