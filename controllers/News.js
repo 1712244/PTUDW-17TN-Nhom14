@@ -5,15 +5,10 @@ const dateTimeService = require("./../utils/dateTime")
 
 async function insert(req, res) {
     try {
-        console.log(req.body);
         let object = {};
         for (i in req.body) {
             object[req.body[i].name] = req.body[i].value
         }
-
-        let json = JSON.stringify(object);
-        console.log(object);
-        console.log(json);
         const { title, desc, tag, writer, type } = object;
         const newNewsDocument = newsService.createModel(title, desc, tag, writer, type);
         await newsService.insert(newNewsDocument);

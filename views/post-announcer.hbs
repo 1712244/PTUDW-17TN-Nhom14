@@ -62,15 +62,10 @@
 
 
     function logdata() {
-        //console.log(editor.getContents())
-        //console.log(editor.root.innerHTML);
-        //console.log(typeof (editor.root.innerHTML))
-        //let IUP = document.getElementById("input-file");
-        //console.log(IUP)
+
         let fields = $("#formdata").serializeArray();
         fields.push({ name:"desc", value: editor.root.innerHTML });
         fields.push({ name:"writer", value: "Thu thu" });
-        console.log(fields)
         loadXMLDoc(fields)
     }
 
