@@ -25,10 +25,10 @@
                     <input type="text" name="tags" id="tags" style="width: 500px;" placeholder="Lê Văn Phùng">
                 </div>
                 <div style="padding-top: 11%;">
-                    <input type="radio" id="pronouncer" name="type" value="pronouncer" checked>
+                    <input type="radio" id="pronouncer" name="type" value="0" checked>
                     <label for="pronouncer">Thông báo</label>
 
-                    <input type="radio" id="event" name="type" value="event">
+                    <input type="radio" id="event" name="type" value="1">
                     <label for="event">Sự kiện</label>
                 </div>
 
@@ -43,7 +43,8 @@
     </div>
 
     <div class="display-flex button-area justify-content-center">
-        <button id="btn-submit" class="customized-btn blue-bg-white-text" style="border: none;">Đăng</button>
+        <button onclick="logdata()" id="btn-submit" class="customized-btn blue-bg-white-text"
+            style="border: none;">Đăng</button>
         <button style="margin-left:15px" class="customized-btn white-bg-black-text">Hủy</button>
     </div>
 </div>
@@ -66,9 +67,25 @@
         //console.log(typeof (editor.root.innerHTML))
         //let IUP = document.getElementById("input-file");
         //console.log(IUP)
+        let fields = $("#formdata").serializeArray();
+        fields.push({ name:"desc", value: editor.root.innerHTML });
+        fields.push({ name:"writer", value: "Thu thu" });
         console.log(fields)
+        loadXMLDoc(fields)
     }
 
+    function loadXMLDoc(formdata) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("demo").innerHTML =
+                        this.responseText;
+                }
+            };
+            xhttp.open("POST", "/api/news/insert", true);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.send(JSON.stringify(formdata));
+        }
     var toolbarOptions = [
         ['bold', 'italic', 'underline', 'strike'], // toggled buttons
         ['blockquote', 'code-block'],
@@ -101,35 +118,6 @@
     });
 
     editor.insertText(0, 'Hello', 'bold', true);
-
-
-    $(document).ready(function () {
-        $('#btn-submit').click(function () {
-            title = document.getElementById("title").value
-            tags = document.getElementById("tags").value
-            //if (title == "") {
-            //    alert("missing title");
-            //    return false;
-            //}
-            //if (tags == "") {
-            //    alert("missing keyword")
-            //    return false;
-            //}
-            let fields = $("#formdata").serializeArray();
-            fields.push({ "content": editor.root.innerHTML });
-            fields.push({ "writer": "Thu thu" });
-            console.log(fields)
-            //$.post("/api/news/insert", fields)
-            //    .done(function (data) {
-            //        json = data.responseJSON
-            //        alert(json)
-            //    }).fail(function (data) {
-            //        json = data.responseJSON;
-            //        alert(json.message);
-            //    })
-            return false;
-        });
-    });
 
 </script>
 <script src="/function/nav-lib.js" current_page="Đăng thông báo"></script>
