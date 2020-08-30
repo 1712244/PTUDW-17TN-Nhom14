@@ -61,14 +61,14 @@ async function getAll(req, res) {
 
 async function get3BylatestDate(req, res) {
     try {
-        const EventDocument = await newsService.get3EventByLatestDate();
-        const PronouncerDocument = await newsService.get3PronouncerByLatestDate();
+        let EventDocument = await newsService.get3EventByLatestDate();
+        let PronouncerDocument = await newsService.get3PronouncerByLatestDate();
 
         const sectionSuKien = {
             title: "Sự kiện",
             other_news: "Các tin khác",
             more_news: "→ xem tất cả sự kiện",
-            articles: EventDocument
+            articles: JSON.parse(JSON.stringify(EventDocument))
         }
 
         for (i in sectionSuKien.articles) {
@@ -77,11 +77,11 @@ async function get3BylatestDate(req, res) {
             sectionSuKien.articles[i].image_url = "/images/alert-late-thumbnail.png"
         }
 
-        const sectionThongBao = {
+        let sectionThongBao = {
             title: "Thông báo",
             other_news: "Các tin khác",
             more_news: "→ xem tất cả thông báo",
-            articles: PronouncerDocument
+            articles: JSON.parse(JSON.stringify(PronouncerDocument))
         }
 
         for (i in sectionThongBao.articles) {
@@ -107,13 +107,13 @@ async function get3BylatestDate(req, res) {
 
 async function get5NewsByLatestDate() {
     try {
-        const NewsDocument = await newsService.get5NewsByLatestDate();
+        let NewsDocument = await newsService.get5NewsByLatestDate();
 
         const sectionTinTuc = {
             title: "Sự kiện",
             other_news: "Các tin khác",
             more_news: "→ xem tất cả sự kiện",
-            articles: NewsDocument
+            articles: JSON.parse(JSON.stringify(NewsDocument))
         }
 
         for (i in sectionTinTuc.articles) {
