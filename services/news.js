@@ -2,12 +2,21 @@ const News = require("./../collections/news");
 const dateTimeService = require('./../utils/dateTime');
 
 function createModel(title, desc, tag, writer, type) {
+    let image_url = ""
+    if (type == 1) {
+        image_url = "/images/news-thumbnail.png"
+    }
+    if (type == 0) {
+        image_url = "/images/alert-late-thumbnail.png"
+    }
     const newNewsModel = new News({
         title: title,
         desc: desc,
         tag: tag,
         type: type,
         writer: writer,
+        image_url: image_url,
+        date: dateTimeService.now(),
         cDate: dateTimeService.now(),
         mDate: dateTimeService.now()
     });

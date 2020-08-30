@@ -17,6 +17,12 @@ const NewsSchema = new Schema({
     writer: {
         type: Array
     },
+    date: {
+        type: Date
+    },
+    image_url: {
+        type: String
+    },
     type: {
         type: Number,
         required: true
