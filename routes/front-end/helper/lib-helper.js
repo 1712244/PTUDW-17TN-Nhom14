@@ -100,3 +100,7 @@ hbs.registerHelper('if_eq', function(a, b, opts) {
   else
       return opts.inverse(this);
 });
+
+hbs.registerHelper('toJSON', function(obj) {
+  return new hbs.handlebars.SafeString(JSON.stringify(obj));
+});

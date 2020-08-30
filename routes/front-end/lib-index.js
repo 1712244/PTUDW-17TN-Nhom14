@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const th = require('./helper/time-helper');
+require('./helper/time-helper');
 const bd = require('./borrow-data');
 const scheduleService = require('./../../services/schedule');
 
@@ -36,6 +36,10 @@ router.get('/', async function (req, res, next) {
   const borrowData = rawData.getTodayBorrow().borrowData;
   const allReturnData = rawData.getUnreturnedData();
 
+  now = new Date();
+  const statistic = rawData.getBorrowInDateRange(now.addDays(-30), now).getStatistic();
+  console.log(statistic);
+
   allReturnData.sortByDueDate();
   var returnData = [];
   var dueData = [];
@@ -48,7 +52,8 @@ router.get('/', async function (req, res, next) {
     }
   });
 
-  res.render('lib-index', { layout: "layout-lib", borrowData: borrowData, returnData: returnData, dueData: dueData });
+  console.log(JSON.stringify(statistic));
+  res.render('lib-index', { layout: "layout-lib", borrowData: borrowData, returnData: returnData, dueData: dueData , chartData: statistic});
 });
 
 module.exports = router;
