@@ -99,7 +99,6 @@ function drawBorrowReturn() {
                 type: 'line',
                 symbol: 'none',
                 lineStyle: {
-                    color: 'green',
                     width: 3
                 },
                 data: borrowReturnData.time.map(function(e,i) {
@@ -111,7 +110,6 @@ function drawBorrowReturn() {
                 type: 'line',
                 symbol: 'none',
                 lineStyle: {
-                    color: 'blue',
                     width: 3
                 },
                 data: borrowReturnData.time.map(function(e,i) {
