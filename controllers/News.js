@@ -5,11 +5,21 @@ const dateTimeService = require("./../utils/dateTime")
 
 async function insert(req, res) {
     try {
-        const { title, content, tag, writer, type } = req.body;
-        const newNewsDocument = newsService.createModel(title, content, tag, writer, type);
+        console.log(req.body);
+        let object = {};
+        for (i in req.body) {
+            object[req.body[i].name] = req.body[i].value
+        }
+
+        let json = JSON.stringify(object);
+        console.log(object);
+        console.log(json);
+        const { title, desc, tag, writer, type } = object;
+        const newNewsDocument = newsService.createModel(title, desc, tag, writer, type);
         await newsService.insert(newNewsDocument);
         return res.status(200).send({ News: newNewsDocument });
     } catch (error) {
+        console.log(error);
         res.status(500).send({ message: error });
     }
 }

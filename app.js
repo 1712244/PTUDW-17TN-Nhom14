@@ -108,6 +108,7 @@ app.use("/buy-book-manager", require("./routes/front-end/buy-book-manager"));
 app.use("/change-password", require("./routes/front-end/change-password"))
 
 app.use("/api", require("./routes/back-end/account")());
+app.use("/api", require("./routes/back-end/news")());
 app.use("/api", require("./routes/back-end/comment")());
 app.use("/api", require("./routes/back-end/buy-registed")());
 app.use("/librarian-api/", require("./routes/back-end/borrow"));
